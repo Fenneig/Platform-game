@@ -16,6 +16,12 @@ public class Hero : MonoBehaviour
         Debug.Log("Something");
     }
 
+    //перегрузка метода, использую для дебагинга 
+    public void SaySomething(string message) 
+    {
+        Debug.Log(message);
+    }
+
     private void Update()
     {
         if (_direction != 0) 

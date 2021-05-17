@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "HorizontalMovement",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "6eae8c89-7eb0-4a93-b6bf-abc4f6f6793f",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -35,7 +35,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "Negative",
                     "id": "f97530cb-9247-4fbe-bbf4-f67dda617293",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -46,7 +46,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "Positive",
                     "id": "30d3f763-b279-4156-9121-3724c2ecb236",
                     "path": "<Keyboard>/d",
                     "interactions": "",
