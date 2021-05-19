@@ -5,21 +5,22 @@ using UnityEngine;
 public class PalmCrownReaction : MonoBehaviour
 {
     private EdgeCollider2D _edgeCollider;
+    private BoxCollider2D _boxCollider;
+    [SerializeField] private LayerMask _layerMask;
 
     private void Awake()
     {
         _edgeCollider = GetComponent<EdgeCollider2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Enter trigger");
-        _edgeCollider.isTrigger = true;
+        if (_boxCollider.IsTouchingLayers(_layerMask)) _edgeCollider.enabled = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //Debug.Log("Exit trigger");
-        _edgeCollider.isTrigger = false;
+        _edgeCollider.enabled = true;
     }
 }
