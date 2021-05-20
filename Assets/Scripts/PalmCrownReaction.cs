@@ -6,6 +6,7 @@ public class PalmCrownReaction : MonoBehaviour
 {
     [SerializeField] private Collider2D _crownCollider;
     [SerializeField] private LayerMask _charactersMask;
+
     private BoxCollider2D _boxCollider;
 
     private void Awake()

@@ -18,3 +18,6 @@ Temp/UnityLockfile
 *.DotSettings.user
 /Assets/Plugins/Editor/JetBrains*
 *.7z
+*.gitattributes
+*.gitignore
+*.vsconfig

@@ -22,6 +22,7 @@ public class Hero : MonoBehaviour
         _direction = direction;
     }
 
+
     public void SaySomething() 
     {
         Debug.Log("Something");
@@ -38,10 +39,9 @@ public class Hero : MonoBehaviour
 
         var isJumping = _direction.y > 0;
 
-
         if (isJumping)
         {
-            if (IsGrounded() && _rigidbody.velocity.y <= 1)
+            if (IsGrounded() && _rigidbody.velocity.y <= 0)
                 _rigidbody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
         }
         else if (_rigidbody.velocity.y > 0)
