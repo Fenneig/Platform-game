@@ -1,4 +1,3 @@
-Temp/UnityLockfile
 /.vs
 *.exe
 *.log
@@ -8,9 +7,8 @@ Temp/UnityLockfile
 /Temp/
 /Assets/VSCode*
 /obj/
-/out
 /.vscode/
-*.sln
+*.sln	
 *.userprefs
 *.csproj
 /.idea
@@ -18,6 +16,3 @@ Temp/UnityLockfile
 *.DotSettings.user
 /Assets/Plugins/Editor/JetBrains*
 *.7z
-*.gitattributes
-*.gitignore
-*.vsconfig
