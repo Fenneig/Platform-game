@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class PalmCrownReaction : MonoBehaviour
 {
-    [SerializeField] private Collider2D _crownCollider;
-    [SerializeField] private LayerMask _charactersMask;
-    private BoxCollider2D _boxCollider;
+    [SerializeField] private Hero _hero;
 
-    private void Awake()
+    private void Update()
     {
-        _boxCollider = GetComponent<BoxCollider2D>();
+        if (_hero.GetDirection().y < 0)
+        {
+            Physics2D.IgnoreLayerCollision(9, 11, true);
+            Invoke("IgnoreOff", 0.2f);
+        }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void IgnoreOff()
     {
-        if (_boxCollider.IsTouchingLayers(_charactersMask))
-            _crownCollider.enabled = false;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        _crownCollider.enabled = true;
+        Physics2D.IgnoreLayerCollision(9, 11, false);
     }
 }

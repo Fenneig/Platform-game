@@ -6,38 +6,23 @@ public class Hero : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpSpeed;
-
     [SerializeField] private LayerCheck _groundCheck;
 
     private Rigidbody2D _rigidbody;
     private Vector2 _direction;
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
-
-    public void SetDirection(Vector2 direction) 
-    {
-        _direction = direction;
-    }
-
-    public void SaySomething() 
-    {
-        Debug.Log("Something");
-    }
-
-    private bool IsGrounded() 
-    {
-        return _groundCheck.IsTouchingLayer();
-    }
-
+    public void SetDirection(Vector2 direction) => _direction = direction;
+    public Vector2 GetDirection() => _direction;
+    public void SaySomething() => Debug.Log("Something");
+    private bool IsGrounded() => _groundCheck.IsTouchingLayer();
     private void FixedUpdate()
     {
         _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
 
         var isJumping = _direction.y > 0;
-
 
         if (isJumping)
         {
@@ -49,5 +34,4 @@ public class Hero : MonoBehaviour
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);
         }
     }
-
 }
