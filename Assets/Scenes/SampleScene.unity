@@ -204,7 +204,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &23141501
 EdgeCollider2D:
@@ -338,7 +338,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &31097993
 EdgeCollider2D:
@@ -600,7 +600,6 @@ GameObject:
   - component: {fileID: 73572722}
   - component: {fileID: 73572721}
   - component: {fileID: 73572720}
-  - component: {fileID: 73572719}
   - component: {fileID: 73572718}
   m_Layer: 0
   m_Name: Coins_Gold3
@@ -639,7 +638,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 73572719}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -650,18 +649,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &73572719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73572716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &73572720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,6 +1330,9 @@ Transform:
   - {fileID: 73572717}
   - {fileID: 1525251862}
   - {fileID: 1497044441}
+  - {fileID: 1859882355}
+  - {fileID: 1821451365}
+  - {fileID: 1576273838}
   - {fileID: 749639849}
   - {fileID: 1768611526}
   - {fileID: 1719638812}
@@ -1354,9 +1344,6 @@ Transform:
   - {fileID: 1817959714}
   - {fileID: 1864170721}
   - {fileID: 429030930}
-  - {fileID: 1859882355}
-  - {fileID: 1821451365}
-  - {fileID: 1576273838}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1423,7 +1410,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 15
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &429030931
 MonoBehaviour:
@@ -1767,7 +1754,6 @@ GameObject:
   - component: {fileID: 740793236}
   - component: {fileID: 740793238}
   - component: {fileID: 740793240}
-  - component: {fileID: 740793239}
   - component: {fileID: 740793241}
   m_Layer: 0
   m_Name: Coins_Gold1
@@ -1857,18 +1843,6 @@ CircleCollider2D:
   m_Offset: {x: 0.01, y: 0.01}
   serializedVersion: 2
   m_Radius: 0.18
---- !u!114 &740793239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 740793235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &740793240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1886,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 740793239}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -2003,7 +1977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &749639850
 BoxCollider2D:
@@ -4260,7 +4234,6 @@ GameObject:
   - component: {fileID: 1497044440}
   - component: {fileID: 1497044442}
   - component: {fileID: 1497044444}
-  - component: {fileID: 1497044443}
   - component: {fileID: 1497044445}
   m_Layer: 0
   m_Name: Coins_Silver1
@@ -4350,18 +4323,6 @@ CircleCollider2D:
   m_Offset: {x: 0.01, y: 0.01}
   serializedVersion: 2
   m_Radius: 0.18
---- !u!114 &1497044443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497044439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1497044444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,7 +4366,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1497044443}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -4428,7 +4389,6 @@ GameObject:
   - component: {fileID: 1525251867}
   - component: {fileID: 1525251866}
   - component: {fileID: 1525251865}
-  - component: {fileID: 1525251864}
   - component: {fileID: 1525251863}
   m_Layer: 0
   m_Name: Coins_Gold4
@@ -4467,7 +4427,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1525251864}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -4478,18 +4438,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1525251864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525251861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1525251865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4596,7 +4544,6 @@ GameObject:
   - component: {fileID: 1576273843}
   - component: {fileID: 1576273842}
   - component: {fileID: 1576273841}
-  - component: {fileID: 1576273840}
   - component: {fileID: 1576273839}
   m_Layer: 0
   m_Name: Coins_Silver4
@@ -4617,7 +4564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 18
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1576273839
 MonoBehaviour:
@@ -4635,7 +4582,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576273840}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -4646,18 +4593,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1576273840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576273837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1576273841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4869,7 +4804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1719638813
 BoxCollider2D:
@@ -4998,7 +4933,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1768611527
 BoxCollider2D:
@@ -5140,7 +5075,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1817959715
 MonoBehaviour:
@@ -5255,7 +5190,6 @@ GameObject:
   - component: {fileID: 1821451370}
   - component: {fileID: 1821451369}
   - component: {fileID: 1821451368}
-  - component: {fileID: 1821451367}
   - component: {fileID: 1821451366}
   m_Layer: 0
   m_Name: Coins_Silver3
@@ -5276,7 +5210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 17
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1821451366
 MonoBehaviour:
@@ -5294,7 +5228,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1821451367}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -5305,18 +5239,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1821451367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821451364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1821451368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5443,7 +5365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1832374851
 PlatformEffector2D:
@@ -5958,7 +5880,6 @@ GameObject:
   - component: {fileID: 1859882360}
   - component: {fileID: 1859882359}
   - component: {fileID: 1859882358}
-  - component: {fileID: 1859882357}
   - component: {fileID: 1859882356}
   m_Layer: 0
   m_Name: Coins_Silver2
@@ -5979,7 +5900,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 16
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1859882356
 MonoBehaviour:
@@ -5997,7 +5918,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1859882357}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -6008,18 +5929,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1859882357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859882354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1859882358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6146,7 +6055,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1864170722
 MonoBehaviour:
@@ -6280,7 +6189,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1866586404
 Rigidbody2D:
@@ -6533,7 +6442,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274244336}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1963049891
 EdgeCollider2D:
@@ -6629,7 +6538,6 @@ GameObject:
   - component: {fileID: 2136044662}
   - component: {fileID: 2136044661}
   - component: {fileID: 2136044660}
-  - component: {fileID: 2136044659}
   - component: {fileID: 2136044658}
   m_Layer: 0
   m_Name: Coins_Gold2
@@ -6668,7 +6576,7 @@ MonoBehaviour:
   _destroyAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2136044659}
+      - m_Target: {fileID: 0}
         m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
@@ -6679,18 +6587,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2136044659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136044656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec9ab274b8d41e478484674a29af71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2136044660
 MonoBehaviour:
   m_ObjectHideFlags: 0

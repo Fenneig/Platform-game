@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 namespace PixelCrew.Components
 {
-    [RequireComponent(typeof(DestroyObjectComponent))]
     public class CollectObjectComponent : MonoBehaviour
     {
+        //Сбор объектов, в зависимости от добавления тэгов будет расширяться функционал скрипта
         [SerializeField] private Hero _hero; 
         [SerializeField] private UnityEvent _destroyAction;
         public void CollectObject() 
@@ -18,19 +18,19 @@ namespace PixelCrew.Components
                     {
                         _hero.CollectCoin(10);
                         _hero.SayCoins();
-                        _destroyAction.Invoke();
+                        Destroy(this.gameObject);
                         break;
                     }
                 case "Silver": 
                     {
                         _hero.CollectCoin(1);
                         _hero.SayCoins();
-                        _destroyAction.Invoke();
+                        Destroy(this.gameObject);
                         break;
                     }
-                default: 
+                default:
                     {
-                        _destroyAction.Invoke();
+                        Destroy(this.gameObject);
                         break;
                     }
             }

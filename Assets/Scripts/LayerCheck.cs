@@ -6,11 +6,12 @@ namespace PixelCrew
 {
     public class LayerCheck : MonoBehaviour
     {
+        // Скрипт проверяет касается ли получаемый с прикрепленного к скрипту объекта коллайдер с слоями считающимися за "землю"
         [SerializeField] private LayerMask _groundLayer;
         private Collider2D _collider;
-
         private bool _isTouchingLayer;
         public bool IsTouchingLayer() => _isTouchingLayer;
+
         private void Awake()
         {
             _collider = GetComponent<Collider2D>();

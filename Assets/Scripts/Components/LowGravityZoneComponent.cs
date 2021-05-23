@@ -6,8 +6,10 @@ namespace PixelCrew.Components
 {
     public class LowGravityZoneComponent : MonoBehaviour
     {
+        //при входе в зону увеличивает гравитацию работующую на персонажа, при выходе убирает её
+        //Если буду использовать больше 1 раза gravityScale модификатор нужно будет в SerializeField вынести
         [SerializeField] Hero _hero;
-
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag(_hero.tag))
