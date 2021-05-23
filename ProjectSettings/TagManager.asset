@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Gold
-  - Silver
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,10 +14,10 @@ TagManager:
   - 
   - 
   - Ground
-  - Barrel
   - Tree
+  - Barrel
   - Player
-  - Spikes
+  - 
   - 
   - 
   - 
@@ -40,18 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1204968267
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Enviroment
-    uniqueID: 943697553
-    locked: 0
-  - name: Player
-    uniqueID: 4081326515
-    locked: 0
-  - name: Level
-    uniqueID: 3303657707
     locked: 0
