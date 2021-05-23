@@ -14,12 +14,20 @@ namespace PixelCrew
         [SerializeField] private LayerCheck _groundCheck;
         //переменные получаемые из методов
         private Rigidbody2D _rigidbody;
+        private Animator _animator;
+        private SpriteRenderer _spriteRenderer;
         private Vector2 _direction;
         private int _coins;
+        private static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
+        private static readonly int IsRuningKey = Animator.StringToHash("is-running");
+        private static readonly int VerticaVelocityKey = Animator.StringToHash("vertical-velocity");
+
         //в начале жизненного цикла объекта получаем rigidBody привязанный к объекту для дальнейшего использования
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
         //метод используемый в InputReader для понимания в какую сторону должен идти пресонаж
         public void SetDirection(Vector2 direction) => _direction = direction;
@@ -36,6 +44,10 @@ namespace PixelCrew
             _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
 
             Jump();
+
+            AnimatorSettings();
+
+            UpdateSpriteRenderer();
         }
         //вынес реализацию прыжка в отдельный метод, если понадобиться изменять либо сам метод либо дополнять FixedUpdate
         private void Jump()
@@ -51,7 +63,24 @@ namespace PixelCrew
             {
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y / 2);
             }
+        }
+        private void AnimatorSettings() 
+        {
+            _animator.SetBool(IsRuningKey, _direction.x != 0);
+            _animator.SetFloat(VerticaVelocityKey, _rigidbody.velocity.y);
+            _animator.SetBool(IsGroundedKey, IsGrounded());
+        }
+        private void UpdateSpriteRenderer()
+        {
 
+            if (_direction.x < 0)
+            {
+                _spriteRenderer.flipX = true;
+            }
+            else if (_direction.x > 0)
+            {
+                _spriteRenderer.flipX = false;
+            }
         }
     }
 }

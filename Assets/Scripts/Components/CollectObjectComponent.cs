@@ -9,7 +9,7 @@ namespace PixelCrew.Components
     {
         //Сбор объектов, в зависимости от добавления тэгов будет расширяться функционал скрипта
         [SerializeField] private Hero _hero; 
-        [SerializeField] private UnityEvent _destroyAction;
+        //[SerializeField] private UnityEvent _destroyAction;
         public void CollectObject() 
         {
             switch (tag) 
