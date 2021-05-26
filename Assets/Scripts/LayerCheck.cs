@@ -10,7 +10,7 @@ namespace PixelCrew
         [SerializeField] private LayerMask _groundLayer;
         private Collider2D _collider;
         private bool _isTouchingLayer;
-        public bool IsTouchingLayer() => _isTouchingLayer;
+        public bool IsTouchingGround() => _isTouchingLayer;
 
         private void Awake()
         {
