@@ -11,15 +11,19 @@ namespace PixelCrew
         //переменные настраиваемые из Unity
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
+        [SerializeField] private float _dashSpeed;
+        [SerializeField] private float _dashDuratation;
         [SerializeField] private LayerCheck _groundCheck;
         //переменные получаемые из методов
         private Rigidbody2D _rigidbody;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
         private Vector2 _direction;
+        private float _dashDirection;
         private int _coins;
         private bool _allowDoubleJump;
         private bool _isGrounded;
+        private bool _isDashing;
 
 
         private static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
@@ -34,8 +38,11 @@ namespace PixelCrew
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        //метод используемый в InputReader для понимания в какую сторону должен идти пресонаж
+        //Установка вектора направления движения
         public void SetDirection(Vector2 direction) => _direction = direction;
+
+        //Установка вектора направления дэша  
+        public void SetDashDirection(float direction) => _dashDirection = direction;
 
         //метод передает направление движения героя в другие места при необходимости
         public Vector2 GetDirection() => _direction;
@@ -52,22 +59,32 @@ namespace PixelCrew
         private void Update()
         {
             _isGrounded = IsGrounded();
+
+            if (_dashDirection != 0)
+            {
+                StartCoroutine(Dash());
+                _dashDirection = 0f;
+            }
         }
 
         //В FixedUpdate обрабатывается движения персонажа, с использованием физики используется FixedUpdate метод.
         private void FixedUpdate()
         {
-            var xVelocity = _direction.x * _speed;
-            var yVelocity = CalculateYVelocity();
+            if (!_isDashing)
+            {
+                var xVelocity = _direction.x * _speed;
+                var yVelocity = CalculateYVelocity();
 
-            _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+                _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
+            }
             AnimatorSettings();
 
             UpdateSpriteRenderer();
+
         }
 
-        private float CalculateYVelocity() 
+        private float CalculateYVelocity()
         {
             var yVelocity = _rigidbody.velocity.y;
             var isJumpPressing = _direction.y > 0;
@@ -77,7 +94,7 @@ namespace PixelCrew
             {
                 yVelocity = CalculateJumpVelocity(yVelocity);
             }
-            else if (_rigidbody.velocity.y > 0) 
+            else if (_rigidbody.velocity.y > 0)
             {
                 yVelocity /= 2f;
             }
@@ -85,7 +102,7 @@ namespace PixelCrew
             return yVelocity;
         }
 
-        private float CalculateJumpVelocity(float yVelocity) 
+        private float CalculateJumpVelocity(float yVelocity)
         {
             var isFalling = _rigidbody.velocity.y <= 0.001f;
             if (!isFalling) return yVelocity;
@@ -94,12 +111,24 @@ namespace PixelCrew
             {
                 yVelocity += _jumpSpeed;
             }
-            else if (_allowDoubleJump) 
+            else if (_allowDoubleJump)
             {
                 yVelocity = _jumpSpeed;
                 _allowDoubleJump = false;
             }
             return yVelocity;
+        }
+        //
+        IEnumerator Dash()
+        {
+            _isDashing = true;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
+            _rigidbody.AddForce(new Vector2(_dashSpeed * _dashDirection, 0f), ForceMode2D.Impulse);
+            float gravity = _rigidbody.gravityScale;
+            _rigidbody.gravityScale = 0f;
+            yield return new WaitForSeconds(_dashDuratation);
+            _rigidbody.gravityScale = gravity;
+            _isDashing = false;
         }
 
         private void AnimatorSettings()
