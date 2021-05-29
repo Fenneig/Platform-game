@@ -16,3 +16,4 @@
 *.DotSettings.user
 /Assets/Plugins/Editor/JetBrains*
 *.7z
+.vsconfig
