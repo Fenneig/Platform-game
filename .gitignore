@@ -8,7 +8,7 @@
 /Assets/VSCode*
 /obj/
 /.vscode/
-*.sln	
+*.sln
 *.userprefs
 *.csproj
 /.idea
