@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelCrew.Components
 {
-    public class LowGravityZoneComponent : MonoBehaviour
+    public class HighGravityZoneComponent : MonoBehaviour
     {
         //при входе в зону увеличивает гравитацию работующую на персонажа, при выходе убирает её
         //Если буду использовать больше 1 раза gravityScale модификатор нужно будет в SerializeField вынести
