@@ -60,6 +60,8 @@ namespace PixelCrew
 
         public void SayCoins() => Debug.Log($"I have {_coins} coins!");
 
+        public void SayHp() => Debug.Log($"I have {GetComponent<HealthComponent>().GetHealth()} hp now!");
+
         //проверяем наличие земли под нагами героя. Реализация в классе LayerCheck
         private bool IsGrounded() => _groundCheck.IsTouchingGround();
 
@@ -177,6 +179,7 @@ namespace PixelCrew
               
         public void TakeDamage()
         {
+            SayHp();
             _animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
         }

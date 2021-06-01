@@ -18,19 +18,25 @@ namespace PixelCrew.Components
                     {
                         _hero.CollectCoin(10);
                         _hero.SayCoins();
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
                         break;
                     }
                 case "Silver": 
                     {
                         _hero.CollectCoin(1);
                         _hero.SayCoins();
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
+                        break;
+                    }
+                case "hp": 
+                    {
+                        _hero.SayHp();
+                        Destroy(gameObject);
                         break;
                     }
                 default:
                     {
-                        Destroy(this.gameObject);
+                        Destroy(gameObject);
                         break;
                     }
             }

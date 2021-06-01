@@ -7,7 +7,6 @@ namespace PixelCrew.Components
 {
     public class EnterTriggerComponent : MonoBehaviour
     {
-        //запускает встроенное событие при заходе в зону триггера объекта с встроенным тегом 
         [SerializeField] private string _tag;
         [SerializeField] private UnityEvent _action;
 
