@@ -17,7 +17,8 @@ namespace PixelCrew
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            _hero.Interact();
+            if (context.started)
+                _hero.Interact();
         }
     }
 }

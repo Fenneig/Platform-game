@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelCrew.Components
 {
@@ -19,7 +17,7 @@ namespace PixelCrew.Components
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.CompareTag(_hero.tag))
-                _hero.GetComponent<Rigidbody2D>().gravityScale /= 1.75f;
+                _hero.GetComponent<Rigidbody2D>().gravityScale = _hero.GetDefaultGravity();
         }
     }
 }

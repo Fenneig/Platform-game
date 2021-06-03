@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace PixelCrew.Components
@@ -8,37 +6,44 @@ namespace PixelCrew.Components
     public class CollectObjectComponent : MonoBehaviour
     {
         //Сбор объектов, в зависимости от добавления тэгов будет расширяться функционал скрипта
-        [SerializeField] private Hero _hero; 
+        [SerializeField] private Hero _hero;
+        //Заглушка, чтобы не собирать один предмет дважды пока идет анимация исчезновения.
+        private bool collected = false;
         //[SerializeField] private UnityEvent _destroyAction;
-        public void CollectObject() 
+        private void CollectObject() 
         {
-            switch (tag) 
+            if (!collected)
             {
-                case "Gold": 
-                    {
-                        _hero.CollectCoin(10);
-                        _hero.SayCoins();
-                        Destroy(gameObject);
-                        break;
-                    }
-                case "Silver": 
-                    {
-                        _hero.CollectCoin(1);
-                        _hero.SayCoins();
-                        Destroy(gameObject);
-                        break;
-                    }
-                case "hp": 
-                    {
-                        _hero.SayHp();
-                        Destroy(gameObject);
-                        break;
-                    }
-                default:
-                    {
-                        Destroy(gameObject);
-                        break;
-                    }
+                switch (tag)
+                {
+                    case "Gold":
+                        {
+                            _hero.CollectCoin(10);
+                            _hero.SayCoins();
+                            break;
+                        }
+                    case "Silver":
+                        {
+                            _hero.CollectCoin(1);
+                            _hero.SayCoins();
+                            break;
+                        }
+                    case "hp":
+                        {
+                            _hero.SayHp();
+                            break;
+                        }
+                    case "sp":
+                        {
+                            _hero.RecoverExtraMoves();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                collected = true;
             }
         }
 

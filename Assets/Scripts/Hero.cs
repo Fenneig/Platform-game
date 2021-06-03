@@ -27,23 +27,26 @@ namespace PixelCrew
         private bool _allowDoubleJump;
         private bool _isGrounded;
         private bool _isDashing;
-        private float _gravity;
+        private float _defaultGravity;
         private bool _allowDashInJump = true;
         private Collider2D[] _interactionResult = new Collider2D[1];
-
+        //переменные-ключи для аниматора
         private static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
         private static readonly int IsRuningKey = Animator.StringToHash("is-running");
         private static readonly int VerticaVelocityKey = Animator.StringToHash("vertical-velocity");
-        private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int HitKey = Animator.StringToHash("hit");
 
-        //в начале жизненного цикла объекта получаем rigidBody привязанный к объекту для дальнейшего использования
+        //при создании объекта получаем некоторые значения привязанные к объекту для дальнейшего использования
+        //Rigidbody, animator и SpriteRenderer берутся из компонент объекта, гравитация - обычное значение гравитации 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _gravity = _rigidbody.gravityScale;
+            _defaultGravity = _rigidbody.gravityScale;
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
+
+        public float GetDefaultGravity() => _defaultGravity;
 
         //Установка вектора направления движения
         public void SetDirection(Vector2 direction) => _direction = direction;
@@ -67,7 +70,7 @@ namespace PixelCrew
 
         private void Update()
         {
-            _isGrounded = IsGrounded(); 
+            _isGrounded = IsGrounded();
         }
 
         //В FixedUpdate обрабатывается движения персонажа, с использованием физики используется FixedUpdate метод.
@@ -106,7 +109,7 @@ namespace PixelCrew
         {
             var yVelocity = _rigidbody.velocity.y;
             var isJumpPressing = _direction.y > 0;
-           
+
             if (isJumpPressing)
             {
                 yVelocity = CalculateJumpVelocity(yVelocity);
@@ -139,13 +142,14 @@ namespace PixelCrew
         //жду время рывка и включаю гравитацию обратно, так же во время рывка отключаю возможность двигаться (условие в FixedUpdate)
         IEnumerator Dash()
         {
+            var currentGravity = _rigidbody.gravityScale;
             UpdateSpriteRenderer();
             _isDashing = true;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(new Vector2(_dashSpeed * _dashDirection, 0f), ForceMode2D.Impulse);
             _rigidbody.gravityScale = 0f;
             yield return new WaitForSeconds(_dashDuratation);
-            _rigidbody.gravityScale = _gravity;
+            _rigidbody.gravityScale = currentGravity;
             _isDashing = false;
         }
         private bool AllowDash()
@@ -156,6 +160,12 @@ namespace PixelCrew
                 return true;
             }
             return _allowDashInJump;
+        }
+
+        public void RecoverExtraMoves() 
+        {
+            _allowDashInJump = true;
+            _allowDoubleJump = true;
         }
 
         private void AnimatorSettings()
@@ -176,26 +186,26 @@ namespace PixelCrew
                 _spriteRenderer.flipX = false;
             }
         }
-              
+
         public void TakeDamage()
         {
             SayHp();
-            _animator.SetTrigger(Hit);
+            _animator.SetTrigger(HitKey);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
         }
 
-        public void Interact() 
+        public void Interact()
         {
             var size = Physics2D.OverlapCircleNonAlloc(
-                transform.position, 
-                _interactionRadius, 
-                _interactionResult, 
+                transform.position,
+                _interactionRadius,
+                _interactionResult,
                 _interactionLayer);
 
             for (int i = 0; i < size; i++)
             {
                 var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
-                if (interactable != null) 
+                if (interactable != null)
                 {
                     interactable.Interact();
                 }
