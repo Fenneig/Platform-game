@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace PixelCrew
@@ -6,15 +7,27 @@ namespace PixelCrew
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimation : MonoBehaviour
     {
+        [Serializable]
+        public struct State
+        {
+            public string _name;
+            public bool _loop;
+            public bool _allowNext;
+            public Sprite[] _sprites;
+            public UnityEvent _onComplete;
+            public bool IsEqualName(string name) => _name == name;
+        }
+
         [SerializeField] private int _frameRate;
-        [SerializeField] bool _loop;
-        [SerializeField] private Sprite[] _sprites;
-        [SerializeField] private UnityEvent _onComplete;
+        [SerializeField] private State[] _states;
+
+        private float _secondsPerFrame;
+        private float _nextFrameTime;
 
         private SpriteRenderer _renderer;
-        private float _secondsPerFrame;
         private int _currentSpriteIndex;
-        private float _nextFrameTime;
+        private State _currentState;
+        private int _currentStateIndex;
 
         private void Start()
         {
@@ -26,28 +39,49 @@ namespace PixelCrew
             _secondsPerFrame = 1f / _frameRate;
             _nextFrameTime = Time.time + _secondsPerFrame;
             _currentSpriteIndex = 0;
+            _currentStateIndex = 0;
+            _currentState = _states[_currentStateIndex];
         }
-
         private void Update()
         {
             if (_nextFrameTime > Time.time) return;
 
-            if (_currentSpriteIndex >= _sprites.Length)
+            if (_currentSpriteIndex >= _currentState._sprites.Length)
             {
-                if (_loop)
+                if (_currentState._loop)
                 {
                     _currentSpriteIndex = 0;
                 }
-                else
+                else if (_currentState._allowNext && !_currentState._loop)
+                {
+                    SetClip(_states[++_currentStateIndex]._name);
+                }
+                else if (!_currentState._allowNext && !_currentState._loop)
                 {
                     enabled = false;
-                    _onComplete?.Invoke();
+                    _states[_currentStateIndex]._onComplete?.Invoke();
                     return;
                 }
             }
-            _renderer.sprite = _sprites[_currentSpriteIndex];
+
+            _renderer.sprite = _currentState._sprites[_currentSpriteIndex];
             _nextFrameTime += _secondsPerFrame;
             _currentSpriteIndex++;
+        }
+
+        public void SetClip(string name)
+        {
+            for (int i = 0; i < _states.Length; i++)
+            {
+                if (_states[i].IsEqualName(name))
+                {
+                    _nextFrameTime = Time.time + _secondsPerFrame;
+                    _currentSpriteIndex = 0;
+                    _currentState = _states[i];
+                    _currentStateIndex = i;
+
+                }
+            }
         }
     }
 }

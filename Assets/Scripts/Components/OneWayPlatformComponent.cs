@@ -2,7 +2,7 @@
 
 namespace PixelCrew.Components
 {
-    public class PalmCrownComponent : MonoBehaviour
+    public class OneWayPlatformComponent : MonoBehaviour
     {
         //метод проверяющий хочет ли игрок упасть с односторонних платформ. При дабавление новых нужно будет переименновать метод (One Way collision platforms)
         [SerializeField] private Hero _hero;

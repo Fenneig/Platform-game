@@ -10,7 +10,7 @@ namespace PixelCrew.Components
         //Заглушка, чтобы не собирать один предмет дважды пока идет анимация исчезновения.
         private bool collected = false;
         //[SerializeField] private UnityEvent _destroyAction;
-        private void CollectObject() 
+        public void CollectObject() 
         {
             if (!collected)
             {

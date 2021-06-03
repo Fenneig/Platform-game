@@ -4,40 +4,40 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 8683632313750085214
-    second: PalmTreeBackgroundSheet_0
+    second: PalmTreeBackgroundStraigt_0
   - first:
       213: 262518517033693272
-    second: PalmTreeBackgroundSheet_1
+    second: PalmTreeBackgroundStraigt_1
   - first:
       213: 762285979657935423
-    second: PalmTreeBackgroundSheet_2
+    second: PalmTreeBackgroundStraigt_2
   - first:
       213: 1400697303485121525
-    second: PalmTreeBackgroundSheet_3
+    second: PalmTreeBackgroundStraigt_3
   - first:
       213: -2645899244835350471
-    second: PalmTreeBackgroundSheet_4
+    second: PalmTreeBackgroundLeft_0
   - first:
       213: -6487789065682943626
-    second: PalmTreeBackgroundSheet_5
+    second: PalmTreeBackgroundLeft_1
   - first:
       213: 1981876992937066421
-    second: PalmTreeBackgroundSheet_6
+    second: PalmTreeBackgroundLeft_2
   - first:
       213: 7744047822205964645
-    second: PalmTreeBackgroundSheet_7
+    second: PalmTreeBackgroundLeft_3
   - first:
       213: -6024505487453159095
-    second: PalmTreeBackgroundSheet_8
+    second: PalmTreeBackgroundRight_0
   - first:
       213: 3531074664856275464
-    second: PalmTreeBackgroundSheet_9
+    second: PalmTreeBackgroundRight_1
   - first:
       213: 802857254159732353
-    second: PalmTreeBackgroundSheet_10
+    second: PalmTreeBackgroundRight_2
   - first:
       213: 1278475588773109743
-    second: PalmTreeBackgroundSheet_11
+    second: PalmTreeBackgroundRight_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_0
+      name: PalmTreeBackgroundStraigt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +131,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_1
+      name: PalmTreeBackgroundStraigt_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,7 +152,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_2
+      name: PalmTreeBackgroundStraigt_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,7 +173,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_3
+      name: PalmTreeBackgroundStraigt_3
       rect:
         serializedVersion: 2
         x: 192
@@ -194,7 +194,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_4
+      name: PalmTreeBackgroundLeft_0
       rect:
         serializedVersion: 2
         x: 256
@@ -215,7 +215,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_5
+      name: PalmTreeBackgroundLeft_1
       rect:
         serializedVersion: 2
         x: 320
@@ -236,7 +236,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_6
+      name: PalmTreeBackgroundLeft_2
       rect:
         serializedVersion: 2
         x: 384
@@ -257,7 +257,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_7
+      name: PalmTreeBackgroundLeft_3
       rect:
         serializedVersion: 2
         x: 448
@@ -278,7 +278,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_8
+      name: PalmTreeBackgroundRight_0
       rect:
         serializedVersion: 2
         x: 512
@@ -299,7 +299,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_9
+      name: PalmTreeBackgroundRight_1
       rect:
         serializedVersion: 2
         x: 576
@@ -320,7 +320,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_10
+      name: PalmTreeBackgroundRight_2
       rect:
         serializedVersion: 2
         x: 640
@@ -341,7 +341,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PalmTreeBackgroundSheet_11
+      name: PalmTreeBackgroundRight_3
       rect:
         serializedVersion: 2
         x: 704
@@ -362,7 +362,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
