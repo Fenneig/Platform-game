@@ -13,5 +13,12 @@ namespace PixelCrew
         {
             if (context.started) _hero.SaySomething();
         }
+        public void OnDash(InputAction.CallbackContext contex) => _hero.SetDashDirection(contex.ReadValue<float>());
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.started)
+                _hero.Interact();
+        }
     }
 }

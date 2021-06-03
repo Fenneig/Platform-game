@@ -8,7 +8,7 @@
 /Assets/VSCode*
 /obj/
 /.vscode/
-*.sln	
+*.sln
 *.userprefs
 *.csproj
 /.idea
@@ -16,3 +16,4 @@
 *.DotSettings.user
 /Assets/Plugins/Editor/JetBrains*
 *.7z
+.vsconfig

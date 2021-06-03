@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Gold
   - Silver
+  - hp
+  - sp
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Tree
   - Player
   - Spikes
-  - 
+  - Iteractables
   - 
   - 
   - 
