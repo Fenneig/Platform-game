@@ -8,6 +8,10 @@ TagManager:
   - Silver
   - hp
   - sp
+  - FootSteps
+  - JumpDust
+  - LandingDust
+  - DashDust
   layers:
   - Default
   - TransparentFX

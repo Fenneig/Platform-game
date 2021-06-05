@@ -12,7 +12,7 @@ namespace PixelCrew.Components
         //Нужно прочитать документацию и узнать можно ли сделать иную привязку
         private void Update()
         {
-            if (_hero.GetDirection().y < 0)
+            if (_hero.Direction.y < 0)
             {
                 Physics2D.IgnoreLayerCollision(10, 11, true);
                 Invoke("IgnoreOff", 0.2f);
