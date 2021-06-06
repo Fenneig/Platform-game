@@ -15,11 +15,11 @@ namespace PixelCrew.Components
             _health += value;
             if (_health <= 0)
             {
-                _onDie.Invoke();
+                _onDie?.Invoke();
             }
-            else 
+            else if (value < 0)
             {
-                if (value < 0) _onDamage.Invoke();
+                 _onDamage?.Invoke();
             }
 
         }

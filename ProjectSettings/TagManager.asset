@@ -12,6 +12,8 @@ TagManager:
   - JumpDust
   - LandingDust
   - DashDust
+  - Door
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -23,7 +25,7 @@ TagManager:
   - 
   - Ground
   - Barrel
-  - Tree
+  - Platform
   - Player
   - Spikes
   - Iteractables

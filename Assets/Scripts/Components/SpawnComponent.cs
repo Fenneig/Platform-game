@@ -15,7 +15,7 @@ namespace PixelCrew.Components
                 {
                     var prefabPosition = _target.position + _prefab[i].transform.position;
                     var prefabRotation = _prefab[i].transform.rotation;
-                    
+
                     if (_target.lossyScale.x < 0)
                     {
                         prefabPosition = new Vector3(prefabPosition.x - 2 * _prefab[i].transform.position.x, prefabPosition.y, prefabPosition.z);
@@ -23,7 +23,7 @@ namespace PixelCrew.Components
                             _prefab[i].transform.rotation.y,
                             _prefab[i].transform.rotation.z * -1,
                             _prefab[i].transform.rotation.w);
-                      
+
                     }
 
                     var instance = Instantiate(_prefab[i], prefabPosition, prefabRotation);

@@ -105,8 +105,18 @@ namespace PixelCrew
 
             if (!_isDashing)
             {
-                var xVelocity = _direction.x * _speed;
+                //при движении наискосок с зажатым прыжком персонаж двигается по гипотенузе прямоугольно треугольника тем самым замедляясь
+                //т.к. направления могут быть либо 0 либо 1 то при движении по гипотенузе скорость становиться на √2 меньше( с = √x*x+y*y, где x=y=1)
+                //    /|
+                // с / |
+                //  /  |  y
+                // /   |
+                ///____|
+                //   x
+                //
+                var xVelocity = _direction.y > 0 ? _direction.x * _speed * Mathf.Sqrt(2) : _direction.x * _speed;
                 var yVelocity = CalculateYVelocity();
+
                 _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
             }
 
@@ -145,9 +155,10 @@ namespace PixelCrew
         private float CalculateJumpVelocity(float yVelocity)
         {
             var isFalling = _rigidbody.velocity.y <= 0.001f;
+            
             if (!isFalling) return yVelocity;
             _animator.SetTrigger(JumpKey);
-            if (_isGrounded)
+            if (_isGrounded && !IsJumpButtonPressed)
             {
                 yVelocity = _jumpSpeed;
                 IsJumpButtonPressed = true;
@@ -156,12 +167,13 @@ namespace PixelCrew
             {
                 yVelocity = _jumpSpeed;
                 _allowDoubleJump = false;
+                IsJumpButtonPressed = true;
             }
             return yVelocity;
         }
         private void CalculateHeavyLanding(float yVelocity)
         {
-            if (yVelocity < -10) _isHeavyLanding = true;
+            if (yVelocity < -12) _isHeavyLanding = true;
             if (_isHeavyLanding && yVelocity == 0)
             {
                 CreateDust("LandingDust");
