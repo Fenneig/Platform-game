@@ -6,14 +6,14 @@ namespace PixelCrew.Components
 
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] private int _health;
+        [SerializeField] private int _value;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onDie;
 
         public void ChangeHealth(int value)
         {
-            _health += value;
-            if (_health <= 0)
+            _value += value;
+            if (_value <= 0)
             {
                 _onDie?.Invoke();
             }
@@ -24,6 +24,6 @@ namespace PixelCrew.Components
 
         }
 
-        public int GetHealth() => _health; 
+        public int GetHealth() => _value; 
     }
 }

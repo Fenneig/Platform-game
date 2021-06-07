@@ -4829,6 +4829,7 @@ GameObject:
   - component: {fileID: 236387369531184229}
   - component: {fileID: 236387369531184232}
   - component: {fileID: 236387369531184233}
+  - component: {fileID: 7261802762216220684}
   m_Layer: 11
   m_Name: Hero
   m_TagString: Player
@@ -4939,7 +4940,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   _footParticles: {fileID: 236387369689283897}
-  _hitParticle: {fileID: 236387368384244206}
+  _dropCoinsOnHitParticle: {fileID: 236387368384244206}
 --- !u!50 &236387369531184235
 Rigidbody2D:
   serializedVersion: 4
@@ -5114,7 +5115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc54874be79e0624b9a54736e04835bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _value: 5
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -5143,6 +5144,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7261802762216220684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236387369531184224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670f4c053a74e8346ab5332f9c54eacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0

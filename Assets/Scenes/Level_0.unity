@@ -6291,7 +6291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f6e848c4d0c9f4495b09df7d5d3f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hero: {fileID: 892265798}
+  _tags:
+  - Player
+  - Barrel
   _gravityScale: 1.75
 --- !u!1 &2004753535
 GameObject:
@@ -6459,11 +6461,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 236387369531184233, guid: 1dafd801a0dcbd64787ecd9203153a0f,
-        type: 3}
-      propertyPath: _onDie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 678840489}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dafd801a0dcbd64787ecd9203153a0f, type: 3}
 --- !u!1001 &1387597618626593083

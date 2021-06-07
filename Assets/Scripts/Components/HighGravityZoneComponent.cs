@@ -6,22 +6,23 @@ namespace PixelCrew.Components
     {
         //при входе в зону увеличивает гравитацию работующую на персонажа, при выходе убирает её
         //Если буду использовать больше 1 раза gravityScale модификатор нужно будет в SerializeField вынести
-        [SerializeField] private Hero _hero;
+        [SerializeField] private string[] _tags;
         [SerializeField] private float _gravityScale;
-        
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag(_hero.tag))
+            foreach (string tag in _tags)
             {
-                _hero.CurrentGravity = _hero.CurrentGravity * _gravityScale;
+                if (collision.CompareTag(tag))
+                    collision.GetComponent<ChangeGravityScaleComponent>().MultiplyGravityByValue(_gravityScale);
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag(_hero.tag))
+            foreach (string tag in _tags)
             {
-                _hero.CurrentGravity = _hero.CurrentGravity / _gravityScale;
+                if (collision.CompareTag(tag))
+                    collision.GetComponent<ChangeGravityScaleComponent>().DivideGravityByValue(_gravityScale);
             }
         }
     }

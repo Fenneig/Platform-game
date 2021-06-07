@@ -6,12 +6,12 @@ namespace PixelCrew.Components
     public class CollectObjectComponent : MonoBehaviour
     {
         //Заглушка, чтобы не собирать один предмет дважды пока идет анимация исчезновения.
-        private bool collected = false;
+        private bool _collected = false;
 
         public void CollectObject()
         {
             Hero hero = GameObject.Find("Hero").GetComponent<Hero>();
-            if (!collected)
+            if (!_collected)
             {
                 switch (tag)
                 {
@@ -42,7 +42,7 @@ namespace PixelCrew.Components
                             break;
                         }
                 }
-                collected = true;
+                _collected = true;
             }
         }
 

@@ -18,11 +18,11 @@ namespace PixelCrew
         [SerializeField] private float _interactionRadius;
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private SpawnComponent _footParticles;
-        [SerializeField] private ParticleSystem _hitParticle;
+        [SerializeField] private ParticleSystem _dropCoinsOnHitParticle;
         //переменные получаемые из методов
         private Rigidbody2D _rigidbody;
         private Animator _animator;
-        private Vector2 _direction;
+        private Vector2 _movementDirection;
         private float _dashDirection;
         private int _coins;
         private bool _allowDoubleJump;
@@ -31,7 +31,6 @@ namespace PixelCrew
         private bool _isJumping;
         private bool _isJumpButtonPressed;
         private bool _isHeavyLanding;
-        private float _currentGravity;
         private bool _allowDashInJump;
         private Collider2D[] _interactionResult = new Collider2D[1];
         //переменные-ключи для аниматора
@@ -46,39 +45,29 @@ namespace PixelCrew
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _currentGravity = _rigidbody.gravityScale;
             _animator = GetComponent<Animator>();
             _isHeavyLanding = false;
             _allowDashInJump = true;
         }
-
-        public float CurrentGravity 
-        {
-            get { return _currentGravity; }
-            set 
-            {
-                _currentGravity = value;
-                _rigidbody.gravityScale = value;
-            }
-        }
         public bool IsJumpButtonPressed 
         {
-            get { return _isJumpButtonPressed; }
-            set { _isJumpButtonPressed = value; }
+            get => _isJumpButtonPressed;
+            set => _isJumpButtonPressed = value;
         }
+
         //Свойство направления 
         public Vector2 Direction 
         {
-            get { return _direction; }
-            set { _direction = value; }
+            get => _movementDirection;
+            set => _movementDirection = value; 
         }
 
         public float DashDirection 
         {
-            set { _dashDirection = value; }
+            set => _dashDirection = value;         
         }
-        public void SaySomething() => Debug.Log("Something");
 
+        public void SaySomething() => Debug.Log("Something");
         public void CollectCoin(int value) => _coins += value;
 
         public void SayCoins() => Debug.Log($"I have {_coins} coins!");
@@ -114,7 +103,7 @@ namespace PixelCrew
                 ///____|
                 //   x
                 //
-                var xVelocity = _direction.y > 0 ? _direction.x * _speed * Mathf.Sqrt(2) : _direction.x * _speed;
+                var xVelocity = Mathf.Abs(_movementDirection.y) > 0 ? _movementDirection.x * _speed * Mathf.Sqrt(2) : _movementDirection.x * _speed;
                 var yVelocity = CalculateYVelocity();
 
                 _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
@@ -138,7 +127,7 @@ namespace PixelCrew
         private float CalculateYVelocity()
         {
             var yVelocity = _rigidbody.velocity.y;
-            var isJumpPressing = _direction.y > 0;
+            var isJumpPressing = _movementDirection.y > 0;
 
             if (isJumpPressing)
             {
@@ -152,6 +141,7 @@ namespace PixelCrew
             CalculateHeavyLanding(yVelocity);
             return yVelocity;
         }
+
         private float CalculateJumpVelocity(float yVelocity)
         {
             var isFalling = _rigidbody.velocity.y <= 0.001f;
@@ -171,6 +161,7 @@ namespace PixelCrew
             }
             return yVelocity;
         }
+
         private void CalculateHeavyLanding(float yVelocity)
         {
             if (yVelocity < -12) _isHeavyLanding = true;
@@ -181,21 +172,22 @@ namespace PixelCrew
             }
         }
 
-
         //Механика рывка: при нажатии рывка отключаю гравитацию действующую на героя, добавляю импульс в направлении рывка
         //жду время рывка и включаю гравитацию обратно, так же во время рывка отключаю возможность двигаться (условие в FixedUpdate)
         IEnumerator Dash()
         {
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
+            _rigidbody.freezeRotation = true;
             UpdateSpriteRenderer();
             CreateDust("DashDust");
             _isDashing = true;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(new Vector2(_dashSpeed * _dashDirection, 0f), ForceMode2D.Impulse);
-            _rigidbody.gravityScale = 0f;
             yield return new WaitForSeconds(_dashDuratation);
             _isDashing = false;
-            _rigidbody.gravityScale = CurrentGravity;
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+
         private bool AllowDash()
         {
             if (_allowDashInJump)
@@ -215,17 +207,17 @@ namespace PixelCrew
         private void AnimatorSettings()
         {
             _animator.SetBool(IsGroundedKey, _isGrounded);
-            _animator.SetBool(IsRuningKey, _direction.x != 0);
+            _animator.SetBool(IsRuningKey, _movementDirection.x != 0);
             _animator.SetFloat(VerticaVelocityKey, _rigidbody.velocity.y);
         }
 
         private void UpdateSpriteRenderer()
         {
-            if (_direction.x < 0 || _dashDirection < 0)
+            if (_movementDirection.x < 0 || _dashDirection < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            else if (_direction.x > 0 || _dashDirection > 0)
+            else if (_movementDirection.x > 0 || _dashDirection > 0)
             {
                 transform.localScale = Vector3.one;
             }
@@ -246,12 +238,12 @@ namespace PixelCrew
             var coinsToSpawn = Mathf.Min(_coins, 5);
             _coins -= coinsToSpawn;
 
-            var burst = _hitParticle.emission.GetBurst(0);
+            var burst = _dropCoinsOnHitParticle.emission.GetBurst(0);
             burst.count = coinsToSpawn;
-            _hitParticle.emission.SetBurst(0, burst);
+            _dropCoinsOnHitParticle.emission.SetBurst(0, burst);
 
-            _hitParticle.gameObject.SetActive(true);
-            _hitParticle.Play();
+            _dropCoinsOnHitParticle.gameObject.SetActive(true);
+            _dropCoinsOnHitParticle.Play();
         }
 
         public void Interact()
