@@ -35,7 +35,9 @@ namespace PixelCrew.Components
                     if (chance <= component.ChanceToSpawn)
                     {
                         Vector3 newPosition = component.Target.position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value / 2, 0);
-                        Instantiate(component.Prefab, newPosition, Quaternion.identity);
+                        var instance = Instantiate(component.Prefab, gameObject.transform.position, Quaternion.identity);
+
+                        instance?.GetComponent<MoveObjectComponent>().MoveToObject(instance, newPosition, _moveTime);
                     }
                 }
             }

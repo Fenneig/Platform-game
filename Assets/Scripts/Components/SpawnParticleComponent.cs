@@ -20,7 +20,7 @@ namespace PixelCrew.Components
                 if (tag == "Attack")
                 {
                     Debug.Log("attack");
-                    instance = Instantiate(_prefab[i], _target.position, Quaternion.identity, gameObject.transform);
+                    Instantiate(_prefab[i], _target.position, Quaternion.identity, gameObject.transform);
                 }
                 else
                 {

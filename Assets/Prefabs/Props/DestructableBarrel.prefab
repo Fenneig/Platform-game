@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc54874be79e0624b9a54736e04835bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 1
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -299,11 +299,6 @@ MonoBehaviour:
       type: 3}
     _chanceToSpawn: 10
     _amout: 1
-  - _target: {fileID: 8479744276753521052}
-    _prefab: {fileID: 3818791825912671548, guid: 02c85a59fe17a4d46bef870838271289,
-      type: 3}
-    _chanceToSpawn: 100
-    _amout: 0
   _moveTime: 1
 --- !u!114 &7464906581698858363
 MonoBehaviour:
