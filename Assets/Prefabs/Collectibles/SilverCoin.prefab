@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1560021889657912517}
   - component: {fileID: 1560021889657912519}
   - component: {fileID: 1560021889657912513}
-  - component: {fileID: 1560021889657912512}
   - component: {fileID: 1560021889657912518}
   - component: {fileID: 4838443937186774038}
+  - component: {fileID: 8946049322302095542}
   m_Layer: 0
   m_Name: SilverCoin
   m_TagString: Silver
@@ -115,12 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444361fe56be12848b4707ff2f21ef75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _tags:
+  - Player
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1560021889657912512}
-        m_MethodName: CollectObject
+      - m_Target: {fileID: 8946049322302095542}
+        m_MethodName: Collect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -141,19 +142,17 @@ MonoBehaviour:
           m_StringArgument: Destroy
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1560021889657912512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560021889657912522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd85a8d0ec3d1e9478ffff71997f36a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hero: {fileID: 0}
+      - m_Target: {fileID: 1560021889657912519}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1560021889657912518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _states:
+  _clips:
   - _name: idle
     _loop: 1
     _allowNext: 1
@@ -213,3 +212,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8946049322302095542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560021889657912522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a750b1cfd4df34ab196b23989da605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 1

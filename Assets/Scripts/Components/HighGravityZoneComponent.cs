@@ -13,7 +13,7 @@ namespace PixelCrew.Components
             foreach (string tag in _tags)
             {
                 if (collision.CompareTag(tag))
-                    collision.GetComponent<ChangeGravityScaleComponent>().MultiplyGravityByValue(_gravityScale);
+                    collision.GetComponent<ModifyGravityScaleComponent>().MultiplyGravityByValue(_gravityScale);
             }
         }
 
@@ -22,7 +22,7 @@ namespace PixelCrew.Components
             foreach (string tag in _tags)
             {
                 if (collision.CompareTag(tag))
-                    collision.GetComponent<ChangeGravityScaleComponent>().DivideGravityByValue(_gravityScale);
+                    collision.GetComponent<ModifyGravityScaleComponent>().DivideGravityByValue(_gravityScale);
             }
         }
     }

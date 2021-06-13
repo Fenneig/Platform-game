@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3936188007558836679}
   - component: {fileID: 3936188007558836673}
   - component: {fileID: 3936188007558836674}
-  - component: {fileID: 7394004566140704947}
+  - component: {fileID: 4402858254500043016}
   m_Layer: 9
   m_Name: Barrel
   m_TagString: Barrel
@@ -73,8 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 943697553
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1380203805528671675, guid: 1ea028ed6ef3a054fb609f15f699d477,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53a9336e0c9b15b4885df4d58089c47b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 0.78125}
+    oldSize: {x: 0.8125, y: 0.9375}
     newSize: {x: 0.71875, y: 0.78125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -132,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7394004566140704947
+--- !u!114 &4402858254500043016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +140,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3936188007558836678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 670f4c053a74e8346ab5332f9c54eacd, type: 3}
+  m_Script: {fileID: 11500000, guid: f4f51fbc264c4e844b2c836bf2d89326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

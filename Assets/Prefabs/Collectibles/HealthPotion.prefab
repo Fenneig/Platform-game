@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9030858524774609608}
   - component: {fileID: 9030858524774609615}
   - component: {fileID: 8838227412410834154}
-  - component: {fileID: 9030858524774609614}
   - component: {fileID: 9030858524774609611}
   - component: {fileID: 9030858524774609204}
   - component: {fileID: 5585711271194214337}
+  - component: {fileID: 4139739658814609571}
   m_Layer: 0
   m_Name: HealthPotion
   m_TagString: hp
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -991309589
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3714227102187029162, guid: 983ec11098d16d94cbe3064a215b128d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,12 +116,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444361fe56be12848b4707ff2f21ef75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _tags:
+  - Player
   _action:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9030858524774609204}
-        m_MethodName: ApplyChanges
+        m_MethodName: Apply
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -131,8 +132,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 9030858524774609614}
-        m_MethodName: CollectObject
+      - m_Target: {fileID: 4139739658814609571}
+        m_MethodName: Collect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -153,18 +154,17 @@ MonoBehaviour:
           m_StringArgument: Destroy
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9030858524774609614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030858524774609613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd85a8d0ec3d1e9478ffff71997f36a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      - m_Target: {fileID: 9030858524774609615}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9030858524774609611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _states:
+  _clips:
   - _name: idle
     _loop: 1
     _allowNext: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292855c474c1e35438160b357358c53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 5
+  _delta: 5
 --- !u!114 &5585711271194214337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,5 +238,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4139739658814609571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9030858524774609613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae99fe8d116c4794d8d8a53628dee895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

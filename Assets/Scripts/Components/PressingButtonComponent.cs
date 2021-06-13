@@ -11,33 +11,42 @@ namespace PixelCrew
         [SerializeField] private UnityEvent _unpressedEvent;
 
         private Animator _animator;
+        private string _tagOnButton = null;
 
         private void Awake()
         {
             _animator = _button.GetComponent<Animator>();
         }
-        private void OnCollisionEnter2D(Collision2D collision)
+
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            foreach (string tag in _tags)
+            if (_tagOnButton == null)
             {
-                if (collision.gameObject.CompareTag(tag))
+                foreach (string tag in _tags)
                 {
-                    _animator.SetBool("is-pressing", true);
-                    _pressedEvent.Invoke();
+                    if (collision.CompareTag(tag))
+                    {
+                        _tagOnButton = tag;
+                        _animator.SetBool("is-pressing", true);
+                        _pressedEvent.Invoke();
+                        break;
+                    }
+
                 }
             }
         }
-        private void OnCollisionExit2D(Collision2D collision)
+
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            foreach (string tag in _tags)
+            if (_tagOnButton != null)
             {
-                if (collision.gameObject.CompareTag(tag))
+                if (collision.CompareTag(_tagOnButton))
                 {
+                    _tagOnButton = null;
                     _animator.SetBool("is-pressing", false);
                     _unpressedEvent.Invoke();
                 }
             }
         }
-
     }
 }

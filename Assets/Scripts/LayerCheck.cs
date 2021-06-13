@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Utils;
+using UnityEditor;
+using UnityEngine;
 
 namespace PixelCrew
 {
@@ -22,5 +24,15 @@ namespace PixelCrew
         {
             _isTouchingLayer = _collider.IsTouchingLayers(_groundLayer);
         }
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (IsTouchingGround()) Handles.color = HandlesUtils.TransparentGreen;
+            else Handles.color = HandlesUtils.TransparentRed;
+            var offset = GetComponent<CircleCollider2D>().offset;
+            var position = transform.position + new Vector3(offset.x, offset.y, 0);
+            Handles.DrawSolidDisc(position, Vector3.forward, GetComponent<CircleCollider2D>().radius);
+        }
+#endif
     }
 }

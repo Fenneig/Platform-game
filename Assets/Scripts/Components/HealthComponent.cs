@@ -3,27 +3,30 @@ using UnityEngine.Events;
 
 namespace PixelCrew.Components
 {
-
     public class HealthComponent : MonoBehaviour
     {
-        [SerializeField] private int _value;
+        [SerializeField] private int _health;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onDie;
+        [SerializeField] private UnityEvent _onHeal;
 
-        public void ChangeHealth(int value)
+        public void ModifyHealthByDelta(int delta)
         {
-            _value += value;
-            if (_value <= 0)
+            _health += delta;
+            if (delta < 0)
+            {
+                _onDamage?.Invoke();
+            }
+            else if (delta > 0) 
+            {
+                _onHeal?.Invoke();
+            }
+            if (_health <= 0)
             {
                 _onDie?.Invoke();
             }
-            else if (value < 0)
-            {
-                 _onDamage?.Invoke();
-            }
-
         }
 
-        public int GetHealth() => _value; 
+        public int GetHealth() => _health; 
     }
 }

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _states:
+  _clips:
   - _name: idle
     _loop: 1
     _allowNext: 0

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using PixelCrew.Components;
+using PixelCrew.Utils;
+using UnityEditor.Animations;
 
 namespace PixelCrew
 {
@@ -9,15 +11,28 @@ namespace PixelCrew
     {
         //Скрипт персонажа, содержащий основные механики взаимодействия с персонажем
         //переменные настраиваемые из Unity
+        [Header("Hero Stats")]
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuratation;
+        [SerializeField] private float _heavyLandingVelocity;
+        [SerializeField] private int _damage;
+        [SerializeField] private CheckCircleOverlap _attackRange;
+        [Space]
+        [Header("Animations")]
+        [SerializeField] private AnimatorController _armed;
+        [SerializeField] private AnimatorController _unarmed;
+        [Space]
+        [Header("Layers")]
         [SerializeField] private LayerCheck _groundCheck;
-        [SerializeField] private float _interactionRadius;
+        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private LayerMask _interactionLayer;
-        [SerializeField] private SpawnComponent _footParticles;
+        [SerializeField] private float _interactionRadius;
+        [Space]
+        [Header("Particles")]
+        [SerializeField] private SpawnParticleComponent[] _particalPosition;
         [SerializeField] private ParticleSystem _dropCoinsOnHitParticle;
         //переменные получаемые из методов
         private Rigidbody2D _rigidbody;
@@ -30,15 +45,18 @@ namespace PixelCrew
         private bool _isDashing;
         private bool _isJumping;
         private bool _isJumpButtonPressed;
-        private bool _isHeavyLanding;
         private bool _allowDashInJump;
+        private bool _isArmed;
         private Collider2D[] _interactionResult = new Collider2D[1];
+
+
         //переменные-ключи для аниматора
         private static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
         private static readonly int IsRuningKey = Animator.StringToHash("is-running");
         private static readonly int VerticaVelocityKey = Animator.StringToHash("vertical-velocity");
         private static readonly int HitKey = Animator.StringToHash("hit");
         private static readonly int JumpKey = Animator.StringToHash("jump");
+        private static readonly int AttackKey = Animator.StringToHash("attack");
 
         //при создании объекта получаем некоторые значения привязанные к объекту для дальнейшего использования
         //Rigidbody, animator и SpriteRenderer берутся из компонент объекта, гравитация - обычное значение гравитации 
@@ -46,29 +64,31 @@ namespace PixelCrew
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-            _isHeavyLanding = false;
             _allowDashInJump = true;
         }
-        public bool IsJumpButtonPressed 
+        public bool IsJumpButtonPressed
         {
             get => _isJumpButtonPressed;
             set => _isJumpButtonPressed = value;
         }
 
         //Свойство направления 
-        public Vector2 Direction 
+        public Vector2 Direction
         {
             get => _movementDirection;
-            set => _movementDirection = value; 
+            set => _movementDirection = value;
         }
 
-        public float DashDirection 
+        public float DashDirection
         {
-            set => _dashDirection = value;         
+            set => _dashDirection = value;
         }
 
-        public void SaySomething() => Debug.Log("Something");
-        public void CollectCoin(int value) => _coins += value;
+        public void CollectCoin(int value)
+        {
+            _coins += value;
+            SayCoins();
+        }
 
         public void SayCoins() => Debug.Log($"I have {_coins} coins!");
 
@@ -138,14 +158,13 @@ namespace PixelCrew
             {
                 yVelocity /= 2f;
             }
-            CalculateHeavyLanding(yVelocity);
             return yVelocity;
         }
 
         private float CalculateJumpVelocity(float yVelocity)
         {
             var isFalling = _rigidbody.velocity.y <= 0.001f;
-            
+
             if (!isFalling) return yVelocity;
             _animator.SetTrigger(JumpKey);
             if (_isGrounded && !IsJumpButtonPressed)
@@ -162,16 +181,6 @@ namespace PixelCrew
             return yVelocity;
         }
 
-        private void CalculateHeavyLanding(float yVelocity)
-        {
-            if (yVelocity < -12) _isHeavyLanding = true;
-            if (_isHeavyLanding && yVelocity == 0)
-            {
-                CreateDust("LandingDust");
-                _isHeavyLanding = false;
-            }
-        }
-
         //Механика рывка: при нажатии рывка отключаю гравитацию действующую на героя, добавляю импульс в направлении рывка
         //жду время рывка и включаю гравитацию обратно, так же во время рывка отключаю возможность двигаться (условие в FixedUpdate)
         IEnumerator Dash()
@@ -179,7 +188,7 @@ namespace PixelCrew
             _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
             _rigidbody.freezeRotation = true;
             UpdateSpriteRenderer();
-            CreateDust("DashDust");
+            CreateParticle("DashDust");
             _isDashing = true;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
             _rigidbody.AddForce(new Vector2(_dashSpeed * _dashDirection, 0f), ForceMode2D.Impulse);
@@ -253,7 +262,7 @@ namespace PixelCrew
                 _interactionRadius,
                 _interactionResult,
                 _interactionLayer);
-            
+
             for (int i = 0; i < size; i++)
             {
                 var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
@@ -264,9 +273,47 @@ namespace PixelCrew
             }
         }
 
-        public void CreateDust(string tag)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            _footParticles.Spawn(tag);
+            if (collision.gameObject.IsInLayer(_groundLayer))
+            {
+                var contact = collision.contacts[0];
+                if (contact.relativeVelocity.y >= _heavyLandingVelocity)
+                {
+                    CreateParticle("LandingDust");
+                }
+            }
+        }
+
+        public void CreateParticle(string tag)
+        {
+            foreach (SpawnParticleComponent particlePosition in _particalPosition)
+                particlePosition.Spawn(tag);
+        }
+
+        public void Attack()
+        {
+            if (!_isArmed) return;
+            _animator.SetTrigger(AttackKey);
+        }
+
+        public void PerformAttack()
+        {
+            var goToAttack = _attackRange.getObjectsInRange();
+            foreach (var go in goToAttack)
+            {
+                var hp = go.GetComponent<HealthComponent>();
+                if (hp != null && go != gameObject)
+                {
+                    hp.ModifyHealthByDelta(-_damage);
+                }
+            }
+        }
+
+        public void ArmHero()
+        {
+            _isArmed = true;
+            _animator.runtimeAnimatorController = _armed;
         }
     }
 }

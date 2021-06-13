@@ -14,6 +14,7 @@ TagManager:
   - DashDust
   - Door
   - Barrel
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Player
   - Spikes
   - Iteractables
-  - 
+  - Trash
   - 
   - 
   - 

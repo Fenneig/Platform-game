@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8423551279146363137}
   - component: {fileID: 7303093693070506041}
-  - component: {fileID: 830065842263080965}
-  - component: {fileID: 609206719699410369}
-  m_Layer: 0
+  - component: {fileID: 1229592498865716596}
+  - component: {fileID: 6711365234241704962}
+  - component: {fileID: 2882741415307143606}
+  m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &830065842263080965
+--- !u!114 &1229592498865716596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,17 +94,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 4801241697551077750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac9506858e4d8a54fa12380a8211b24e, type: 3}
+  m_Script: {fileID: 11500000, guid: cc26064a3ae11854e8df608706cef7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tags:
-  - Player
-  - Barrel
-  _action:
+  _tags: []
+  _button: {fileID: 4801241697551077750}
+  _pressedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!60 &609206719699410369
-PolygonCollider2D:
+  _unpressedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!95 &6711365234241704962
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801241697551077750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f1eaba16de232641a6c4ec921d87dad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &2882741415307143606
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -112,10 +134,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.34510112}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -125,9 +147,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.17597008, y: -0.20881033}
-      - {x: -0.15799904, y: -0.20881033}
-      - {x: -0.46875, y: -0.5}
-      - {x: 0.4375, y: -0.5}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.30979776}
+  m_EdgeRadius: 0

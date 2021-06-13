@@ -8,78 +8,87 @@ namespace PixelCrew
     public class SpriteAnimation : MonoBehaviour
     {
         [Serializable]
-        public struct State
+        public class AnimationClip
         {
-            public string _name;
-            public bool _loop;
-            public bool _allowNext;
-            public Sprite[] _sprites;
-            public UnityEvent _onComplete;
+            [SerializeField] private string _name;
+            [SerializeField] private bool _loop;
+            [SerializeField] private bool _allowNext;
+            [SerializeField] private Sprite[] _sprites;
+            [SerializeField] private UnityEvent _onComplete;
             public bool IsEqualName(string name) => _name == name;
+
+            public string Name => _name;
+
+            public bool Loop => _loop;
+
+            public bool AllowNextClip => _allowNext;
+
+            public Sprite[] Sprites => _sprites;
+
+            public UnityEvent OnComplete => _onComplete;
         }
 
         [SerializeField] private int _frameRate;
-        [SerializeField] private State[] _states;
+        [SerializeField] private AnimationClip[] _clips;
 
         private float _secondsPerFrame;
         private float _nextFrameTime;
-
         private SpriteRenderer _renderer;
-        private int _currentSpriteIndex;
-        private State _currentState;
-        private int _currentStateIndex;
+        private int _currentFrame;
+        private int _currentClip;
 
         private void Start()
         {
             _renderer = GetComponent<SpriteRenderer>();
+            _secondsPerFrame = 1f / _frameRate;
+            StartAnimation();
         }
 
-        private void OnEnable()
+        private void StartAnimation()
         {
-            _secondsPerFrame = 1f / _frameRate;
             _nextFrameTime = Time.time + _secondsPerFrame;
-            _currentSpriteIndex = 0;
-            _currentStateIndex = 0;
-            _currentState = _states[_currentStateIndex];
+            _currentFrame = 0;
         }
+
         private void Update()
         {
             if (_nextFrameTime > Time.time) return;
 
-            if (_currentSpriteIndex >= _currentState._sprites.Length)
+            var clip = _clips[_currentClip];
+
+            if (_currentFrame >= clip.Sprites.Length)
             {
-                if (_currentState._loop)
+                if (clip.Loop)
                 {
-                    _currentSpriteIndex = 0;
+                    _currentFrame = 0;
                 }
-                else if (_currentState._allowNext && !_currentState._loop)
+                else
                 {
-                    SetClip(_states[++_currentStateIndex]._name);
+                    clip.OnComplete?.Invoke();
+
+                    if (clip.AllowNextClip)
+                    {
+                        _currentFrame = 0;
+                        _currentClip = (int)Mathf.Repeat(_currentClip + 1, _clips.Length);
+                    }
                 }
-                else if (!_currentState._allowNext && !_currentState._loop)
-                {
-                    enabled = false;
-                    _states[_currentStateIndex]._onComplete?.Invoke();
-                    return;
-                }
+                return;
             }
 
-            _renderer.sprite = _currentState._sprites[_currentSpriteIndex];
+            _renderer.sprite = clip.Sprites[_currentFrame];
             _nextFrameTime += _secondsPerFrame;
-            _currentSpriteIndex++;
+            _currentFrame++;
         }
 
         public void SetClip(string name)
         {
-            for (int i = 0; i < _states.Length; i++)
+            for (int i = 0; i < _clips.Length; i++)
             {
-                if (_states[i].IsEqualName(name))
+                if (_clips[i].IsEqualName(name))
                 {
-                    _nextFrameTime = Time.time + _secondsPerFrame;
-                    _currentSpriteIndex = 0;
-                    _currentState = _states[i];
-                    _currentStateIndex = i;
-
+                    _currentClip = i;
+                    StartAnimation();
+                    return;
                 }
             }
         }

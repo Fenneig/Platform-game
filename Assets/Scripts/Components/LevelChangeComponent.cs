@@ -7,9 +7,6 @@ namespace PixelCrew.Components
     {
         [SerializeField] string _levelName;
 
-        public void ChangeLevel() 
-        {
-            SceneManager.LoadScene(_levelName);
-        }
+        public void ChangeLevel() => SceneManager.LoadScene(_levelName);
     }
 }

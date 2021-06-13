@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1387597618257212596}
-  _state: 1
+  _state: 0
   _animationKey: is-opened

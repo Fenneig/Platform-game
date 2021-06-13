@@ -2,12 +2,8 @@
 
 namespace PixelCrew.Components
 {
-
     public class DestroyObjectComponent : MonoBehaviour
     {
-        public void DestroyObject() 
-        {
-            Destroy(gameObject);
-        }
+        public void DestroyObject() => Destroy(gameObject);
     }
 }
