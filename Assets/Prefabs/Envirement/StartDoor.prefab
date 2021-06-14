@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2841189534070264132}
   - component: {fileID: 2841189534070264135}
   m_Layer: 0
-  m_Name: StartPointDoor
+  m_Name: StartDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

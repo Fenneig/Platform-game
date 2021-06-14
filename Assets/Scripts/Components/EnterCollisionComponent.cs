@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrew.Components
 {
@@ -17,5 +19,9 @@ namespace PixelCrew.Components
                 }
             }
         }
+
+        [Serializable]
+        public class EnterEvent : UnityEvent<GameObject>
+        { }
     }
 }

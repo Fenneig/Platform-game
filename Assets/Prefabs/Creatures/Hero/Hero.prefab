@@ -5155,7 +5155,7 @@ Animator:
   m_GameObject: {fileID: 236387369531184224}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5220,6 +5220,20 @@ MonoBehaviour:
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
+  _onChangeHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 236387369531184228}
+        m_MethodName: OnHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,7 +5406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7921884655250992466}
   _prefab:
-  - {fileID: 6895203161906476923, guid: acc47ed4e3ea147458a31828f7ec310b, type: 3}
+  - {fileID: 8791063269284983765, guid: dd1059e778b818b468f9a24e904f4597, type: 3}
 --- !u!1 &9011010065339858228
 GameObject:
   m_ObjectHideFlags: 0

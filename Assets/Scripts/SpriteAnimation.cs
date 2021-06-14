@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -50,6 +51,7 @@ namespace PixelCrew
             _currentFrame = 0;
         }
 
+        [DebuggerStepThrough]
         private void Update()
         {
             if (_nextFrameTime > Time.time) return;

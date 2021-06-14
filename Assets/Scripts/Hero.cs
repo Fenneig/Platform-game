@@ -2,7 +2,9 @@
 using UnityEngine;
 using PixelCrew.Components;
 using PixelCrew.Utils;
+using PixelCrew.Model;
 using UnityEditor.Animations;
+
 
 namespace PixelCrew
 {
@@ -39,16 +41,13 @@ namespace PixelCrew
         private Animator _animator;
         private Vector2 _movementDirection;
         private float _dashDirection;
-        private int _coins;
         private bool _allowDoubleJump;
         private bool _isGrounded;
         private bool _isDashing;
         private bool _isJumping;
         private bool _isJumpButtonPressed;
         private bool _allowDashInJump;
-        private bool _isArmed;
         private Collider2D[] _interactionResult = new Collider2D[1];
-
 
         //переменные-ключи для аниматора
         private static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
@@ -58,6 +57,9 @@ namespace PixelCrew
         private static readonly int JumpKey = Animator.StringToHash("jump");
         private static readonly int AttackKey = Animator.StringToHash("attack");
 
+        //Игровая сессия с параметрами монет, здоровья и вооруженности персонажа
+        private GameSession _session;
+
         //при создании объекта получаем некоторые значения привязанные к объекту для дальнейшего использования
         //Rigidbody, animator и SpriteRenderer берутся из компонент объекта, гравитация - обычное значение гравитации 
         private void Awake()
@@ -65,6 +67,21 @@ namespace PixelCrew
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _allowDashInJump = true;
+        }
+
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+            var health = GetComponent<HealthComponent>();
+
+            health.Health = _session.Data.Hp;
+
+            UpdateHeroWeapon();
+        }
+
+        public void OnHealthChanged(int currentHealth) 
+        {
+            _session.Data.Hp = currentHealth;
         }
         public bool IsJumpButtonPressed
         {
@@ -86,25 +103,22 @@ namespace PixelCrew
 
         public void CollectCoin(int value)
         {
-            _coins += value;
+            _session.Data.Coins += value;
             SayCoins();
         }
 
-        public void SayCoins() => Debug.Log($"I have {_coins} coins!");
+        public void SayCoins() => Debug.Log($"I have {_session.Data.Coins} coins!");
 
-        public void SayHp() => Debug.Log($"I have {GetComponent<HealthComponent>().GetHealth()} hp now!");
+        public void SayHp() => Debug.Log($"I have {GetComponent<HealthComponent>().Health} hp now!");
 
         //проверяем наличие земли под нагами героя. Реализация в классе LayerCheck
         private bool IsGrounded() => _groundCheck.IsTouchingGround();
 
-        private void Update()
-        {
-            _isGrounded = IsGrounded();
-        }
-
         //В FixedUpdate обрабатывается движения персонажа, с использованием физики используется FixedUpdate метод.
         private void FixedUpdate()
         {
+            _isGrounded = IsGrounded();
+
             if (_isGrounded)
             {
                 _allowDoubleJump = true;
@@ -114,6 +128,7 @@ namespace PixelCrew
 
             if (!_isDashing)
             {
+
                 //при движении наискосок с зажатым прыжком персонаж двигается по гипотенузе прямоугольно треугольника тем самым замедляясь
                 //т.к. направления могут быть либо 0 либо 1 то при движении по гипотенузе скорость становиться на √2 меньше( с = √x*x+y*y, где x=y=1)
                 //    /|
@@ -122,7 +137,7 @@ namespace PixelCrew
                 // /   |
                 ///____|
                 //   x
-                //
+
                 var xVelocity = Mathf.Abs(_movementDirection.y) > 0 ? _movementDirection.x * _speed * Mathf.Sqrt(2) : _movementDirection.x * _speed;
                 var yVelocity = CalculateYVelocity();
 
@@ -183,7 +198,7 @@ namespace PixelCrew
 
         //Механика рывка: при нажатии рывка отключаю гравитацию действующую на героя, добавляю импульс в направлении рывка
         //жду время рывка и включаю гравитацию обратно, так же во время рывка отключаю возможность двигаться (условие в FixedUpdate)
-        IEnumerator Dash()
+        private IEnumerator Dash()
         {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
             _rigidbody.freezeRotation = true;
@@ -238,14 +253,14 @@ namespace PixelCrew
             _isJumping = false;
             _animator.SetTrigger(HitKey);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
-            if (_coins > 0)
+            if (_session.Data.Coins > 0)
                 SpawnCoins();
         }
 
         private void SpawnCoins()
         {
-            var coinsToSpawn = Mathf.Min(_coins, 5);
-            _coins -= coinsToSpawn;
+            var coinsToSpawn = Mathf.Min(_session.Data.Coins, 5);
+            _session.Data.Coins -= coinsToSpawn;
 
             var burst = _dropCoinsOnHitParticle.emission.GetBurst(0);
             burst.count = coinsToSpawn;
@@ -293,7 +308,7 @@ namespace PixelCrew
 
         public void Attack()
         {
-            if (!_isArmed) return;
+            if (!_session.Data.IsArmed) return;
             _animator.SetTrigger(AttackKey);
         }
 
@@ -312,8 +327,13 @@ namespace PixelCrew
 
         public void ArmHero()
         {
-            _isArmed = true;
-            _animator.runtimeAnimatorController = _armed;
+            _session.Data.IsArmed = true;
+            UpdateHeroWeapon();
+        }
+
+        public void UpdateHeroWeapon()
+        {
+            _animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
         }
     }
 }

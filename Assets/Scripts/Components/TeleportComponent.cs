@@ -28,8 +28,8 @@ namespace PixelCrew.Components
 
             yield return StartCoroutine(MoveAnimation.MoveToTarget(target, _destTransform.position, _moveTime));
 
-            collider.enabled = true;
             SetLockInput(input, false);
+            collider.enabled = true;
             yield return AlphaAnimation(sprite, 1f);
         }
 

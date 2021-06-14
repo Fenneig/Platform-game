@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Model;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelCrew.Components
@@ -7,6 +8,10 @@ namespace PixelCrew.Components
     {
         [SerializeField] string _levelName;
 
-        public void ChangeLevel() => SceneManager.LoadScene(_levelName);
+        public void ChangeLevel()
+        {
+            FindObjectOfType<SavedState>().Save(FindObjectOfType<GameSession>().Data);
+            SceneManager.LoadScene(_levelName);
+        }
     }
 }
