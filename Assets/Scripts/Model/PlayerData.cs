@@ -9,7 +9,7 @@ namespace PixelCrew.Model
         public int Hp;
         public bool IsArmed;
 
-        public PlayerData(PlayerData data) 
+        public PlayerData(PlayerData data)
         {
             Coins = data.Coins;
             Hp = data.Hp;

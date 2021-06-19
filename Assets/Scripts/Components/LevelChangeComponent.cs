@@ -6,7 +6,7 @@ namespace PixelCrew.Components
 {
     public class LevelChangeComponent : MonoBehaviour
     {
-        [SerializeField] string _levelName;
+        [SerializeField] private string _levelName;
 
         public void ChangeLevel()
         {

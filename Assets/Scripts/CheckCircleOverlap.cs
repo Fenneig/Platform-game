@@ -1,36 +1,56 @@
 ﻿using PixelCrew.Utils;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrew
 {
 
     public class CheckCircleOverlap : MonoBehaviour
     {
-        [SerializeField] float _range = 0.2f;
-        [SerializeField] LayerMask TrashLayer;
+        [SerializeField] private float _range = 0.2f;
+        [SerializeField] private LayerMask _mask;
+        [SerializeField] private OnOverlapEvent _onOverlap;
 
-        private readonly Collider2D[] _objectsResult = new Collider2D[20];
-        public GameObject[] getObjectsInRange()
+        private readonly Collider2D[] _interactionResult = new Collider2D[10];
+
+        public void Check()
         {
-            var size = Physics2D.OverlapCircleNonAlloc(transform.position, _range, _objectsResult);
+            var size = Physics2D.OverlapCircleNonAlloc(
+                transform.position,
+                _range,
+                _interactionResult,
+                _mask);
 
-            var overlap = new List<GameObject>();
-            for (int i = 0; i < size; i++)
-            {
-                if (_objectsResult[i].gameObject.IsInLayer(TrashLayer)) continue;
+            for (var i = 0; i < size; i++)
+                _onOverlap?.Invoke(_interactionResult[i].gameObject);
 
-                overlap.Add(_objectsResult[i].gameObject);
-            }
-
-            return overlap.ToArray();
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             Handles.color = HandlesUtils.TransparentRed;
             Handles.DrawSolidDisc(transform.position, Vector3.forward, _range);
         }
+#endif
+        [Serializable]
+        public class OnOverlapEvent : UnityEvent<GameObject> { }
     }
 }
+
+
+/*
+ 
+        [SerializeField] private string[] _tags;
+
+            for (var i = 0; i < size; i++) 
+            {
+                var isInTag = _tags.Any(tag => _interactionResult[i].CompareTag(tag));
+                if (isInTag) _onOverlap?.Invoke(_interactionResult[i].gameObject);
+            }
+
+ 
+ */

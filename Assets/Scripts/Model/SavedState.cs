@@ -30,7 +30,7 @@ namespace PixelCrew.Model
 
             return false;
         }
-        public void Save(PlayerData data)  => _savedData = new PlayerData(data);
+        public void Save(PlayerData data) => _savedData = new PlayerData(data);
 
         public PlayerData Load() => _savedData;
     }

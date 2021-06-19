@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Utils;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace PixelCrew
@@ -31,7 +32,6 @@ namespace PixelCrew
                         _pressedEvent.Invoke();
                         break;
                     }
-
                 }
             }
         }

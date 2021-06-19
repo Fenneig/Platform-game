@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using PixelCrew.Creatures;
 
 namespace PixelCrew.Components
 {
     public class CollectCoinComponent : MonoBehaviour
     {
-        [SerializeField] int value;
+        [SerializeField] int _value;
         private Hero _hero;
 
         private void Awake()
@@ -12,6 +13,6 @@ namespace PixelCrew.Components
             _hero = FindObjectOfType<Hero>();
         }
 
-        public void Collect() => _hero.CollectCoin(value);
+        public void Collect() => _hero.CollectCoin(_value);
     }
 }

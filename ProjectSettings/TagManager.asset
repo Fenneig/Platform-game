@@ -8,13 +8,14 @@ TagManager:
   - Silver
   - hp
   - sp
-  - FootSteps
-  - JumpDust
-  - LandingDust
-  - DashDust
   - Door
   - Barrel
   - Attack
+  - Enemy
+  - Helm
+  - Destructable
+  - BigHp
+  - Attached
   layers:
   - Default
   - TransparentFX
@@ -31,9 +32,9 @@ TagManager:
   - Spikes
   - Iteractables
   - Trash
-  - 
-  - 
-  - 
+  - Coin
+  - Enemy
+  - Destructable
   - 
   - 
   - 

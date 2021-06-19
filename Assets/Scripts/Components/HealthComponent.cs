@@ -19,7 +19,7 @@ namespace PixelCrew.Components
             {
                 _onDamage?.Invoke();
             }
-            else if (delta > 0) 
+            else if (delta > 0)
             {
                 _onHeal?.Invoke();
             }
