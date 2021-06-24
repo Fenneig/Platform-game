@@ -91,6 +91,8 @@ namespace PixelCrew.Creatures
             _isDead = true;
             _animator.SetBool(IsDeadKey, true);
 
+            _creature.Direction = Vector2.zero;
+
             StopAllCoroutines();
         }
 

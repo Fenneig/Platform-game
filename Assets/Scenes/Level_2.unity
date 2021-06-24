@@ -719,6 +719,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 236387369531184228, guid: 1dafd801a0dcbd64787ecd9203153a0f,
+        type: 3}
+      propertyPath: _numberOfThrows
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 236387369531184228, guid: 1dafd801a0dcbd64787ecd9203153a0f,
+        type: 3}
+      propertyPath: _throwChargeTime._value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 236387369531184228, guid: 1dafd801a0dcbd64787ecd9203153a0f,
+        type: 3}
+      propertyPath: _timeBetweenChargedThrows
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 236387369531184230, guid: 1dafd801a0dcbd64787ecd9203153a0f,
         type: 3}
       propertyPath: m_RootOrder
