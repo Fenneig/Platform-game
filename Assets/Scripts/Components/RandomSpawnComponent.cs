@@ -20,8 +20,8 @@ namespace PixelCrew.Components
                     float chance = UnityEngine.Random.value * 100;
                     if (chance <= component.ChanceToSpawn)
                     {
-                        Vector3 newPosition = component.Target.position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value / 2, 0);
-                        var instance = Instantiate(component.Prefab, newPosition, Quaternion.identity);
+                        Vector3 newPosition = component.Target.position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value, 0);
+                        var instance = Instantiate(component.Prefab, component.Target.position, Quaternion.identity);
 
                         var rigidbody = instance.GetComponent<Rigidbody2D>();
                         if (rigidbody != null) rigidbody.AddForce(Vector2.up);

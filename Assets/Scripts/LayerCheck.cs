@@ -25,6 +25,7 @@ namespace PixelCrew
         {
             _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

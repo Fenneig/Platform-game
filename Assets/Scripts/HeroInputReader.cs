@@ -14,7 +14,7 @@ namespace PixelCrew
         }
         public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = (context.ReadValue<Vector2>());
 
-        public void OnDash(InputAction.CallbackContext contex) => _hero.DashDirection = contex.ReadValue<float>();
+        public void OnDash(InputAction.CallbackContext contex) => _hero.DashTrigger = contex.ReadValue<float>();
 
         public void OnInteract(InputAction.CallbackContext context)
         {
@@ -24,6 +24,12 @@ namespace PixelCrew
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.canceled) _hero.IsJumpButtonPressed = false;
+        }
+
+        public void OnThrow(InputAction.CallbackContext context) 
+        {
+            if (context.started) _hero.ThrowPushed();
+            if (context.canceled) _hero.ThrowReleased();
         }
     }
 }

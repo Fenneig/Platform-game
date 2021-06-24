@@ -4904,6 +4904,7 @@ Transform:
   - {fileID: 7950571225469846938}
   - {fileID: 2438694680571063667}
   - {fileID: 323833541639796142}
+  - {fileID: 5994484091860280218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4946,7 +4947,7 @@ SpriteRenderer:
   m_SortingLayerID: -213640781
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 201edefab96f672499025d363abfab77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37c800de7fc7ce74ea73628aa9adbdcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4983,17 +4984,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  JumpSpeed: 12.5
   _damageVelocity: 10
   _heavyLandingVelocity: 12
+  JumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
   _attackRange: {fileID: 8538178989510919790}
-  GroundLayer:
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 132864
+    m_Bits: 5888
   Particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
   _dashDuratation: 0.1
+  _numberOfThrows: 3
+  _throwCooldown:
+    _value: 1
+  _throwChargeTime:
+    _value: 1
+  _timeBetweenChargedThrows: 0.4
   _interactionRadius: {fileID: 4617069469202346616}
   _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
   _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
@@ -5136,6 +5143,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bfb350aa-4551-41a4-b2c8-21746f45b56f
     m_ActionName: Hero/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 236387369531184231}
+        m_MethodName: OnThrow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 206ed306-ff00-41a7-803c-d3e2d84cf2ae
+    m_ActionName: Hero/Throw[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5253,6 +5275,8 @@ MonoBehaviour:
     Component: {fileID: 4477110702825527840}
   - Id: Attack
     Component: {fileID: 941026926023255158}
+  - Id: Throw
+    Component: {fileID: 4105314346972055519}
 --- !u!114 &1350154040359889875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5463,6 +5487,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f238b1b847d3ea847ae86858174c3037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4924443181515570902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5994484091860280218}
+  - component: {fileID: 4105314346972055519}
+  m_Layer: 11
+  m_Name: ThrowSwordSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5994484091860280218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924443181515570902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.37, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 236387369531184230}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4105314346972055519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924443181515570902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e52da922eecf541b3c758995825a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5994484091860280218}
+  _prefab: {fileID: 1078153097187886995, guid: c363ecd14967cbd419c163f3beea387a, type: 3}
 --- !u!1 &8085024985033220192
 GameObject:
   m_ObjectHideFlags: 0

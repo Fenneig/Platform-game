@@ -15,9 +15,8 @@ GameObject:
   - component: {fileID: 1492898031067897867}
   - component: {fileID: 1492898031067897866}
   - component: {fileID: 1492898031067897877}
-  - component: {fileID: 8171450247221378216}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: StuckedSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,17 +101,13 @@ MonoBehaviour:
   _frameRate: 10
   _clips:
   - _name: idle
-    _loop: 1
+    _loop: 0
     _allowNext: 0
     _sprites:
-    - {fileID: 21300000, guid: b33613b56c2c89d419e29f8807998d81, type: 3}
-    - {fileID: 21300000, guid: 7f53a557088557b4fb306c8933e8d851, type: 3}
-    - {fileID: 21300000, guid: 40cd0b4af76fbbc41a604f7acab8cdcc, type: 3}
-    - {fileID: 21300000, guid: 6afaa82c35f82434cabb998b7d57ff0e, type: 3}
-    - {fileID: 21300000, guid: 06477713433c16544a1737f8f83aa353, type: 3}
-    - {fileID: 21300000, guid: 8cea9ada89c7ccc4688af69bcf7550a2, type: 3}
-    - {fileID: 21300000, guid: 2c97db2b73677ff4aa691f1e2f81515f, type: 3}
-    - {fileID: 21300000, guid: 4a3eb129434af2d4383c3214eca19130, type: 3}
+    - {fileID: 21300000, guid: ed837ff82b31d34478990823a2978269, type: 3}
+    - {fileID: 21300000, guid: 2e5c8cf5dd595a14fa536440893c06f7, type: 3}
+    - {fileID: 21300000, guid: f2abf5945cf06c646becac4dee54acd2, type: 3}
+    - {fileID: 21300000, guid: ebc7e60b86ae6da44947fa377e8be5ff, type: 3}
     _onComplete:
       m_PersistentCalls:
         m_Calls: []
@@ -186,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0a17cca6a1fab468d41574bd66a8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _swordsAmount: 1
 --- !u!114 &1492898031067897877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,17 +191,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8171450247221378216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492898031067897870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d6ceef434e5484a891db60b54baa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

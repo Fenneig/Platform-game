@@ -314,14 +314,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
-  JumpSpeed: 12.5
   _damageVelocity: 5
   _heavyLandingVelocity: 12
+  JumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
   _attackRange: {fileID: 8538178989510919790}
-  GroundLayer:
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 5888
   Particles: {fileID: 5931501552971627509}
 --- !u!114 &1288495332
 MonoBehaviour:
@@ -563,6 +563,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags:
   - Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _action:
     m_PersistentCalls:
       m_Calls:

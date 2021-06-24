@@ -14,6 +14,8 @@ namespace PixelCrew.Components
 
         public void ModifyHealthByDelta(int delta)
         {
+            if (_health <= 0) return;
+
             _health += delta;
             if (delta < 0)
             {

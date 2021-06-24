@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PixelCrew.Utils;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,16 +8,26 @@ namespace PixelCrew.Components
     public class EnterTriggerComponent : MonoBehaviour
     {
         [SerializeField] private string[] _tags;
+        [SerializeField] private LayerMask _layer = ~0;
         [SerializeField] private EnterEvent _action;
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            foreach (string tag in _tags)
+            if (_tags.Length == 0)
             {
-                if (collision.gameObject.CompareTag(tag))
+                if (collision.gameObject.IsInLayer(_layer)) InvokeAction(collision);
+            }
+            else
+            {
+                foreach (string tag in _tags)
                 {
-                    _action?.Invoke(collision.gameObject);
+                    if (collision.gameObject.CompareTag(tag)) InvokeAction(collision);
                 }
             }
+        }
+
+        private void InvokeAction(Collider2D collision)
+        {
+            _action?.Invoke(collision.gameObject);
         }
 
         [Serializable]

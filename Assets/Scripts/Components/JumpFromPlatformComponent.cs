@@ -5,7 +5,7 @@ namespace PixelCrew.Components
 {
     public class JumpFromPlatformComponent : MonoBehaviour
     {
-        //Компонента проверяющий хочет ли игрок упасть с односторонних платформ.
+        //Компонента проверяющий хочет ли существо упасть с односторонних платформ.
         [SerializeField] private LayerMask _platformLayer;
         private Collider2D _platformToIgnore;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using PixelCrew.Components;
 using PixelCrew.Model;
 using UnityEditor.Animations;
-
+using PixelCrew.Utils;
 
 namespace PixelCrew.Creatures
 {
@@ -27,14 +27,22 @@ namespace PixelCrew.Creatures
         [Space]
         [Header("Particle System")]
         [SerializeField] private ParticleSystem _dropCoinsOnHitParticle;
+        
+        [Space]
+        [Header("Throw Stats")]
+        [Min(2)] [SerializeField] private int _numberOfThrows;
+        [SerializeField] private Timer _throwCooldown;
+        [SerializeField] private Timer _throwChargeTime;
+        [SerializeField] private float _timeBetweenChargedThrows;
 
-
-        private float _dashDirection;
+        private int _throwedCount;
+        private float _dashTrigger;
         private bool _allowDashInJump;
         private bool _isDashing;
         private bool _isJumpButtonPressed;
         private bool _allowDoubleJump;
 
+        protected static readonly int ThrowKey = Animator.StringToHash("is-throw");
 
         private GameSession _session;
 
@@ -44,10 +52,10 @@ namespace PixelCrew.Creatures
             set => _isJumpButtonPressed = value;
         }
 
-        public float DashDirection
+        public float DashTrigger
         {
-            get => _dashDirection;
-            set => _dashDirection = value;
+            get => _dashTrigger;
+            set => _dashTrigger = value;
         }
 
         protected override void Awake()
@@ -78,7 +86,15 @@ namespace PixelCrew.Creatures
             SayCoins();
         }
 
+        public void CollectSword(int value)
+        {
+            _session.Data.Swords += value;
+            SaySwords();
+        }
+
         public void SayCoins() => Debug.Log($"I have {_session.Data.Coins} coins!");
+
+        public void SaySwords() => Debug.Log($"I have {_session.Data.Swords} swords!");
 
         public void SayHp() => Debug.Log($"I have {GetComponent<HealthComponent>().Health} hp now!");
 
@@ -97,13 +113,13 @@ namespace PixelCrew.Creatures
                 _allowDashInJump = true;
             }
 
-            if (DashDirection != 0)
+            if (DashTrigger != 0)
             {
                 if (AllowDash())
                 {
                     StartCoroutine(Dash());
                 }
-                DashDirection = 0f;
+                DashTrigger = 0f;
             }
         }
 
@@ -211,5 +227,56 @@ namespace PixelCrew.Creatures
         {
             Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
         }
+
+        public void ThrowPushed()
+        {
+            if (!_session.Data.IsArmed) return;
+            _throwChargeTime.Reset();
+        }
+
+        public void ThrowReleased()
+        {
+            if (!_session.Data.IsArmed) return;
+
+            if (_throwCooldown.IsReady && _session.Data.Swords > 1)
+            {
+                _throwCooldown.Reset();
+
+                if (_throwChargeTime.IsReady)
+                {
+                    _throwedCount = 0;
+                    int numberOfThrows = _numberOfThrows > _session.Data.Swords ? _session.Data.Swords - _numberOfThrows - 1 : _numberOfThrows;
+                    StartCoroutine(ThrowMultiply(numberOfThrows));
+                }
+                else
+                {
+                    Throw();
+                }
+            }
+        }
+
+        private IEnumerator ThrowMultiply(int numberOfThrows)
+        {
+            while (_throwedCount < numberOfThrows)
+            {
+                Throw();
+                _throwedCount++;
+                yield return new WaitForSeconds(_timeBetweenChargedThrows);
+            }
+        }
+
+        public void Throw()
+        {
+            Animator.SetTrigger(ThrowKey);
+
+            _session.Data.Swords -= 1;
+            SaySwords();
+        }
+
+        public void OnDoThrow()
+        {
+            Particles.Spawn("Throw");
+        }
+
     }
 }

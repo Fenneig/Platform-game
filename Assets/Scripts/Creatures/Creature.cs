@@ -11,17 +11,17 @@ namespace PixelCrew.Creatures
         [Space]
         [Header("Stats")]
         [SerializeField] private float _speed;
-        [SerializeField] protected float JumpSpeed;
         [SerializeField] private float _damageVelocity;
-        [SerializeField] protected float _heavyLandingVelocity;
+        [SerializeField] private float _heavyLandingVelocity;
+        [SerializeField] protected float JumpSpeed;
 
         [Space]
         [Header("Checkers")]
         [SerializeField] private LayerCheck _groundCheck;
         [SerializeField] private CheckCircleOverlap _attackRange;
-        [SerializeField] protected LayerMask GroundLayer;
+        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] protected SpawnListComponent Particles;
-
+        
         private Vector2 _movementDirection;
 
         protected Rigidbody2D Rigidbody;
@@ -154,10 +154,10 @@ namespace PixelCrew.Creatures
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
         }
 
-        //Когда падаем на GroundLayer с высокой скоростью создается партикл тяжелого падения
+        //При падении на GroundLayer с высокой скоростью создается партикл тяжелого падения
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.IsInLayer(GroundLayer))
+            if (collision.gameObject.IsInLayer(_groundLayer))
             {
                 var contact = collision.contacts[0];
                 if (contact.relativeVelocity.y >= _heavyLandingVelocity)

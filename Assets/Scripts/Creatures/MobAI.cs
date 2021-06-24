@@ -66,15 +66,19 @@ namespace PixelCrew.Creatures
                 }
                 yield return null;
             }
-            _particles.Spawn("MissHero");
-            yield return new WaitForSeconds(_missHeroCooldown);
-            StartState(_patrol?.DoPatrol());
+            if (!_isDead)
+            {
+                _particles.Spawn("MissHero");
+                yield return new WaitForSeconds(_missHeroCooldown);
+                StartState(_patrol?.DoPatrol());
+            }
         }
 
         private IEnumerator Attack()
         {
             while (_canAttack.IsTouchingLayer)
             {
+                StopMoving();
                 _creature.Attack();
                 yield return new WaitForSeconds(_attackCooldown);
             }
@@ -87,7 +91,7 @@ namespace PixelCrew.Creatures
             _isDead = true;
             _animator.SetBool(IsDeadKey, true);
 
-            if (_current != null) StopCoroutine(_current);
+            StopAllCoroutines();
         }
 
         private void SetDirectionToTarget()
@@ -96,7 +100,6 @@ namespace PixelCrew.Creatures
             direction.y = 0;
 
             _creature.Direction = direction.normalized;
-
         }
 
         private void StartState(IEnumerator coroutine)
@@ -106,6 +109,11 @@ namespace PixelCrew.Creatures
                 StopCoroutine(_current);
 
             _current = StartCoroutine(coroutine);
+        }
+
+        private void StopMoving()
+        {
+            _creature.Direction = Vector2.zero;
         }
 
     }

@@ -293,15 +293,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - _target: {fileID: 8479744276753521052}
-    _prefab: {fileID: 6586806141520955780, guid: 7f9bae4912f112146b3066552c57f1a0,
+    _prefab: {fileID: 1560021889657912522, guid: 62201c9cc89a4984182528bcabaf4746,
       type: 3}
     _chanceToSpawn: 50
     _amout: 5
   - _target: {fileID: 8479744276753521052}
-    _prefab: {fileID: 5278523910207217041, guid: e2efee806fcbbec4197242f687192843,
+    _prefab: {fileID: 3280124599914855476, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
       type: 3}
     _chanceToSpawn: 10
     _amout: 1
+  - _target: {fileID: 8479744276753521052}
+    _prefab: {fileID: 1492898031067897870, guid: 3eb75c3dfbaf41b459edd48d2e3c8c6e,
+      type: 3}
+    _chanceToSpawn: 40
+    _amout: 4
   _moveTime: 1
 --- !u!114 &6329744719014405050
 MonoBehaviour:

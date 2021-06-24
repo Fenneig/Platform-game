@@ -204,6 +204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags:
   - Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _action:
     m_PersistentCalls:
       m_Calls:
