@@ -36,7 +36,6 @@ namespace PixelCrew.Creatures
         [SerializeField] private float _timeBetweenChargedThrows;
 
         private int _throwedCount;
-        private int _currentHealth;
         private float _dashTrigger;
         private bool _allowDashInJump;
         private bool _isDashing;
@@ -76,9 +75,9 @@ namespace PixelCrew.Creatures
             UpdateHeroWeapon();
         }
 
-        public void OnHealthChanged(int currentHealth)
+        public void OnHealthChanged()
         {
-            _session.Data.Hp = currentHealth;
+            _session.Data.Hp = GetComponent<HealthComponent>().Health;
 
             SayHp();
         }
@@ -190,9 +189,8 @@ namespace PixelCrew.Creatures
         public override void TakeDamage()
         {
             base.TakeDamage();
-            
 
-            OnHealthChanged(GetComponent<HealthComponent>().Health);
+            OnHealthChanged();
             
             if (_session.Data.Coins > 0)
                 SpawnCoins();

@@ -14,6 +14,6 @@ namespace PixelCrew.Components
             _hero = FindObjectOfType<Hero>();
         }
 
-        public void Collect() => _hero.OnHealthChanged(_health);
+        public void Collect() => _hero.OnHealthChanged();
     }
 }
