@@ -251,7 +251,7 @@ namespace PixelCrew.Creatures
                 if (_throwChargeTime.IsReady)
                 {
                     _throwedCount = 0;
-                    int numberOfThrows = _numberOfThrows > _session.Data.Swords ? _session.Data.Swords - _numberOfThrows - 1 : _numberOfThrows;
+                    int numberOfThrows = _numberOfThrows >= _session.Data.Swords ? _session.Data.Swords - 1 : _numberOfThrows;
                     StartCoroutine(ThrowMultiply(numberOfThrows));
                 }
                 else
@@ -276,6 +276,7 @@ namespace PixelCrew.Creatures
             Animator.SetTrigger(ThrowKey);
 
             _session.Data.Swords -= 1;
+
             SaySwords();
         }
 

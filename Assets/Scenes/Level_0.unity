@@ -1697,6 +1697,7 @@ MonoBehaviour:
   _data:
     Coins: 0
     Hp: 5
+    Swords: 0
     IsArmed: 0
 --- !u!4 &167242079
 Transform:
@@ -2179,7 +2180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517205183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.018019, y: -1.5300004, z: -10}
+  m_LocalPosition: {x: -3.425632, y: -1.5300004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5496,7 +5497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471453405}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1297307, y: -1.53, z: -10}
+  m_LocalPosition: {x: -4.138617, y: -1.53, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 869761782}
