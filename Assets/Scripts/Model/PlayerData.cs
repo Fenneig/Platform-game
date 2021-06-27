@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace PixelCrew.Model
 {
@@ -10,14 +11,10 @@ namespace PixelCrew.Model
         public int Swords;
         public bool IsArmed;
 
-        public PlayerData(PlayerData data)
+        public PlayerData Clone() 
         {
-            Coins = data.Coins;
-            Hp = data.Hp;
-            Swords = data.Swords;
-            IsArmed = data.IsArmed;
+            var json = JsonUtility.ToJson(this);
+            return JsonUtility.FromJson<PlayerData>(json);
         }
-
-        public PlayerData() { }
     }
 }

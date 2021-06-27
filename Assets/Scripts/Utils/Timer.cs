@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace PixelCrew.Utils
 {
+    //Таймер, после запуска(Reset) отсчитывает время до значения value 
     [Serializable]
     public class Timer
     {

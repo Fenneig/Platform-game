@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 3515527960245503834}
   - component: {fileID: 1288495332}
   - component: {fileID: 1559317058997507910}
-  - component: {fileID: 3495517054253749416}
+  - component: {fileID: 3087277618771388352}
   m_Layer: 16
   m_Name: SharkyPlatformWalk
   m_TagString: Enemy
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
-  _damageVelocity: 5
+  _damageVelocity: 4
   _heavyLandingVelocity: 12
   JumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
@@ -352,7 +352,7 @@ MonoBehaviour:
   _alarmDelay: 0.5
   _attackCooldown: 0.5
   _missHeroCooldown: 1
---- !u!114 &3495517054253749416
+--- !u!114 &3087277618771388352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 236387369531184224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df583b8ef5ecb5c4aac1527b9b848864, type: 3}
+  m_Script: {fileID: 11500000, guid: 39d3e011f7317ae458fb8e28848ec9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _endOfPlatformCheck: {fileID: 7929127683170932868}

@@ -20,7 +20,7 @@ namespace PixelCrew.Model
             else
             {
                 var savedData = FindObjectOfType<SavedState>().Load();
-                if (savedData != null) Data = new PlayerData(savedData);
+                if (savedData != null) Data = savedData.Clone();
 
                 DontDestroyOnLoad(this);
             }

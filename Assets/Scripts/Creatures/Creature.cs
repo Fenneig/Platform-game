@@ -1,4 +1,5 @@
-﻿using PixelCrew.Components;
+﻿using PixelCrew.Components.ColliderBased;
+using PixelCrew.Components.GOBased;
 using PixelCrew.Utils;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace PixelCrew.Creatures
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(JumpFromPlatformComponent))]
+    [RequireComponent(typeof(Animator))]
     public class Creature : MonoBehaviour
     {
         [Space]
@@ -21,7 +23,7 @@ namespace PixelCrew.Creatures
         [SerializeField] private CheckCircleOverlap _attackRange;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] protected SpawnListComponent Particles;
-        
+
         private Vector2 _movementDirection;
 
         protected Rigidbody2D Rigidbody;
@@ -50,7 +52,7 @@ namespace PixelCrew.Creatures
             set => _movementDirection = value;
         }
 
-        protected virtual void Update()
+        private void Update()
         {
             IsGrounded = _groundCheck.IsTouchingLayer;
         }

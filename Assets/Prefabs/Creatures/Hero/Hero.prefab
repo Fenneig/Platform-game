@@ -4947,7 +4947,7 @@ SpriteRenderer:
   m_SortingLayerID: -213640781
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37c800de7fc7ce74ea73628aa9adbdcc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 201edefab96f672499025d363abfab77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4984,7 +4984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _damageVelocity: 10
+  _damageVelocity: 7.54
   _heavyLandingVelocity: 12
   JumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
@@ -4995,16 +4995,16 @@ MonoBehaviour:
   Particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
   _dashDuratation: 0.1
+  _interactionRadius: {fileID: 4617069469202346616}
+  _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
+  _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
+  _dropCoinsOnHitParticle: {fileID: 236387368384244206}
   _numberOfThrows: 3
   _throwCooldown:
     _value: 1
   _throwChargeTime:
     _value: 1
   _timeBetweenChargedThrows: 0.4
-  _interactionRadius: {fileID: 4617069469202346616}
-  _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
-  _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
-  _dropCoinsOnHitParticle: {fileID: 236387368384244206}
 --- !u!50 &236387369531184235
 Rigidbody2D:
   serializedVersion: 4

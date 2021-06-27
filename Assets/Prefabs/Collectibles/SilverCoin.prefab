@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1560021889657912518}
   - component: {fileID: 4838443937186774038}
   - component: {fileID: 8946049322302095542}
-  - component: {fileID: 7272850087968608779}
   m_Layer: 15
   m_Name: SilverCoin
   m_TagString: Silver
@@ -225,19 +224,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560021889657912522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a750b1cfd4df34ab196b23989da605, type: 3}
+  m_Script: {fileID: 11500000, guid: ecb8bb8dec2333947a3e776b35a54ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 1
---- !u!114 &7272850087968608779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560021889657912522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d6ceef434e5484a891db60b54baa17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
