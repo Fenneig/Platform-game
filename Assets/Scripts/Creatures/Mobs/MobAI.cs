@@ -6,7 +6,11 @@ using UnityEngine;
 
 namespace PixelCrew.Creatures.Mobs
 {
-    class MobAI : MonoBehaviour
+    [RequireComponent(typeof(SpawnListComponent))]
+    [RequireComponent(typeof(Creature))]
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Patrol))]
+    public class MobAI : MonoBehaviour
     {
         [SerializeField] private LayerCheck _vision;
         [SerializeField] private LayerCheck _canAttack;

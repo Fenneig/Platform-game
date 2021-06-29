@@ -19,11 +19,13 @@ namespace PixelCrew.Components.ColliderBased
         }
         private void OnTriggerStay2D(Collider2D collision)
         {
-            _isTouchingLayer = _collider.IsTouchingLayers(_layer);
+            if (_collider != null)
+                _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
-            _isTouchingLayer = _collider.IsTouchingLayers(_layer);
+            if (_collider != null)
+                _isTouchingLayer = _collider.IsTouchingLayers(_layer);
         }
 
 #if UNITY_EDITOR

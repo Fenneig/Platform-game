@@ -33,9 +33,9 @@ TagManager:
   - Iteractables
   - Trash
   - Coin
-  - Enemy
+  - Enemies
   - Destructable
-  - 
+  - Wall
   - 
   - 
   - 

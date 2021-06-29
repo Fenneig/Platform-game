@@ -4991,7 +4991,7 @@ MonoBehaviour:
   _attackRange: {fileID: 8538178989510919790}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 5888
+    m_Bits: 464640
   Particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
   _dashDuratation: 0.1
@@ -5411,7 +5411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 132864
+    m_Bits: 460544
   _isTouchingLayer: 0
 --- !u!1 &3016511720448220063
 GameObject:

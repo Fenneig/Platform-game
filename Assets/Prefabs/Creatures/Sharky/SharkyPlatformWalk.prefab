@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7950571225469846938}
   - component: {fileID: 7183236855489636745}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: FootPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -375,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236387369689283896}
   - component: {fileID: 7430849291813908957}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: JumpSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 236387369932960063}
   - component: {fileID: 236387369932960061}
   - component: {fileID: 236387369932960060}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 1937980311547996234}
   - component: {fileID: 5225296382402832954}
   - component: {fileID: 4961777105890608208}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509493704079172086}
   - component: {fileID: 2663974481697769841}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: ExclamationSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -635,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3807538137682677080}
   - component: {fileID: 6695034493258294611}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: MissSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 6578604919563413084}
   - component: {fileID: 7929127683170932868}
   - component: {fileID: 2331100166088078154}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: EndOfPlatformCheckPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -744,7 +744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8180518159554928507}
   - component: {fileID: 7782669426128234075}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: HeavyLandingSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -793,7 +793,7 @@ GameObject:
   - component: {fileID: 6821125819639122959}
   - component: {fileID: 7832110457673133344}
   - component: {fileID: 2849219291997011408}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: AttackRange
   m_TagString: Attack
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}

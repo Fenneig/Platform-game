@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a2ee469e164fb46b939245a8d5d584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
+  Speed: 5
 --- !u!114 &8473021793749877598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,12 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444361fe56be12848b4707ff2f21ef75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tags:
-  - Enemy
-  - Barrel
+  _tags: []
   _layer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 196608
   _action:
     m_PersistentCalls:
       m_Calls:
@@ -232,7 +230,7 @@ MonoBehaviour:
   _tags: []
   _layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 262400
   _action:
     m_PersistentCalls:
       m_Calls:

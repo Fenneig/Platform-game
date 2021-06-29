@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 3280124599914855472}
   - component: {fileID: 977269467127649397}
   - component: {fileID: 2653644286739825627}
+  - component: {fileID: 4544631302574790635}
+  - component: {fileID: 2079144488229214935}
+  - component: {fileID: 1278854644824732279}
   m_Layer: 15
   m_Name: GoldCoin
   m_TagString: Gold
@@ -228,3 +231,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 10
+--- !u!114 &4544631302574790635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280124599914855476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475fa40fce3454545aaaa66791280066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &2079144488229214935
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280124599914855476}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!114 &1278854644824732279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280124599914855476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c17984af77fa334c904b96a2f77d943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frequency: 5
+  _amplitude: 0.1
+  _randomize: 0
+  _isFloating: 0

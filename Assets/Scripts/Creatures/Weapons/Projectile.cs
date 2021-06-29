@@ -2,20 +2,14 @@
 
 namespace PixelCrew.Creatures.Weapons
 {
-    class Projectile : MonoBehaviour
+    public class Projectile : BaseProjectile
     {
-        [SerializeField] private float _speed;
-
-        private Rigidbody2D _rigidbody;
-        private int _direction;
-
-        private void Start()
+        protected override void Start()
         {
-            _direction = transform.localScale.x > 0 ? 1 : -1;
-            _rigidbody = GetComponent<Rigidbody2D>();
+            base.Start();
 
-            var force = new Vector2(_direction * _speed, 0);
-            _rigidbody.AddForce(force, ForceMode2D.Impulse);
+            var force = new Vector2(Direction * Speed, 0);
+            Rigidbody.AddForce(force, ForceMode2D.Impulse);
         }
     }
 }

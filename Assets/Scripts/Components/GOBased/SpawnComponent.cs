@@ -9,6 +9,7 @@ namespace PixelCrew.Components.GOBased
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
 
+        [ContextMenu("Spawn")]
         public void Spawn()
         {
             if (_prefab.CompareTag("Attached"))

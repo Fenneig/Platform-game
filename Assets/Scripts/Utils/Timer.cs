@@ -15,6 +15,11 @@ namespace PixelCrew.Utils
             _timeUp = Time.time + _value;
         }
 
+        public void EarlyComplete() 
+        {
+            _timeUp -= _value;
+        }
+
         public bool IsReady => _timeUp <= Time.time;
     }
 }
