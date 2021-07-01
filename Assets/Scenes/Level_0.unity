@@ -1714,10 +1714,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    Coins: 0
+    _inventory:
+      _inventory: []
     Hp: 5
-    Swords: 0
-    IsArmed: 0
 --- !u!4 &167242079
 Transform:
   m_ObjectHideFlags: 0

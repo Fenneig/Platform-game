@@ -5238,7 +5238,7 @@ MonoBehaviour:
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onChangeHealth:
+  _onChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 236387369531184228}

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 9030858524774609611}
   - component: {fileID: 9030858524774609204}
   - component: {fileID: 5585711271194214337}
-  - component: {fileID: 4139739658814609571}
   m_Layer: 0
   m_Name: HealthPotion
   m_TagString: hp
@@ -135,17 +134,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4139739658814609571}
-        m_MethodName: Collect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9030858524774609611}
         m_MethodName: SetClip
         m_Mode: 5
@@ -241,17 +229,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4139739658814609571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030858524774609613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf566a13568b944ea3301538dbd2afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

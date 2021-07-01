@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4780973083341351911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0625, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5227352976034749666}
-        m_MethodName: Collect
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -175,10 +175,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4780973083341351911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5082ee17bd5d3d47b8f75f006cd51d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _swordsAmount: 5
+  _id: Sword
+  _count: 5
 --- !u!114 &6417110790006918338
 MonoBehaviour:
   m_ObjectHideFlags: 0
