@@ -212,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47757509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.047596, y: -5.64, z: -10}
+  m_LocalPosition: {x: -44.057102, y: -5.64, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 110422317}
@@ -662,7 +662,6 @@ MonoBehaviour:
     Coins: 0
     Hp: 5
     Swords: 0
-    IsArmed: 0
 --- !u!4 &319662812
 Transform:
   m_ObjectHideFlags: 0
@@ -8930,7 +8929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747243715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.047596, y: -5.64, z: -10}
+  m_LocalPosition: {x: -44.057102, y: -5.64, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

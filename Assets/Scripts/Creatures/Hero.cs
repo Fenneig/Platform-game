@@ -216,31 +216,30 @@ namespace PixelCrew.Creatures
 
         public override void Attack()
         {
-            if (!_session.Data.IsArmed) return;
+            if (_session.Data.Swords <= 0) return;
 
             base.Attack();
         }
 
         public void ArmHero()
         {
-            _session.Data.IsArmed = true;
             UpdateHeroWeapon();
         }
 
         public void UpdateHeroWeapon()
         {
-            Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
+            Animator.runtimeAnimatorController = _session.Data.Swords > 0 ? _armed : _unarmed;
         }
 
         public void ThrowPushed()
         {
-            if (!_session.Data.IsArmed) return;
+            if (_session.Data.Swords <= 0) return;
             _throwChargeTime.Reset();
         }
 
         public void ThrowReleased()
         {
-            if (!_session.Data.IsArmed) return;
+            if (_session.Data.Swords <= 0) return;
 
             if (_throwCooldown.IsReady && _session.Data.Swords > 1)
             {
