@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1492898031067897866}
   - component: {fileID: 1492898031067897877}
   - component: {fileID: 7424689441977666294}
+  - component: {fileID: 5971109463561923778}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -152,20 +153,9 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492898031067897866}
-        m_MethodName: Add
+      - m_Target: {fileID: 5971109463561923778}
+        m_MethodName: Check
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1492898031067897877}
-        m_MethodName: DestroyObject
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -186,8 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Sword
-  _count: 1
+  _item:
+    Id: Sword
+    Value: 1
+    IsStackable: 1
 --- !u!114 &1492898031067897877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +204,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475fa40fce3454545aaaa66791280066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5971109463561923778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492898031067897870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a756555ca868945bbfa9c62d323dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1492898031067897866}
+        m_MethodName: Add
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1492898031067897877}
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _itemData:
+    Id: 
+    Value: 0
+    IsStackable: 0

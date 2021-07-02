@@ -5,6 +5,8 @@ using PixelCrew.Components.ColliderBased;
 using PixelCrew.Model;
 using UnityEditor.Animations;
 using PixelCrew.Utils;
+using PixelCrew.Components.Interactions;
+using PixelCrew.Components.Collectables;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -17,6 +19,7 @@ namespace PixelCrew.Creatures.Hero
         [Header("Stats")]
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuratation;
+        [SerializeField] private int _maxInventorySize;
         [Space]
         [Header("Checkers")]
         [SerializeField] private CheckCircleOverlap _interactionRadius;
@@ -34,6 +37,8 @@ namespace PixelCrew.Creatures.Hero
         [Header("Throw Stats")]
         [Min(2)] [SerializeField] private int _numberOfThrows;
         [SerializeField] private Timer _throwCooldown;
+
+
         [SerializeField] private Timer _throwChargeTime;
         [SerializeField] private float _timeBetweenChargedThrows;
 
@@ -64,6 +69,7 @@ namespace PixelCrew.Creatures.Hero
         private int SwordCount => _session.Data.Inventory.Count("Sword");
 
         private int CoinCount => _session.Data.Inventory.Count("Coin");
+        public void SayHp() => Debug.Log($"I have {_session.Data.Hp} hp now!");
 
         protected override void Awake()
         {
@@ -80,6 +86,8 @@ namespace PixelCrew.Creatures.Hero
             _healthComponent.Health = _session.Data.Hp;
             UpdateHeroWeapon();
 
+            _session.Data.Inventory.MaxInventorySize = _maxInventorySize;
+
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
         }
 
@@ -88,7 +96,7 @@ namespace PixelCrew.Creatures.Hero
             _session.Data.Inventory.OnChanged -= OnInventoryChanged;
         }
 
-        public void OnInventoryChanged(string id, int value) 
+        public void OnInventoryChanged(string id, int value)
         {
             if (id == "Sword") UpdateHeroWeapon();
         }
@@ -100,7 +108,6 @@ namespace PixelCrew.Creatures.Hero
             SayHp();
         }
 
-        public void SayHp() => Debug.Log($"I have {_session.Data.Hp} hp now!");
 
         protected override void FixedUpdate()
         {
@@ -183,10 +190,16 @@ namespace PixelCrew.Creatures.Hero
             _allowDoubleJump = true;
         }
 
-        public void AddInInventory(string id, int count) 
+        public void AddInInventory(string id, int count, bool isStackable)
         {
-            _session.Data.Inventory.Add(id, count);
+            _session.Data.Inventory.Add(id, count, isStackable);
         }
+
+        public void UseItem()
+        {
+            GetComponent<ItemToUseComponent>().Use();
+        }
+
 
         public override void TakeDamage()
         {
@@ -276,6 +289,5 @@ namespace PixelCrew.Creatures.Hero
         {
             Particles.Spawn("Throw");
         }
-
     }
 }

@@ -10,11 +10,21 @@ namespace PixelCrew.Model.Data
     {
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
 
+        private int _maxInventorySize;
+
+        public int MaxInventorySize
+        {
+            get { return _maxInventorySize; }
+            set { _maxInventorySize = value; }
+        }
+
+        public int InventorySize => _inventory.Count;
+
         public delegate void OnInventoryChanged(string id, int value);
 
         public OnInventoryChanged OnChanged;
 
-        public void Add(string id, int value)
+        public void Add(string id, int value, bool isStackable)
         {
             if (value <= 0) return;
 
@@ -23,10 +33,11 @@ namespace PixelCrew.Model.Data
 
             var item = GetItem(id);
 
-            if (item == null)
+            if (item == null || !isStackable)
             {
                 item = new InventoryItemData(id);
                 _inventory.Add(item);
+                item.IsStackable = isStackable;
             }
 
             item.Value += value;
@@ -47,8 +58,22 @@ namespace PixelCrew.Model.Data
 
             item.Value -= value;
 
+            OnChanged?.Invoke(id, Count(id));
+
 
             if (item.Value <= 0) _inventory.Remove(item);
+        }
+
+        public bool isContainStackableItem(InventoryItemData item)
+        {
+            if (item.IsStackable)
+            {
+                foreach (var itemData in _inventory)
+                {
+                    if (itemData.Id == item.Id) return true;
+                }
+            }
+            return false;
         }
 
         private InventoryItemData GetItem(string id)
@@ -72,19 +97,6 @@ namespace PixelCrew.Model.Data
             }
 
             return count;
-        }
-    }
-
-    [Serializable]
-    public class InventoryItemData
-    {
-        [InventoryId]public string Id;
-        public int Value;
-
-
-        public InventoryItemData(string id)
-        {
-            Id = id;
         }
     }
 }

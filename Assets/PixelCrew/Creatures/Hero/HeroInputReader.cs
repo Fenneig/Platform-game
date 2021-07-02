@@ -30,5 +30,10 @@ namespace PixelCrew.Creatures.Hero
             if (context.started) _hero.ThrowPushed();
             if (context.canceled) _hero.ThrowReleased();
         }
+
+        public void OnUseItem(InputAction.CallbackContext context) 
+        {
+            if (context.canceled) _hero.UseItem();
+        }
     }
 }

@@ -193,5 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Sword
-  _count: 1
+  _item:
+    Id: Sword
+    Value: 1
+    IsStackable: 1

@@ -17,31 +17,9 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3668611363118495224}
-        m_MethodName: Add
+      - m_Target: {fileID: 5641848691312655335}
+        m_MethodName: Check
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6586806141520955784}
-        m_MethodName: SetClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Destroy
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6586806141520955785}
-        m_MethodName: set_enabled
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -148,33 +126,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5678835639451350350}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &6586806141520955785 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1560021889657912519, guid: 62201c9cc89a4984182528bcabaf4746,
-    type: 3}
-  m_PrefabInstance: {fileID: 5678835639451350350}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6586806141520955784 stripped
+--- !u!114 &5641848691312655335 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1560021889657912518, guid: 62201c9cc89a4984182528bcabaf4746,
+  m_CorrespondingSourceObject: {fileID: 37323553856687785, guid: 62201c9cc89a4984182528bcabaf4746,
     type: 3}
   m_PrefabInstance: {fileID: 5678835639451350350}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6586806141520955780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5257e3491f85d648aaa73c37b93f909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3668611363118495224 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8946049322302095542, guid: 62201c9cc89a4984182528bcabaf4746,
-    type: 3}
-  m_PrefabInstance: {fileID: 5678835639451350350}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6586806141520955780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
+  m_Script: {fileID: 11500000, guid: 61a756555ca868945bbfa9c62d323dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

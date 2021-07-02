@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1713221135739271153}
   - component: {fileID: 1713221135739271152}
-  - component: {fileID: 1713221135739271151}
-  - component: {fileID: 1713221135739271150}
-  - component: {fileID: 1713221135739271149}
   - component: {fileID: 1713221135739271147}
   - component: {fileID: 8412822377362279676}
+  - component: {fileID: 1713221135739271151}
+  - component: {fileID: 1713221135739271149}
+  - component: {fileID: 1713221135739271150}
+  - component: {fileID: -9109989182894543231}
+  - component: {fileID: -5777284016734559415}
   m_Layer: 0
   m_Name: BigHealthPotion
   m_TagString: BigHp
@@ -87,92 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1713221135739271151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713221135739271146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5257e3491f85d648aaa73c37b93f909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frameRate: 10
-  _clips:
-  - _name: idle
-    _loop: 1
-    _allowNext: 1
-    _sprites:
-    - {fileID: -8603437905158598775, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: 1628810204692847032, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: 3418560034333019462, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: -8121416213050264888, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: 6182866675272960015, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: 8122624360522206716, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    - {fileID: 4120314310512222242, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
-    _onComplete:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1713221135739271150}
-          m_MethodName: DestroyObject
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - _name: Destroy
-    _loop: 0
-    _allowNext: 0
-    _sprites:
-    - {fileID: -4827988376881342917, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
-    - {fileID: 1152693816632332367, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
-    - {fileID: -4281154887353889082, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
-    - {fileID: 7505194234833031526, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
-    _onComplete:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1713221135739271150}
-          m_MethodName: DestroyObject
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1713221135739271150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713221135739271146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1713221135739271149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713221135739271146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292855c474c1e35438160b357358c53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delta: 20
 --- !u!70 &1713221135739271147
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -209,9 +125,137 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1713221135739271149}
-        m_MethodName: Apply
+      - m_Target: {fileID: -5777284016734559415}
+        m_MethodName: Check
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1713221135739271151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5257e3491f85d648aaa73c37b93f909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _name: idle
+    _loop: 1
+    _allowNext: 1
+    _sprites:
+    - {fileID: -8603437905158598775, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: 1628810204692847032, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: 3418560034333019462, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: -8121416213050264888, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: 6182866675272960015, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: 8122624360522206716, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    - {fileID: 4120314310512222242, guid: 462970d7986259d43bb492b9d1e2b4fa, type: 3}
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - _name: destroy
+    _loop: 0
+    _allowNext: 0
+    _sprites:
+    - {fileID: -4827988376881342917, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
+    - {fileID: 1152693816632332367, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
+    - {fileID: -4281154887353889082, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
+    - {fileID: 7505194234833031526, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1713221135739271150}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1713221135739271149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292855c474c1e35438160b357358c53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delta: 20
+--- !u!114 &1713221135739271150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-9109989182894543231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item:
+    Id: Big health potion
+    Value: 1
+    IsStackable: 0
+--- !u!114 &-5777284016734559415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a756555ca868945bbfa9c62d323dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -9109989182894543231}
+        m_MethodName: Add
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1713221135739271147}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -228,17 +272,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Destroy
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1713221135739271147}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2

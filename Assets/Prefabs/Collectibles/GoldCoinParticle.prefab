@@ -17,31 +17,9 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4618407458063262334}
-        m_MethodName: Add
+      - m_Target: {fileID: 3791435492509411184}
+        m_MethodName: Check
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5278523910207217045}
-        m_MethodName: SetClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Destroy
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5278523910207217044}
-        m_MethodName: set_enabled
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -153,33 +131,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7261001575189930405}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &5278523910207217044 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3280124599914855473, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7261001575189930405}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5278523910207217045 stripped
+--- !u!114 &3791435492509411184 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3280124599914855472, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
+  m_CorrespondingSourceObject: {fileID: 5789834753346340565, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
     type: 3}
   m_PrefabInstance: {fileID: 7261001575189930405}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5278523910207217041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5257e3491f85d648aaa73c37b93f909, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4618407458063262334 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2653644286739825627, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7261001575189930405}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278523910207217041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2404981acdc0aa64dad5c14504ed4554, type: 3}
+  m_Script: {fileID: 11500000, guid: 61a756555ca868945bbfa9c62d323dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
