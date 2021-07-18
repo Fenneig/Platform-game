@@ -5,12 +5,12 @@ using PixelCrew.Components.ColliderBased;
 using PixelCrew.Model;
 using UnityEditor.Animations;
 using PixelCrew.Utils;
-using PixelCrew.Components.Interactions;
 using PixelCrew.Components.Collectables;
 
 namespace PixelCrew.Creatures.Hero
 {
     [RequireComponent(typeof(HealthComponent))]
+    [RequireComponent(typeof(UsableItemComponent))]
     public class Hero : Creature
     {
         //Скрипт персонажа, содержащий основные механики взаимодействия с персонажем
@@ -144,18 +144,23 @@ namespace PixelCrew.Creatures.Hero
         {
             if (IsGrounded && !IsJumpButtonPressed)
             {
-                Particles.Spawn("Jump");
-                yVelocity = JumpSpeed;
-                IsJumpButtonPressed = true;
+                yVelocity = DoJump();
             }
             else if (_allowDoubleJump && !IsJumpButtonPressed)
             {
-                Particles.Spawn("Jump");
-                yVelocity = JumpSpeed;
+                yVelocity = DoJump();
                 _allowDoubleJump = false;
-                IsJumpButtonPressed = true;
             }
             return yVelocity;
+        }
+
+        private float DoJump()
+        {
+            Particles.Spawn("Jump");
+            Sounds.Play("Jump");
+            IsJumpButtonPressed = true;
+
+            return JumpSpeed;
         }
 
         //Механика рывка: при нажатии рывка отключаю гравитацию действующую на героя,
@@ -169,6 +174,7 @@ namespace PixelCrew.Creatures.Hero
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0f);
             Rigidbody.AddForce(new Vector2(_dashSpeed * transform.localScale.x, 0f), ForceMode2D.Impulse);
             Particles.Spawn("Dash");
+            Sounds.Play("Dash");
             yield return new WaitForSeconds(_dashDuratation);
             _isDashing = false;
             Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -194,10 +200,9 @@ namespace PixelCrew.Creatures.Hero
         {
             _session.Data.Inventory.Add(id, count, isStackable);
         }
-
         public void UseItem()
         {
-            GetComponent<ItemToUseComponent>().Use();
+            GetComponent<UsableItemComponent>().Use();
         }
 
 
@@ -281,6 +286,7 @@ namespace PixelCrew.Creatures.Hero
         public void Throw()
         {
             Animator.SetTrigger(ThrowKey);
+            Sounds.Play("Range");
 
             _session.Data.Inventory.Remove("Sword", 1);
         }

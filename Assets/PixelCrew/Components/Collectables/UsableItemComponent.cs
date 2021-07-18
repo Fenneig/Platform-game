@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace PixelCrew.Components.Collectables
 {
-    public class ItemToUseComponent : MonoBehaviour
+    public class UsableItemComponent : MonoBehaviour
     {
         [InventoryId] [SerializeField] private string _itemId;
         [SerializeField] private UnityEvent _action;
@@ -21,7 +21,5 @@ namespace PixelCrew.Components.Collectables
                 if (_removeAfterUse) session.Data.Inventory.Remove(_itemId, 1);
             }
         }
-
-
     }
 }

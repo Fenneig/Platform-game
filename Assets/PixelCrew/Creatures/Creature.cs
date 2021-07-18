@@ -1,4 +1,5 @@
-﻿using PixelCrew.Components.ColliderBased;
+﻿using PixelCrew.Audio;
+using PixelCrew.Components.ColliderBased;
 using PixelCrew.Components.GOBased;
 using PixelCrew.Utils;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace PixelCrew.Creatures
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(JumpFromPlatformComponent))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(PlaySoundsComponent))]
     public class Creature : MonoBehaviour
     {
         [Space]
@@ -24,12 +26,15 @@ namespace PixelCrew.Creatures
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] protected SpawnListComponent Particles;
 
-        private Vector2 _movementDirection;
+        private Vector2 _direction;
 
         protected Rigidbody2D Rigidbody;
         protected Animator Animator;
         protected bool IsGrounded;
+        protected PlaySoundsComponent Sounds;
         private bool _isJumping;
+
+
 
         //переменные-ключи для аниматора
         protected static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
@@ -40,16 +45,19 @@ namespace PixelCrew.Creatures
         protected static readonly int AttackKey = Animator.StringToHash("attack");
 
 
+
+
         protected virtual void Awake()
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
+            Sounds = GetComponent<PlaySoundsComponent>();
         }
 
         public Vector2 Direction
         {
-            get => _movementDirection;
-            set => _movementDirection = value;
+            get => _direction;
+            set => _direction = value;
         }
 
         private void Update()
@@ -85,7 +93,7 @@ namespace PixelCrew.Creatures
         private void AnimatorSettings()
         {
             Animator.SetBool(IsGroundedKey, IsGrounded);
-            Animator.SetBool(IsRuningKey, _movementDirection.x != 0);
+            Animator.SetBool(IsRuningKey, _direction.x != 0);
             Animator.SetFloat(VerticaVelocityKey, Rigidbody.velocity.y);
         }
 
@@ -111,14 +119,14 @@ namespace PixelCrew.Creatures
             // /   |
             ///____|
             //   x
-            return Mathf.Abs(_movementDirection.y) > 0 ? _movementDirection.x * _speed * Mathf.Sqrt(2) : _movementDirection.x * _speed;
+            return Mathf.Abs(_direction.y) > 0 ? _direction.x * _speed * Mathf.Sqrt(2) : _direction.x * _speed;
         }
 
         protected virtual float CalculateYVelocity()
         {
-            if (_movementDirection.y < 0) gameObject.GetComponent<JumpFromPlatformComponent>().JumpOff();
+            if (_direction.y < 0) gameObject.GetComponent<JumpFromPlatformComponent>().JumpOff();
             var yVelocity = Rigidbody.velocity.y;
-            var isJumpPressing = _movementDirection.y > 0;
+            var isJumpPressing = _direction.y > 0;
 
             if (isJumpPressing)
             {
@@ -140,6 +148,7 @@ namespace PixelCrew.Creatures
         protected virtual float CalculateJumpVelocity(float yVelocity)
         {
             Particles.Spawn("Jump");
+            Sounds.Play("Jump");
 
             if (IsGrounded)
             {
@@ -177,6 +186,7 @@ namespace PixelCrew.Creatures
         public void OnDoAttack()
         {
             _attackRange.Check();
+            Sounds.Play("Melee");
         }
 
     }
