@@ -13,7 +13,7 @@ namespace PixelCrew.Components.ColliderBased
         [SerializeField] private LayerMask _mask;
         [SerializeField] private OnOverlapEvent _onOverlap;
 
-        private readonly Collider2D[] _interactionResult = new Collider2D[10];
+        private readonly Collider2D[] _interactionResult = new Collider2D[20];
 
         public void Check()
         {

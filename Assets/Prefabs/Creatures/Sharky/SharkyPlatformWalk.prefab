@@ -374,7 +374,7 @@ MonoBehaviour:
   _vision: {fileID: 5225296382402832954}
   _canAttack: {fileID: 2849219291997011408}
   _alarmDelay: 0.5
-  _attackCooldown: 0.5
+  _attackCooldown: 1
   _missHeroCooldown: 1
 --- !u!114 &3087277618771388352
 MonoBehaviour:
@@ -407,6 +407,8 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 0aa28467fde10a842a83a055c6f5fffd, type: 3}
   - _id: Hurt
     _clip: {fileID: 8300000, guid: 583815912c18b884399f68c90baf2c65, type: 3}
+  - _id: Melee
+    _clip: {fileID: 8300000, guid: bb9f3a021d7b856439007e137e625ee3, type: 3}
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 1280
   _isTouchingLayer: 0
 --- !u!58 &2331100166088078154
 CircleCollider2D:

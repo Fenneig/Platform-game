@@ -11,7 +11,6 @@ namespace PixelCrew.Model.Data
 
         public bool IsStackable = true;
 
-
         public InventoryItemData(string id)
         {
             Id = id;

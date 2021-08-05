@@ -167,9 +167,9 @@ namespace PixelCrew.Creatures.Hero
         //добавляю импульс в направлении движения героя, жду время рывка и включаю гравитацию обратно
         private IEnumerator Dash()
         {
-            Rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
-            Rigidbody.freezeRotation = true;
+            FreezeGravity();
             UpdateSpriteDirection();
+
             _isDashing = true;
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0f);
             Rigidbody.AddForce(new Vector2(_dashSpeed * transform.localScale.x, 0f), ForceMode2D.Impulse);
@@ -177,7 +177,8 @@ namespace PixelCrew.Creatures.Hero
             Sounds.Play("Dash");
             yield return new WaitForSeconds(_dashDuratation);
             _isDashing = false;
-            Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            UnFreezeGravity();
         }
 
         private bool AllowDash()

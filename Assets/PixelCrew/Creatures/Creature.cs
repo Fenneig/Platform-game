@@ -34,8 +34,6 @@ namespace PixelCrew.Creatures
         protected PlaySoundsComponent Sounds;
         private bool _isJumping;
 
-
-
         //переменные-ключи для аниматора
         protected static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
         protected static readonly int IsRuningKey = Animator.StringToHash("is-running");
@@ -43,8 +41,6 @@ namespace PixelCrew.Creatures
         protected static readonly int HitKey = Animator.StringToHash("hit");
         protected static readonly int JumpKey = Animator.StringToHash("jump");
         protected static readonly int AttackKey = Animator.StringToHash("attack");
-
-
 
 
         protected virtual void Awake()
@@ -187,6 +183,17 @@ namespace PixelCrew.Creatures
         {
             _attackRange.Check();
             Sounds.Play("Melee");
+        }
+
+        public void FreezeGravity()
+        {
+            Rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
+            Rigidbody.freezeRotation = true;
+        }
+
+        public void UnFreezeGravity()
+        {
+            Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
     }
