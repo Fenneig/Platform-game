@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7950571225469846938}
   - component: {fileID: 7183236855489636745}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: FootPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 236387368384244200}
   - component: {fileID: 236387368384244206}
   - component: {fileID: 236387368384244201}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: CoinsParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5045,8 +5045,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.032797366}
-  m_Size: {x: 0.75, y: 0.7944053}
+  m_Offset: {x: 0, y: 0.014320433}
+  m_Size: {x: 0.75, y: 0.76576436}
   m_Direction: 0
 --- !u!114 &236387369531184229
 MonoBehaviour:
@@ -5420,7 +5420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236387369689283896}
   - component: {fileID: 7430849291813908957}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: JumpSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5466,7 +5466,7 @@ GameObject:
   - component: {fileID: 236387369932960063}
   - component: {fileID: 236387369932960061}
   - component: {fileID: 236387369932960060}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5530,7 +5530,7 @@ GameObject:
   - component: {fileID: 323833541639796142}
   - component: {fileID: 4617069469202346616}
   - component: {fileID: 3754507765675647223}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: InteractRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5603,7 +5603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7921385034902196788}
   - component: {fileID: 8329455358869375555}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: MainTheme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5731,7 +5731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5994484091860280218}
   - component: {fileID: 4105314346972055519}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ThrowSwordSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -5776,7 +5776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261624656734302121}
   - component: {fileID: 9181999090551257148}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5904,7 +5904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8180518159554928507}
   - component: {fileID: 7782669426128234075}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: HeavyLandingSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5951,7 +5951,7 @@ GameObject:
   - component: {fileID: 8538178989510919790}
   - component: {fileID: 941026926023255158}
   - component: {fileID: 6821125819639122959}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AttackRange
   m_TagString: Attack
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -6039,7 +6039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438694680571063667}
   - component: {fileID: 4477110702825527840}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: DashSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}

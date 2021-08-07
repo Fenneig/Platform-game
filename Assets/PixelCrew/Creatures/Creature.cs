@@ -56,6 +56,12 @@ namespace PixelCrew.Creatures
             set => _direction = value;
         }
 
+        public float Speed 
+        {
+            get => _speed;
+            set => _speed = value;
+        }
+
         private void Update()
         {
             IsGrounded = _groundCheck.IsTouchingLayer;
@@ -143,9 +149,6 @@ namespace PixelCrew.Creatures
 
         protected virtual float CalculateJumpVelocity(float yVelocity)
         {
-            Particles.Spawn("Jump");
-            Sounds.Play("Jump");
-
             if (IsGrounded)
             {
                 yVelocity = JumpSpeed;

@@ -7,6 +7,7 @@ namespace PixelCrew.Creatures.Patroling
     public class PlatformPatrol : Patrol
     {
         [SerializeField] LayerCheck _endOfPlatformCheck;
+        [SerializeField] float _threshold = 0.01f;
 
         private Creature _creature;
         private Vector3 _lastFramePosition;
@@ -37,7 +38,7 @@ namespace PixelCrew.Creatures.Patroling
         //при отстутвии пола так же надо развернуть персонажа.
         private bool IsNeedTurnBack()
         {
-            if (_lastFramePosition == transform.position) return true;
+            if (Mathf.Abs(_lastFramePosition.x - transform.position.x) <= _threshold) return true;
             else _lastFramePosition = transform.position;
             return !_endOfPlatformCheck.IsTouchingLayer;
         }

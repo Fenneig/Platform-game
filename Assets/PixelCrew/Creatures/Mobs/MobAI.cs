@@ -20,7 +20,7 @@ namespace PixelCrew.Creatures.Mobs
         [SerializeField] private float _missHeroCooldown = 1f;
 
         private Coroutine _current;
-        private GameObject _target;
+        protected GameObject Target;
 
         protected Creature Mob;
         protected Animator MobAnimator;
@@ -47,7 +47,7 @@ namespace PixelCrew.Creatures.Mobs
         public virtual void OnHeroInVision(GameObject go)
         {
             if (IsDead) return;
-            _target = go;
+            Target = go;
             StartState(AgroToHero());
         }
 
@@ -102,9 +102,9 @@ namespace PixelCrew.Creatures.Mobs
             StopAllCoroutines();
         }
 
-        protected void SetDirectionToTarget()
+        protected virtual void SetDirectionToTarget()
         {
-            var direction = _target.transform.position - transform.position;
+            var direction = Target.transform.position - transform.position;
             direction.y = 0;
 
             Mob.Direction = direction.normalized;
@@ -119,7 +119,7 @@ namespace PixelCrew.Creatures.Mobs
             _current = StartCoroutine(coroutine);
         }
 
-        private void StopMoving()
+        protected void StopMoving()
         {
             Mob.Direction = Vector2.zero;
         }
