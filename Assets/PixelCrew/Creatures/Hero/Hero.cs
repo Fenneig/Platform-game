@@ -3,9 +3,9 @@ using UnityEngine;
 using PixelCrew.Components.Health;
 using PixelCrew.Components.ColliderBased;
 using PixelCrew.Model;
-using UnityEditor.Animations;
 using PixelCrew.Utils;
 using PixelCrew.Components.Collectables;
+using UnityEditor.Animations;
 
 namespace PixelCrew.Creatures.Hero
 {

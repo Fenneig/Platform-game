@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 443375531}
   - component: {fileID: 8738277558715642759}
   m_Layer: 0
-  m_Name: AttackRange
+  m_Name: AttackCollider
   m_TagString: Attack
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292855c474c1e35438160b357358c53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delta: -1
+  _delta: -2
 --- !u!58 &443375531
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252434742708567294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0.4, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8450993479452287496}
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 263936
   _isTouchingLayer: 0
 --- !u!58 &6222179750080038180
 CircleCollider2D:
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 268032
   _isTouchingLayer: 0
 --- !u!1 &8450993479452287502
 GameObject:
@@ -955,9 +955,10 @@ MonoBehaviour:
   AlarmDelay: 0.5
   AttackCooldown: 1
   _missHeroCooldown: 1
-  _dashSpeed: 5
+  _dashSpeed: 8
   _jumpHeight: 0.5
   _threshold: 0.2
+  _attackCollider: {fileID: 443375531}
 --- !u!1 &8450993479556336469
 GameObject:
   m_ObjectHideFlags: 0

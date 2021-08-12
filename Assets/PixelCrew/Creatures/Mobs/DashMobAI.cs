@@ -11,6 +11,7 @@ namespace PixelCrew.Creatures.Mobs
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _jumpHeight = 0.6f;
         [SerializeField] private float _threshold = 0.5f;
+        [SerializeField] Collider2D _attackCollider;
 
         private Vector3 _targetPosition;
         private float _baseMobSpeed;
@@ -23,6 +24,7 @@ namespace PixelCrew.Creatures.Mobs
             base.Awake();
             _baseMobSpeed = Mob.Speed;
             _isFixedOnTarget = false;
+            _attackCollider.enabled = false;
         }
 
         public override void OnHeroInVision(GameObject go)
@@ -45,6 +47,7 @@ namespace PixelCrew.Creatures.Mobs
 
             Mob.Speed = _dashSpeed;
             MobAnimator.SetBool(IsAttacking, true);
+            _attackCollider.enabled = true;
 
             Mob.Attack();
         }
@@ -100,6 +103,7 @@ namespace PixelCrew.Creatures.Mobs
             if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _threshold)
             {
                 MobAnimator.SetBool(IsAttacking, false);
+                _attackCollider.enabled = false;
             }
 
         }

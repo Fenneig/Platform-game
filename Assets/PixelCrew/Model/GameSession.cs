@@ -3,14 +3,11 @@ using UnityEngine;
 
 namespace PixelCrew.Model
 {
-    class GameSession : MonoBehaviour
+    public class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerData _data;
-        public PlayerData Data
-        {
-            get => _data;
-            set => _data = value;
-        }
+        public PlayerData Data => _data;
+        private PlayerData _save;
 
         private void Awake()
         {
@@ -20,9 +17,7 @@ namespace PixelCrew.Model
             }
             else
             {
-                var savedData = FindObjectOfType<SavedState>().Load();
-                if (savedData != null) Data = savedData.Clone();
-
+                Save();
                 DontDestroyOnLoad(this);
             }
         }
@@ -30,7 +25,6 @@ namespace PixelCrew.Model
         private bool IsSessionExist()
         {
             var sessions = FindObjectsOfType<GameSession>();
-
             foreach (var gameSession in sessions)
             {
                 if (gameSession != this)
@@ -40,5 +34,15 @@ namespace PixelCrew.Model
             return false;
         }
 
+
+        public void Save()
+        {
+            _save = _data.Clone();
+        }
+
+        public void Load()
+        {
+            _data = _save.Clone();
+        }
     }
 }

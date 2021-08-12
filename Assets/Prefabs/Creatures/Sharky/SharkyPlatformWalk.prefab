@@ -378,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endOfPlatformCheck: {fileID: 7929127683170932868}
+  _threshold: 0.001
 --- !u!114 &6867704043428828883
 MonoBehaviour:
   m_ObjectHideFlags: 0
