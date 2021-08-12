@@ -9,7 +9,7 @@ namespace PixelCrew.Creatures.Mobs
     public class DashMobAI : MobAI
     {
         [SerializeField] private float _dashSpeed;
-        [SerializeField] private float _jumpHeight = 0.6f;
+        [SerializeField] private float _jumpHeight = 1f;
         [SerializeField] private float _threshold = 0.5f;
         [SerializeField] Collider2D _attackCollider;
 
@@ -86,7 +86,7 @@ namespace PixelCrew.Creatures.Mobs
             {
                 var direction = Mob.Direction;
                 direction.y = 0;
-                Mob.Direction = direction;
+                Mob.Direction = direction.normalized;
             }
         }
 
