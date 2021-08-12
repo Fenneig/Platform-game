@@ -432,25 +432,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 710291837}
     m_Modifications:
-    - target: {fileID: 1732143517786992362, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _layer.m_Bits
-      value: 263424
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263916304319909938, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5100765051070837044, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: JumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
@@ -506,11 +496,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PinkStar (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e18703dc187c345803ba61953f0c07, type: 3}
@@ -1718,7 +1703,7 @@ PrefabInstance:
     - target: {fileID: 6862079170768601950, guid: ccf4c4a82a7c742498d2ef489ca2bc34,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6862079170768601950, guid: ccf4c4a82a7c742498d2ef489ca2bc34,
         type: 3}
@@ -1944,25 +1929,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 710291837}
     m_Modifications:
-    - target: {fileID: 1732143517786992362, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _layer.m_Bits
-      value: 263424
-      objectReference: {fileID: 0}
-    - target: {fileID: 5100765051070837044, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: JumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
@@ -2019,26 +1989,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkStar (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: AlarmDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _dashSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _damageCollider
-      value: 
-      objectReference: {fileID: 1433092703}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e18703dc187c345803ba61953f0c07, type: 3}
 --- !u!4 &423249978 stripped
@@ -2054,25 +2004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 710291837}
     m_Modifications:
-    - target: {fileID: 1732143517786992362, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _layer.m_Bits
-      value: 263424
-      objectReference: {fileID: 0}
-    - target: {fileID: 5100765051070837044, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: JumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
@@ -2128,21 +2063,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PinkStar (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: AlarmDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _dashSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e18703dc187c345803ba61953f0c07, type: 3}
@@ -2267,8 +2187,8 @@ Transform:
   - {fileID: 423249978}
   - {fileID: 505880231}
   - {fileID: 1590361574}
-  - {fileID: 352409955}
   - {fileID: 1754889009}
+  - {fileID: 352409955}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3424,21 +3344,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 710291837}
     m_Modifications:
-    - target: {fileID: 1732143517786992362, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _layer.m_Bits
-      value: 263424
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263916304319909938, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5100765051070837044, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: JumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
       propertyPath: m_RootOrder
@@ -3498,21 +3403,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PinkStar (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: AlarmDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _dashSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e18703dc187c345803ba61953f0c07, type: 3}
@@ -7017,12 +6907,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1422048868}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &1433092703 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 443375531, guid: 51e18703dc187c345803ba61953f0c07,
-    type: 3}
-  m_PrefabInstance: {fileID: 423249977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1531094163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7542,21 +7426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 710291837}
     m_Modifications:
-    - target: {fileID: 1732143517786992362, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _layer.m_Bits
-      value: 263424
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263916304319909938, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5100765051070837044, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: JumpSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8450993479452287496, guid: 51e18703dc187c345803ba61953f0c07,
         type: 3}
       propertyPath: m_RootOrder
@@ -7616,21 +7485,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PinkStar
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: AlarmDelay
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _dashSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8502836522631313167, guid: 51e18703dc187c345803ba61953f0c07,
-        type: 3}
-      propertyPath: _jumpHeight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e18703dc187c345803ba61953f0c07, type: 3}

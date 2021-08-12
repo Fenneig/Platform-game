@@ -1,5 +1,4 @@
-﻿using PixelCrew.Components.ColliderBased;
-using PixelCrew.Components.GOBased;
+﻿using PixelCrew.Components.GOBased;
 using PixelCrew.Creatures.Patroling;
 using System.Collections;
 using UnityEngine;
@@ -12,12 +11,9 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(Patrol))]
     public class MobAI : MonoBehaviour
     {
-        [SerializeField] private LayerCheck _vision;
-        [SerializeField] private LayerCheck _canAttack;
-
         [SerializeField] protected float AlarmDelay = 0.5f;
         [SerializeField] protected float AttackCooldown = 1f;
-        [SerializeField] private float _missHeroCooldown = 1f;
+        [SerializeField] protected float MissHeroCooldown = 1f;
 
         private Coroutine _current;
         protected GameObject Target;
@@ -44,53 +40,9 @@ namespace PixelCrew.Creatures.Mobs
             StartState(Patrol?.DoPatrol());
         }
 
-        public virtual void OnHeroInVision(GameObject go)
-        {
-            if (IsDead) return;
-            Target = go;
-            StartState(AgroToHero());
-        }
+        public virtual void OnHeroInVision(GameObject go) { }
 
-        protected virtual IEnumerator AgroToHero()
-        {
-            Particles.Spawn("Exclamation");
-            yield return new WaitForSeconds(AlarmDelay);
-            StartState(GoToHero());
-        }
-
-        private IEnumerator GoToHero()
-        {
-            while (_vision.IsTouchingLayer)
-            {
-                if (_canAttack.IsTouchingLayer)
-                {
-                    StartState(Attack());
-                }
-                else
-                {
-                    SetDirectionToTarget();
-                }
-                yield return null;
-            }
-            if (!IsDead)
-            {
-                Particles.Spawn("MissHero");
-                yield return new WaitForSeconds(_missHeroCooldown);
-                StartState(Patrol?.DoPatrol());
-            }
-        }
-
-        private IEnumerator Attack()
-        {
-            while (_canAttack.IsTouchingLayer)
-            {
-                StopMoving();
-                Mob.Attack();
-                yield return new WaitForSeconds(AttackCooldown);
-            }
-
-            StartState(GoToHero());
-        }
+        protected virtual IEnumerator AgroToHero() { yield return null; }
 
         public void OnDie()
         {

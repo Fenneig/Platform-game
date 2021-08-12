@@ -5,7 +5,7 @@ using PixelCrew.Components.GOBased;
 
 namespace PixelCrew.Creatures.Mobs
 {
-    class ShootingTrapAI : MonoBehaviour
+    public class ShootingTrapAI : MonoBehaviour
     {
 
         [SerializeField] private LayerCheck _vision;

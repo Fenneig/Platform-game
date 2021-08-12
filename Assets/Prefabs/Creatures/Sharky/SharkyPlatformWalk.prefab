@@ -64,9 +64,9 @@ GameObject:
   - component: {fileID: 8049762086197870630}
   - component: {fileID: 3515527960245503834}
   - component: {fileID: 1288495332}
-  - component: {fileID: 1559317058997507910}
   - component: {fileID: 3087277618771388352}
   - component: {fileID: 6867704043428828883}
+  - component: {fileID: 2843839894550407673}
   m_Layer: 16
   m_Name: SharkyPlatformWalk
   m_TagString: Enemy
@@ -246,7 +246,7 @@ MonoBehaviour:
   _onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559317058997507910}
+      - m_Target: {fileID: 2843839894550407673}
         m_MethodName: OnDie
         m_Mode: 1
         m_Arguments:
@@ -348,23 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c841391fed567441a81bda9cce378a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1559317058997507910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236387369531184224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5628f59eb9b5d2343b2e3cfd42fccdf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vision: {fileID: 5225296382402832954}
-  _canAttack: {fileID: 2849219291997011408}
-  AlarmDelay: 0.5
-  AttackCooldown: 1
-  _missHeroCooldown: 1
 --- !u!114 &3087277618771388352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +382,23 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 583815912c18b884399f68c90baf2c65, type: 3}
   - _id: Melee
     _clip: {fileID: 8300000, guid: bb9f3a021d7b856439007e137e625ee3, type: 3}
+--- !u!114 &2843839894550407673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236387369531184224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadac0efdd12a0b49beb39fc0a87c781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlarmDelay: 0.5
+  AttackCooldown: 1
+  MissHeroCooldown: 1
+  _vision: {fileID: 5225296382402832954}
+  _canAttack: {fileID: 2849219291997011408}
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559317058997507910}
+      - m_Target: {fileID: 2843839894550407673}
         m_MethodName: OnHeroInVision
         m_Mode: 0
         m_Arguments:
