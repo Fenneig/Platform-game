@@ -30,6 +30,7 @@ namespace PixelCrew.Creatures.Patroling
                 _creature.Direction = direction.normalized;
 
                 yield return null;
+                yield return null;
             }
         }
 

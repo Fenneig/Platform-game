@@ -397,7 +397,7 @@ MonoBehaviour:
   AlarmDelay: 0.5
   AttackCooldown: 1
   MissHeroCooldown: 1
-  _vision: {fileID: 5225296382402832954}
+  Vision: {fileID: 5225296382402832954}
   _canAttack: {fileID: 2849219291997011408}
 --- !u!1 &236387369689283899
 GameObject:

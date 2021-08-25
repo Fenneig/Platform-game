@@ -6,7 +6,6 @@ namespace PixelCrew.Creatures.Mobs
 {
     public class PatrolMobAi : MobAI
     {
-        [SerializeField] private LayerCheck _vision;
         [SerializeField] private LayerCheck _canAttack;
 
         public override void OnHeroInVision(GameObject go)
@@ -26,7 +25,7 @@ namespace PixelCrew.Creatures.Mobs
 
         private IEnumerator GoToHero()
         {
-            while (_vision.IsTouchingLayer)
+            while (Vision.IsTouchingLayer)
             {
                 if (_canAttack.IsTouchingLayer)
                 {

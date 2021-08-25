@@ -953,6 +953,7 @@ MonoBehaviour:
   AlarmDelay: 0.5
   AttackCooldown: 1
   MissHeroCooldown: 1
+  Vision: {fileID: 4504689912551824468}
   _dashSpeed: 5
   _jumpHeight: 2
   _threshold: 0.2

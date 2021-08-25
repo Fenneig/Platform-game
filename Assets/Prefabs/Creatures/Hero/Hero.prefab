@@ -4976,6 +4976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hero: {fileID: 236387369531184228}
+  _pauseMenuCaller: {fileID: 0}
 --- !u!114 &236387369531184228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5179,6 +5180,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: efe7cab6-d594-45fd-b0bb-cbf6f667adad
     m_ActionName: Hero/UseItem[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 236387369531184231}
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b6d936de-afd9-40e2-b663-a907afaeb713
+    m_ActionName: Hero/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5194,7 +5210,7 @@ Animator:
   m_GameObject: {fileID: 236387369531184224}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -8,9 +8,11 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(Rigidbody2D))]
     public class DashMobAI : MobAI
     {
+        [Space]
+        [Header("Stats")]
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _jumpHeight = 1f;
-        [SerializeField] private float _threshold = 0.5f;
+        [SerializeField] private float _reachTargetthreshold = 0.2f;
         [SerializeField] Collider2D _attackCollider;
 
         private Vector3 _targetPosition;
@@ -52,6 +54,15 @@ namespace PixelCrew.Creatures.Mobs
             Mob.Attack();
         }
 
+        public void OnGetHit() 
+        {
+            Mob.Speed = _baseMobSpeed;
+            MobAnimator.SetBool(IsAttacking, false);
+            _attackCollider.enabled = false;
+            if (IsDead) return;
+            StartState(Vision.IsTouchingLayer ? AgroToHero() : Patrol?.DoPatrol());
+        }
+
         public void OnDoDash()
         {
             StartState(Dash());
@@ -79,7 +90,6 @@ namespace PixelCrew.Creatures.Mobs
 
             StartState(Patrol?.DoPatrol());
         }
-
         private void HeightReachedCheck()
         {
             if (transform.position.y >= _targetPosition.y + _jumpHeight)
@@ -100,7 +110,7 @@ namespace PixelCrew.Creatures.Mobs
 
         private void TargetReachedCheck()
         {
-            if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _threshold)
+            if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _reachTargetthreshold)
             {
                 MobAnimator.SetBool(IsAttacking, false);
                 _attackCollider.enabled = false;

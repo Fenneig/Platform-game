@@ -1,5 +1,6 @@
 ﻿using PixelCrew.Components.GOBased;
 using PixelCrew.Creatures.Patroling;
+using PixelCrew.Components.ColliderBased;
 using System.Collections;
 using UnityEngine;
 
@@ -11,9 +12,14 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(Patrol))]
     public class MobAI : MonoBehaviour
     {
+        [Space]
+        [Header("Cooldowns")]
         [SerializeField] protected float AlarmDelay = 0.5f;
         [SerializeField] protected float AttackCooldown = 1f;
         [SerializeField] protected float MissHeroCooldown = 1f;
+        [Space]
+        [Header("Layer checks")]
+        [SerializeField] protected LayerCheck Vision;
 
         private Coroutine _current;
         protected GameObject Target;

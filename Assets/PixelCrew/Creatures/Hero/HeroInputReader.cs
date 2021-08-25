@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using PixelCrew.UI.PauseMenu;
 
 namespace PixelCrew.Creatures.Hero
 {
     public class HeroInputReader : MonoBehaviour
     {
         [SerializeField] private Hero _hero;
+        private PauseMenuCaller _pauseMenuCaller;
+
+        private void Awake()
+        {
+            _pauseMenuCaller = FindObjectOfType<PauseMenuCaller>();
+        }
 
         public void OnAttack(InputAction.CallbackContext context)
         {
@@ -34,6 +41,14 @@ namespace PixelCrew.Creatures.Hero
         public void OnUseItem(InputAction.CallbackContext context) 
         {
             if (context.canceled) _hero.UseItem();
+        }
+
+        public void OnPause(InputAction.CallbackContext context) 
+        {
+            if (context.started) 
+            {
+                _pauseMenuCaller?.SwitchPauseCondition();
+            }
         }
     }
 }
