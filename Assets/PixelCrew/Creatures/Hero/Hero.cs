@@ -6,6 +6,7 @@ using PixelCrew.Model;
 using PixelCrew.Utils;
 using PixelCrew.Components.Collectables;
 using UnityEditor.Animations;
+using PixelCrew.Model.Definitions;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -48,6 +49,7 @@ namespace PixelCrew.Creatures.Hero
         private bool _isDashing;
         private bool _isJumpButtonPressed;
         private bool _allowDoubleJump;
+        private UsableItemComponent _usableItem;
 
         private HealthComponent _healthComponent;
 
@@ -69,7 +71,7 @@ namespace PixelCrew.Creatures.Hero
         private int SwordCount => _session.Data.Inventory.Count("Sword");
 
         private int CoinCount => _session.Data.Inventory.Count("Coin");
-        public void SayHp() => Debug.Log($"I have {_session.Data.Hp} hp now!");
+
 
         protected override void Awake()
         {
@@ -83,10 +85,10 @@ namespace PixelCrew.Creatures.Hero
 
             _healthComponent = GetComponent<HealthComponent>();
 
-            _healthComponent.Health = _session.Data.Hp;
-            UpdateHeroWeapon();
+            _usableItem = GetComponent<UsableItemComponent>();
 
-            _session.Data.Inventory.MaxInventorySize = _maxInventorySize;
+            _healthComponent.Health = _session.Data.Hp.Value;
+            UpdateHeroWeapon();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
         }
@@ -103,9 +105,7 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnHealthChanged(int currentHealth)
         {
-            _session.Data.Hp = currentHealth;
-
-            SayHp();
+            _session.Data.Hp.Value = currentHealth;
         }
 
 
@@ -197,13 +197,13 @@ namespace PixelCrew.Creatures.Hero
             _allowDoubleJump = true;
         }
 
-        public void AddInInventory(string id, int count, bool isStackable)
+        public void AddInInventory(string id, int count)
         {
-            _session.Data.Inventory.Add(id, count, isStackable);
+            _session.Data.Inventory.Add(id, count);
         }
         public void UseItem()
         {
-            GetComponent<UsableItemComponent>().Use();
+            _usableItem.Use();
         }
 
 

@@ -13,7 +13,7 @@ namespace PixelCrew.Components.Collectables
         public void Add(GameObject go) 
         {
             var hero = go.GetComponent<Hero>();
-            if (hero != null) hero.AddInInventory(_item.Id, _item.Value, _item.IsStackable);
+            if (hero != null) hero.AddInInventory(_item.Id, _item.Value);
         }
     }
 }

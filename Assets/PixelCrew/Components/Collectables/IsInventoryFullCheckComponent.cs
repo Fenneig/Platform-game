@@ -1,5 +1,6 @@
 ﻿using PixelCrew.Model;
 using PixelCrew.Model.Data;
+using PixelCrew.Model.Definitions;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,7 +28,7 @@ namespace PixelCrew.Components.Collectables
 
         private bool CanInvoke() 
         {
-            if (_session.Data.Inventory.InventorySize < _session.Data.Inventory.MaxInventorySize) return true;
+            if (_session.Data.Inventory.InventorySize < DefsFacade.I.Player.MaxInventorySize) return true;
 
             return _session.Data.Inventory.isContainStackableItem(_itemData);
         }

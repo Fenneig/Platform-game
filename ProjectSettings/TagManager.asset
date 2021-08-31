@@ -16,6 +16,7 @@ TagManager:
   - Destructable
   - BigHp
   - Attached
+  - SFXAudioSource
   layers:
   - Default
   - TransparentFX

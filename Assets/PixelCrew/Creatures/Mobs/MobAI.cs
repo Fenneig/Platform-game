@@ -55,9 +55,9 @@ namespace PixelCrew.Creatures.Mobs
             IsDead = true;
             MobAnimator.SetBool(IsDeadKey, true);
 
+            StopAllCoroutines();
             StopMoving();
 
-            StopAllCoroutines();
         }
 
         protected virtual void SetDirectionToTarget()
@@ -84,3 +84,5 @@ namespace PixelCrew.Creatures.Mobs
 
     }
 }
+
+

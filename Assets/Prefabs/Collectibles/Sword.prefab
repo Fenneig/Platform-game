@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7424689441977666294}
   - component: {fileID: 5971109463561923778}
   - component: {fileID: -6432876932462948052}
+  - component: {fileID: -9151310437340264243}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -202,7 +203,6 @@ MonoBehaviour:
   _item:
     Id: Sword
     Value: 1
-    IsStackable: 1
 --- !u!114 &1492898031067897877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,3 +383,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-9151310437340264243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492898031067897870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b73275b24915742848057a75b6ad44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1

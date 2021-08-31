@@ -24,6 +24,6 @@ namespace PixelCrew.UI.PauseMenu
             var window = Resources.Load<GameObject>("UI/Pause/PauseSettingsWindow");
             var canvas = FindObjectOfType<Canvas>();
             Instantiate(window, canvas.transform);
-        }
+        } 
     }
 }

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3621709920005595967}
   - component: {fileID: -3955891990344103573}
   - component: {fileID: -2938964672645049121}
+  - component: {fileID: -8192913867129104560}
   m_Layer: 0
   m_Name: StuckedSword
   m_TagString: Untagged
@@ -242,7 +243,6 @@ MonoBehaviour:
   _item:
     Id: Sword
     Value: 1
-    IsStackable: 1
 --- !u!82 &-3955891990344103573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -352,9 +352,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91883ab2894585b4da38b645019c6f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: -3955891990344103573}
   _data:
   - _id: PickUp
     _clip: {fileID: 8300000, guid: d6a4e05ac1cb9c042ac127a600b41964, type: 3}
   - _id: Appears
     _clip: {fileID: 8300000, guid: 4268c31e861fd6f4ba22bc14705e7680, type: 3}
+--- !u!114 &-8192913867129104560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492898031067897870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b73275b24915742848057a75b6ad44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1

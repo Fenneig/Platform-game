@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1278854644824732279}
   - component: {fileID: 5789834753346340565}
   - component: {fileID: 1393183383987027540}
+  - component: {fileID: 3053220262700270622}
   m_Layer: 15
   m_Name: GoldCoin
   m_TagString: Gold
@@ -213,7 +214,6 @@ MonoBehaviour:
   _item:
     Id: Coin
     Value: 10
-    IsStackable: 1
 --- !u!114 &4544631302574790635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,3 +419,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3053220262700270622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280124599914855476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b73275b24915742848057a75b6ad44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1

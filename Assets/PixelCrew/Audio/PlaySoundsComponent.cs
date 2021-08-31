@@ -5,8 +5,14 @@ namespace PixelCrew.Audio
 {
     public class PlaySoundsComponent : MonoBehaviour
     {
-        [SerializeField] AudioSource _source;
-        [SerializeField] AudioData[] _data;
+        [SerializeField] private AudioData[] _data;
+        private AudioSource _source;
+
+        private void Start()
+        {
+            if (_source == null)
+                _source = GameObject.FindWithTag("SFXAudioSource").GetComponent<AudioSource>();
+        }
 
         public void Play(string id) 
         {

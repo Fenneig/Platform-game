@@ -12,6 +12,7 @@ namespace PixelCrew.Components.Health
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private ChangeHealthEvent _onChange;
 
+
         public void ModifyHealthByDelta(int delta)
         {
             if (_health <= 0) return;
@@ -29,7 +30,7 @@ namespace PixelCrew.Components.Health
             {
                 _onDie?.Invoke();
             }
-            else 
+            else
             {
                 UpdateHealth();
             }
@@ -47,7 +48,7 @@ namespace PixelCrew.Components.Health
         }
 
         [Serializable]
-        public class ChangeHealthEvent : UnityEvent<int> 
+        public class ChangeHealthEvent : UnityEvent<int>
         {
         }
 

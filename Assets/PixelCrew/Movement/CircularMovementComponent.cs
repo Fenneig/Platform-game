@@ -18,13 +18,9 @@ namespace PixelCrew.Movement
         private void Awake()
         {
             _isPlaying = true;
-
             _childCount = transform.childCount;
-
             _childRigidBody = new Rigidbody2D[_childCount];
-
             _startAngle = new float[_childCount];
-
             for (int i = 0; i < _childCount; i++)
             {
                 _startAngle[i] = 2 * Mathf.PI / _childCount * i;

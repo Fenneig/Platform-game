@@ -54,7 +54,7 @@ namespace PixelCrew.Creatures.Mobs
             Mob.Attack();
         }
 
-        public void OnGetHit() 
+        public void OnGetHit()
         {
             Mob.Speed = _baseMobSpeed;
             MobAnimator.SetBool(IsAttacking, false);
@@ -85,6 +85,7 @@ namespace PixelCrew.Creatures.Mobs
 
             StopMoving();
             yield return new WaitForSeconds(AttackCooldown);
+            _attackCollider.enabled = false;
 
             _isFixedOnTarget = false;
 
@@ -111,10 +112,7 @@ namespace PixelCrew.Creatures.Mobs
         private void TargetReachedCheck()
         {
             if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _reachTargetthreshold)
-            {
                 MobAnimator.SetBool(IsAttacking, false);
-                _attackCollider.enabled = false;
-            }
 
         }
     }

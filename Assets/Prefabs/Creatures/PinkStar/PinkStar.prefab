@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292855c474c1e35438160b357358c53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delta: -2
+  _delta: -1
 --- !u!58 &443375531
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -301,6 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7133911403276242952}
   - component: {fileID: 3828296515948612520}
+  - component: {fileID: 1093527698398431148}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -419,6 +420,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1093527698398431148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895688629560785561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b73275b24915742848057a75b6ad44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
 --- !u!1 &7600415184225791425
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91883ab2894585b4da38b645019c6f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 3828296515948612520}
   _data:
   - _id: Die
     _clip: {fileID: 8300000, guid: 0aa28467fde10a842a83a055c6f5fffd, type: 3}
@@ -956,7 +969,7 @@ MonoBehaviour:
   Vision: {fileID: 4504689912551824468}
   _dashSpeed: 5
   _jumpHeight: 2
-  _threshold: 0.2
+  _reachTargetthreshold: 0.2
   _attackCollider: {fileID: 443375531}
 --- !u!1 &8450993479556336469
 GameObject:

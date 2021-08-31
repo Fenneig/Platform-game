@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8707636160584083828}
   - component: {fileID: 8031951765263667296}
+  - component: {fileID: 8147507957493831635}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -173,6 +174,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8147507957493831635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3532161464009796912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b73275b24915742848057a75b6ad44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
 --- !u!1 &5220568609619919677
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91883ab2894585b4da38b645019c6f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 8031951765263667296}
   _data:
   - _id: Hurt
     _clip: {fileID: 8300000, guid: 583815912c18b884399f68c90baf2c65, type: 3}

@@ -10,38 +10,38 @@ namespace PixelCrew.Model.Data
     {
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
 
-        private int _maxInventorySize;
-
-        public int MaxInventorySize
-        {
-            get { return _maxInventorySize; }
-            set { _maxInventorySize = value; }
-        }
-
         public int InventorySize => _inventory.Count;
 
         public delegate void OnInventoryChanged(string id, int value);
 
         public OnInventoryChanged OnChanged;
 
-        public void Add(string id, int value, bool isStackable)
+        public void Add(string id, int value)
         {
             if (value <= 0) return;
 
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
 
-            var item = GetItem(id);
-
-            if (item == null || !isStackable)
+            if (itemDef.IsStackable)
             {
-                item = new InventoryItemData(id);
-                _inventory.Add(item);
-                item.IsStackable = isStackable;
+                var item = GetItem(id);
+                if (item == null)
+                {
+                    item = new InventoryItemData(id);
+                    _inventory.Add(item);
+                }
+
+                item.Value += value;
             }
-
-            item.Value += value;
-
+            else
+            {
+                for (int i = 0; i < value; i++)
+                {
+                    var item = new InventoryItemData(id) { Value = 1 };
+                    _inventory.Add(item);
+                }
+            }
             OnChanged?.Invoke(id, Count(id));
         }
 
@@ -53,20 +53,28 @@ namespace PixelCrew.Model.Data
             if (itemDef.IsVoid) return;
 
             var item = GetItem(id);
-
             if (item == null) return;
 
-            item.Value -= value;
+            if (itemDef.IsStackable)
+            {
+                item.Value -= value;
+
+                if (item.Value <= 0) _inventory.Remove(item);
+            }
+            else 
+            {
+                for (int i = 0; i < value; i++) 
+                {
+                    _inventory.Remove(item);
+                }
+            }
 
             OnChanged?.Invoke(id, Count(id));
-
-
-            if (item.Value <= 0) _inventory.Remove(item);
         }
 
         public bool isContainStackableItem(InventoryItemData item)
         {
-            if (item.IsStackable)
+            if (DefsFacade.I.Items.Get(item.Id).IsStackable)
             {
                 foreach (var itemData in _inventory)
                 {
