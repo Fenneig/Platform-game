@@ -229,7 +229,7 @@ Transform:
   - {fileID: 1791387901}
   - {fileID: 494641436}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &125807953
 PrefabInstance:
@@ -7496,7 +7496,7 @@ Transform:
   m_Children:
   - {fileID: 181822444}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1629121360
 PrefabInstance:

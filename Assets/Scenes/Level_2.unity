@@ -24876,11 +24876,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenuCaller
       objectReference: {fileID: 0}
-    - target: {fileID: 4661613360821403583, guid: 419c0c79e5913e4418c871978a78b962,
-        type: 3}
-      propertyPath: m_ReferencePixelsPerUnit
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 8053195919042661458, guid: 419c0c79e5913e4418c871978a78b962,
         type: 3}
       propertyPath: m_Pivot.x

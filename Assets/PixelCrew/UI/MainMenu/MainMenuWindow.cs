@@ -18,7 +18,7 @@ namespace PixelCrew.UI.MainMenu
         public virtual void OnShowSettings()
         {
             var window = Resources.Load<GameObject>("UI/Settings/SettingsWindow");
-            var canvas = FindObjectOfType<Canvas>();
+            var canvas = GetComponentInParent<Canvas>();
             Instantiate(window, canvas.transform);
         }
 

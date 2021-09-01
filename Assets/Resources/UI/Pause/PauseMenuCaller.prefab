@@ -111,3 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec3a66aa92743847ad3f156eb64ae27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingsMenuCanvas: {fileID: 382491519712605819}

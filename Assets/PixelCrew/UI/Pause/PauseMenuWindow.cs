@@ -22,7 +22,7 @@ namespace PixelCrew.UI.PauseMenu
         public override void OnShowSettings()
         {
             var window = Resources.Load<GameObject>("UI/Pause/PauseSettingsWindow");
-            var canvas = FindObjectOfType<Canvas>();
+            var canvas = GetComponentInParent<Canvas>();
             Instantiate(window, canvas.transform);
         } 
     }

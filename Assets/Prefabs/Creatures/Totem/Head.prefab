@@ -692,6 +692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 321018758661418899, guid: 8177bb13ea067594bb4d0b3106d26280,
+        type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 321018758661418900, guid: 8177bb13ea067594bb4d0b3106d26280,
         type: 3}
       propertyPath: _healthComponent
@@ -705,7 +710,7 @@ PrefabInstance:
     - target: {fileID: 321018758661418901, guid: 8177bb13ea067594bb4d0b3106d26280,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -991309589
+      value: 943697553
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8177bb13ea067594bb4d0b3106d26280, type: 3}

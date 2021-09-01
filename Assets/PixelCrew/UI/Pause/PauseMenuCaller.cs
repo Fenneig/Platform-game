@@ -6,7 +6,6 @@ namespace PixelCrew.UI.PauseMenu
     public class PauseMenuCaller : MonoBehaviour
     {
         private bool _isPaused;
-        
 
         public void SwitchPauseCondition()
         {
@@ -29,8 +28,8 @@ namespace PixelCrew.UI.PauseMenu
             else
             {
                 var window = Resources.Load<GameObject>("UI/Pause/PauseMenuWindow");
-                var canvas = GetComponent<Canvas>();
-                Instantiate(window, canvas.transform);
+                var canvasTransform = GetComponentInParent<Canvas>().transform;
+                Instantiate(window, canvasTransform);
                 _isPaused = true;
                 Time.timeScale = 0f;
             }
