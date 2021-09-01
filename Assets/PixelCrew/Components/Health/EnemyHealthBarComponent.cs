@@ -7,12 +7,10 @@ namespace PixelCrew.Components.Health
     {
         [SerializeField] private ProgressBarWidget _healthBar;
         [SerializeField] private HealthComponent _healthComponent;
-        [SerializeField] private Transform _parentTransform;
 
         private void Start()
         {
             _healthComponent.Health.OnChanged += OnHealthChange;
-            _parentTransform = gameObject.transform.root;
             GetComponent<Canvas>().enabled = false;
         }
 
@@ -23,7 +21,7 @@ namespace PixelCrew.Components.Health
 
         private void UpdateScale() 
         {
-            if (_parentTransform.localScale.x != gameObject.transform.lossyScale.x)
+            if (gameObject.transform.root.localScale.x != gameObject.transform.lossyScale.x)
                 gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
         }
 

@@ -19,6 +19,7 @@ namespace PixelCrew.UI.PauseMenu
             _closeAction = () => reloadScene.ReloadScene();
             Close();
         }
+        //Анимации не проигрываются, так как я ставлю Time.timeScale = 0 во время паузы. Для этого я создал отдельное SettingsWindow без анимаций.
         public override void OnShowSettings()
         {
             var window = Resources.Load<GameObject>("UI/Pause/PauseSettingsWindow");
