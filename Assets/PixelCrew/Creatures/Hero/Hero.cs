@@ -21,6 +21,7 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashDuratation;
         [SerializeField] private int _maxInventorySize;
+
         [Space]
         [Header("Checkers")]
         [SerializeField] private CheckCircleOverlap _interactionRadius;
@@ -87,7 +88,7 @@ namespace PixelCrew.Creatures.Hero
 
             _usableItem = GetComponent<UsableItemComponent>();
 
-            _healthComponent.Health = _session.Data.Hp.Value;
+            _healthComponent.Health = _session.Data.Hp;
             UpdateHeroWeapon();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
@@ -105,7 +106,8 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnHealthChanged(int currentHealth)
         {
-            _session.Data.Hp.Value = currentHealth;
+            var newHealth = currentHealth > DefsFacade.I.Player.MaxHealth ? DefsFacade.I.Player.MaxHealth : currentHealth;
+            _session.Data.Hp.Value = newHealth;
         }
 
 
@@ -206,7 +208,6 @@ namespace PixelCrew.Creatures.Hero
             _usableItem.Use();
         }
 
-
         public override void TakeDamage()
         {
             base.TakeDamage();
@@ -252,6 +253,7 @@ namespace PixelCrew.Creatures.Hero
             if (SwordCount <= 0) return;
             _throwChargeTime.Reset();
         }
+
         //При отпускании кнопки броска, срабатывает либо бросок одним снарядом, либо несколькими если счетчик времени сильного броска прошел 
         public void ThrowReleased()
         {
