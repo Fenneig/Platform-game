@@ -15,5 +15,4 @@ public class CaveEchoComponent : MonoBehaviour
     {
         if (collision.CompareTag(_tag)) _roomEffectScale.SetFloat("CaveEcho", -10000f);
     }
-
 }

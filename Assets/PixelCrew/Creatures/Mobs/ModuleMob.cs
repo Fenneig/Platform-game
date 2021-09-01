@@ -21,7 +21,7 @@ namespace PixelCrew.Creatures.Mobs
             _moduleInstances = new GameObject[_bodyLength];
 
             for (int i = 0; i < _bodyLength - 1; i++)
-            {
+            {                
                 _moduleInstances[i] = Instantiate(_body, _nextPosition, Quaternion.identity, gameObject.transform);
                 _nextPosition.y += _positionDifference;
             }
