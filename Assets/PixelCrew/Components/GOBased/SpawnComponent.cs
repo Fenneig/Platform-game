@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PixelCrew.Utils;
+using System;
 using UnityEngine;
 
 namespace PixelCrew.Components.GOBased
@@ -25,7 +26,7 @@ namespace PixelCrew.Components.GOBased
 
                 var position = _target.transform.position + _prefab.transform.position;
 
-                var instance = Instantiate(_prefab, position, rotation);
+                var instance = SpawnUtils.Spawn(_prefab, position, rotation);
                 instance.transform.localScale = gameObject.transform.lossyScale;
             }
         }

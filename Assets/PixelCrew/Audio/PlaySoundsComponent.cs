@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PixelCrew.Utils;
+using System;
 using UnityEngine;
 
 namespace PixelCrew.Audio
@@ -11,7 +12,7 @@ namespace PixelCrew.Audio
         private void Start()
         {
             if (_source == null)
-                _source = GameObject.FindWithTag("SFXAudioSource").GetComponent<AudioSource>();
+                _source = AudioUtils.FindSfxSource();
         }
 
         public void Play(string id) 
