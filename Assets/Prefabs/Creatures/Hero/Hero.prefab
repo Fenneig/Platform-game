@@ -4878,7 +4878,6 @@ GameObject:
   - component: {fileID: 5931501552971627509}
   - component: {fileID: 1350154040359889875}
   - component: {fileID: 8049762086197870630}
-  - component: {fileID: 9196024648457309260}
   - component: {fileID: 8111109843934264590}
   - component: {fileID: 921639252288293449}
   m_Layer: 11
@@ -4998,17 +4997,17 @@ MonoBehaviour:
   Particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
   _dashDuratation: 0.1
-  _maxInventorySize: 5
   _interactionRadius: {fileID: 4617069469202346616}
   _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
   _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
   _dropCoinsOnHitParticle: {fileID: 236387368384244206}
-  _numberOfThrows: 3
+  _throwSpawner: {fileID: 4105314346972055519}
+  _numChargedThrows: 3
   _throwCooldown:
-    _value: 1
+    _value: 0.5
   _throwChargeTime:
     _value: 1
-  _timeBetweenChargedThrows: 0.4
+  _chargeThrowDelay: 0.4
 --- !u!50 &236387369531184235
 Rigidbody2D:
   serializedVersion: 4
@@ -5192,6 +5191,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b6d936de-afd9-40e2-b663-a907afaeb713
     m_ActionName: Hero/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 236387369531184231}
+        m_MethodName: OnItemSelection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd234384-f067-42b0-8ef6-599e699e6b61
+    m_ActionName: Hero/ItemSelection[/Keyboard/z,/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5240,7 +5254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc54874be79e0624b9a54736e04835bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health:
+    _value: 0
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -5349,46 +5364,6 @@ MonoBehaviour:
   _platformLayer:
     serializedVersion: 2
     m_Bits: 1024
---- !u!114 &9196024648457309260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236387369531184224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7c5738980e59d4789d30db48256720, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemId: Health potion
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9030858524774609204, guid: 7cf7722dc6591a1428becf580e426d62,
-          type: 3}
-        m_MethodName: Apply
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 236387369531184224}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8111109843934264590}
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Potion
-          m_BoolArgument: 0
-        m_CallState: 2
-  _removeAfterUse: 1
 --- !u!114 &8111109843934264590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5401,7 +5376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91883ab2894585b4da38b645019c6f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
   _data:
   - _id: Hurt
     _clip: {fileID: 8300000, guid: 8d7455221a5ef46459d729d23bc94305, type: 3}
@@ -5617,7 +5591,7 @@ GameObject:
   - component: {fileID: 5994484091860280218}
   - component: {fileID: 4105314346972055519}
   m_Layer: 0
-  m_Name: ThrowSwordSpawnPosition
+  m_Name: ThrowSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

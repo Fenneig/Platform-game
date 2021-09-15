@@ -14,12 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: Coin
-    _isStackable: 1
+    _icon: {fileID: -2322180950842035098, guid: 114d873e6f3927a46b122355cb10b388,
+      type: 3}
+    _tags: 0000000001000000
   - _id: Sword
-    _isStackable: 1
+    _icon: {fileID: 21300000, guid: b33613b56c2c89d419e29f8807998d81, type: 3}
+    _tags: 000000000100000002000000
   - _id: Key
-    _isStackable: 0
+    _icon: {fileID: 21300000, guid: 4bfa6bf9f12788b40b07a65fa2e0b292, type: 3}
+    _tags: 01000000
   - _id: Health potion
-    _isStackable: 0
+    _icon: {fileID: 3714227102187029162, guid: 983ec11098d16d94cbe3064a215b128d, type: 3}
+    _tags: 01000000
   - _id: Big health potion
-    _isStackable: 0
+    _icon: {fileID: -8603437905158598775, guid: 462970d7986259d43bb492b9d1e2b4fa,
+      type: 3}
+    _tags: 01000000
+  - _id: Small health potion
+    _icon: {fileID: 9190652321618399529, guid: b266b1ebea48ce54c970aea12e7e7796, type: 3}
+    _tags: 01000000
+  - _id: PearlProjectile
+    _icon: {fileID: 21300000, guid: 312622326c2bd42468409296280497e6, type: 3}
+    _tags: 000000000100000002000000

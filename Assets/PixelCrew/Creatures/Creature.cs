@@ -188,16 +188,5 @@ namespace PixelCrew.Creatures
             Sounds.Play("Melee");
         }
 
-        public void FreezeGravity()
-        {
-            Rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
-            Rigidbody.freezeRotation = true;
-        }
-
-        public void UnFreezeGravity()
-        {
-            Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
-
     }
 }

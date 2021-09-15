@@ -1,6 +1,7 @@
 ﻿using PixelCrew.Model.Definitions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace PixelCrew.Model.Data
@@ -23,7 +24,7 @@ namespace PixelCrew.Model.Data
             var itemDef = DefsFacade.I.Items.Get(id);
             if (itemDef.IsVoid) return;
 
-            if (itemDef.IsStackable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 var item = GetItem(id);
                 if (item == null)
@@ -55,7 +56,7 @@ namespace PixelCrew.Model.Data
             var item = GetItem(id);
             if (item == null) return;
 
-            if (itemDef.IsStackable)
+            if (itemDef.HasTag(ItemTag.Stackable))
             {
                 item.Value -= value;
 
@@ -74,7 +75,7 @@ namespace PixelCrew.Model.Data
 
         public bool isContainStackableItem(InventoryItemData item)
         {
-            if (DefsFacade.I.Items.Get(item.Id).IsStackable)
+            if (DefsFacade.I.Items.Get(item.Id).HasTag(ItemTag.Stackable))
             {
                 foreach (var itemData in _inventory)
                 {
@@ -94,8 +95,22 @@ namespace PixelCrew.Model.Data
             return null;
         }
 
-        public int Count(string id)
+        public InventoryItemData[] GetAll(params ItemTag[] tags) 
         {
+            var retValue = new List<InventoryItemData>();
+
+            foreach (var item in _inventory) 
+            {
+                var itemDef = DefsFacade.I.Items.Get(item.Id);
+                var isAllRequirementsMet = tags.All(x => itemDef.HasTag(x));
+                if (isAllRequirementsMet) retValue.Add(item); 
+            }
+
+            return retValue.ToArray();
+        }
+
+        public int Count(string id)
+        { 
             var count = 0;
 
             foreach (var item in _inventory)

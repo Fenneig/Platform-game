@@ -59,8 +59,5 @@ namespace PixelCrew.Components.Health
         public class ChangeHealthEvent : UnityEvent<int>
         {
         }
-
     }
-
-
 }

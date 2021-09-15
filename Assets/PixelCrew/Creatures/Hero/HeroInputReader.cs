@@ -18,7 +18,7 @@ namespace PixelCrew.Creatures.Hero
         {
             if (context.started) _hero.Attack();
         }
-        public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = (context.ReadValue<Vector2>());
+        public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = context.ReadValue<Vector2>();
 
         public void OnDash(InputAction.CallbackContext contex) => _hero.DashTrigger = contex.ReadValue<float>();
 
@@ -34,8 +34,8 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnThrow(InputAction.CallbackContext context)
         {
-            if (context.started) _hero.ThrowPushed();
-            if (context.canceled) _hero.ThrowReleased();
+            if (context.started) _hero.StartThrowing();
+            if (context.canceled) _hero.PerformThrowing();
         }
 
         public void OnUseItem(InputAction.CallbackContext context) 
@@ -45,10 +45,12 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnPause(InputAction.CallbackContext context) 
         {
-            if (context.started) 
-            {
-                _pauseMenuCaller?.SwitchPauseCondition();
-            }
+            if (context.started) _pauseMenuCaller?.SwitchPauseCondition();
+        }
+       
+        public void OnItemSelection(InputAction.CallbackContext context)
+        {
+            if (context.started) _hero.SelectItemByDirection(context.ReadValue<float>());
         }
     }
 }

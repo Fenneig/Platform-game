@@ -17,6 +17,14 @@ namespace PixelCrew.Model.Data.Properties
             return new ActionDisposable(() => OnChanged -= call);
         }
 
+        public IDisposable SubscribeAndInvoke(OnPropertyChanged call)
+        {
+            OnChanged += call;
+            var dispose = new ActionDisposable(() => OnChanged -= call);
+            call(_value, _value);
+            return dispose;
+        }
+
         public virtual TPropertyType Value 
         {
             get => _value;
@@ -26,7 +34,6 @@ namespace PixelCrew.Model.Data.Properties
                 if (isSame) return;
                 var oldValue = _value;
                 _value = value;
-
                 InvokeChangedEvent(_value, oldValue);
             }
         }
