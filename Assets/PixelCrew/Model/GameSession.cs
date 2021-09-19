@@ -1,4 +1,5 @@
 ﻿using PixelCrew.Model.Data;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ namespace PixelCrew.Model
         [SerializeField] private PlayerData _data;
         public PlayerData Data => _data;
         private PlayerData _save;
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
         public QuickInventoryModel QuickInventory { get; private set; }
 
         private void Awake()
@@ -22,14 +24,15 @@ namespace PixelCrew.Model
             else
             {
                 Save();
-                DontDestroyOnLoad(this);
                 InitModels();
+                DontDestroyOnLoad(this);
             }
         }
 
         private void InitModels()
         {
             QuickInventory = new QuickInventoryModel(_data);
+            _trash.Retain(QuickInventory);
         }
 
         private void LoadHud()
@@ -42,13 +45,11 @@ namespace PixelCrew.Model
             var sessions = FindObjectsOfType<GameSession>();
             foreach (var gameSession in sessions)
             {
-                if (gameSession != this)
-                    return true;
+                if (gameSession != this) return true;
             }
 
             return false;
         }
-
 
         public void Save()
         {
@@ -58,6 +59,11 @@ namespace PixelCrew.Model
         public void Load()
         {
             _data = _save.Clone();
+        }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

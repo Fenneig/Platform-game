@@ -1,6 +1,7 @@
 ﻿using PixelCrew.Model;
 using PixelCrew.Model.Definitions;
 using PixelCrew.UI.Widgets;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
 namespace PixelCrew.UI.HUD
@@ -9,13 +10,18 @@ namespace PixelCrew.UI.HUD
     {
         [SerializeField] private ProgressBarWidget _healthBar;
 
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
         private GameSession _session;
 
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            _session.Data.Hp.OnChanged += OnHealthChange;
-            OnHealthChange(_session.Data.Hp.Value, 0);
+            if (_session != null)
+            {
+                _trash.Retain(_session.Data.Hp.Subscibe(OnHealthChange));
+                OnHealthChange(_session.Data.Hp.Value, 0);
+            }
         }
 
         private void OnHealthChange(int newValue, int oldValue)
@@ -27,7 +33,7 @@ namespace PixelCrew.UI.HUD
 
         private void OnDestroy()
         {
-            _session.Data.Hp.OnChanged -= OnHealthChange;
+            _trash.Dispose();
         }
     }
 }

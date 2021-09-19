@@ -16,12 +16,16 @@ MonoBehaviour:
   - _id: Health potion
     _usableItem: {fileID: 9030858524774609613, guid: 7cf7722dc6591a1428becf580e426d62,
       type: 3}
+    _tag: 0
   - _id: Small health potion
     _usableItem: {fileID: 1713221135739271146, guid: 4e47ff8a4a9195d4ab38ace711776f18,
       type: 3}
+    _tag: 0
   - _id: Big health potion
     _usableItem: {fileID: 1713221135739271146, guid: 8efeb468cb6decd4f8136b04e9a94eaa,
       type: 3}
+    _tag: 0
   - _id: Key
     _usableItem: {fileID: 6607952807655113687, guid: e8621651bc087994fa63029635eb2c83,
       type: 3}
+    _tag: 1

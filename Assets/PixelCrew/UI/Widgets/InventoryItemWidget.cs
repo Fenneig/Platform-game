@@ -20,7 +20,8 @@ namespace Assets.PixelCrew.UI.Widgets
         private void Start()
         {
             var session = FindObjectOfType<GameSession>();
-            _trash.Retain(session.QuickInventory.SelectedIndex.SubscribeAndInvoke(OnIndexChanged));
+            var index = session.QuickInventory.SelectedIndex;
+            _trash.Retain(index.SubscribeAndInvoke(OnIndexChanged));
         }
 
         private void OnIndexChanged(int newValue, int oldValue)
@@ -28,7 +29,7 @@ namespace Assets.PixelCrew.UI.Widgets
             _selection.SetActive(_index == newValue);
         }
 
-        public void SetData(InventoryItemData item, int index) 
+        public void SetData(InventoryItemData item, int index)
         {
             _index = index;
             var def = DefsFacade.I.Items.Get(item.Id);

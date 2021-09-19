@@ -29,6 +29,7 @@ namespace PixelCrew.Model.Definitions
             public GameObject UsableItem => _usableItem;
 
             public UseTypeTag Tag => _tag;
+
         }
     }
 }
