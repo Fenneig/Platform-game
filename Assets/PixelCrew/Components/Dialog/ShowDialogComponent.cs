@@ -1,5 +1,5 @@
 ﻿using Assets.PixelCrew.Model.Definitions;
-using PixelCrew.Model.Data;
+using PixelCrew.Model.Data.Dialog;
 using PixelCrew.UI.HUD.Dialog;
 using System;
 using UnityEngine;

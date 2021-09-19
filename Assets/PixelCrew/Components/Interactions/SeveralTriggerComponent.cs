@@ -6,11 +6,11 @@ namespace PixelCrew.Components.Interactions
     public class SeveralTriggerComponent : MonoBehaviour
     {
         [SerializeField] private UnityEvent _action;
-        [SerializeField] private int[] _trigger;
+        [SerializeField] private bool[] _trigger;
 
         public void SwitchTrigger(int triggerNumber) 
         {
-            _trigger[triggerNumber]++;
+            _trigger[triggerNumber] = !_trigger[triggerNumber];
             
             CheckActivate();
         }
@@ -19,7 +19,7 @@ namespace PixelCrew.Components.Interactions
         {
             bool flag = true;
             
-            foreach (int i in _trigger) if (i % 2 == 0) flag = false;
+            foreach (bool checkTrigger in _trigger) if (!checkTrigger) flag = false;
 
             if (flag) _action?.Invoke();
         }

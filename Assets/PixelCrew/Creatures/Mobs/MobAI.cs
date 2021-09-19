@@ -57,7 +57,6 @@ namespace PixelCrew.Creatures.Mobs
 
             StopAllCoroutines();
             StopMoving();
-
         }
 
         protected virtual void SetDirectionToTarget()

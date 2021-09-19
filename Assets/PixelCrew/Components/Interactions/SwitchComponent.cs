@@ -8,10 +8,20 @@ namespace PixelCrew.Components.Interactions
         [SerializeField] private bool _state;
         [SerializeField] private string _animationKey;
 
+        private bool _isLocked = false;
+
         public void Switch()
         {
-            _state = !_state;
-            _animator.SetBool(_animationKey, _state);
+            if (!_isLocked)
+            {
+                _state = !_state;
+                _animator.SetBool(_animationKey, _state);
+            }
+        }
+
+        public void LockSwitching() 
+        {
+            _isLocked = true;
         }
 
         [ContextMenu("Switch")]

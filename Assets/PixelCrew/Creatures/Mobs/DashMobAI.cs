@@ -50,7 +50,6 @@ namespace PixelCrew.Creatures.Mobs
             Mob.Speed = _dashSpeed;
             MobAnimator.SetBool(IsAttacking, true);
             _attackCollider.enabled = true;
-
             Mob.Attack();
         }
 
@@ -89,8 +88,9 @@ namespace PixelCrew.Creatures.Mobs
 
             _isFixedOnTarget = false;
 
-            StartState(Patrol?.DoPatrol());
+            if (!IsDead) StartState(Patrol?.DoPatrol());
         }
+
         private void HeightReachedCheck()
         {
             if (transform.position.y >= _targetPosition.y + _jumpHeight)
