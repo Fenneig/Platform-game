@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace PixelCrew.Components.Collectables
 {
-    public class CollectHasteComponent : MonoBehaviour
+    public class CollectHasteComponent : MonoBehaviour, IUsable
     {
         [SerializeField] private float _hasteMultiplier = 3f;
         [SerializeField] private float _hasteTime = 1f;
@@ -34,5 +34,7 @@ namespace PixelCrew.Components.Collectables
         {
             _destroyObject?.Invoke();
         }
+
+        public void Use(GameObject target) => Collect();
     }
 }

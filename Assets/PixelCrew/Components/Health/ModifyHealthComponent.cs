@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Creatures.Hero;
+using UnityEngine;
 
 namespace PixelCrew.Components.Health
 {
-    public class ModifyHealthComponent : MonoBehaviour
+    public class ModifyHealthComponent : MonoBehaviour, IUsable
     {
         [SerializeField] private int _delta;
 
@@ -15,5 +16,7 @@ namespace PixelCrew.Components.Health
 
             if (healthComponent != null) healthComponent.ModifyHealthByDelta(_delta);
         }
+
+        public void Use(GameObject target) => Apply(target);
     }
 }

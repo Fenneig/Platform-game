@@ -333,12 +333,17 @@ namespace PixelCrew.Creatures.Hero
             var usableItemDef = DefsFacade.I.Usable.Get(usableItemId);
             if (!string.IsNullOrEmpty(usableItemDef.Id))
             {
-                usableItemDef.UsableItem.GetComponent<ModifyHealthComponent>()?.Apply(gameObject);
+                usableItemDef.UsableItem.GetComponent<IUsable>()?.Use(gameObject);
 
                 Sounds.Play("Potion");
 
                 _session.Data.Inventory.Remove(usableItemId, 1);
             }
         }
+    }
+
+    public interface IUsable
+    {
+        void Use(GameObject target);
     }
 }
