@@ -395,11 +395,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadac0efdd12a0b49beb39fc0a87c781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AlarmDelay: 0.5
-  AttackCooldown: 1
-  MissHeroCooldown: 1
-  Vision: {fileID: 5225296382402832954}
+  _alarmDelay: 0.5
+  _attackCooldown: 1
+  _missHeroCooldown: 1
+  _vision: {fileID: 5225296382402832954}
   _canAttack: {fileID: 2849219291997011408}
+  _horizontalTrheshold: 0.2
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0

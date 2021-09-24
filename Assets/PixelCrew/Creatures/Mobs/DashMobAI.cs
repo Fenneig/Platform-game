@@ -43,7 +43,7 @@ namespace PixelCrew.Creatures.Mobs
         protected override IEnumerator AgroToHero()
         {
             Particles.Spawn("Exclamation");
-            yield return new WaitForSeconds(AlarmDelay);
+            yield return new WaitForSeconds(_alarmDelay);
 
             _isFixedOnTarget = true;
 
@@ -59,7 +59,7 @@ namespace PixelCrew.Creatures.Mobs
             MobAnimator.SetBool(IsAttacking, false);
             _attackCollider.enabled = false;
             if (IsDead) return;
-            StartState(Vision.IsTouchingLayer ? AgroToHero() : Patrol?.DoPatrol());
+            StartState(_vision.IsTouchingLayer ? AgroToHero() : Patrol?.DoPatrol());
         }
 
         public void OnDoDash()
@@ -83,7 +83,7 @@ namespace PixelCrew.Creatures.Mobs
             Mob.Speed = _baseMobSpeed;
 
             StopMoving();
-            yield return new WaitForSeconds(AttackCooldown);
+            yield return new WaitForSeconds(_attackCooldown);
             _attackCollider.enabled = false;
 
             _isFixedOnTarget = false;

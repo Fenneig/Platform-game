@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 2438997734122691207}
   - component: {fileID: 1428024953984630729}
   - component: {fileID: 6478766122924639086}
+  - component: {fileID: 928843105145002949}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -211,6 +212,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Options
+--- !u!114 &928843105145002949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696526813642268453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd837bc23c0444da34c2e43ec5465a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: button_options
+  _capitalize: 0
 --- !u!1 &802368204410989271
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +311,7 @@ GameObject:
   - component: {fileID: 1752691772319093017}
   - component: {fileID: 6862883632094866687}
   - component: {fileID: 8032322639571669645}
+  - component: {fileID: 4432517594633168957}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -351,7 +367,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f0b19346dd4e9824f91f76dc19b4dc27, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -363,6 +379,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: SFX
+--- !u!114 &4432517594633168957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469955938004882230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd837bc23c0444da34c2e43ec5465a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: option_sfx
+  _capitalize: 0
 --- !u!1 &1938742071474193923
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +404,7 @@ GameObject:
   - component: {fileID: 4625203794669657715}
   - component: {fileID: 3390258749667468962}
   - component: {fileID: 1645002361085136129}
+  - component: {fileID: 6671873785563266436}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -443,6 +474,20 @@ MonoBehaviour:
   m_Text: 'Music
 
 '
+--- !u!114 &6671873785563266436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938742071474193923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd837bc23c0444da34c2e43ec5465a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: option_music
+  _capitalize: 0
 --- !u!1 &2162426718551716313
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +499,7 @@ GameObject:
   - component: {fileID: 1999878883212100320}
   - component: {fileID: 1655940833526609429}
   - component: {fileID: 238633334327408587}
+  - component: {fileID: 1909117280430354039}
   m_Layer: 5
   m_Name: PressedText
   m_TagString: Untagged
@@ -523,6 +569,20 @@ MonoBehaviour:
   m_Text: 'OK
 
 '
+--- !u!114 &1909117280430354039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162426718551716313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd837bc23c0444da34c2e43ec5465a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: button_back
+  _capitalize: 1
 --- !u!1 &2258756191454960019
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1048,7 @@ GameObject:
   - component: {fileID: 855075138603719155}
   - component: {fileID: 685166529176700254}
   m_Layer: 5
-  m_Name: OkButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,6 +1409,7 @@ GameObject:
   - component: {fileID: 5163206116739966684}
   - component: {fileID: 8380442709928476498}
   - component: {fileID: 4409947951385810736}
+  - component: {fileID: 4634757124257036012}
   m_Layer: 5
   m_Name: NormalText
   m_TagString: Untagged
@@ -1418,6 +1479,20 @@ MonoBehaviour:
   m_Text: 'OK
 
 '
+--- !u!114 &4634757124257036012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754710417141073376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd837bc23c0444da34c2e43ec5465a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: button_back
+  _capitalize: 1
 --- !u!1 &8895654955115558847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1543,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b0b3b2bca1db1824993bcbaa11b6fc1a, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

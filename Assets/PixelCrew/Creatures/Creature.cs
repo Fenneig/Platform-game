@@ -36,7 +36,7 @@ namespace PixelCrew.Creatures
 
         //переменные-ключи для аниматора
         protected static readonly int IsGroundedKey = Animator.StringToHash("is-ground");
-        protected static readonly int IsRuningKey = Animator.StringToHash("is-running");
+        protected static readonly int IsRunningKey = Animator.StringToHash("is-running");
         protected static readonly int VerticaVelocityKey = Animator.StringToHash("vertical-velocity");
         protected static readonly int HitKey = Animator.StringToHash("hit");
         protected static readonly int JumpKey = Animator.StringToHash("jump");
@@ -95,7 +95,7 @@ namespace PixelCrew.Creatures
         private void AnimatorSettings()
         {
             Animator.SetBool(IsGroundedKey, IsGrounded);
-            Animator.SetBool(IsRuningKey, _direction.x != 0);
+            Animator.SetBool(IsRunningKey, _direction.x != 0);
             Animator.SetFloat(VerticaVelocityKey, Rigidbody.velocity.y);
         }
 

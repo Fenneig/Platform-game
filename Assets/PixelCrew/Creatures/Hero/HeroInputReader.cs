@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using PixelCrew.UI.PauseMenu;
+using PixelCrew.UI.Windows.PauseMenu;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -20,7 +20,7 @@ namespace PixelCrew.Creatures.Hero
         }
         public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = context.ReadValue<Vector2>();
 
-        public void OnDash(InputAction.CallbackContext contex) => _hero.DashTrigger = contex.ReadValue<float>();
+        public void OnDash(InputAction.CallbackContext context) => _hero.DashTrigger = context.ReadValue<float>();
 
         public void OnInteract(InputAction.CallbackContext context)
         {

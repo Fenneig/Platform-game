@@ -1,13 +1,14 @@
 ﻿using PixelCrew.Model;
 using PixelCrew.Model.Data;
 using PixelCrew.Model.Definitions;
+using PixelCrew.UI.Widgets;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.PixelCrew.UI.Widgets
 {
-    public class InventoryItemWidget : MonoBehaviour
+    public class InventoryItemWidget : MonoBehaviour, IItemRenderer<InventoryItemData>
     {
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _selection;
@@ -29,12 +30,12 @@ namespace Assets.PixelCrew.UI.Widgets
             _selection.SetActive(_index == newValue);
         }
 
-        public void SetData(InventoryItemData item, int index)
+        public void SetData(InventoryItemData localeInfo, int index)
         {
             _index = index;
-            var def = DefsFacade.I.Items.Get(item.Id);
+            var def = DefsFacade.I.Items.Get(localeInfo.Id);
             _icon.sprite = def.Icon;
-            _value.text = def.HasTag(ItemTag.Stackable) ? item.Value.ToString() : string.Empty;
+            _value.text = def.HasTag(ItemTag.Stackable) ? localeInfo.Value.ToString() : string.Empty;
         }
 
         private void OnDestroy()

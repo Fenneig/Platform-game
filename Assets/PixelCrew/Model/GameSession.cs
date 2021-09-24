@@ -24,7 +24,6 @@ namespace PixelCrew.Model
             else
             {
                 Save();
-                InitModels();
                 DontDestroyOnLoad(this);
             }
         }
@@ -54,11 +53,13 @@ namespace PixelCrew.Model
         public void Save()
         {
             _save = _data.Clone();
+            InitModels();
         }
 
         public void Load()
         {
             _data = _save.Clone();
+            InitModels();
         }
 
         private void OnDestroy()

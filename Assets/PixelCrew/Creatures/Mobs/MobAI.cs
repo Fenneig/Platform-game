@@ -3,6 +3,7 @@ using PixelCrew.Creatures.Patroling;
 using PixelCrew.Components.ColliderBased;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PixelCrew.Creatures.Mobs
 {
@@ -14,12 +15,12 @@ namespace PixelCrew.Creatures.Mobs
     {
         [Space]
         [Header("Cooldowns")]
-        [SerializeField] protected float AlarmDelay = 0.5f;
-        [SerializeField] protected float AttackCooldown = 1f;
-        [SerializeField] protected float MissHeroCooldown = 1f;
+        [SerializeField] protected float _alarmDelay = 0.5f;
+        [SerializeField] protected float _attackCooldown = 1f;
+        [SerializeField] protected float _missHeroCooldown = 1f;
         [Space]
         [Header("Layer checks")]
-        [SerializeField] protected LayerCheck Vision;
+        [SerializeField] protected LayerCheck _vision;
 
         private Coroutine _current;
         protected GameObject Target;
@@ -43,7 +44,7 @@ namespace PixelCrew.Creatures.Mobs
 
         private void Start()
         {
-            StartState(Patrol?.DoPatrol());
+            StartState(Patrol.DoPatrol());
         }
 
         public virtual void OnHeroInVision(GameObject go) { }

@@ -277,7 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1444630156}
   _healthComponent: {fileID: 8450993479452287495}
-  _parentTransform: {fileID: 8450993479452287496}
 --- !u!1 &408258764589789418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,10 +1242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e0d5e6fd8c20a4187350f82f544ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AlarmDelay: 0.5
-  AttackCooldown: 1
-  MissHeroCooldown: 1
-  Vision: {fileID: 4504689912551824468}
+  _alarmDelay: 0.5
+  _attackCooldown: 1
+  _missHeroCooldown: 1
+  _vision: {fileID: 4504689912551824468}
   _dashSpeed: 5
   _jumpHeight: 2
   _reachTargetthreshold: 0.2

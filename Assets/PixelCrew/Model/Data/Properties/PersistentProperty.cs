@@ -5,10 +5,11 @@
         protected TPropertyType Stored;
         private TPropertyType _defaultValue;
 
-        public PersistentProperty(TPropertyType value) 
+        public PersistentProperty(TPropertyType defaultValue) 
         {
-            _value = value;
+            _defaultValue = defaultValue;
         }
+        
         public override TPropertyType Value 
         {
             get => Stored;
