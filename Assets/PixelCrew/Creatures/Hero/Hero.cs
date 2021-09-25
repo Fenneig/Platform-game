@@ -100,10 +100,10 @@ namespace PixelCrew.Creatures.Hero
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            
-            _healthComponent = GetComponent<HealthComponent>();
-            _healthComponent.Health = _session.Data.Hp;
 
+            _healthComponent = GetComponent<HealthComponent>();
+
+            _healthComponent.Health = _session.Data.Hp;
             UpdateHeroWeapon();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
@@ -325,20 +325,25 @@ namespace PixelCrew.Creatures.Hero
         {
             _throwSpawner.Spawn();
         }
-        
         //пока напрямую к ModifyHealthComponent объекта обращаюсь, в будущем думаю развить логику
         //и в отдельном классе проверять какая 
         public void UseItem()
         {
             var usableItemId = _session.QuickInventory.SelectedItem.Id;
             var usableItemDef = DefsFacade.I.Usable.Get(usableItemId);
-            if (string.IsNullOrEmpty(usableItemDef.Id)) return;
-            
-            usableItemDef.UsableItem.GetComponent<ModifyHealthComponent>()?.Apply(gameObject);
+            if (!string.IsNullOrEmpty(usableItemDef.Id))
+            {
+                usableItemDef.UsableItem.GetComponent<IUsable>()?.Use(gameObject);
 
-            Sounds.Play("Potion");
+                Sounds.Play("Potion");
 
-            _session.Data.Inventory.Remove(usableItemId, 1);
+                _session.Data.Inventory.Remove(usableItemId, 1);
+            }
         }
+    }
+
+    public interface IUsable
+    {
+        void Use(GameObject target);
     }
 }
