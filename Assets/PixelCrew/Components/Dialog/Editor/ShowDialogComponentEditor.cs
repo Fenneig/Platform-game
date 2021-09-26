@@ -21,10 +21,10 @@ namespace PixelCrew.Components.Dialog.Editor
             {
                 switch (mode)
                 {
-                    case ShowDialogComponent.Mode.bound:
+                    case ShowDialogComponent.Mode.Bound:
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("_bound"));
                         break;
-                    case ShowDialogComponent.Mode.external:
+                    case ShowDialogComponent.Mode.External:
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("_external"));
                         break;
                     default: break;

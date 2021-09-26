@@ -17,6 +17,8 @@ MonoBehaviour:
     - _line: Door is locked with a key!
       _portrait: {fileID: 0}
       _isHero: 0
+      _key: L3_KeyDoor_0
     - _line: Key must be near!
       _portrait: {fileID: 21300000, guid: 3636baafeb4ab544cb89aaa285b69ffc, type: 3}
       _isHero: 1
+      _key: L3_KeyDoor_1

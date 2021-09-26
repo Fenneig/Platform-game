@@ -17,6 +17,8 @@ MonoBehaviour:
     - _line: Now i got cash!
       _portrait: {fileID: 21300000, guid: 53bd68eea62ed3845b693dbd9d419d81, type: 3}
       _isHero: 0
+      _key: L3_CrabbyQuestComplete1_0
     - _line: Enjoy youre passage
       _portrait: {fileID: 21300000, guid: 53bd68eea62ed3845b693dbd9d419d81, type: 3}
       _isHero: 0
+      _key: L3_CrabbyQuestComplete1_1

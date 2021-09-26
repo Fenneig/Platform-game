@@ -33,4 +33,30 @@ MonoBehaviour:
   - Key: button_resume
     Value: "Resume\r"
   - Key: button_restart
-    Value: Restart
+    Value: "Restart\r"
+  - Key: pause_menu
+    Value: "Pause\r"
+  - Key: button_continue
+    Value: "Continue...\r"
+  - Key: l0_door_0
+    Value: "The door is locked!\r"
+  - Key: l0_door_1
+    Value: "Key should be around!\r"
+  - Key: L3_CrabbyQuest1_0
+    Value: "Hey! I'll open a secret passage for you for 100 coins!\r"
+  - Key: L3_CrabbyQuest1_1
+    Value: "Where can i find money?\r"
+  - Key: L3_CrabbyQuest1_2
+    Value: "Look around\r"
+  - Key: L3_CrabbyQuestComplete1_0
+    Value: "Now i got cash!\r"
+  - Key: L3_CrabbyQuestComplete1_1
+    Value: "Enjoy youre passage\r"
+  - Key: L3_KeyDoor_0
+    Value: "Door is locked with a key!\r"
+  - Key: L3_KeyDoor_1
+    Value: "Key must be near!\r"
+  - Key: L3_MoneyDoor_0
+    Value: "This door is for luxury people...\r"
+  - Key: L3_MoneyDoor_1
+    Value: You should have at least 300 coins to enter!

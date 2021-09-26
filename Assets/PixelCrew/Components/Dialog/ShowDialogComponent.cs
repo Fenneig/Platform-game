@@ -2,10 +2,12 @@
 using PixelCrew.Model.Data.Dialog;
 using PixelCrew.UI.HUD.Dialog;
 using System;
+using PixelCrew.UI.Localization;
 using UnityEngine;
 
 namespace PixelCrew.Components.Dialog
 {
+    [RequireComponent(typeof(LocalizeDialogue))]
     public class ShowDialogComponent : MonoBehaviour
     {
         [SerializeField] private Mode _mode;
@@ -13,14 +15,15 @@ namespace PixelCrew.Components.Dialog
         [SerializeField] private DialogDef _external;
 
         private DialogBoxController _dialogBox;
+
         public void Show()
         {
             if (_dialogBox == null) _dialogBox = FindObjectOfType<DialogBoxController>();
-
+            GetComponent<LocalizeDialogue>().Localize();
             _dialogBox.ShowDialog(Data);
         }
 
-        public void Show(DialogDef def) 
+        public void Show(DialogDef def)
         {
             _external = def;
             Show();
@@ -32,9 +35,9 @@ namespace PixelCrew.Components.Dialog
             {
                 switch (_mode)
                 {
-                    case Mode.bound:
+                    case Mode.Bound:
                         return _bound;
-                    case Mode.external:
+                    case Mode.External:
                         return _external.Data;
                     default: throw new ArgumentOutOfRangeException();
                 }
@@ -43,8 +46,8 @@ namespace PixelCrew.Components.Dialog
 
         public enum Mode
         {
-            bound,
-            external
+            Bound,
+            External
         }
     }
 }
