@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: en
   m_EditorClassIdentifier: 
   _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8FFMc9Xq-Z_isJnEIZcA1yp2dFWiqTTo8ttxi18VaMZgGiS61YUfenX0hUPhhI4WldQCTvIIUyDj/pub?gid=0&single=true&output=tsv
+  _localeName: en
   _localeItems:
   - Key: main_menu
     Value: "Main Menu\r"
@@ -38,9 +39,9 @@ MonoBehaviour:
     Value: "Pause\r"
   - Key: button_continue
     Value: "Continue...\r"
-  - Key: l0_door_0
+  - Key: L0_door_0
     Value: "The door is locked!\r"
-  - Key: l0_door_1
+  - Key: L0_door_1
     Value: "Key should be around!\r"
   - Key: L3_CrabbyQuest1_0
     Value: "Hey! I'll open a secret passage for you for 100 coins!\r"

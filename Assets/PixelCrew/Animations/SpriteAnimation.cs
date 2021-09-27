@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -80,16 +79,14 @@ namespace PixelCrew.Animations
             _currentFrame++;
         }
 
-        public void SetClip(string name)
+        public void SetClip(string clipName)
         {
-            for (int i = 0; i < _clips.Length; i++)
+            for (var i = 0; i < _clips.Length; i++)
             {
-                if (_clips[i].IsEqualName(name))
-                {
-                    _currentClip = i;
-                    StartAnimation();
-                    return;
-                }
+                if (!_clips[i].IsEqualName(clipName)) continue;
+                _currentClip = i;
+                StartAnimation();
+                return;
             }
         }
     }

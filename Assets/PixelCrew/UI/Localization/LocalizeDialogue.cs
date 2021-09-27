@@ -16,11 +16,7 @@ namespace PixelCrew.UI.Localization
         {
             _dialogComponent = GetComponent<ShowDialogComponent>();
 
-            LocalizationManager.I.OnLocaleChanged += OnLocaleChanged;
-            Localize();
-        }
-        private void OnLocaleChanged()
-        {
+            LocalizationManager.I.OnLocaleChanged += Localize;
             Localize();
         }
 
@@ -36,7 +32,7 @@ namespace PixelCrew.UI.Localization
 
         private void OnDestroy()
         {
-            LocalizationManager.I.OnLocaleChanged -= OnLocaleChanged;
+            LocalizationManager.I.OnLocaleChanged -= Localize;
         }
     }
 }

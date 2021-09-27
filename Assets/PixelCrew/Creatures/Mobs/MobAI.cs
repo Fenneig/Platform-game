@@ -3,7 +3,6 @@ using PixelCrew.Creatures.Patroling;
 using PixelCrew.Components.ColliderBased;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace PixelCrew.Creatures.Mobs
 {

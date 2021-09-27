@@ -46,7 +46,7 @@ namespace PixelCrew.Creatures.Mobs
             {
                 Particles.Spawn("MissHero");
                 yield return new WaitForSeconds(_missHeroCooldown);
-                StartState(Patrol?.DoPatrol());
+                StartState(Patrol.DoPatrol());
             }
         }
 

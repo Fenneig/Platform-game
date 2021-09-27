@@ -1,0 +1,23 @@
+main_menu	Main Menu
+button_start	Start
+button_options	Options
+button_exit	Exit
+button_language	Language
+button_back	Back
+option_music	Music
+option_sfx	Sounds
+button_resume	Resume
+button_restart	Restart
+pause_menu	Pause
+button_continue	Continue...
+L0_door_0	The door is locked!
+L0_door_1	Key should be around!
+L3_CrabbyQuest1_0	Hey! I'll open a secret passage for you for 100 coins!
+L3_CrabbyQuest1_1	Where can i find money?
+L3_CrabbyQuest1_2	Look around
+L3_CrabbyQuestComplete1_0	Now i got cash!
+L3_CrabbyQuestComplete1_1	Enjoy youre passage
+L3_KeyDoor_0	Door is locked with a key!
+L3_KeyDoor_1	Key must be near!
+L3_MoneyDoor_0	This door is for luxury people...
+L3_MoneyDoor_1	You should have at least 300 coins to enter!

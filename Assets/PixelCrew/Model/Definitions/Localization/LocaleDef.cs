@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,29 +11,42 @@ namespace PixelCrew.Model.Definitions.Localization
     public class LocaleDef : ScriptableObject
     {
         [SerializeField] private string _url;
+        [Tooltip("File must be in folder Assets/Resources/locales/")]
+        [SerializeField] private string _localeName;
         [SerializeField] private List<LocaleItem> _localeItems;
 
         private UnityWebRequest _request;
 
-        public Dictionary<string, string> GetData()
-        {
-            return _localeItems.ToDictionary(localeItem => localeItem.Key, localeItem => localeItem.Value);
-        }
+        public Dictionary<string, string> GetData() =>
+            _localeItems.ToDictionary(localeItem => localeItem.Key, localeItem => localeItem.Value);
 
         [ContextMenu("Update locale")]
         private void LoadLocale()
         {
             if (_request != null) return;
-            
+
             _request = UnityWebRequest.Get(_url);
             _request.SendWebRequest().completed += OnDataLoaded;
+        }
+
+        [ContextMenu("Update locale from file")]
+        private void LoadLocaleFromFile()
+        {
+            var reader = new StreamReader($"Assets/Resources/locales/{_localeName}.tsv");
+
+            SplitText(reader.ReadToEnd());
         }
 
         private void OnDataLoaded(AsyncOperation operation)
         {
             if (!operation.isDone) return;
-            
-            var rows = _request.downloadHandler.text.Split('\n');
+
+            SplitText(_request.downloadHandler.text);
+        }
+
+        private void SplitText(string text)
+        {
+            var rows = text.Split('\n');
             _localeItems.Clear();
             foreach (var row in rows) AddLocaleItem(row);
         }

@@ -16,11 +16,7 @@ namespace PixelCrew.UI.Localization
         {
             _text = GetComponent<Text>();
 
-            LocalizationManager.I.OnLocaleChanged += OnLocaleChanged;
-            Localize();
-        }
-        private void OnLocaleChanged()
-        {
+            LocalizationManager.I.OnLocaleChanged += Localize;
             Localize();
         }
 
@@ -32,7 +28,7 @@ namespace PixelCrew.UI.Localization
 
         private void OnDestroy()
         {
-            LocalizationManager.I.OnLocaleChanged -= OnLocaleChanged;
+            LocalizationManager.I.OnLocaleChanged -= Localize;
         }
     }
 }
