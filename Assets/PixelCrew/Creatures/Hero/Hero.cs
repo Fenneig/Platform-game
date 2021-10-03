@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using PixelCrew.Components.Health;
 using PixelCrew.Components.ColliderBased;
@@ -7,7 +8,6 @@ using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
-using PixelCrew.Components.Collectables;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -16,28 +16,27 @@ namespace PixelCrew.Creatures.Hero
     {
         //Скрипт персонажа, содержащий основные механики взаимодействия с персонажем
         //переменные настраиваемые из Unity
-        [Space]
-        [Header("Stats")]
-        [SerializeField] private float _dashSpeed;
+        [Space] [Header("Stats")] [SerializeField]
+        private float _dashSpeed;
+
         [SerializeField] private float _dashDuratation;
 
-        [Space]
-        [Header("Checkers")]
-        [SerializeField] private CheckCircleOverlap _interactionRadius;
+        [Space] [Header("Checkers")] [SerializeField]
+        private CheckCircleOverlap _interactionRadius;
 
-        [Space]
-        [Header("Controllers")]
-        [SerializeField] private AnimatorController _armed;
+        [Space] [Header("Controllers")] [SerializeField]
+        private AnimatorController _armed;
+
         [SerializeField] private AnimatorController _unarmed;
 
-        [Space]
-        [Header("Particle System")]
-        [SerializeField] private ParticleSystem _dropCoinsOnHitParticle;
+        [Space] [Header("Particle System")] [SerializeField]
+        private ParticleSystem _dropCoinsOnHitParticle;
+
         [SerializeField] private SpawnComponent _throwSpawner;
 
-        [Space]
-        [Header("Throw Stats")]
-        [Min(2)] [SerializeField] private int _numChargedThrows;
+        [Space] [Header("Throw Stats")] [Min(2)] [SerializeField]
+        private int _numChargedThrows;
+
         [SerializeField] private Timer _throwCooldown;
         [SerializeField] private Timer _throwChargeTime;
         [SerializeField] private float _chargeThrowDelay;
@@ -76,13 +75,13 @@ namespace PixelCrew.Creatures.Hero
         {
             get
             {
+                if (!_session.QuickInventory.Inventory.Any()) return false;
                 if (SelectedItemId == SwordId)
                     return SwordCount > 1;
 
                 var def = DefsFacade.I.Items.Get(SelectedItemId);
                 return def.HasTag(ItemTag.Throwable);
             }
-
         }
 
 
@@ -121,7 +120,9 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnHealthChanged(int currentHealth)
         {
-            var newHealth = currentHealth > DefsFacade.I.Player.MaxHealth ? DefsFacade.I.Player.MaxHealth : currentHealth;
+            var newHealth = currentHealth > DefsFacade.I.Player.MaxHealth
+                ? DefsFacade.I.Player.MaxHealth
+                : currentHealth;
             _session.Data.Hp.Value = newHealth;
         }
 
@@ -142,6 +143,7 @@ namespace PixelCrew.Creatures.Hero
                 {
                     StartCoroutine(Dash());
                 }
+
                 DashTrigger = 0f;
             }
         }
@@ -168,16 +170,17 @@ namespace PixelCrew.Creatures.Hero
                 yVelocity = DoJump();
                 _allowDoubleJump = false;
             }
+
             return yVelocity;
         }
 
         private float DoJump()
         {
-            Particles.Spawn("Jump");
+            _particles.Spawn("Jump");
             Sounds.Play("Jump");
             IsJumpButtonPressed = true;
 
-            return JumpSpeed;
+            return _jumpSpeed;
         }
 
         //Механика рывка: при нажатии рывка отключаю гравитацию действующую на героя,
@@ -190,7 +193,7 @@ namespace PixelCrew.Creatures.Hero
             _isDashing = true;
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0f);
             Rigidbody.AddForce(new Vector2(_dashSpeed * transform.localScale.x, 0f), ForceMode2D.Impulse);
-            Particles.Spawn("Dash");
+            _particles.Spawn("Dash");
             Sounds.Play("Dash");
             yield return new WaitForSeconds(_dashDuratation);
             _isDashing = false;
@@ -203,6 +206,7 @@ namespace PixelCrew.Creatures.Hero
             Rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rigidbody.freezeRotation = true;
         }
+
         private void UnFreezeGravity()
         {
             Rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -215,6 +219,7 @@ namespace PixelCrew.Creatures.Hero
                 _allowDashInJump = false;
                 return true;
             }
+
             return _allowDashInJump;
         }
 
@@ -325,6 +330,7 @@ namespace PixelCrew.Creatures.Hero
         {
             _throwSpawner.Spawn();
         }
+
         //пока напрямую к ModifyHealthComponent объекта обращаюсь, в будущем думаю развить логику
         //и в отдельном классе проверять какая 
         public void UseItem()

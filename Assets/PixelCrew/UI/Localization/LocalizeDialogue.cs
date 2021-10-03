@@ -1,20 +1,19 @@
 ﻿using Assets.PixelCrew.Model.Data.Dialog;
-using PixelCrew.Components.Dialog;
+using PixelCrew.Components.Dialogue;
 using PixelCrew.Model.Definitions.Localization;
 using UnityEngine;
 
 namespace PixelCrew.UI.Localization
 {
-    [RequireComponent(typeof(ShowDialogComponent))]
+    [RequireComponent(typeof(ShowDialogueComponent))]
     public class LocalizeDialogue : MonoBehaviour
     {
         private Sentence[] _sentences;
-
-        private ShowDialogComponent _dialogComponent;
+        private ShowDialogueComponent _dialogueComponent;
 
         private void Awake()
         {
-            _dialogComponent = GetComponent<ShowDialogComponent>();
+            _dialogueComponent = GetComponent<ShowDialogueComponent>();
 
             LocalizationManager.I.OnLocaleChanged += Localize;
             Localize();
@@ -22,7 +21,7 @@ namespace PixelCrew.UI.Localization
 
         public void Localize()
         {
-            _sentences = _dialogComponent.Data.Sentences;
+            _sentences = _dialogueComponent.Data.Sentences;
             foreach (var sentence in _sentences)
             {
                 var localizedLine = LocalizationManager.I.Localize(sentence.Key);

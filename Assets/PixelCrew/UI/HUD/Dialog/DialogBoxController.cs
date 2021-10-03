@@ -1,4 +1,4 @@
-﻿using PixelCrew.Model.Data.Dialog;
+﻿using PixelCrew.Model.Data.Dialogue;
 using PixelCrew.Utils;
 using System.Collections;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace PixelCrew.UI.HUD.Dialog
         [SerializeField] private AudioClip _close;
 
         private static readonly int IsOpen = Animator.StringToHash("IsOpen");
-        private DialogData _data;
+        private DialogueData _data;
         private int _currentSentence;
         private AudioSource _sfxSource;
         private Coroutine _typingRoutine;
@@ -40,7 +40,7 @@ namespace PixelCrew.UI.HUD.Dialog
             _input = FindObjectOfType<PlayerInput>();
         }
 
-        public void ShowDialog(DialogData data)
+        public void ShowDialogue(DialogueData data)
         {
             _data = data;
             _currentSentence = 0;

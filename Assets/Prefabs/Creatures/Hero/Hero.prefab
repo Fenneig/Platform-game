@@ -4895,7 +4895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236387369531184224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.34, y: -1.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 236387369932960063}
@@ -4988,13 +4988,13 @@ MonoBehaviour:
   _speed: 4
   _damageVelocity: 7.54
   _heavyLandingVelocity: 15
-  JumpSpeed: 12.5
+  _jumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
   _attackRange: {fileID: 8538178989510919790}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 464640
-  Particles: {fileID: 5931501552971627509}
+  _particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
   _dashDuratation: 0.1
   _interactionRadius: {fileID: 4617069469202346616}
@@ -5255,7 +5255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _value: 0
+    _value: 10
   _onDamage:
     m_PersistentCalls:
       m_Calls:

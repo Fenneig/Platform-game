@@ -17,14 +17,14 @@ namespace PixelCrew.Creatures
         [SerializeField] private float _speed;
         [SerializeField] private float _damageVelocity;
         [SerializeField] private float _heavyLandingVelocity;
-        [SerializeField] protected float JumpSpeed;
+        [SerializeField] protected float _jumpSpeed;
 
         [Space]
         [Header("Checkers")]
         [SerializeField] private LayerCheck _groundCheck;
         [SerializeField] private CheckCircleOverlap _attackRange;
         [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] protected SpawnListComponent Particles;
+        [SerializeField] protected SpawnListComponent _particles;
 
         private Vector2 _direction;
 
@@ -115,11 +115,11 @@ namespace PixelCrew.Creatures
         {
             //при движении наискосок с зажатым прыжком персонаж двигается по гипотенузе прямоугольно треугольника тем самым замедляясь
             //т.к. направления могут быть либо 0 либо 1 то при движении по гипотенузе скорость становиться на √2 меньше( с = √x*x+y*y, где x=y=1)
-            //    /|
-            // с / |
-            //  /  |  y
-            // /   |
-            ///____|
+            //     /|
+            //  с / |
+            //   /  |  y
+            //  /   |
+            // /____|
             //   x
             return Mathf.Abs(_direction.y) > 0 ? _direction.x * _speed * Mathf.Sqrt(2) : _direction.x * _speed;
         }
@@ -132,7 +132,7 @@ namespace PixelCrew.Creatures
 
             if (isJumpPressing)
             {
-                Animator.SetTrigger("jump");
+                Animator.SetTrigger(JumpKey);
 
                 _isJumping = true;
 
@@ -151,7 +151,7 @@ namespace PixelCrew.Creatures
         {
             if (IsGrounded)
             {
-                yVelocity = JumpSpeed;
+                yVelocity = _jumpSpeed;
             }
 
             return yVelocity;
@@ -172,7 +172,7 @@ namespace PixelCrew.Creatures
                 var contact = collision.contacts[0];
                 if (contact.relativeVelocity.y >= _heavyLandingVelocity)
                 {
-                    Particles.Spawn("HeavyLanding");
+                    _particles.Spawn("HeavyLanding");
                 }
             }
         }
