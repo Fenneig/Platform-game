@@ -19,6 +19,10 @@ namespace PixelCrew.Model
 
         private readonly List<string> _checkpoints = new List<string>();
 
+        private readonly List<string> _destroyedObjects = new List<string>();
+        private List<string> _savedDestroyedObjects = new List<string>();
+
+
         private void Awake()
         {
             var existSession = GetExistSession();
@@ -77,9 +81,16 @@ namespace PixelCrew.Model
             return null;
         }
 
+        public void ClearCheckpoints()
+        {
+            _checkpoints.Clear();
+        }
+
         public void Save()
         {
             _save = _data.Clone();
+            _savedDestroyedObjects.AddRange(_destroyedObjects);
+            _destroyedObjects.Clear();
             InitModels();
         }
 
@@ -107,5 +118,12 @@ namespace PixelCrew.Model
                 _checkpoints.Add(id);
             }
         }
+
+        public void StoreState(string id)
+        {
+            if (!_destroyedObjects.Contains(id)) _destroyedObjects.Add(id);
+        }
+
+        public bool IsItemDestroyed(string id) => _savedDestroyedObjects.Contains(id);
     }
 }

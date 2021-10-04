@@ -12,7 +12,7 @@ namespace PixelCrew.Components.Collectables
         [SerializeField] private UnityEvent _destroyObject;
         private Hero _hero;
 
-        private void Awake()
+        private void Start()
         {
             _hero = FindObjectOfType<Hero>();
         }

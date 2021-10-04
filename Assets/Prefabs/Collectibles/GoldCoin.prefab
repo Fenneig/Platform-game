@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5789834753346340565}
   - component: {fileID: 1393183383987027540}
   - component: {fileID: 3053220262700270622}
+  - component: {fileID: 6484495451842145180}
   m_Layer: 15
   m_Name: GoldCoin
   m_TagString: Gold
@@ -322,6 +323,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6484495451842145180}
+        m_MethodName: StoreStateToDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &1393183383987027540
 AudioSource:
   m_ObjectHideFlags: 0
@@ -432,3 +444,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
+--- !u!114 &6484495451842145180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280124599914855476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

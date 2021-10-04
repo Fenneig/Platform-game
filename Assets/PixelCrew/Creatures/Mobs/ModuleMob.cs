@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PixelCrew.Creatures.Mobs
 {
@@ -13,19 +14,22 @@ namespace PixelCrew.Creatures.Mobs
         private Vector3 _nextPosition;
         private GameObject[] _moduleInstances;
 
-        private void Start()
+        private void Awake()
         {
             GetComponent<SpriteRenderer>().enabled = false;
 
             _nextPosition = gameObject.transform.position;
             _moduleInstances = new GameObject[_bodyLength];
 
-            for (int i = 0; i < _bodyLength - 1; i++)
+            for (var i = 0; i < _bodyLength - 1; i++)
             {                
                 _moduleInstances[i] = Instantiate(_body, _nextPosition, Quaternion.identity, gameObject.transform);
+                _moduleInstances[i].name = $"{gameObject.name}_{_body.name}_{i}"; 
                 _nextPosition.y += _positionDifference;
             }
             _moduleInstances[_bodyLength - 1] = Instantiate(_head, _nextPosition, Quaternion.identity, gameObject.transform);
+            _moduleInstances[_bodyLength - 1].name = $"{gameObject.name}_{_head.name}";
         }
+
     }
 }

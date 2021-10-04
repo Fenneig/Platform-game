@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -5777284016734559415}
   - component: {fileID: 402450128175345333}
   - component: {fileID: -5610186121952322908}
+  - component: {fileID: 2835736982398824515}
   m_Layer: 0
   m_Name: SmallHealthPotion
   m_TagString: BigHp
@@ -287,6 +288,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2835736982398824515}
+        m_MethodName: StoreStateToDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &402450128175345333
 AudioSource:
   m_ObjectHideFlags: 0
@@ -397,3 +409,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
+--- !u!114 &2835736982398824515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713221135739271146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

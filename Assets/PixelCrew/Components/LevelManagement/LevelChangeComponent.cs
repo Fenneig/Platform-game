@@ -11,7 +11,8 @@ namespace PixelCrew.Components.LevelManagement
         public void ChangeLevel()
         {
             var session = FindObjectOfType<GameSession>();
-            session?.Save();
+            session.ClearCheckpoints();
+            session.Save();
 
             SceneManager.LoadScene(_levelName);
         }

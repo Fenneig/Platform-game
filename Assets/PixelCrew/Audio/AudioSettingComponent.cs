@@ -14,7 +14,7 @@ namespace PixelCrew.Audio
 
         public AudioSource Source => _source;
 
-        private void Start()
+        private void Awake()
         {
             _source = GetComponent<AudioSource>();
             _model = FindProperty();

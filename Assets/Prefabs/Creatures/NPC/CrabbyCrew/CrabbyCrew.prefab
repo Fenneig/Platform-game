@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 5517832904679101925}
   - component: {fileID: 7777936840857689039}
   - component: {fileID: 1615145047127247891}
+  - component: {fileID: 2645482360792271053}
   m_Layer: 13
   m_Name: CrabbyCrew
   m_TagString: Untagged
@@ -415,3 +416,15 @@ MonoBehaviour:
           m_StringArgument: InterrogationIn
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2645482360792271053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517832904679101920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d674e076d34e433da121656dd50b1f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

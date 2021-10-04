@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8479744276753521053}
   - component: {fileID: 853114128}
   - component: {fileID: 6329744719014405050}
+  - component: {fileID: 3791007286377423991}
   m_Layer: 17
   m_Name: DestructableBarrel
   m_TagString: Barrel
@@ -227,6 +228,17 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3791007286377423991}
+        m_MethodName: StoreStateToDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -323,3 +335,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 8479744276753521052}
   _prefab: {fileID: 3818791825912671548, guid: 02c85a59fe17a4d46bef870838271289, type: 3}
+--- !u!114 &3791007286377423991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479744276753521050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

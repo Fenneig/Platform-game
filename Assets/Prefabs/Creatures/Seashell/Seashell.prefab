@@ -114,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1594465933}
   _healthComponent: {fileID: 646958524623158221}
-  _parentTransform: {fileID: 6862079170768601950}
 --- !u!1 &1594465929
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +407,7 @@ GameObject:
   - component: {fileID: 5024279572502727142}
   - component: {fileID: 8593039941875335844}
   - component: {fileID: 7290487651804477562}
+  - component: {fileID: 4094491495697931585}
   m_Layer: 16
   m_Name: Seashell
   m_TagString: Enemy
@@ -637,6 +637,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4094491495697931585}
+        m_MethodName: StoreStateToDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -813,6 +824,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mode: 1
+--- !u!114 &4094491495697931585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862079170768601954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6862079170929232650
 GameObject:
   m_ObjectHideFlags: 0

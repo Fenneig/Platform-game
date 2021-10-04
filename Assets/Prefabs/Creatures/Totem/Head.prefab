@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 933877115}
   - component: {fileID: 9015415868433170347}
   - component: {fileID: 8702341557722136821}
+  - component: {fileID: 798462758139778319}
   m_Layer: 16
   m_Name: Head
   m_TagString: Enemy
@@ -439,6 +440,17 @@ MonoBehaviour:
           m_StringArgument: Hurt
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 798462758139778319}
+        m_MethodName: StoreStateToDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDie:
     m_PersistentCalls:
       m_Calls:
@@ -565,6 +577,18 @@ MonoBehaviour:
     _clip: {fileID: 8300000, guid: 583815912c18b884399f68c90baf2c65, type: 3}
   - _id: Die
     _clip: {fileID: 8300000, guid: 0aa28467fde10a842a83a055c6f5fffd, type: 3}
+--- !u!114 &798462758139778319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036396712426976874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3441799687335283583
 PrefabInstance:
   m_ObjectHideFlags: 0

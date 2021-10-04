@@ -18,7 +18,7 @@ namespace PixelCrew.Components.LevelManagement
 
         private GameSession _session;
 
-        private void Start()
+        private void Awake()
         {
             _session = FindObjectOfType<GameSession>();
             if (_session.IsChecked(_id))
