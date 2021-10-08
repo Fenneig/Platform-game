@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.PixelCrew.Model.Data.Dialog
+namespace PixelCrew.Model.Data.Dialogue
 {
     [Serializable]
     public class Sentence

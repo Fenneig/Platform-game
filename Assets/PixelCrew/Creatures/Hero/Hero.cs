@@ -8,18 +8,17 @@ using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
+using PixelCrew.Model.Definitions.Repository.Items;
 
 namespace PixelCrew.Creatures.Hero
 {
     [RequireComponent(typeof(HealthComponent))]
     public class Hero : Creature
     {
-        //Скрипт персонажа, содержащий основные механики взаимодействия с персонажем
-        //переменные настраиваемые из Unity
         [Space] [Header("Stats")] [SerializeField]
         private float _dashSpeed;
 
-        [SerializeField] private float _dashDuratation;
+        [SerializeField] private float _dashDuration;
 
         [Space] [Header("Checkers")] [SerializeField]
         private CheckCircleOverlap _interactionRadius;
@@ -41,29 +40,19 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private Timer _throwChargeTime;
         [SerializeField] private float _chargeThrowDelay;
 
-        private float _dashTrigger;
         private bool _allowDashInJump;
         private bool _isDashing;
-        private bool _isJumpButtonPressed;
         private bool _allowDoubleJump;
 
         private HealthComponent _healthComponent;
 
-        protected static readonly int ThrowKey = Animator.StringToHash("is-throw");
+        private static readonly int ThrowKey = Animator.StringToHash("is-throw");
 
         private GameSession _session;
 
-        public bool IsJumpButtonPressed
-        {
-            get => _isJumpButtonPressed;
-            set => _isJumpButtonPressed = value;
-        }
+        public bool IsJumpButtonPressed { get; set; }
 
-        public float DashTrigger
-        {
-            get => _dashTrigger;
-            set => _dashTrigger = value;
-        }
+        public float DashTrigger { get; set; }
 
         private const string SwordId = "Sword";
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
@@ -113,7 +102,7 @@ namespace PixelCrew.Creatures.Hero
             _session.Data.Inventory.OnChanged -= OnInventoryChanged;
         }
 
-        public void OnInventoryChanged(string id, int value)
+        private void OnInventoryChanged(string id, int value)
         {
             if (id == SwordId) UpdateHeroWeapon();
         }
@@ -137,26 +126,20 @@ namespace PixelCrew.Creatures.Hero
                 _allowDashInJump = true;
             }
 
-            if (DashTrigger != 0)
-            {
-                if (AllowDash())
-                {
-                    StartCoroutine(Dash());
-                }
+            if (DashTrigger == 0) return;
 
-                DashTrigger = 0f;
+            if (AllowDash())
+            {
+                StartCoroutine(Dash());
             }
+
+            DashTrigger = 0f;
         }
 
         //При рывке отключается просчет движения героя 
         protected override Vector2 CalculateVelocity()
         {
-            if (!_isDashing)
-            {
-                return base.CalculateVelocity();
-            }
-
-            return Rigidbody.velocity;
+            return !_isDashing ? base.CalculateVelocity() : Rigidbody.velocity;
         }
 
         protected override float CalculateJumpVelocity(float yVelocity)
@@ -165,13 +148,31 @@ namespace PixelCrew.Creatures.Hero
             {
                 yVelocity = DoJump();
             }
-            else if (_allowDoubleJump && !IsJumpButtonPressed)
+            else if (_allowDoubleJump && !IsJumpButtonPressed && _session.PerksModel.IsDoubleJumpSupported)
             {
                 yVelocity = DoJump();
                 _allowDoubleJump = false;
             }
 
             return yVelocity;
+        }
+
+        private Timer _hasteTimer = new Timer();
+        private float _speedBonus;
+
+
+        public void DrinkHastePotion(float speedBonus, float hasteTime)
+        {
+            _hasteTimer.Value = _hasteTimer.TimeLasts + hasteTime;
+            _speedBonus = Mathf.Max(speedBonus, _speedBonus);
+            _hasteTimer.Reset();
+        }
+
+        protected override float CalculateSpeed()
+        {
+            var time = Time.time;
+            if (_hasteTimer.IsReady) _speedBonus = 0f;
+            return base.CalculateSpeed() + _speedBonus;
         }
 
         private float DoJump()
@@ -195,7 +196,7 @@ namespace PixelCrew.Creatures.Hero
             Rigidbody.AddForce(new Vector2(_dashSpeed * transform.localScale.x, 0f), ForceMode2D.Impulse);
             _particles.Spawn("Dash");
             Sounds.Play("Dash");
-            yield return new WaitForSeconds(_dashDuratation);
+            yield return new WaitForSeconds(_dashDuration);
             _isDashing = false;
 
             UnFreezeGravity();
@@ -214,13 +215,14 @@ namespace PixelCrew.Creatures.Hero
 
         private bool AllowDash()
         {
-            if (_allowDashInJump)
-            {
-                _allowDashInJump = false;
-                return true;
-            }
+            if (!_session.PerksModel.IsDashSupported) return false;
 
-            return _allowDashInJump;
+            if (!_allowDashInJump) return _allowDashInJump;
+            
+            _allowDashInJump = false;
+            
+            return true;
+
         }
 
         public void RecoverExtraMoves()
@@ -268,39 +270,55 @@ namespace PixelCrew.Creatures.Hero
             base.Attack();
         }
 
-        public void UpdateHeroWeapon()
+        private void UpdateHeroWeapon()
         {
             Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _unarmed;
         }
 
-        //При нажатии кнопки броска начинается отсчет времени сильного броска
+        private void PerformThrowing()
+        {
+            if (!CanThrow || !_throwCooldown.IsReady) return;
+
+            _throwCooldown.Reset();
+
+            if (_throwChargeTime.IsReady && _session.PerksModel.IsChargedThrowSupported) ChargedThrow();
+            else Throw();
+        }
+
+
         public void StartThrowing()
         {
             if (!CanThrow) return;
             _throwChargeTime.Reset();
         }
 
-        //При отпускании кнопки броска, срабатывает либо бросок одним снарядом, либо несколькими если счетчик времени сильного броска прошел 
-        public void PerformThrowing()
+        public void UseInventory()
         {
-            if (!CanThrow) return;
+            if (IsSelectedItem(ItemTag.Throwable)) PerformThrowing();
+            else if (IsSelectedItem(ItemTag.Potion)) UsePotion();
+        }
 
-            if (_throwCooldown.IsReady)
-            {
-                _throwCooldown.Reset();
+        private void UsePotion()
+        {
+            var usableItemDef = DefsFacade.I.Potion.Get(SelectedItemId);
+            if (string.IsNullOrEmpty(usableItemDef.Id)) return;
 
-                if (_throwChargeTime.IsReady)
-                {
-                    int throwableCount = _session.Data.Inventory.Count(SelectedItemId);
-                    int possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
-                    int numThrows = Mathf.Min(_numChargedThrows, possibleCount);
-                    StartCoroutine(ThrowMultiply(numThrows));
-                }
-                else
-                {
-                    Throw();
-                }
-            }
+            usableItemDef.Object.GetComponent<IUsable>()?.Use(gameObject);
+            Sounds.Play("Potion");
+            _session.Data.Inventory.Remove(SelectedItemId, 1);
+        }
+
+        private bool IsSelectedItem(ItemTag tag)
+        {
+            return _session.QuickInventory.SelectedDef.HasTag(tag);
+        }
+
+        private void ChargedThrow()
+        {
+            var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+            var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+            var numThrows = Mathf.Min(_numChargedThrows, possibleCount);
+            StartCoroutine(ThrowMultiply(numThrows));
         }
 
         private IEnumerator ThrowMultiply(int numberOfThrows)
@@ -312,7 +330,7 @@ namespace PixelCrew.Creatures.Hero
             }
         }
 
-        public void Throw()
+        private void Throw()
         {
             Animator.SetTrigger(ThrowKey);
             Sounds.Play("Range");
@@ -329,22 +347,6 @@ namespace PixelCrew.Creatures.Hero
         public void OnDoThrow()
         {
             _throwSpawner.Spawn();
-        }
-
-        //пока напрямую к ModifyHealthComponent объекта обращаюсь, в будущем думаю развить логику
-        //и в отдельном классе проверять какая 
-        public void UseItem()
-        {
-            var usableItemId = _session.QuickInventory.SelectedItem.Id;
-            var usableItemDef = DefsFacade.I.Usable.Get(usableItemId);
-            if (!string.IsNullOrEmpty(usableItemDef.Id))
-            {
-                usableItemDef.UsableItem.GetComponent<IUsable>()?.Use(gameObject);
-
-                Sounds.Play("Potion");
-
-                _session.Data.Inventory.Remove(usableItemId, 1);
-            }
         }
     }
 

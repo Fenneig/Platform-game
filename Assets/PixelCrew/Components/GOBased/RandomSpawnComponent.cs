@@ -12,15 +12,16 @@ namespace PixelCrew.Components.GOBased
 
         public void Spawn()
         {
-            foreach (ChanceObjectToSpawn component in _components)
+            foreach (var component in _components)
             {
                 for (int i = 0; i < component.Amout; i++)
                 {
                     float chance = UnityEngine.Random.value * 100;
                     if (chance <= component.ChanceToSpawn)
                     {
-                        Vector3 newPosition = component.Target.position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value, 0);
-                        var instance = SpawnUtils.Spawn(component.Prefab, component.Target.position, Quaternion.identity);
+                        var position = component.Target.position;
+                        Vector3 newPosition = position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value, 0);
+                        var instance = SpawnUtils.Spawn(component.Prefab, position, Quaternion.identity);
 
                         var rigidbody = instance.GetComponent<Rigidbody2D>();
                         if (rigidbody != null) rigidbody.AddForce(Vector2.up);

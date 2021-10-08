@@ -8,7 +8,7 @@ namespace PixelCrew.Components.Interactions
         [SerializeField] private bool _state;
         [SerializeField] private string _animationKey;
 
-        private bool _isLocked = false;
+        private bool _isLocked;
 
         public void Switch()
         {

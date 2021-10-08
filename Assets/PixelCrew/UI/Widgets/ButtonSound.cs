@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.PixelCrew.UI.Widgets
+namespace PixelCrew.UI.Widgets
 {
     public class ButtonSound : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     {

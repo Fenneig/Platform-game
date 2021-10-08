@@ -1,4 +1,5 @@
 ﻿using System;
+using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,27 +7,27 @@ namespace PixelCrew.UI.Windows.MainMenu
 {
     public class MainMenuWindow : AnimatedWindow
     {
-        protected Action _closeAction;
+        protected Action CloseAction;
 
         public void OnStartGame()
         {
-            _closeAction = () => { SceneManager.LoadScene("Level_0"); };
+            CloseAction = () => { SceneManager.LoadScene("Level_0"); };
             Close();
         }
 
         public virtual void OnShowSettings()
         {
-            CreateWindow("UI/Settings/SettingsWindow");
+            WindowUtils.CreateWindow("UI/Windows/Settings/SettingsWindow");
         }
 
         public void OnShowLocales()
         {
-            CreateWindow("UI/Windows/Localization/LocalizationWindow");
+            WindowUtils.CreateWindow("UI/Windows/Localization/LocalizationWindow");
         }
 
         public void OnExit()
         {
-            _closeAction = () =>
+            CloseAction = () =>
             {
                 Application.Quit();
 #if UNITY_EDITOR
@@ -36,18 +37,10 @@ namespace PixelCrew.UI.Windows.MainMenu
             Close();
         }
 
-        public override void OnCloseAnimationComplete()
+        protected override void OnCloseAnimationComplete()
         {
-            _closeAction?.Invoke();
+            CloseAction?.Invoke();
             base.OnCloseAnimationComplete();
-        }
-
-        public void CreateWindow(string windowPath)
-        {
-            var window = Resources.Load<GameObject>(windowPath);
-            var canvas = GetComponentInParent<Canvas>();
-            Instantiate(window, canvas.transform);
-            
         }
     }
 }

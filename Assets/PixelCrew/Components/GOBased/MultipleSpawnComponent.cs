@@ -9,7 +9,7 @@ namespace PixelCrew.Components.GOBased
 
         public void Spawn()
         {
-            foreach (ComponentToSpawn component in _components)
+            foreach (var component in _components)
             {
                 Instantiate(component.Prefab, component.Target.position, Quaternion.identity);
             }

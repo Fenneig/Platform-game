@@ -73,7 +73,7 @@ namespace PixelCrew.Creatures.Mobs
             _rangeAttack.Spawn();
         }
 
-        public void OnRecieveHit() 
+        public void OnReceiveHit() 
         {
             _attackCooldown.EarlyComplete();
         }

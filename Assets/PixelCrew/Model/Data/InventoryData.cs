@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PixelCrew.Model.Definitions.Repository;
+using PixelCrew.Model.Definitions.Repository.Items;
 using UnityEngine;
 
 namespace PixelCrew.Model.Data
@@ -11,7 +13,7 @@ namespace PixelCrew.Model.Data
     {
         [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
 
-        public int InventorySize => _inventory.Count;
+        public int Size => _inventory.Count;
 
         public delegate void OnInventoryChanged(string id, int value);
 
@@ -39,10 +41,11 @@ namespace PixelCrew.Model.Data
             {
                 for (int i = 0; i < value; i++)
                 {
-                    var item = new InventoryItemData(id) { Value = 1 };
+                    var item = new InventoryItemData(id) {Value = 1};
                     _inventory.Add(item);
                 }
             }
+
             OnChanged?.Invoke(id, Count(id));
         }
 
@@ -62,9 +65,9 @@ namespace PixelCrew.Model.Data
 
                 if (item.Value <= 0) _inventory.Remove(item);
             }
-            else 
+            else
             {
-                for (int i = 0; i < value; i++) 
+                for (int i = 0; i < value; i++)
                 {
                     _inventory.Remove(item);
                 }
@@ -73,7 +76,7 @@ namespace PixelCrew.Model.Data
             OnChanged?.Invoke(id, Count(id));
         }
 
-        public bool isContainStackableItem(InventoryItemData item)
+        public bool IsContainStackableItem(InventoryItemData item)
         {
             if (DefsFacade.I.Items.Get(item.Id).HasTag(ItemTag.Stackable))
             {
@@ -82,6 +85,7 @@ namespace PixelCrew.Model.Data
                     if (itemData.Id == item.Id) return true;
                 }
             }
+
             return false;
         }
 
@@ -95,22 +99,22 @@ namespace PixelCrew.Model.Data
             return null;
         }
 
-        public InventoryItemData[] GetAll(params ItemTag[] tags) 
+        public InventoryItemData[] GetAll(params ItemTag[] tags)
         {
             var retValue = new List<InventoryItemData>();
 
-            foreach (var item in _inventory) 
+            foreach (var item in _inventory)
             {
                 var itemDef = DefsFacade.I.Items.Get(item.Id);
                 var isAllRequirementsMet = tags.All(x => itemDef.HasTag(x));
-                if (isAllRequirementsMet) retValue.Add(item); 
+                if (isAllRequirementsMet) retValue.Add(item);
             }
 
             return retValue.ToArray();
         }
 
         public int Count(string id)
-        { 
+        {
             var count = 0;
 
             foreach (var item in _inventory)
@@ -120,6 +124,25 @@ namespace PixelCrew.Model.Data
             }
 
             return count;
+        }
+
+        public bool IsEnough(params ItemWithCount[] items)
+        {
+            var joined = new Dictionary<string, int>();
+
+            foreach (var item in items)
+            {
+                if (joined.ContainsKey(item.ItemId)) joined[item.ItemId] += item.Count;
+                else joined.Add(item.ItemId, item.Count);
+            }
+            
+            foreach (var kvp in joined)
+            {
+                var count = Count(kvp.Key);
+                if (count < kvp.Value) return false;
+            }
+
+            return true; 
         }
     }
 }

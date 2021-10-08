@@ -10,15 +10,23 @@ namespace PixelCrew.Utils
         [SerializeField] private float _value;
         private float _timeUp;
 
+        public float Value
+        {
+            get => _value;
+            set => _value = value;
+        }
+
         public void Reset()
         {
             _timeUp = Time.time + _value;
         }
 
-        public void EarlyComplete() 
+        public void EarlyComplete()
         {
             _timeUp -= _value;
         }
+
+        public float TimeLasts => Mathf.Max(_timeUp - Time.time, 0f);
 
         public bool IsReady => _timeUp <= Time.time;
     }

@@ -6,7 +6,7 @@ namespace PixelCrew.UI.Widgets
 {
     public class DataGroup<TDataType, TItemType> where  TItemType : MonoBehaviour, IItemRenderer<TDataType>
     {
-        private List<TItemType> _createdItems = new List<TItemType>();
+        protected List<TItemType> CreatedItems = new List<TItemType>();
 
         private TItemType _prefab;
         private Transform _container;
@@ -17,23 +17,26 @@ namespace PixelCrew.UI.Widgets
             _container = container;
         }
 
-        public void SetData(IList<TDataType> data)
+        public virtual void SetData(IList<TDataType> data)
         {
-            for (var i = _createdItems.Count; i < data.Count(); i++)
+            //создаются запрашиваемые предметы
+            for (var i = CreatedItems.Count; i < data.Count(); i++)
             {
                 var item = Object.Instantiate(_prefab, _container);
-                _createdItems.Add(item);
+                CreatedItems.Add(item);
             }
 
+            //обнавляются данные и включаются предметы
             for (var i = 0; i < data.Count; i++) 
             {
-                _createdItems[i].SetData(data[i], i);
-                _createdItems[i].gameObject.SetActive(true);
+                CreatedItems[i].SetData(data[i], i);
+                CreatedItems[i].gameObject.SetActive(true);
             }
-
-            for (var i = data.Count; i < _createdItems.Count; i++)
+            
+            // скрываются неиспользуемые предметы
+            for (var i = data.Count; i < CreatedItems.Count; i++)
             {
-                _createdItems[i].gameObject.SetActive(false);
+                CreatedItems[i].gameObject.SetActive(false);
             }
         }
     }

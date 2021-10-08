@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace PixelCrew.UI.Localization
+namespace PixelCrew.UI.Windows.Localization
 {
     public class LocaleItemWidget : MonoBehaviour, IItemRenderer<LocaleInfo>
     {

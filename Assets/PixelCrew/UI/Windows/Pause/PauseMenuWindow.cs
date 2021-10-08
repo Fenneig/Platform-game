@@ -1,9 +1,9 @@
-﻿using PixelCrew.UI.Windows.MainMenu;
-using PixelCrew.Components.LevelManagement;
+﻿using PixelCrew.Components.LevelManagement;
+using PixelCrew.UI.Windows.MainMenu;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PixelCrew.UI.Windows.PauseMenu
+namespace PixelCrew.UI.Windows.Pause
 {
     public class PauseMenuWindow : MainMenuWindow
     {
@@ -29,7 +29,7 @@ namespace PixelCrew.UI.Windows.PauseMenu
             Time.timeScale = _defaultTimeScale;
             _input.enabled = true;
             var reloadScene = FindObjectOfType<ReloadLevelComponent>();
-            _closeAction = () => reloadScene.ReloadScene();
+            CloseAction = () => reloadScene.ReloadScene();
             Close();
         }
 

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using PixelCrew.UI.Windows.Pause;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using PixelCrew.UI.Windows.PauseMenu;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -31,21 +31,16 @@ namespace PixelCrew.Creatures.Hero
         {
             if (context.canceled) _hero.IsJumpButtonPressed = false;
         }
-
-        public void OnThrow(InputAction.CallbackContext context)
-        {
-            if (context.started) _hero.StartThrowing();
-            if (context.canceled) _hero.PerformThrowing();
-        }
-
+        
         public void OnUseItem(InputAction.CallbackContext context) 
         {
-            if (context.canceled) _hero.UseItem();
+            if (context.started) _hero.StartThrowing();
+            if (context.canceled) _hero.UseInventory();
         }
 
         public void OnPause(InputAction.CallbackContext context) 
         {
-            if (context.started) _pauseMenuCaller?.SwitchPauseCondition();
+            if (context.started) _pauseMenuCaller.SwitchPauseCondition();
         }
        
         public void OnItemSelection(InputAction.CallbackContext context)

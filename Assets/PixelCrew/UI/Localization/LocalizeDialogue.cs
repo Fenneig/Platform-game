@@ -1,5 +1,5 @@
-﻿using Assets.PixelCrew.Model.Data.Dialog;
-using PixelCrew.Components.Dialogue;
+﻿using PixelCrew.Components.Dialogue;
+using PixelCrew.Model.Data.Dialogue;
 using PixelCrew.Model.Definitions.Localization;
 using UnityEngine;
 

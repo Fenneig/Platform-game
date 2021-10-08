@@ -4986,7 +4986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _damageVelocity: 7.54
+  _damageVelocity: 7.5
   _heavyLandingVelocity: 15
   _jumpSpeed: 12.5
   _groundCheck: {fileID: 236387369932960060}
@@ -4996,7 +4996,7 @@ MonoBehaviour:
     m_Bits: 464640
   _particles: {fileID: 5931501552971627509}
   _dashSpeed: 12.5
-  _dashDuratation: 0.1
+  _dashDuration: 0.1
   _interactionRadius: {fileID: 4617069469202346616}
   _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
   _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}
@@ -5004,7 +5004,7 @@ MonoBehaviour:
   _throwSpawner: {fileID: 4105314346972055519}
   _numChargedThrows: 3
   _throwCooldown:
-    _value: 0.5
+    _value: 0.8
   _throwChargeTime:
     _value: 1
   _chargeThrowDelay: 0.4
@@ -5024,7 +5024,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a80f2b34652a9944d821936a1462fc84, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -5038,7 +5038,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 236387369531184224}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a80f2b34652a9944d821936a1462fc84, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5146,21 +5146,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bfb350aa-4551-41a4-b2c8-21746f45b56f
     m_ActionName: Hero/Attack[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 236387369531184231}
-        m_MethodName: OnThrow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 206ed306-ff00-41a7-803c-d3e2d84cf2ae
-    m_ActionName: Hero/Throw[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 236387369531184231}
@@ -5550,7 +5535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4238e6a86ec0f4645a1052d7f89804f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 0.2
+  _range: 0.4
   _mask:
     serializedVersion: 2
     m_Bits: 8192

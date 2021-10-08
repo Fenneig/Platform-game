@@ -19,17 +19,21 @@ namespace PixelCrew.Components.Health
             UpdateScale();
         }
 
-        private void UpdateScale() 
+        private void UpdateScale()
         {
             if (gameObject.transform.root.localScale.x != gameObject.transform.lossyScale.x)
-                gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            {
+                var transform = gameObject.transform.localScale;
+                transform = new Vector3(-transform.x, transform.y, transform.z);
+                gameObject.transform.localScale = transform;
+            }
         }
 
         private void OnHealthChange(int newValue, int oldValue)
         {
             GetComponent<Canvas>().enabled = true;
             var maxHealth = _healthComponent.MaxHealth;
-            var value = (float)newValue / maxHealth;
+            var value = (float) newValue / maxHealth;
             if (value <= 0) Destroy(gameObject);
             _healthBar.SetProgress(value);
         }

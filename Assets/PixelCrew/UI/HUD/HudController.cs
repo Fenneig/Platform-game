@@ -19,7 +19,7 @@ namespace PixelCrew.UI.HUD
             _session = FindObjectOfType<GameSession>();
             if (_session != null)
             {
-                _trash.Retain(_session.Data.Hp.Subscibe(OnHealthChange));
+                _trash.Retain(_session.Data.Hp.Subscribe(OnHealthChange));
                 OnHealthChange(_session.Data.Hp.Value, 0);
             }
         }

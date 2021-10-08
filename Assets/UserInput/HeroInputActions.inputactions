@@ -46,14 +46,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "206ed306-ff00-41a7-803c-d3e2d84cf2ae",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "UseItem",
                     "type": "Button",
                     "id": "efe7cab6-d594-45fd-b0bb-cbf6f667adad",
@@ -191,19 +183,8 @@
                 },
                 {
                     "name": "",
-                    "id": "3aa72377-8220-48e1-91ea-344cd8f0212b",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cad765c6-cf34-45e8-9174-2b4ab0144717",
-                    "path": "<Keyboard>/r",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

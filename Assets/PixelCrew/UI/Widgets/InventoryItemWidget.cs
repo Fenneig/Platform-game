@@ -1,12 +1,12 @@
 ﻿using PixelCrew.Model;
 using PixelCrew.Model.Data;
 using PixelCrew.Model.Definitions;
-using PixelCrew.UI.Widgets;
+using PixelCrew.Model.Definitions.Repository.Items;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.PixelCrew.UI.Widgets
+namespace PixelCrew.UI.Widgets
 {
     public class InventoryItemWidget : MonoBehaviour, IItemRenderer<InventoryItemData>
     {

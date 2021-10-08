@@ -1,5 +1,4 @@
-﻿using System;
-using PixelCrew.Components.GOBased;
+﻿using PixelCrew.Components.GOBased;
 using PixelCrew.Model;
 using UnityEngine;
 using UnityEngine.Events;

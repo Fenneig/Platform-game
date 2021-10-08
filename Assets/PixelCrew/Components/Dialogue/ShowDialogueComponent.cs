@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace PixelCrew.Components.Dialogue
 {
-    [RequireComponent(typeof(LocalizeDialogue))]
     public class ShowDialogueComponent : MonoBehaviour
     {
         [SerializeField] private Mode _mode;
@@ -19,7 +18,7 @@ namespace PixelCrew.Components.Dialogue
         public void Show()
         {
             if (_dialogBox == null) _dialogBox = FindObjectOfType<DialogBoxController>();
-            GetComponent<LocalizeDialogue>().Localize();
+            GetComponent<LocalizeDialogue>()?.Localize();
             _dialogBox.ShowDialogue(Data);
         }
 

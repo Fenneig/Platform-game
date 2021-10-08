@@ -5,10 +5,10 @@ namespace PixelCrew.Movement
     [RequireComponent(typeof(Rigidbody2D))]
     public class VerticalFloatingComponent : MonoBehaviour
     {
-        [SerializeField] float _frequency = 1f;
-        [SerializeField] float _amplitude = 1f;
-        [SerializeField] bool _randomize;
-        [SerializeField] bool _isFloating = true;
+        [SerializeField] private float _frequency = 1f;
+        [SerializeField] private float _amplitude = 1f;
+        [SerializeField] private bool _randomize;
+        [SerializeField] private bool _isFloating = true;
         private float _originalY;
         private Rigidbody2D _rigidbody;
         private float _seed = 1f;

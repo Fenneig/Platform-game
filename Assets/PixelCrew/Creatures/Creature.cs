@@ -12,16 +12,16 @@ namespace PixelCrew.Creatures
     [RequireComponent(typeof(PlaySoundsComponent))]
     public class Creature : MonoBehaviour
     {
-        [Space]
-        [Header("Stats")]
-        [SerializeField] private float _speed;
+        [Space] [Header("Stats")] [SerializeField]
+        private float _speed;
+
         [SerializeField] private float _damageVelocity;
         [SerializeField] private float _heavyLandingVelocity;
         [SerializeField] protected float _jumpSpeed;
 
-        [Space]
-        [Header("Checkers")]
-        [SerializeField] private LayerCheck _groundCheck;
+        [Space] [Header("Checkers")] [SerializeField]
+        private LayerCheck _groundCheck;
+
         [SerializeField] private CheckCircleOverlap _attackRange;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] protected SpawnListComponent _particles;
@@ -56,7 +56,7 @@ namespace PixelCrew.Creatures
             set => _direction = value;
         }
 
-        public float Speed 
+        public float Speed
         {
             get => _speed;
             set => _speed = value;
@@ -89,7 +89,6 @@ namespace PixelCrew.Creatures
             var yVelocity = CalculateYVelocity();
 
             return new Vector2(xVelocity, yVelocity);
-
         }
 
         private void AnimatorSettings()
@@ -121,7 +120,14 @@ namespace PixelCrew.Creatures
             //  /   |
             // /____|
             //   x
-            return Mathf.Abs(_direction.y) > 0 ? _direction.x * _speed * Mathf.Sqrt(2) : _direction.x * _speed;
+            return Mathf.Abs(_direction.y) > 0
+                ? _direction.x * CalculateSpeed() * Mathf.Sqrt(2)
+                : _direction.x * CalculateSpeed();
+        }
+
+        protected virtual float CalculateSpeed()
+        {
+            return _speed;
         }
 
         protected virtual float CalculateYVelocity()
@@ -144,6 +150,7 @@ namespace PixelCrew.Creatures
             {
                 yVelocity /= 2f;
             }
+
             return yVelocity;
         }
 
@@ -187,6 +194,5 @@ namespace PixelCrew.Creatures
             _attackRange.Check();
             Sounds.Play("Melee");
         }
-
     }
 }

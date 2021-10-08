@@ -18,7 +18,7 @@ namespace PixelCrew.Components.ColliderBased
             }
             else
             {
-                foreach (string tag in _tags)
+                foreach (var tag in _tags)
                 {
                     if (collision.gameObject.CompareTag(tag)) InvokeAction(collision);
                 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEditor;
 
-namespace Assets.PixelCrew.Utils.Editor
+namespace PixelCrew.Utils.Editor
 {
     public static class SerializedPropertyExtensions
     {

@@ -16,7 +16,7 @@ namespace PixelCrew.Components.Health
 
             if (healthComponent != null) healthComponent.ModifyHealthByDelta(_delta);
         }
-
+        
         public void Use(GameObject target) => Apply(target);
     }
 }

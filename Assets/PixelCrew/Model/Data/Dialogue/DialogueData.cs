@@ -1,5 +1,4 @@
-﻿using Assets.PixelCrew.Model.Data.Dialog;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace PixelCrew.Model.Data.Dialogue

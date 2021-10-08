@@ -1,9 +1,9 @@
-﻿using PixelCrew.Animations;
-using System.Collections;
+﻿using System.Collections;
+using PixelCrew.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PixelCrew.Components
+namespace PixelCrew.Components.ColliderBased
 {
     public class TeleportComponent : MonoBehaviour
     {

@@ -7,13 +7,13 @@ namespace PixelCrew.Movement
     [RequireComponent(typeof(DestroyObjectComponent))]
     public class CircularMovementComponent : MonoBehaviour
     {
-        [SerializeField] float _radius = 1f;
-        [SerializeField] float _speed;
+        [SerializeField] private float _radius = 1f;
+        [SerializeField] private float _speed;
 
         private Rigidbody2D[] _childRigidBody;
         private float[] _startAngle;
         private int _childCount;
-        private bool _isPlaying = false;
+        private bool _isPlaying;
 
         private void Awake()
         {

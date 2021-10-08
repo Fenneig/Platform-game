@@ -1,7 +1,8 @@
-﻿using PixelCrew.UI.Settings;
+﻿using PixelCrew.UI.Windows.Settings;
+using PixelCrew.Utils;
 using UnityEngine;
 
-namespace PixelCrew.UI.Windows.PauseMenu
+namespace PixelCrew.UI.Windows.Pause
 {
     public class PauseMenuCaller : MonoBehaviour
     {
@@ -14,10 +15,10 @@ namespace PixelCrew.UI.Windows.PauseMenu
 
             if (_isPaused)
             {
-                var settingsMenuWindow = FindObjectOfType<SettingsMenuWindow>();
-                if (settingsMenuWindow != null) 
+                var otherMenuOpened = FindObjectOfType<AnimatedWindow>();
+                if (otherMenuOpened != null) 
                 {
-                    settingsMenuWindow.Close(); 
+                    otherMenuOpened.Close(); 
                 }
                 else
                 {
@@ -27,9 +28,8 @@ namespace PixelCrew.UI.Windows.PauseMenu
             }
             else
             {
-                var window = Resources.Load<GameObject>("UI/Windows/Pause/PauseMenuWindow");
-                var canvasTransform = GetComponent<Canvas>().transform;
-                Instantiate(window, canvasTransform);
+                WindowUtils.CreateWindow("UI/Windows/Pause/PauseMenuWindow");
+                
                 _isPaused = true;
                 
                 Time.timeScale = 0f;

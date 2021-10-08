@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace PixelCrew.Model.Data.Properties
 {
+    [Serializable]
     public class ObservableProperty<TPropertyType>
     {
         [SerializeField] protected TPropertyType _value;
@@ -11,7 +12,7 @@ namespace PixelCrew.Model.Data.Properties
         public delegate void OnPropertyChanged(TPropertyType newValue, TPropertyType oldValue);
 
         public event OnPropertyChanged OnChanged;
-        public IDisposable Subscibe(OnPropertyChanged call)
+        public IDisposable Subscribe(OnPropertyChanged call)
         {
             OnChanged += call;
             return new ActionDisposable(() => OnChanged -= call);
@@ -30,7 +31,7 @@ namespace PixelCrew.Model.Data.Properties
             get => _value;
             set 
             {
-                var isSame = _value.Equals(value);
+                var isSame = _value?.Equals(value) ?? false;
                 if (isSame) return;
                 var oldValue = _value;
                 _value = value;

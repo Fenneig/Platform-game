@@ -1,5 +1,4 @@
 ﻿using PixelCrew.Components.GOBased;
-using PixelCrew.Creatures.Patroling;
 using PixelCrew.Components.ColliderBased;
 using System.Collections;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace PixelCrew.Creatures.Mobs
     [RequireComponent(typeof(SpawnListComponent))]
     [RequireComponent(typeof(Creature))]
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(Patrol))]
+    [RequireComponent(typeof(Patrol.Patrol))]
     public class MobAI : MonoBehaviour
     {
         [Space]
@@ -28,7 +27,7 @@ namespace PixelCrew.Creatures.Mobs
         protected Animator MobAnimator;
         protected SpawnListComponent Particles;
         protected bool IsDead;
-        protected Patrol Patrol;
+        protected Patrol.Patrol Patrol;
 
         private static readonly int IsDeadKey = Animator.StringToHash("is-dead");
 
@@ -37,7 +36,7 @@ namespace PixelCrew.Creatures.Mobs
             Particles = GetComponent<SpawnListComponent>();
             Mob = GetComponent<Creature>();
             MobAnimator = GetComponent<Animator>();
-            Patrol = GetComponent<Patrol>();
+            Patrol = GetComponent<Patrol.Patrol>();
             IsDead = false;
         }
 

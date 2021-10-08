@@ -13,6 +13,7 @@ namespace PixelCrew.Components.Interactions
 
         private Animator _animator;
         private string _tagOnButton = null;
+        private static readonly int IsPressingKey = Animator.StringToHash("is-pressing");
 
         private void Awake()
         {
@@ -28,7 +29,7 @@ namespace PixelCrew.Components.Interactions
                     if (collision.CompareTag(tag))
                     {
                         _tagOnButton = tag;
-                        _animator.SetBool("is-pressing", true);
+                        _animator.SetBool(IsPressingKey, true);
                         _pressedEvent.Invoke();
                         break;
                     }
@@ -43,7 +44,7 @@ namespace PixelCrew.Components.Interactions
                 if (collision.CompareTag(_tagOnButton))
                 {
                     _tagOnButton = null;
-                    _animator.SetBool("is-pressing", false);
+                    _animator.SetBool(IsPressingKey, false);
                     _unpressedEvent.Invoke();
                 }
             }

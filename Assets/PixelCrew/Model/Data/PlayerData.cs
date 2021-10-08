@@ -11,6 +11,7 @@ namespace PixelCrew.Model.Data
 
         public IntProperty Hp = new IntProperty();
 
+        public PerkData Perks = new PerkData();
         public InventoryData Inventory => _inventory;
 
         public PlayerData Clone() 

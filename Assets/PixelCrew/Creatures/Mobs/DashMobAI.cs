@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 
@@ -59,7 +58,7 @@ namespace PixelCrew.Creatures.Mobs
             MobAnimator.SetBool(IsAttacking, false);
             _attackCollider.enabled = false;
             if (IsDead) return;
-            StartState(_vision.IsTouchingLayer ? AgroToHero() : Patrol?.DoPatrol());
+            StartState(_vision.IsTouchingLayer ? AgroToHero() : Patrol.DoPatrol());
         }
 
         public void OnDoDash()
@@ -88,7 +87,7 @@ namespace PixelCrew.Creatures.Mobs
 
             _isFixedOnTarget = false;
 
-            if (!IsDead) StartState(Patrol?.DoPatrol());
+            if (!IsDead) StartState(Patrol.DoPatrol());
         }
 
         private void HeightReachedCheck()

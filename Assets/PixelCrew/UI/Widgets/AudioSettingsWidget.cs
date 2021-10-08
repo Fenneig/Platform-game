@@ -27,7 +27,7 @@ namespace PixelCrew.UI.Widgets
         public void SetModel(FloatPersistentProperty model) 
         {
             _model = model;
-            _trash.Retain(_model.Subscibe(OnValueChanged));
+            _trash.Retain(_model.Subscribe(OnValueChanged));
             OnValueChanged(_model.Value, _model.Value);
         }
 

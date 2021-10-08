@@ -26,11 +26,10 @@ namespace PixelCrew.Components.Collectables
             else Debug.Log("Inventory is full!");
         }
 
-        private bool CanInvoke() 
+        private bool CanInvoke()
         {
-            if (_session.Data.Inventory.InventorySize < DefsFacade.I.Player.MaxInventorySize) return true;
-
-            return _session.Data.Inventory.isContainStackableItem(_itemData);
+            var inventory = _session.Data.Inventory;
+            return inventory.Size < DefsFacade.I.Player.MaxInventorySize || inventory.IsContainStackableItem(_itemData);
         }
 
 
