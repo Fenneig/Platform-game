@@ -22,16 +22,16 @@ namespace PixelCrew.UI.Windows.Perks
             UpdateView();
         }
 
-        public void SetData(PerkDef data, int index)
+        public void SetData(PerkDef dataInfo, int index)
         {
-            _data = data;
+            _data = dataInfo;
 
             if (_session != null) UpdateView();
         }
 
         private void UpdateView()
         {
-                _icon.sprite = _data.Icon;
+            _icon.sprite = _data.Icon;
             _isUsed.SetActive(_session.PerksModel.IsUsed(_data.Id));
             _isSelected.SetActive(_session.PerksModel.InterfaceSelection.Value == _data.Id);
             _isLocked.SetActive(!_session.PerksModel.IsUnlocked(_data.Id));

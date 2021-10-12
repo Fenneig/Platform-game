@@ -1,6 +1,7 @@
 ﻿using PixelCrew.Model;
 using PixelCrew.Model.Definitions;
 using PixelCrew.UI.Widgets;
+using PixelCrew.UI.Windows.Perks;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace PixelCrew.UI.HUD
     public class HudController : MonoBehaviour
     {
         [SerializeField] private ProgressBarWidget _healthBar;
+        [SerializeField] private ActivePerkWidget _activePerk;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
 
@@ -17,17 +19,30 @@ namespace PixelCrew.UI.HUD
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            if (_session != null)
+
+            _trash.Retain(_session.Data.Hp.SubscribeAndInvoke(OnHealthChange));
+            _trash.Retain(_session.PerksModel.SubscribeAndInvoke(OnPerkChange));
+        }
+
+        private void OnPerkChange()
+        {
+            var usedPerk = _session.PerksModel.Used;
+            if (string.IsNullOrEmpty(usedPerk))
             {
-                _trash.Retain(_session.Data.Hp.Subscribe(OnHealthChange));
-                OnHealthChange(_session.Data.Hp.Value, 0);
+                _activePerk.gameObject.SetActive(false);
+            }
+            else
+            {
+                _activePerk.gameObject.SetActive(true);
+                var perk = DefsFacade.I.Perks.Get(usedPerk);
+                _activePerk.Set(perk);
             }
         }
 
         private void OnHealthChange(int newValue, int oldValue)
         {
             var maxHealth = DefsFacade.I.Player.MaxHealth;
-            var value = (float)newValue / maxHealth;
+            var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
         }
 

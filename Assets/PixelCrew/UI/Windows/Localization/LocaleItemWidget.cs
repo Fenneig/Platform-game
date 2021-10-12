@@ -24,7 +24,7 @@ namespace PixelCrew.UI.Windows.Localization
         {
             _data = localeInfo;
             UpdateSelection();
-            _text.text = localeInfo.LocaleId.ToUpper();
+            _text.text = _data.LocaleId.ToUpper();
         }
         
         private void UpdateSelection()
@@ -44,7 +44,6 @@ namespace PixelCrew.UI.Windows.Localization
     public class LocaleInfo
     {
         public string LocaleId;
-        
     }
 
     [Serializable]

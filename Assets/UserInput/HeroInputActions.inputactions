@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Dash",
+                    "name": "UsePerk",
                     "type": "Button",
                     "id": "902a9a10-d967-41d8-8eb0-203aa641a287",
                     "expectedControlType": "Button",
@@ -133,7 +133,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "UsePerk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -144,7 +144,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dash",
+                    "action": "UsePerk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

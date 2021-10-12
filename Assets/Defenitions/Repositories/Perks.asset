@@ -15,19 +15,33 @@ MonoBehaviour:
   _collection:
   - _id: doubleJump
     _icon: {fileID: 21300000, guid: 8b0a31a0c4d584e48977b84f29b110a7, type: 3}
-    _info: allow you to double jump
+    _info: Discription-DoubleJump
     _price:
       _itemId: Coin
       _count: 50
+    _cooldown:
+      _value: 2
   - _id: chargedThrow
     _icon: {fileID: 21300000, guid: 2b44f27b22d085b498b72f4a5fe4ffbe, type: 3}
-    _info: allow you do charged attack
+    _info: Discription-ChargedThrow
     _price:
       _itemId: Coin
       _count: 50
+    _cooldown:
+      _value: 5
   - _id: dash
     _icon: {fileID: 21300000, guid: 33eed5c8a2582e34a8009abef65a5b64, type: 3}
-    _info: allow you do dash
+    _info: Discription-Dash
     _price:
       _itemId: Coin
       _count: 20
+    _cooldown:
+      _value: 1
+  - _id: shield
+    _icon: {fileID: 21300000, guid: 77b51a2c86d6cd1498d52c7f13ebb5ec, type: 3}
+    _info: Discription-Shield
+    _price:
+      _itemId: Coin
+      _count: 5000
+    _cooldown:
+      _value: 10

@@ -14,11 +14,15 @@ namespace PixelCrew.Components.Health
         [SerializeField] private ChangeHealthEvent _onChange;
 
         private int _maxHealth;
+
         public int MaxHealth => _maxHealth;
+
+        public bool IsInvulnerable { get; set; }
 
         private void Start()
         {
             _maxHealth = _health.Value;
+            IsInvulnerable = false;
         }
 
         public IntProperty Health
@@ -31,6 +35,7 @@ namespace PixelCrew.Components.Health
         public void ModifyHealthByDelta(int delta)
         {
             if (_health.Value <= 0) return;
+            if (delta < 0 && IsInvulnerable) return;
 
             _health.Value += delta;
             if (delta < 0)
@@ -41,6 +46,7 @@ namespace PixelCrew.Components.Health
             {
                 _onHeal?.Invoke();
             }
+
             if (_health.Value <= 0)
             {
                 _onDie?.Invoke();
@@ -55,6 +61,7 @@ namespace PixelCrew.Components.Health
         {
             _onChange?.Invoke(_health.Value);
         }
+
         [Serializable]
         public class ChangeHealthEvent : UnityEvent<int>
         {

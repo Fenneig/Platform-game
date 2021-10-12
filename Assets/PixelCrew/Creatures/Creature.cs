@@ -62,7 +62,7 @@ namespace PixelCrew.Creatures
             set => _speed = value;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             IsGrounded = _groundCheck.IsTouchingLayer;
         }

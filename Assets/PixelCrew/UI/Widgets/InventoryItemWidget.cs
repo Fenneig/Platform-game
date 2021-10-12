@@ -30,12 +30,12 @@ namespace PixelCrew.UI.Widgets
             _selection.SetActive(_index == newValue);
         }
 
-        public void SetData(InventoryItemData localeInfo, int index)
+        public void SetData(InventoryItemData dataInfo, int index)
         {
             _index = index;
-            var def = DefsFacade.I.Items.Get(localeInfo.Id);
+            var def = DefsFacade.I.Items.Get(dataInfo.Id);
             _icon.sprite = def.Icon;
-            _value.text = def.HasTag(ItemTag.Stackable) ? localeInfo.Value.ToString() : string.Empty;
+            _value.text = def.HasTag(ItemTag.Stackable) ? dataInfo.Value.ToString() : string.Empty;
         }
 
         private void OnDestroy()

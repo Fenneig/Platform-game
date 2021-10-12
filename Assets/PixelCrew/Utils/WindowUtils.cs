@@ -18,12 +18,5 @@ namespace PixelCrew.Utils
             _canvas = Object.FindObjectOfType<Canvas>();
             CreateWindow();
         }
-
-        public static void CreateWindow(string resourcePath, Canvas canvas)
-        {
-            _window = Resources.Load<GameObject>(resourcePath);
-            _canvas = canvas;
-            CreateWindow();
-        }
     }
 }

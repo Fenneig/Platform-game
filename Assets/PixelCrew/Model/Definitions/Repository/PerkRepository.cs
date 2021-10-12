@@ -1,5 +1,6 @@
 ﻿using System;
 using PixelCrew.Model.Definitions.Repository.Items;
+using PixelCrew.Utils;
 using UnityEngine;
 
 namespace PixelCrew.Model.Definitions.Repository
@@ -16,11 +17,12 @@ namespace PixelCrew.Model.Definitions.Repository
         [SerializeField] private Sprite _icon;
         [SerializeField] private string _info;
         [SerializeField] private ItemWithCount _price;
+        [SerializeField] private Timer _cooldown;
         public string Id => _id;
         public Sprite Icon => _icon;
-        
         public string Info => _info;
         public ItemWithCount Price => _price;
+        public Timer Cooldown => _cooldown;
     }
 
     [Serializable]

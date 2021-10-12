@@ -32,13 +32,19 @@ namespace PixelCrew.Creatures.Hero
         private ParticleSystem _dropCoinsOnHitParticle;
 
         [SerializeField] private SpawnComponent _throwSpawner;
+        [SerializeField] private SpriteRenderer _shieldParticle;
 
         [Space] [Header("Throw Stats")] [Min(2)] [SerializeField]
         private int _numChargedThrows;
 
         [SerializeField] private Timer _throwCooldown;
-        [SerializeField] private Timer _throwChargeTime;
+        [SerializeField] private Timer _timeToPerformChargeThrow;
         [SerializeField] private float _chargeThrowDelay;
+
+        [Space] [Header("Shield Stats")] [SerializeField]
+        private float _shieldDuration;
+        [SerializeField] private float _shieldEndIndicator;
+        [SerializeField] private int _blinksAmount;
 
         private bool _allowDashInJump;
         private bool _isDashing;
@@ -50,14 +56,17 @@ namespace PixelCrew.Creatures.Hero
 
         private GameSession _session;
 
+        private Timer _hasteTimer = new Timer();
+        private float _speedBonus;
+        private float _dashTrigger;
+
         public bool IsJumpButtonPressed { get; set; }
 
-        public float DashTrigger { get; set; }
-
         private const string SwordId = "Sword";
+        private const string DashId = "dash";
+        private const string ShieldId = "shield";
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         private int SwordCount => _session.Data.Inventory.Count("Sword");
-
         private int CoinCount => _session.Data.Inventory.Count("Coin");
 
         private bool CanThrow
@@ -115,6 +124,15 @@ namespace PixelCrew.Creatures.Hero
             _session.Data.Hp.Value = newHealth;
         }
 
+        protected override void Update()
+        {
+            base.Update();
+
+            if (_session.PerksModel.Cooldown.IsReady && _session.PerksModel.IsShieldSupported)
+            {
+                _shieldParticle.enabled = false;
+            }
+        }
 
         protected override void FixedUpdate()
         {
@@ -126,14 +144,14 @@ namespace PixelCrew.Creatures.Hero
                 _allowDashInJump = true;
             }
 
-            if (DashTrigger == 0) return;
+            if (_dashTrigger == 0) return;
 
             if (AllowDash())
             {
                 StartCoroutine(Dash());
             }
 
-            DashTrigger = 0f;
+            _dashTrigger = 0f;
         }
 
         //При рывке отключается просчет движения героя 
@@ -152,25 +170,22 @@ namespace PixelCrew.Creatures.Hero
             {
                 yVelocity = DoJump();
                 _allowDoubleJump = false;
+                _session.PerksModel.Cooldown.Reset();
             }
 
             return yVelocity;
         }
 
-        private Timer _hasteTimer = new Timer();
-        private float _speedBonus;
-
 
         public void DrinkHastePotion(float speedBonus, float hasteTime)
         {
-            _hasteTimer.Value = _hasteTimer.TimeLasts + hasteTime;
+            _hasteTimer.Value = _hasteTimer.RemainingTime + hasteTime;
             _speedBonus = Mathf.Max(speedBonus, _speedBonus);
             _hasteTimer.Reset();
         }
 
         protected override float CalculateSpeed()
         {
-            var time = Time.time;
             if (_hasteTimer.IsReady) _speedBonus = 0f;
             return base.CalculateSpeed() + _speedBonus;
         }
@@ -216,19 +231,20 @@ namespace PixelCrew.Creatures.Hero
         private bool AllowDash()
         {
             if (!_session.PerksModel.IsDashSupported) return false;
+            _session.PerksModel.Cooldown.Reset();
 
             if (!_allowDashInJump) return _allowDashInJump;
-            
-            _allowDashInJump = false;
-            
-            return true;
 
+            _allowDashInJump = false;
+
+            return true;
         }
 
         public void RecoverExtraMoves()
         {
             _allowDashInJump = true;
             _allowDoubleJump = true;
+            _session.PerksModel.Cooldown.EarlyComplete();
         }
 
         public void AddInInventory(string id, int count)
@@ -281,15 +297,22 @@ namespace PixelCrew.Creatures.Hero
 
             _throwCooldown.Reset();
 
-            if (_throwChargeTime.IsReady && _session.PerksModel.IsChargedThrowSupported) ChargedThrow();
-            else Throw();
+            if (_timeToPerformChargeThrow.IsReady &&
+                _session.PerksModel.IsChargedThrowSupported)
+            {
+                ChargedThrow();
+                _session.PerksModel.Cooldown.Reset();
+            }
+            else
+            {
+                Throw();
+            }
         }
-
 
         public void StartThrowing()
         {
             if (!CanThrow) return;
-            _throwChargeTime.Reset();
+            _timeToPerformChargeThrow.Reset();
         }
 
         public void UseInventory()
@@ -323,7 +346,7 @@ namespace PixelCrew.Creatures.Hero
 
         private IEnumerator ThrowMultiply(int numberOfThrows)
         {
-            for (int i = 0; i < numberOfThrows; i++)
+            for (var i = 0; i < numberOfThrows; i++)
             {
                 Throw();
                 yield return new WaitForSeconds(_chargeThrowDelay);
@@ -336,17 +359,55 @@ namespace PixelCrew.Creatures.Hero
             Sounds.Play("Range");
             var throwableId = _session.QuickInventory.SelectedItem.Id;
             var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
-            if (!string.IsNullOrEmpty(throwableDef.Id))
-            {
-                _throwSpawner.SetPrefab(throwableDef.Projectile);
 
-                _session.Data.Inventory.Remove(throwableId, 1);
-            }
+            if (string.IsNullOrEmpty(throwableDef.Id)) return;
+
+            _throwSpawner.SetPrefab(throwableDef.Projectile);
+            _session.Data.Inventory.Remove(throwableId, 1);
         }
 
         public void OnDoThrow()
         {
             _throwSpawner.Spawn();
+        }
+
+
+        public void UsePerk(float value)
+        {
+            var perkType = _session.PerksModel.Used;
+            switch (perkType)
+            {
+                case DashId:
+                {
+                    _dashTrigger = value;
+                    break;
+                }
+                case ShieldId:
+                {
+                    if (value != 0) ActivateShield();
+                    break;
+                }
+            }
+        }
+
+        private void ActivateShield()
+        {
+            _session.PerksModel.Cooldown.Reset();
+            StartCoroutine(ShieldEffect());
+        }
+
+        private IEnumerator ShieldEffect()
+        {
+            _shieldParticle.enabled = true;
+            _healthComponent.IsInvulnerable = true;
+            yield return new WaitForSeconds(_shieldDuration - _shieldEndIndicator);
+            for (var i = 0; i < _blinksAmount; i++)
+                yield return AlphaAnimationUtils.AlphaAnimation(_shieldParticle, i % 2, _shieldEndIndicator / _blinksAmount);
+            var color = _shieldParticle.color;
+            color.a = 255;
+            _shieldParticle.color = color;
+            _healthComponent.IsInvulnerable = false;
+            _shieldParticle.enabled = false;
         }
     }
 

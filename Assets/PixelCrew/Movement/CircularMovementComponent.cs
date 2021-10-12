@@ -21,7 +21,7 @@ namespace PixelCrew.Movement
             _childCount = transform.childCount;
             _childRigidBody = new Rigidbody2D[_childCount];
             _startAngle = new float[_childCount];
-            for (int i = 0; i < _childCount; i++)
+            for (var i = 0; i < _childCount; i++)
             {
                 _startAngle[i] = 2 * Mathf.PI / _childCount * i;
                 _childRigidBody[i] = transform.GetChild(i).GetComponent<Rigidbody2D>();
@@ -30,15 +30,15 @@ namespace PixelCrew.Movement
 
         private void Update()
         {
-            for (int i = 0; i < _childCount; i++)
+            for (var i = 0; i < _childCount; i++)
             {
                 if (_childRigidBody[i] == null) continue;
 
-                var postion = _childRigidBody[i].position;
-                postion.x = transform.position.x + Mathf.Cos(_startAngle[i] + Time.time * _speed) * _radius;
-                postion.y = transform.position.y + Mathf.Sin(_startAngle[i] + Time.time * _speed) * _radius;
+                var position = _childRigidBody[i].position;
+                position.x = transform.position.x + Mathf.Cos(_startAngle[i] + Time.time * _speed) * _radius;
+                position.y = transform.position.y + Mathf.Sin(_startAngle[i] + Time.time * _speed) * _radius;
 
-                _childRigidBody[i].MovePosition(postion);
+                _childRigidBody[i].MovePosition(position);
             }
 
             if (transform.childCount == 0) GetComponent<DestroyObjectComponent>().DestroyObject();

@@ -43,6 +43,6 @@ namespace PixelCrew.UI.Widgets
 
     public interface IItemRenderer<TDataType>
     {
-        void SetData(TDataType localeInfo, int index);
+        void SetData(TDataType dataInfo, int index);
     }
 }

@@ -7,8 +7,8 @@ namespace PixelCrew.Creatures.Mobs
     public class PatrolMobAi : MobAI
     {
         [SerializeField] private LayerCheck _canAttack;
-        [SerializeField] private float _horizontalTrheshold = 0.2f;
-
+        [SerializeField] private float _horizontalThreshold = 0.2f;
+        
         public override void OnHeroInVision(GameObject go)
         {
             if (IsDead) return;
@@ -35,7 +35,7 @@ namespace PixelCrew.Creatures.Mobs
                 else
                 {
                     var horizontalDelta = Mathf.Abs(Target.transform.position.x - transform.position.x);
-                    if (horizontalDelta <= _horizontalTrheshold) Mob.Direction = Vector2.zero;
+                    if (horizontalDelta <= _horizontalThreshold) Mob.Direction = Vector2.zero;
                     else SetDirectionToTarget();
                 }
 

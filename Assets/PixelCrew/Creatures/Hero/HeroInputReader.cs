@@ -20,7 +20,7 @@ namespace PixelCrew.Creatures.Hero
         }
         public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = context.ReadValue<Vector2>();
 
-        public void OnDash(InputAction.CallbackContext context) => _hero.DashTrigger = context.ReadValue<float>();
+        public void OnUsePerk(InputAction.CallbackContext context) => _hero.UsePerk(context.ReadValue<float>());
 
         public void OnInteract(InputAction.CallbackContext context)
         {

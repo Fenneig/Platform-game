@@ -13,18 +13,16 @@ namespace PixelCrew.Model
     {
         [SerializeField] private PlayerData _data;
         [SerializeField] private string _defaultCheckpoint;
-        [SerializeField] private PerksModel _perksModel;
-
         public PerksModel PerksModel { get; private set; }
+        public QuickInventoryModel QuickInventory { get; private set; }
+        
         public PlayerData Data => _data;
         private PlayerData _save;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
-        public QuickInventoryModel QuickInventory { get; private set; }
 
         private readonly List<string> _checkpoints = new List<string>();
         private readonly List<string> _destroyedObjects = new List<string>();
         private readonly List<string> _savedDestroyedObjects = new List<string>();
-
 
 
         private void Awake()
@@ -39,7 +37,8 @@ namespace PixelCrew.Model
             {
                 Save();
                 DontDestroyOnLoad(this);
-                StartSession(_defaultCheckpoint);
+                StartSession(_defaultCheckpoint);          
+                InitModels();
             }
         }
 
@@ -70,9 +69,10 @@ namespace PixelCrew.Model
 
             PerksModel = new PerksModel(_data);
             _trash.Retain(PerksModel);
+            
         }
 
-        private void LoadHud()
+        private static void LoadHud()
         {
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
@@ -80,12 +80,7 @@ namespace PixelCrew.Model
         private GameSession GetExistSession()
         {
             var sessions = FindObjectsOfType<GameSession>();
-            foreach (var gameSession in sessions)
-            {
-                if (gameSession != this) return gameSession;
-            }
-
-            return null;
+            return sessions.FirstOrDefault(gameSession => gameSession != this);
         }
 
         public void ClearCheckpoints()
@@ -98,7 +93,6 @@ namespace PixelCrew.Model
             _save = _data.Clone();
             _savedDestroyedObjects.AddRange(_destroyedObjects);
             _destroyedObjects.Clear();
-            InitModels();
         }
 
         public void Load()
@@ -111,7 +105,7 @@ namespace PixelCrew.Model
         {
             _trash.Dispose();
         }
-
+        
         public bool IsChecked(string id)
         {
             return _checkpoints.Contains(id);
@@ -119,11 +113,10 @@ namespace PixelCrew.Model
 
         public void SetChecked(string id)
         {
-            if (!_checkpoints.Contains(id))
-            {
-                Save();
-                _checkpoints.Add(id);
-            }
+            if (_checkpoints.Contains(id)) return;
+            
+            Save();
+            _checkpoints.Add(id);
         }
 
         public void StoreState(string id)

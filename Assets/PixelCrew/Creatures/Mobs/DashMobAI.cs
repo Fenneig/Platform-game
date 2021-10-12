@@ -11,9 +11,9 @@ namespace PixelCrew.Creatures.Mobs
         [Header("Stats")]
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _jumpHeight = 1f;
-        [SerializeField] private float _reachTargetthreshold = 0.2f;
+        [SerializeField] private float _reachTargetThreshold = 0.2f;
         [SerializeField] Collider2D _attackCollider;
-
+        
         private Vector3 _targetPosition;
         private float _baseMobSpeed;
         private bool _isFixedOnTarget;
@@ -110,9 +110,8 @@ namespace PixelCrew.Creatures.Mobs
 
         private void TargetReachedCheck()
         {
-            if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _reachTargetthreshold)
+            if (Mathf.Abs(transform.position.x - _targetPosition.x) <= _reachTargetThreshold)
                 MobAnimator.SetBool(IsAttacking, false);
-
         }
     }
 }

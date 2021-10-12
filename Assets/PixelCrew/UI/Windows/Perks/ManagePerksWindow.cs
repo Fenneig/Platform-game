@@ -5,6 +5,7 @@ using PixelCrew.Model.Definitions.Repository;
 using PixelCrew.UI.Widgets;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace PixelCrew.UI.Windows.Perks
@@ -17,6 +18,9 @@ namespace PixelCrew.UI.Windows.Perks
         [SerializeField] private Text _infoText;
         [SerializeField] private Transform _perksContainer;
 
+        private float _defaultTimeScale;
+        private PlayerInput _input;
+
         private PredefinedDataGroup<PerkDef, PerkWidget> _dataGroup;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
@@ -26,6 +30,10 @@ namespace PixelCrew.UI.Windows.Perks
         protected override void Start()
         {
             base.Start();
+            
+            _input = FindObjectOfType<PlayerInput>();
+            _defaultTimeScale = Time.timeScale;
+            PauseGame();
 
             _dataGroup = new PredefinedDataGroup<PerkDef, PerkWidget>(_perksContainer);
             _session = FindObjectOfType<GameSession>();
@@ -64,11 +72,24 @@ namespace PixelCrew.UI.Windows.Perks
         private void OnUse()
         {
             var selected = _session.PerksModel.InterfaceSelection.Value;
-            _session.PerksModel.UsePerk(selected);
+            _session.PerksModel.SelectPerk(selected);
+        }
+        
+        private void PauseGame()
+        {
+            Time.timeScale = 0f;
+            _input.enabled = false;
+        }
+
+        private void ResumeGame()
+        {
+            Time.timeScale = _defaultTimeScale;
+            _input.enabled = true;
         }
 
         private void OnDestroy()
         {
+            ResumeGame();
             _trash.Dispose();
         }
     }

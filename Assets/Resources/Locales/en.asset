@@ -60,4 +60,18 @@ MonoBehaviour:
   - Key: L3_MoneyDoor_0
     Value: "This door is for luxury people...\r"
   - Key: L3_MoneyDoor_1
-    Value: You should have at least 300 coins to enter!
+    Value: "You should have at least 300 coins to enter!\r"
+  - Key: button_use
+    Value: "Use\r"
+  - Key: button_buy
+    Value: "Buy\r"
+  - Key: priceLabel
+    Value: "Price:\r"
+  - Key: Discription-DoubleJump
+    Value: "Allows you to jump in midair\r"
+  - Key: Discription-ChargedThrow
+    Value: "Allows you to charge an attack and make multiple throws\r"
+  - Key: Discription-Dash
+    Value: "Allows you to dash a short distance\r"
+  - Key: Discription-Shield
+    Value: Allows you to activate shield thats make you invurable for few seconds

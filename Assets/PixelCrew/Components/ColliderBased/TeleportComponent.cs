@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using PixelCrew.Animations;
+using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,7 +23,7 @@ namespace PixelCrew.Components.ColliderBased
             var input = target.GetComponent<PlayerInput>();
             var collider = target.GetComponent<Collider2D>();
 
-            yield return AlphaAnimation(sprite, 0f);
+            yield return AlphaAnimationUtils.AlphaAnimation(sprite, 0f, _alphaTime);
             SetLockInput(input, true);
             collider.enabled = false;
 
@@ -30,7 +31,7 @@ namespace PixelCrew.Components.ColliderBased
 
             SetLockInput(input, false);
             collider.enabled = true;
-            yield return AlphaAnimation(sprite, 1f);
+            yield return AlphaAnimationUtils.AlphaAnimation(sprite, 1f, _alphaTime);
         }
 
         private void SetLockInput(PlayerInput input, bool isLocked)
@@ -39,24 +40,6 @@ namespace PixelCrew.Components.ColliderBased
             {
                 input.enabled = !isLocked;
             }
-        }
-
-        private IEnumerator AlphaAnimation(SpriteRenderer sprite, float destAlpha)
-        {
-            var alphaTime = 0f;
-            var spriteAlpha = sprite.color.a;
-            while (alphaTime < _alphaTime)
-            {
-                alphaTime += Time.deltaTime;
-                var progress = alphaTime / _alphaTime;
-                var tempAlpha = Mathf.Lerp(spriteAlpha, destAlpha, progress);
-                var color = sprite.color;
-                color.a = tempAlpha;
-                sprite.color = color;
-
-                yield return null;
-            }
-
         }
     }
 }
