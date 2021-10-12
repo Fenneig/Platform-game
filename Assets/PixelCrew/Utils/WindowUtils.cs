@@ -16,6 +16,13 @@ namespace PixelCrew.Utils
         {
             _window = Resources.Load<GameObject>(resourcePath);
             _canvas = Object.FindObjectOfType<Canvas>();
+
+            var canvases = Object.FindObjectsOfType<Canvas>();
+            foreach (var canvas in canvases)
+            {
+                if (canvas.name == "Canvas") _canvas = canvas;
+            }
+            
             CreateWindow();
         }
     }

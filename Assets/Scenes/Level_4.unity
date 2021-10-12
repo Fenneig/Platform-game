@@ -2422,7 +2422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _state: 0
 --- !u!1 &1232195812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,11 +2922,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory:
-      - Id: Sword
-        Value: 5
+      _inventory: []
     Hp:
       _value: 10
+    Perks:
+      _used:
+        _value: 
+      _unlocked: []
   _defaultCheckpoint: Level_4_checkpoint_0
 --- !u!4 &1596245506
 Transform:
@@ -4411,7 +4412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97262aa124c462aa2420fc9406cba0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _state: 0
 --- !u!1001 &2061150007
 PrefabInstance:
   m_ObjectHideFlags: 0

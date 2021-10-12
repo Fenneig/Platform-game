@@ -18,7 +18,7 @@ MonoBehaviour:
     _info: Discription-DoubleJump
     _price:
       _itemId: Coin
-      _count: 50
+      _count: 10
     _cooldown:
       _value: 2
   - _id: chargedThrow
@@ -26,7 +26,7 @@ MonoBehaviour:
     _info: Discription-ChargedThrow
     _price:
       _itemId: Coin
-      _count: 50
+      _count: 100
     _cooldown:
       _value: 5
   - _id: dash
@@ -34,7 +34,7 @@ MonoBehaviour:
     _info: Discription-Dash
     _price:
       _itemId: Coin
-      _count: 20
+      _count: 50
     _cooldown:
       _value: 1
   - _id: shield
@@ -42,6 +42,6 @@ MonoBehaviour:
     _info: Discription-Shield
     _price:
       _itemId: Coin
-      _count: 5000
+      _count: 200
     _cooldown:
       _value: 10

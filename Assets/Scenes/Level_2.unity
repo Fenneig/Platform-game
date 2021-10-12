@@ -1371,7 +1371,7 @@ MonoBehaviour:
     _inventory:
       _inventory: []
     Hp:
-      _value: 20
+      _value: 10
     Perks:
       _used:
         _value: 

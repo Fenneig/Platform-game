@@ -22,9 +22,9 @@ namespace PixelCrew.Components.Interactions
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (_tagOnButton == null)
+            if (string.IsNullOrEmpty(_tagOnButton))
             {
-                foreach (string tag in _tags)
+                foreach (var tag in _tags)
                 {
                     if (collision.CompareTag(tag))
                     {
@@ -39,15 +39,11 @@ namespace PixelCrew.Components.Interactions
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (_tagOnButton != null)
-            {
-                if (collision.CompareTag(_tagOnButton))
-                {
-                    _tagOnButton = null;
-                    _animator.SetBool(IsPressingKey, false);
-                    _unpressedEvent.Invoke();
-                }
-            }
+            if (!string.IsNullOrEmpty(_tagOnButton) || !collision.CompareTag(_tagOnButton)) return;
+            
+            _tagOnButton = null;
+            _animator.SetBool(IsPressingKey, false);
+            _unpressedEvent.Invoke();
         }
     }
 }
