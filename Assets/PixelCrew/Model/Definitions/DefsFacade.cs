@@ -1,4 +1,5 @@
-﻿using PixelCrew.Model.Definitions.Repository;
+﻿using PixelCrew.Model.Definitions.Player;
+using PixelCrew.Model.Definitions.Repository;
 using UnityEngine;
 
 namespace PixelCrew.Model.Definitions

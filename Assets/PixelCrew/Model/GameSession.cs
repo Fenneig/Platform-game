@@ -2,6 +2,7 @@
 using System.Linq;
 using PixelCrew.Components.LevelManagement;
 using PixelCrew.Model.Data;
+using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Models;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace PixelCrew.Model
         [SerializeField] private string _defaultCheckpoint;
         public PerksModel PerksModel { get; private set; }
         public QuickInventoryModel QuickInventory { get; private set; }
+        public StatsModel StatsModel { get; private set; }
         
         public PlayerData Data => _data;
         private PlayerData _save;
@@ -70,6 +72,11 @@ namespace PixelCrew.Model
             PerksModel = new PerksModel(_data);
             _trash.Retain(PerksModel);
             
+            StatsModel = new StatsModel(_data);
+            _trash.Retain(StatsModel);
+
+            _data.Hp.Value = (int) StatsModel.GetValue(StatId.Hp);
+
         }
 
         private static void LoadHud()

@@ -8,5 +8,7 @@ namespace PixelCrew.Model.Data.Dialogue
     {
         [SerializeField] private Sentence[] _sentences;
         public Sentence[] Sentences => _sentences;
+        
+        public Font Font { get; set; }
     }
 }

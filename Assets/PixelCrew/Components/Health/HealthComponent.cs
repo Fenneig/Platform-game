@@ -36,25 +36,14 @@ namespace PixelCrew.Components.Health
         {
             if (_health.Value <= 0) return;
             if (delta < 0 && IsInvulnerable) return;
+            if (_health.Value + delta > _maxHealth) delta = _maxHealth - _health.Value;
 
             _health.Value += delta;
-            if (delta < 0)
-            {
-                _onDamage?.Invoke();
-            }
-            else if (delta > 0)
-            {
-                _onHeal?.Invoke();
-            }
+            if (delta < 0) _onDamage?.Invoke();
+            else if (delta > 0) _onHeal?.Invoke();
 
-            if (_health.Value <= 0)
-            {
-                _onDie?.Invoke();
-            }
-            else
-            {
-                UpdateHealth();
-            }
+            if (_health.Value <= 0) _onDie?.Invoke();
+            else UpdateHealth();
         }
 
         private void UpdateHealth()

@@ -8,6 +8,7 @@ using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
+using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
 
 namespace PixelCrew.Creatures.Hero
@@ -97,13 +98,25 @@ namespace PixelCrew.Creatures.Hero
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-
             _healthComponent = GetComponent<HealthComponent>();
-
+            
+            _session.Data.Inventory.OnChanged += OnInventoryChanged;
+            _session.StatsModel.OnUpgraded += OnHeroUpgraded;
+            
             _healthComponent.Health = _session.Data.Hp;
             UpdateHeroWeapon();
 
-            _session.Data.Inventory.OnChanged += OnInventoryChanged;
+        }
+
+        private void OnHeroUpgraded(StatId statId)
+        {
+            switch (statId)
+            {
+                case StatId.Hp:
+                    var health = (int) _session.StatsModel.GetValue(statId);
+                    _healthComponent.Health.Value = health; 
+                    break;
+            }
         }
 
         private void OnDestroy()
@@ -114,14 +127,8 @@ namespace PixelCrew.Creatures.Hero
         private void OnInventoryChanged(string id, int value)
         {
             if (id == SwordId) UpdateHeroWeapon();
-        }
-
-        public void OnHealthChanged(int currentHealth)
-        {
-            var newHealth = currentHealth > DefsFacade.I.Player.MaxHealth
-                ? DefsFacade.I.Player.MaxHealth
-                : currentHealth;
-            _session.Data.Hp.Value = newHealth;
+            
+            
         }
 
         protected override void Update()
@@ -187,7 +194,8 @@ namespace PixelCrew.Creatures.Hero
         protected override float CalculateSpeed()
         {
             if (_hasteTimer.IsReady) _speedBonus = 0f;
-            return base.CalculateSpeed() + _speedBonus;
+            var defaultSpeed = _session.StatsModel.GetValue(StatId.Speed);
+            return defaultSpeed + _speedBonus;
         }
 
         private float DoJump()

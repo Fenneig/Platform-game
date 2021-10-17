@@ -27,6 +27,9 @@ namespace PixelCrew.UI.Localization
                 var localizedLine = LocalizationManager.I.Localize(sentence.Key);
                 sentence.Line = localizedLine;
             }
+
+            _dialogueComponent.Data.Font = LocalizationManager.I.SetFont();
+
         }
 
         private void OnDestroy()

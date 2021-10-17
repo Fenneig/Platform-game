@@ -97,6 +97,7 @@ namespace PixelCrew.UI.HUD.Dialog
         private IEnumerator TypeDialogText()
         {
             _text.text = string.Empty;
+            _text.font = _data.Font;
             var sentence = _data.Sentences[_currentSentence].Line;
             foreach (var letter in sentence)
             {
@@ -108,7 +109,7 @@ namespace PixelCrew.UI.HUD.Dialog
             _typingRoutine = null;
         }
 
-        public void OnCloseAnimationComplete()
+        private void OnCloseAnimationComplete()
         {
             _background.SetActive(false);
             Time.timeScale = _defaultTimeScale;

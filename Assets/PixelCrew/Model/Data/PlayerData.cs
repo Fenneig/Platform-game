@@ -10,8 +10,9 @@ namespace PixelCrew.Model.Data
         [SerializeField] private InventoryData _inventory;
 
         public IntProperty Hp = new IntProperty();
-
         public PerkData Perks = new PerkData();
+        public LevelData Levels = new LevelData();
+
         public InventoryData Inventory => _inventory;
 
         public PlayerData Clone() 

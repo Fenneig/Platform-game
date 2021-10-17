@@ -8501,13 +8501,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: Coin
+        Value: 1000
     Hp:
       _value: 10
     Perks:
       _used:
         _value: 
       _unlocked: []
+    Levels:
+      _progresses: []
   _defaultCheckpoint: Level_1_checkpoint_0
 --- !u!4 &1180768065
 Transform:
@@ -13927,6 +13931,11 @@ PrefabInstance:
       propertyPath: _isFloating
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3280124599914855472, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
+        type: 3}
+      propertyPath: _clips.Array.data[0]._allowNext
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3280124599914855474, guid: 9f6a4d28958ca4642a46cc7d51b59b3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -14536,7 +14545,7 @@ PrefabInstance:
     - target: {fileID: 6573799153340323936, guid: 18ff9316efa65454c837186a5ceec459,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -17.9
       objectReference: {fileID: 0}
     - target: {fileID: 6573799153340323936, guid: 18ff9316efa65454c837186a5ceec459,
         type: 3}
@@ -14588,10 +14597,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wind
       objectReference: {fileID: 0}
+    - target: {fileID: 6573799153340323942, guid: 18ff9316efa65454c837186a5ceec459,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6573799153340323943, guid: 18ff9316efa65454c837186a5ceec459,
         type: 3}
       propertyPath: lengthInSec
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6573799153340323943, guid: 18ff9316efa65454c837186a5ceec459,
         type: 3}
@@ -15033,6 +15047,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParallaxClouds
       objectReference: {fileID: 0}
+    - target: {fileID: 2503112629061101482, guid: 565a47fafca6e0b41bd877a0806cb8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2503112629061101483, guid: 565a47fafca6e0b41bd877a0806cb8a6,
         type: 3}
       propertyPath: _effectValue
@@ -15068,6 +15087,11 @@ PrefabInstance:
       propertyPath: _followTarget
       value: 
       objectReference: {fileID: 1597725468}
+    - target: {fileID: 2503112630375495212, guid: 565a47fafca6e0b41bd877a0806cb8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2503112630375495213, guid: 565a47fafca6e0b41bd877a0806cb8a6,
         type: 3}
       propertyPath: _camera
@@ -15078,6 +15102,11 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1597725467}
+    - target: {fileID: 2503112630586519872, guid: 565a47fafca6e0b41bd877a0806cb8a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5769207027143619576, guid: 565a47fafca6e0b41bd877a0806cb8a6,
         type: 3}
       propertyPath: m_RootOrder

@@ -12,7 +12,7 @@ namespace PixelCrew.UI.Windows.Localization
         [SerializeField] private LocaleItemWidget _prefab;
         private DataGroup<LocaleInfo, LocaleItemWidget> _dataGroup;
 
-        private string[] _supportedLocales = new[] {"en", "ru"};
+        private readonly string[] _supportedLocales = new[] {"en", "ru"};
 
         protected override void Start()
         {

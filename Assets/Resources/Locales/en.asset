@@ -74,4 +74,12 @@ MonoBehaviour:
   - Key: Discription-Dash
     Value: "Allows you to dash a short distance\r"
   - Key: Discription-Shield
-    Value: Allows you to activate shield thats make you invurable for few seconds
+    Value: "Allows you to activate shield thats make you invurable for few seconds\r"
+  - Key: button_upgrade
+    Value: "Upgrade\r"
+  - Key: Health
+    Value: "Health\r"
+  - Key: Speed
+    Value: "Speed\r"
+  - Key: Range Damage
+    Value: Range Damage

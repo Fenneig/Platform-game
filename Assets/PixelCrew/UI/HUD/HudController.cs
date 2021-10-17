@@ -1,7 +1,10 @@
-﻿using PixelCrew.Model;
+﻿using Packages.Rider.Editor.Util;
+using PixelCrew.Model;
 using PixelCrew.Model.Definitions;
+using PixelCrew.Model.Definitions.Player;
 using PixelCrew.UI.Widgets;
 using PixelCrew.UI.Windows.Perks;
+using PixelCrew.Utils;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
@@ -41,7 +44,7 @@ namespace PixelCrew.UI.HUD
 
         private void OnHealthChange(int newValue, int oldValue)
         {
-            var maxHealth = DefsFacade.I.Player.MaxHealth;
+            var maxHealth = _session.StatsModel.GetValue(StatId.Hp);
             var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
         }
@@ -49,6 +52,11 @@ namespace PixelCrew.UI.HUD
         private void OnDestroy()
         {
             _trash.Dispose();
+        }
+
+        public void OnDebug()
+        {
+            WindowUtils.CreateWindow("UI/Windows/InGame/PlayerStatsWindow");
         }
     }
 }

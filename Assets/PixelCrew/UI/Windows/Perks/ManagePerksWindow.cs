@@ -61,6 +61,7 @@ namespace PixelCrew.UI.Windows.Perks
             _price.SetData(def.Price);
 
             _infoText.text = LocalizationManager.I.Localize(def.Info);
+            _infoText.font = LocalizationManager.I.SetFont();
         }
 
         private void OnBuy()

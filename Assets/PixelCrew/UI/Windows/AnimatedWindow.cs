@@ -12,8 +12,7 @@ namespace PixelCrew.UI.Windows
         protected virtual void Start()
         {
             _animator = GetComponent<Animator>();
-
-            _animator.SetTrigger(ShowKey);
+            if (_animator != null) _animator.SetTrigger(ShowKey);
         }
 
         public void Close() 
