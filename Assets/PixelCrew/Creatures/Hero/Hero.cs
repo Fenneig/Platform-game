@@ -51,6 +51,9 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private float _shieldEndIndicator;
         [SerializeField] private int _blinksAmount;
 
+        [Space] [Header("Teleport Stats")] [SerializeField]
+        private float _teleportDisableGravityDuration;
+
         private bool _allowDashInJump;
         private bool _isDashing;
         private bool _allowDoubleJump;
@@ -70,9 +73,11 @@ namespace PixelCrew.Creatures.Hero
         private const string SwordId = "Sword";
         private const string DashId = "dash";
         private const string ShieldId = "shield";
+        private const string TeleportId = "teleport";
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         private int SwordCount => _session.Data.Inventory.Count("Sword");
         private int CoinCount => _session.Data.Inventory.Count("Coin");
+        private Transform _teleportTransform;
 
         private bool CanThrow
         {
@@ -362,6 +367,8 @@ namespace PixelCrew.Creatures.Hero
         public void OnDoThrow()
         {
             _throwSpawner.Spawn();
+            _teleportTransform = null;
+            _teleportTransform = _throwSpawner.InstanceTransform;
         }
 
         public void StartThrowing()
@@ -407,7 +414,30 @@ namespace PixelCrew.Creatures.Hero
                     if (value != 0) ActivateShield();
                     break;
                 }
+                case TeleportId:
+                {
+                    Teleport();
+                    break;
+                }
             }
+        }
+
+        private void Teleport()
+        {
+            var cd = _session.PerksModel.Cooldown;
+            if (_teleportTransform == null || !cd.IsReady) return;
+
+            transform.position = _teleportTransform.position;
+            _teleportTransform.GetComponent<DestroyObjectComponent>().DestroyObject();
+            StartCoroutine(DisableGravity());
+            cd.Reset();
+        }
+
+        private IEnumerator DisableGravity()
+        {
+            FreezeGravity();
+            yield return new WaitForSeconds(_teleportDisableGravityDuration);
+            UnFreezeGravity();
         }
 
         private void ActivateShield()

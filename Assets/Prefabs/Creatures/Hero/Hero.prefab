@@ -5016,6 +5016,7 @@ MonoBehaviour:
   _shieldDuration: 5
   _shieldEndIndicator: 2
   _blinksAmount: 5
+  _teleportDisableGravityDuration: 0.25
 --- !u!50 &236387369531184235
 Rigidbody2D:
   serializedVersion: 4

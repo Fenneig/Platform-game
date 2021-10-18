@@ -98,7 +98,7 @@ namespace PixelCrew.Creatures
             Animator.SetFloat(VerticaVelocityKey, Rigidbody.velocity.y);
         }
 
-        protected virtual void UpdateSpriteDirection()
+        protected void UpdateSpriteDirection()
         {
             if (Rigidbody.velocity.x < 0)
             {
@@ -110,7 +110,7 @@ namespace PixelCrew.Creatures
             }
         }
 
-        protected virtual float CalculateXVelocity()
+        private float CalculateXVelocity()
         {
             //при движении наискосок с зажатым прыжком персонаж двигается по гипотенузе прямоугольно треугольника тем самым замедляясь
             //т.к. направления могут быть либо 0 либо 1 то при движении по гипотенузе скорость становиться на √2 меньше( с = √x*x+y*y, где x=y=1)
@@ -130,7 +130,7 @@ namespace PixelCrew.Creatures
             return _speed;
         }
 
-        protected virtual float CalculateYVelocity()
+        private float CalculateYVelocity()
         {
             if (_direction.y < 0) gameObject.GetComponent<JumpFromPlatformComponent>().JumpOff();
             var yVelocity = Rigidbody.velocity.y;

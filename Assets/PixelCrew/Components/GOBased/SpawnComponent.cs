@@ -10,13 +10,16 @@ namespace PixelCrew.Components.GOBased
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
 
+        public Transform InstanceTransform { get; set; }
+
         //объекты с тегом Attached имеют внутренюю привязку в проекте и их нельзя крутить при создании.
         [ContextMenu("Spawn")]
         public void Spawn()
         {
             if (_prefab.CompareTag("Attached"))
             {
-                Instantiate(_prefab, _target.position, Quaternion.identity, gameObject.transform);
+                var instance = Instantiate(_prefab, _target.position, Quaternion.identity, gameObject.transform);
+                InstanceTransform = instance.transform;
             }
             else
             {
@@ -27,6 +30,7 @@ namespace PixelCrew.Components.GOBased
 
                 var instance = SpawnUtils.Spawn(_prefab, position, rotation);
                 instance.transform.localScale = gameObject.transform.lossyScale;
+                InstanceTransform = instance.transform;
             }
         }
 

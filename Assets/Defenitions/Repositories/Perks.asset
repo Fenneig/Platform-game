@@ -45,3 +45,11 @@ MonoBehaviour:
       _count: 200
     _cooldown:
       _value: 10
+  - _id: teleport
+    _icon: {fileID: 21300000, guid: 98323ea7e98bab242acc3726db087511, type: 3}
+    _info: Discription-Teleport
+    _price:
+      _itemId: Coin
+      _count: 100
+    _cooldown:
+      _value: 10

@@ -8501,7 +8501,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: Coin
+        Value: 5000
+      - Id: Sword
+        Value: 200
     Hp:
       _value: 5
     Perks:
