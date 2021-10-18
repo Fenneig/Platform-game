@@ -13,7 +13,6 @@ namespace PixelCrew.Creatures.Weapons
         {
             Direction = transform.localScale.x > 0 ? 1 : -1;
             Rigidbody = GetComponent<Rigidbody2D>();
-
         }
     }
 }

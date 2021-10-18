@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _value: 5
+    _value: 20
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -412,7 +412,7 @@ MonoBehaviour:
   _missHeroCooldown: 1
   _vision: {fileID: 5225296382402832954}
   _canAttack: {fileID: 2849219291997011408}
-  _horizontalTrheshold: 0.2
+  _horizontalThreshold: 0.2
 --- !u!114 &2704942686331165692
 MonoBehaviour:
   m_ObjectHideFlags: 0

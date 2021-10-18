@@ -82,4 +82,10 @@ MonoBehaviour:
   - Key: Speed
     Value: "Speed\r"
   - Key: Range Damage
-    Value: Range Damage
+    Value: "Range damage\r"
+  - Key: Critical Chance
+    Value: "Crit chance\r"
+  - Key: Critical Damage
+    Value: "Crit damage\r"
+  - Key: Melee Damage
+    Value: Melee damage

@@ -75,3 +75,75 @@ MonoBehaviour:
       _price:
         _itemId: Coin
         _count: 150
+  - _name: Critical Chance
+    _id: 3
+    _icon: {fileID: 21300000, guid: 9e3368f9b99819c408f67740c74036cc, type: 3}
+    _levels:
+    - _value: 5
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 10
+      _price:
+        _itemId: Coin
+        _count: 10
+    - _value: 15
+      _price:
+        _itemId: Coin
+        _count: 50
+    - _value: 20
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 25
+      _price:
+        _itemId: Coin
+        _count: 250
+  - _name: Critical Damage
+    _id: 4
+    _icon: {fileID: 21300000, guid: 953bc0eedbf2fa144bc041ac2363e896, type: 3}
+    _levels:
+    - _value: 200
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 225
+      _price:
+        _itemId: Coin
+        _count: 25
+    - _value: 250
+      _price:
+        _itemId: Coin
+        _count: 50
+    - _value: 275
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 300
+      _price:
+        _itemId: Coin
+        _count: 200
+  - _name: Melee Damage
+    _id: 5
+    _icon: {fileID: 21300000, guid: 34ba3e0fab7c03d419d33377a229e795, type: 3}
+    _levels:
+    - _value: 1
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 2
+      _price:
+        _itemId: Coin
+        _count: 10
+    - _value: 3
+      _price:
+        _itemId: Coin
+        _count: 40
+    - _value: 4
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 5
+      _price:
+        _itemId: Coin
+        _count: 150

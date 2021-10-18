@@ -21,6 +21,8 @@ namespace PixelCrew.Creatures.Hero
 
         [SerializeField] private float _dashDuration;
 
+        [SerializeField] private int _baseMeleeDamage;
+
         [Space] [Header("Checkers")] [SerializeField]
         private CheckCircleOverlap _interactionRadius;
 
@@ -34,6 +36,7 @@ namespace PixelCrew.Creatures.Hero
 
         [SerializeField] private SpawnComponent _throwSpawner;
         [SerializeField] private SpriteRenderer _shieldParticle;
+        [SerializeField] private ParticleSystem _criticalHitParticle;
 
         [Space] [Header("Throw Stats")] [Min(2)] [SerializeField]
         private int _numChargedThrows;
@@ -44,6 +47,7 @@ namespace PixelCrew.Creatures.Hero
 
         [Space] [Header("Shield Stats")] [SerializeField]
         private float _shieldDuration;
+
         [SerializeField] private float _shieldEndIndicator;
         [SerializeField] private int _blinksAmount;
 
@@ -99,13 +103,12 @@ namespace PixelCrew.Creatures.Hero
         {
             _session = FindObjectOfType<GameSession>();
             _healthComponent = GetComponent<HealthComponent>();
-            
+
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
-            
+
             _healthComponent.Health = _session.Data.Hp;
             UpdateHeroWeapon();
-
         }
 
         private void OnHeroUpgraded(StatId statId)
@@ -114,7 +117,7 @@ namespace PixelCrew.Creatures.Hero
             {
                 case StatId.Hp:
                     var health = (int) _session.StatsModel.GetValue(statId);
-                    _healthComponent.Health.Value = health; 
+                    _healthComponent.Health.Value = health;
                     break;
             }
         }
@@ -127,8 +130,6 @@ namespace PixelCrew.Creatures.Hero
         private void OnInventoryChanged(string id, int value)
         {
             if (id == SwordId) UpdateHeroWeapon();
-            
-            
         }
 
         protected override void Update()
@@ -290,7 +291,9 @@ namespace PixelCrew.Creatures.Hero
         public override void Attack()
         {
             if (SwordCount <= 0) return;
-
+            var MHComponent = _attackRange.GetComponent<ModifyHealthComponent>();
+            var statDamage = (int) _session.StatsModel.GetValue(StatId.MeleeDamage);
+            CalculateDamage(MHComponent, _baseMeleeDamage, statDamage);
             base.Attack();
         }
 
@@ -315,6 +318,49 @@ namespace PixelCrew.Creatures.Hero
             {
                 Throw();
             }
+        }
+
+        private IEnumerator ThrowMultiply(int numberOfThrows)
+        {
+            for (var i = 0; i < numberOfThrows; i++)
+            {
+                Throw();
+                yield return new WaitForSeconds(_chargeThrowDelay);
+            }
+        }
+
+        //надо связать бросок с моделью данных о бросаемом объекте и статами
+        private void Throw()
+        {
+            var throwableId = _session.QuickInventory.SelectedItem.Id;
+            var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
+
+            if (string.IsNullOrEmpty(throwableDef.Id)) return;
+
+            Animator.SetTrigger(ThrowKey);
+            Sounds.Play("Range");
+
+            var MHComponent = throwableDef.Projectile.GetComponent<ModifyHealthComponent>();
+            var baseDamage = throwableDef.BaseDamage;
+            var statDamage = (int) _session.StatsModel.GetValue(StatId.RangeDamage);
+
+            CalculateDamage(MHComponent, baseDamage, statDamage);
+
+            _throwSpawner.SetPrefab(throwableDef.Projectile);
+            _session.Data.Inventory.Remove(throwableId, 1);
+        }
+
+        private void ChargedThrow()
+        {
+            var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+            var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+            var numThrows = Mathf.Min(_numChargedThrows, possibleCount);
+            StartCoroutine(ThrowMultiply(numThrows));
+        }
+
+        public void OnDoThrow()
+        {
+            _throwSpawner.Spawn();
         }
 
         public void StartThrowing()
@@ -342,41 +388,6 @@ namespace PixelCrew.Creatures.Hero
         private bool IsSelectedItem(ItemTag tag)
         {
             return _session.QuickInventory.SelectedDef.HasTag(tag);
-        }
-
-        private void ChargedThrow()
-        {
-            var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
-            var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
-            var numThrows = Mathf.Min(_numChargedThrows, possibleCount);
-            StartCoroutine(ThrowMultiply(numThrows));
-        }
-
-        private IEnumerator ThrowMultiply(int numberOfThrows)
-        {
-            for (var i = 0; i < numberOfThrows; i++)
-            {
-                Throw();
-                yield return new WaitForSeconds(_chargeThrowDelay);
-            }
-        }
-
-        private void Throw()
-        {
-            Animator.SetTrigger(ThrowKey);
-            Sounds.Play("Range");
-            var throwableId = _session.QuickInventory.SelectedItem.Id;
-            var throwableDef = DefsFacade.I.Throwable.Get(throwableId);
-
-            if (string.IsNullOrEmpty(throwableDef.Id)) return;
-
-            _throwSpawner.SetPrefab(throwableDef.Projectile);
-            _session.Data.Inventory.Remove(throwableId, 1);
-        }
-
-        public void OnDoThrow()
-        {
-            _throwSpawner.Spawn();
         }
 
 
@@ -410,12 +421,26 @@ namespace PixelCrew.Creatures.Hero
             _healthComponent.IsInvulnerable = true;
             yield return new WaitForSeconds(_shieldDuration - _shieldEndIndicator);
             for (var i = 0; i < _blinksAmount; i++)
-                yield return AlphaAnimationUtils.AlphaAnimation(_shieldParticle, i % 2, _shieldEndIndicator / _blinksAmount);
+            {
+                yield return AlphaAnimationUtils.AlphaAnimation(_shieldParticle, i % 2,
+                    _shieldEndIndicator / _blinksAmount);
+            }
+
             var color = _shieldParticle.color;
             color.a = 255;
             _shieldParticle.color = color;
             _healthComponent.IsInvulnerable = false;
             _shieldParticle.enabled = false;
+        }
+
+        private void CalculateDamage(ModifyHealthComponent attackerMHComponent, int baseDamage, int statDamage)
+        {
+            var criticalChance = _session.StatsModel.GetValue(StatId.CriticalChance);
+            var isCritical = criticalChance >= Random.Range(0, 100);
+            var criticalDamage = _session.StatsModel.GetValue(StatId.CriticalDamage) / 100;
+            var damage = -(baseDamage + statDamage);
+            if (isCritical) _criticalHitParticle.Play();
+            attackerMHComponent.Delta = isCritical ? (int) (damage * criticalDamage) : damage;
         }
     }
 

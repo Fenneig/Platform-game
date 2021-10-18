@@ -10,7 +10,7 @@ namespace PixelCrew.Components.GOBased
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
 
-        //объекты с тэгом Attached имеют внутренюю привязку в проекте и их нельзя крутить при создании.
+        //объекты с тегом Attached имеют внутренюю привязку в проекте и их нельзя крутить при создании.
         [ContextMenu("Spawn")]
         public void Spawn()
         {

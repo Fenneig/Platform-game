@@ -14,8 +14,10 @@ namespace PixelCrew.Model.Definitions.Repository
     {
         [InventoryId] [SerializeField] private string _id;
         [SerializeField] private GameObject _projectile;
-
+        [SerializeField] private int _baseDamage;
+    
         public string Id => _id;
         public GameObject Projectile => _projectile;
+        public int BaseDamage => _baseDamage;
     }
 }

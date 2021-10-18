@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _value: 4
+    _value: 15
   _onDamage:
     m_PersistentCalls:
       m_Calls:
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   _vision: {fileID: 4504689912551824468}
   _dashSpeed: 5
   _jumpHeight: 2
-  _reachTargetthreshold: 0.2
+  _reachTargetThreshold: 0.2
   _attackCollider: {fileID: 443375531}
 --- !u!114 &544633003282706510
 MonoBehaviour:

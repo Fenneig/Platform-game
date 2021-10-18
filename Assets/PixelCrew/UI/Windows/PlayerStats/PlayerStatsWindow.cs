@@ -1,10 +1,10 @@
-﻿using System;
-using PixelCrew.Model;
+﻿using PixelCrew.Model;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.UI.Widgets;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace PixelCrew.UI.Windows.PlayerStats
@@ -22,10 +22,18 @@ namespace PixelCrew.UI.Windows.PlayerStats
         private GameSession _session;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         
+        private float _defaultTimeScale;
+        private PlayerInput _input;
+
+        
         protected override void Start()
         {
             base.Start();
-
+            
+            _input = FindObjectOfType<PlayerInput>();
+            _defaultTimeScale = Time.timeScale;
+            PauseGame();
+            
             _dataGroup = new DataGroup<StatDef, StatWidget>(_prefab, _container);
 
             _session = FindObjectOfType<GameSession>();
@@ -35,7 +43,19 @@ namespace PixelCrew.UI.Windows.PlayerStats
             _trash.Retain(_upgradeButton.onClick.Subscribe(OnUpgrade));
             OnStatsChange();
         }
+  
+        private void PauseGame()
+        {
+            Time.timeScale = 0f;
+            _input.enabled = false;
+        }
 
+        private void ResumeGame()
+        {
+            Time.timeScale = _defaultTimeScale;
+            _input.enabled = true;
+        }
+        
         private void OnUpgrade()
         {
             var selected = _session.StatsModel.InterfaceSelectionStat.Value;
@@ -59,6 +79,7 @@ namespace PixelCrew.UI.Windows.PlayerStats
 
         private void OnDestroy()
         {
+            ResumeGame();
             _trash.Dispose();
         }
     }

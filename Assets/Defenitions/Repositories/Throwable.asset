@@ -16,6 +16,8 @@ MonoBehaviour:
   - _id: Sword
     _projectile: {fileID: 1078153097187886995, guid: c363ecd14967cbd419c163f3beea387a,
       type: 3}
+    _baseDamage: 2
   - _id: PearlProjectile
     _projectile: {fileID: 863797694114466228, guid: ab1f4001d60500a4d90fba58b7a0486a,
       type: 3}
+    _baseDamage: 1
