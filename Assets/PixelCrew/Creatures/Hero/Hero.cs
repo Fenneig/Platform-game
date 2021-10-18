@@ -117,6 +117,7 @@ namespace PixelCrew.Creatures.Hero
             {
                 case StatId.Hp:
                     var health = (int) _session.StatsModel.GetValue(statId);
+                    _healthComponent.MaxHealth = health;
                     _healthComponent.Health.Value = health;
                     break;
             }

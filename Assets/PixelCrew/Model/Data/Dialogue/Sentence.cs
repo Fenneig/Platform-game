@@ -8,7 +8,7 @@ namespace PixelCrew.Model.Data.Dialogue
     {
         [SerializeField] private string _line;
         [SerializeField] private Sprite _portrait;
-        [SerializeField] private bool _isHero;
+        [SerializeField] private bool _isLeft;
         [SerializeField] private string _key;
 
         public string Line
@@ -18,7 +18,7 @@ namespace PixelCrew.Model.Data.Dialogue
         }
 
         public Sprite Portrait => _portrait;
-        public bool IsHero => _isHero;
+        public bool IsLeft => _isLeft;
         public string Key => _key;
     }
 }

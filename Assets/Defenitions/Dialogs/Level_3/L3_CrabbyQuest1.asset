@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _sentences:
-    - _line: Hey! I'll open a secret passage for you for 100 coins!
+    - _line: "Hey! I'll open a secret passage for you for 100 coins!\r"
       _portrait: {fileID: 21300000, guid: 53bd68eea62ed3845b693dbd9d419d81, type: 3}
-      _isHero: 0
+      _isLeft: 0
       _key: L3_CrabbyQuest1_0
-    - _line: Where can i find money?
+    - _line: "Where can i find money?\r"
       _portrait: {fileID: 21300000, guid: 3636baafeb4ab544cb89aaa285b69ffc, type: 3}
-      _isHero: 1
+      _isLeft: 1
       _key: L3_CrabbyQuest1_1
-    - _line: Look around
+    - _line: "Look around\r"
       _portrait: {fileID: 21300000, guid: 53bd68eea62ed3845b693dbd9d419d81, type: 3}
-      _isHero: 0
+      _isLeft: 0
       _key: L3_CrabbyQuest1_2

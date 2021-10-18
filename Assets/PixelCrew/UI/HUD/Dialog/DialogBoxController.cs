@@ -73,11 +73,11 @@ namespace PixelCrew.UI.HUD.Dialog
                 _portraitSprite.sprite = _data.Sentences[_currentSentence].Portrait;
             }
 
-            if (_data.Sentences[_currentSentence].IsHero && _containerRectTransform.anchoredPosition.x > 0)
+            if (_data.Sentences[_currentSentence].IsLeft && _containerRectTransform.anchoredPosition.x > 0)
             {
                 SwitchDialogSide();
             }
-            else if (!_data.Sentences[_currentSentence].IsHero && _containerRectTransform.anchoredPosition.x < 0)
+            else if (!_data.Sentences[_currentSentence].IsLeft && _containerRectTransform.anchoredPosition.x < 0)
             {
                 SwitchDialogSide();
             }
