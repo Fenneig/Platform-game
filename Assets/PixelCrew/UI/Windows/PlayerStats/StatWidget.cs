@@ -47,15 +47,9 @@ namespace PixelCrew.UI.Windows.PlayerStats
             _name.text = LocalizationManager.I.Localize(_data.Name);
             _name.font = LocalizationManager.I.SetFont();
             _currentValue.text = currentValue.ToString(CultureInfo.InvariantCulture);
-
-            //ver1
-            _increaseValue.text = $"+ {(increaseValue - currentValue)}";
-            //ver2
-            //_increaseValue.text = $"=> {increaseValue}";
+            _increaseValue.text = $"+ {increaseValue - currentValue}";
             _increaseValue.gameObject.SetActive(increaseValue > 0);
-
             _progressBar.value = currentLevel / (float) maxLevel;
-
             _selector.SetActive(statsModel.InterfaceSelectionStat.Value == _data.ID);
         }
 

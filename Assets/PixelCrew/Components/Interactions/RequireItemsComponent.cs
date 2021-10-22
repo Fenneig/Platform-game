@@ -7,7 +7,7 @@ namespace PixelCrew.Components.Interactions
 {
     public class RequireItemsComponent : MonoBehaviour
     {
-        [SerializeField] private InventoryItemData[] _required;
+        [SerializeField] private ItemData[] _required;
         [SerializeField] private bool _removeAfterUse;
 
         [SerializeField] private UnityEvent _onSucces;

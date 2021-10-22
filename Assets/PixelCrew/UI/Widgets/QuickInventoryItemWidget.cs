@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace PixelCrew.UI.Widgets
 {
-    public class InventoryItemWidget : MonoBehaviour, IItemRenderer<InventoryItemData>
+    public class QuickInventoryItemWidget : MonoBehaviour, IItemRenderer<ItemData>
     {
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _selection;
@@ -30,7 +30,7 @@ namespace PixelCrew.UI.Widgets
             _selection.SetActive(_index == newValue);
         }
 
-        public void SetData(InventoryItemData dataInfo, int index)
+        public void SetData(ItemData dataInfo, int index)
         {
             _index = index;
             var def = DefsFacade.I.Items.Get(dataInfo.Id);

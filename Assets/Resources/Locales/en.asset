@@ -88,4 +88,6 @@ MonoBehaviour:
   - Key: Critical Damage
     Value: "Crit damage\r"
   - Key: Melee Damage
-    Value: Melee damage
+    Value: "Melee damage\r"
+  - Key: Discription-Teleport
+    Value: Allow you to teleport into your projectile

@@ -12,13 +12,13 @@ namespace PixelCrew.Model.Models
     public class QuickInventoryModel : IDisposable
     {
         private readonly PlayerData _data;
-        public InventoryItemData[] Inventory { get; private set; }
+        public ItemData[] Inventory { get; private set; }
 
         public readonly IntProperty SelectedIndex = new IntProperty();
 
-        public Action OnChanged;
+        public event Action OnChanged;
 
-        public InventoryItemData SelectedItem
+        public ItemData SelectedItem
         {
             get
             {
@@ -30,7 +30,6 @@ namespace PixelCrew.Model.Models
         }
 
         public ItemDef SelectedDef => DefsFacade.I.Items.Get(SelectedItem?.Id);
-        
 
         public IDisposable Subscribe(Action call)
         {
@@ -41,7 +40,6 @@ namespace PixelCrew.Model.Models
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
-
             Inventory = _data.Inventory.GetAll(ItemTag.Usable);
             _data.Inventory.OnChanged += OnChangedInventory;
         }

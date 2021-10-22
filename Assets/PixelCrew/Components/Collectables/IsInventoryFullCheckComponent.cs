@@ -11,7 +11,7 @@ namespace PixelCrew.Components.Collectables
     public class IsInventoryFullCheckComponent : MonoBehaviour
     {
         [SerializeField] private EnterEvent _action;
-        private InventoryItemData _itemData;
+        private ItemData _itemData;
         private GameSession _session;
 
         private void Awake()
@@ -29,7 +29,8 @@ namespace PixelCrew.Components.Collectables
         private bool CanInvoke()
         {
             var inventory = _session.Data.Inventory;
-            return inventory.Size < DefsFacade.I.Player.MaxInventorySize || inventory.IsContainStackableItem(_itemData);
+            return inventory.Size < DefsFacade.I.Player.MaxInventorySize 
+                   || inventory.IsContainStackableItem(_itemData);
         }
 
 

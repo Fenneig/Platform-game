@@ -1,4 +1,5 @@
 ﻿using PixelCrew.UI.Windows.Pause;
+using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,12 +8,6 @@ namespace PixelCrew.Creatures.Hero
     public class HeroInputReader : MonoBehaviour
     {
         [SerializeField] private Hero _hero;
-        private PauseMenuCaller _pauseMenuCaller;
-
-        private void Awake()
-        {
-            _pauseMenuCaller = FindObjectOfType<PauseMenuCaller>();
-        }
 
         public void OnAttack(InputAction.CallbackContext context)
         {
@@ -40,9 +35,14 @@ namespace PixelCrew.Creatures.Hero
 
         public void OnPause(InputAction.CallbackContext context) 
         {
-            if (context.started) _pauseMenuCaller.SwitchPauseCondition();
+           if(context.started)  WindowUtils.CreateWindow("UI/Windows/Pause/PauseMenuWindow");
         }
-       
+
+        public void OnOpenInventory(InputAction.CallbackContext context)
+        {
+            if (context.started) WindowUtils.CreateWindow("UI/Windows/InGame/InventoryWindow");
+        }
+
         public void OnItemSelection(InputAction.CallbackContext context)
         {
             if (context.started) _hero.SelectItemByDirection(context.ReadValue<float>());

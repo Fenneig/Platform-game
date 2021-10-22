@@ -5200,6 +5200,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dd234384-f067-42b0-8ef6-599e699e6b61
     m_ActionName: Hero/ItemSelection[/Keyboard/z,/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 236387369531184231}
+        m_MethodName: OnOpenInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 393e7843-0778-4941-80ee-82456b2b70ba
+    m_ActionName: Hero/OpenInventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
