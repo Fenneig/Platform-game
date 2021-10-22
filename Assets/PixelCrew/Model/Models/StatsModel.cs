@@ -10,7 +10,6 @@ namespace PixelCrew.Model.Models
     public class StatsModel : IDisposable
     {
         private readonly PlayerData _data;
-
         public event Action OnChange;
         public event Action<StatId> OnUpgraded;
         

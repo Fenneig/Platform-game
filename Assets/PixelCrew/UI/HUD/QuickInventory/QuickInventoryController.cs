@@ -9,16 +9,16 @@ namespace PixelCrew.UI.HUD.QuickInventory
     public class QuickInventoryController : MonoBehaviour
     {
         [SerializeField] private Transform _container;
-        [SerializeField] private InventoryItemWidget _prefab;
+        [SerializeField] private QuickInventoryItemWidget _prefab;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
 
         private GameSession _session;
-        private DataGroup<InventoryItemData, InventoryItemWidget> _dataGroup; 
+        private DataGroup<ItemData, QuickInventoryItemWidget> _dataGroup; 
 
         private void Start()
         {
-            _dataGroup = new DataGroup<InventoryItemData, InventoryItemWidget>(_prefab, _container);
+            _dataGroup = new DataGroup<ItemData, QuickInventoryItemWidget>(_prefab, _container);
             _session = FindObjectOfType<GameSession>();
 
             if (_session == null) return;

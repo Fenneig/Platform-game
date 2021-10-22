@@ -398,7 +398,6 @@ namespace PixelCrew.Creatures.Hero
             return _session.QuickInventory.SelectedDef.HasTag(tag);
         }
 
-
         public void UsePerk(float value)
         {
             var perkType = _session.PerksModel.Used;

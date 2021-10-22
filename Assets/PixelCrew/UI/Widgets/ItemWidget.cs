@@ -10,7 +10,6 @@ namespace PixelCrew.UI.Widgets
         [SerializeField] private Image _icon;
         [SerializeField] private Text _value;
 
-
         public void SetData(ItemWithCount defPrice)
         {
             var def = DefsFacade.I.Items.Get(defPrice.ItemId);

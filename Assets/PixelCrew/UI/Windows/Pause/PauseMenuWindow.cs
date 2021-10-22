@@ -15,11 +15,11 @@ namespace PixelCrew.UI.Windows.Pause
             _input = FindObjectOfType<PlayerInput>();
             _input.enabled = false;
             _defaultTimeScale = Time.timeScale;
+            PauseGame();
         }
 
         public void OnResumeGame()
         {
-            ResumeGame();
             Close();
         }
 
@@ -29,12 +29,6 @@ namespace PixelCrew.UI.Windows.Pause
             var reloadScene = FindObjectOfType<ReloadLevelComponent>();
             CloseAction = () => reloadScene.ReloadScene();
             Close();
-        }
-
-        public override void OnShowSettings()
-        {
-            PauseGame();
-            base.OnShowSettings();
         }
 
         private void PauseGame()
@@ -47,6 +41,12 @@ namespace PixelCrew.UI.Windows.Pause
         {
             Time.timeScale = _defaultTimeScale;
             _input.enabled = true;
+        }
+
+        protected override void OnCloseAnimationComplete()
+        {
+            ResumeGame();
+            base.OnCloseAnimationComplete();
         }
     }
     

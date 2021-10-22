@@ -33,7 +33,7 @@ namespace PixelCrew.UI.Widgets
                 CreatedItems[i].gameObject.SetActive(true);
             }
             
-            // скрываются неиспользуемые предметы
+            //скрываются неиспользуемые предметы
             for (var i = data.Count; i < CreatedItems.Count; i++)
             {
                 CreatedItems[i].gameObject.SetActive(false);
