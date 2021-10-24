@@ -10,8 +10,8 @@ button_resume	Продолжить
 button_restart	Перезагрузить
 pause_menu	Пауза
 button_continue	Далее...
-l0_door_0	Дверь заперта!
-l0_door_1	Ключ должен быть где-то рядом.
+L0_door_0	Дверь заперта!
+L0_door_1	Ключ должен быть где-то рядом.
 L3_CrabbyQuest1_0	Привет! Я открою для тебя тайный проход за 100 монет!
 L3_CrabbyQuest1_1	Где мне найти деньги?
 L3_CrabbyQuest1_2	Оглянись вокруг
@@ -21,3 +21,27 @@ L3_KeyDoor_0	Дверь заперта на ключ!
 L3_KeyDoor_1	Ключ должен быть где-то рядом.
 L3_MoneyDoor_0	Эта дверь для богатых парней...
 L3_MoneyDoor_1	Чтобы войти у тебя должно быть не мнее 300 монет!
+button_use	Выбрать
+button_buy	Купить
+priceLabel	Цена:
+Discription-DoubleJump	Позволяет подпрыгнуть находясь в воздухе
+Discription-ChargedThrow	Позволяет заряжать атаку и совершать несколько бросков
+Discription-Dash	Позволяет совершить рывок на небольшую дистанцию
+Discription-Shield	Позволяет активировать щит, дающий неуязвимость на несколько секунд
+button_upgrade	Улучшить
+Health	Здоровье
+Speed	Скорость
+Range Damage	Дист. Урон
+Critical Chance	Шанс крита
+Critical Damage	Крит урон
+Melee Damage	Ближ. Урон
+Discription-Teleport	Позволяет переместиться в кинутое оружие
+Discription-Coin	Просто монета, на них можно купить всякое
+Discription-BigHealthPotion	Восстанавливает 20 здоровья
+Discription-SmallHealthPotion	Восстанавливает 2 здоровья
+Discription-PearlProjectile	Небольшая жемчужина, можно кинуть её во врага
+Discription-Sword	Старый добрый меч! Им можно и зарезать и кинуть во врага при необходимости
+Discription-Key	Золотой ключ, отпирает все закрытые двери!
+Discription-HealthPotion	Восстанавливает 5 здоровья
+Discription-HastePotion	Зелье ускорение. Как ни странно - ускоряет
+button_select	Выбрать

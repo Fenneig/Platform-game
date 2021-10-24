@@ -43,6 +43,11 @@ namespace PixelCrew.Creatures.Hero
             if (context.started) WindowUtils.CreateWindow("UI/Windows/InGame/InventoryWindow");
         }
 
+        public void OnPerkMenu(InputAction.CallbackContext context)
+        {
+            if (context.started) WindowUtils.CreateWindow("UI/Windows/InGame/PlayerStatsWindow");
+        }
+
         public void OnItemSelection(InputAction.CallbackContext context)
         {
             if (context.started) _hero.SelectItemByDirection(context.ReadValue<float>());

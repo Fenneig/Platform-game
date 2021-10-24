@@ -43,7 +43,7 @@ namespace PixelCrew.Creatures.Hero
 
         [SerializeField] private Timer _throwCooldown;
         [SerializeField] private Timer _timeToPerformChargeThrow;
-        [SerializeField] private float _chargeThrowDelay;
+        [SerializeField] private float _timeBetweenThrows;
 
         [Space] [Header("Shield Stats")] [SerializeField]
         private float _shieldDuration;
@@ -262,9 +262,13 @@ namespace PixelCrew.Creatures.Hero
             _session.PerksModel.Cooldown.EarlyComplete();
         }
 
-        public void AddInInventory(string id, int count)
+        public void AddInInventory(string itemId, int count)
         {
-            _session.Data.Inventory.Add(id, count);
+            _session.Data.Inventory.Add(itemId, count);
+
+            var quickInventorySelection = _session.InventoryModel.QuickInventorySelection;
+            if (quickInventorySelection.Any(selected => selected.Value == itemId))
+                _session.Data.QuickInventory.Add(itemId, count);
         }
 
         public override void TakeDamage()
@@ -275,11 +279,26 @@ namespace PixelCrew.Creatures.Hero
                 SpawnCoins();
         }
 
+
+        private void RemoveItem(string itemId, int count)
+        {
+            _session.Data.Inventory.Remove(itemId, count);
+            var quickInventorySelection = _session.InventoryModel.QuickInventorySelection;
+            if (quickInventorySelection.All(selected => selected.Value != itemId)) return;
+
+            _session.Data.QuickInventory.Remove(itemId, count);
+            if (_session.Data.QuickInventory.Count(itemId) > 0) return;
+
+            var itemToRemove =
+                _session.InventoryModel.QuickInventorySelection.FirstOrDefault(item => item.Value == itemId);
+            _session.InventoryModel.QuickInventorySelection.Remove(itemToRemove);
+        }
+
         private void SpawnCoins()
         {
             var coinsToSpawn = Mathf.Min(CoinCount, 5);
 
-            _session.Data.Inventory.Remove("Coin", coinsToSpawn);
+            RemoveItem("Coin", coinsToSpawn);
 
             var burst = _dropCoinsOnHitParticle.emission.GetBurst(0);
             burst.count = coinsToSpawn;
@@ -331,11 +350,10 @@ namespace PixelCrew.Creatures.Hero
             for (var i = 0; i < numberOfThrows; i++)
             {
                 Throw();
-                yield return new WaitForSeconds(_chargeThrowDelay);
+                yield return new WaitForSeconds(_timeBetweenThrows);
             }
         }
 
-        //надо связать бросок с моделью данных о бросаемом объекте и статами
         private void Throw()
         {
             var throwableId = _session.QuickInventory.SelectedItem.Id;
@@ -353,7 +371,7 @@ namespace PixelCrew.Creatures.Hero
             CalculateDamage(MHComponent, baseDamage, statDamage);
 
             _throwSpawner.SetPrefab(throwableDef.Projectile);
-            _session.Data.Inventory.Remove(throwableId, 1);
+            RemoveItem(throwableId, 1);
         }
 
         private void ChargedThrow()
@@ -390,7 +408,7 @@ namespace PixelCrew.Creatures.Hero
 
             usableItemDef.Object.GetComponent<IUsable>()?.Use(gameObject);
             Sounds.Play("Potion");
-            _session.Data.Inventory.Remove(SelectedItemId, 1);
+            RemoveItem(SelectedItemId, 1);
         }
 
         private bool IsSelectedItem(ItemTag tag)
