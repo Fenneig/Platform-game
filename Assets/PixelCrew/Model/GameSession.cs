@@ -17,7 +17,6 @@ namespace PixelCrew.Model
         public PerksModel PerksModel { get; private set; }
         public QuickInventoryModel QuickInventory { get; private set; }
         public StatsModel StatsModel { get; private set; }
-
         public InventoryModel InventoryModel { get; private set; }
 
         public PlayerData Data => _data;
@@ -135,5 +134,7 @@ namespace PixelCrew.Model
         }
 
         public bool IsItemDestroyed(string id) => _savedDestroyedObjects.Contains(id);
+
+        
     }
 }

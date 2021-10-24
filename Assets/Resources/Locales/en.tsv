@@ -21,3 +21,27 @@ L3_KeyDoor_0	Door is locked with a key!
 L3_KeyDoor_1	Key must be near!
 L3_MoneyDoor_0	This door is for luxury people...
 L3_MoneyDoor_1	You should have at least 300 coins to enter!
+button_use	Use
+button_buy	Buy
+priceLabel	Price:
+Discription-DoubleJump	Allows you to jump in midair
+Discription-ChargedThrow	Allows you to charge an attack and make multiple throws
+Discription-Dash	Allows you to dash a short distance
+Discription-Shield	Allows you to activate shield thats make you invurable for few seconds
+button_upgrade	Upgrade
+Health	Health
+Speed	Speed
+Range Damage	Range damage
+Critical Chance	Crit chance
+Critical Damage	Crit damage
+Melee Damage	Melee damage
+Discription-Teleport	Allow you to teleport into your projectile
+Discription-Coin	Simple coin, you can buy stuff with them
+Discription-BigHealthPotion	Restores 20 health
+Discription-SmallHealthPotion	Restores 2 health
+Discription-PearlProjectile	A little pearl, you can throw it at the enemy
+Discription-Sword	Good old sword! You can be stab an enemy with it or throw for necessary.
+Discription-Key	Golden key, unlocks all closed doors!
+Discription-HealthPotion	Restores 5 health
+Discription-HastePotion	Haste potion. Strangely enough - speed up you
+button_select	Select

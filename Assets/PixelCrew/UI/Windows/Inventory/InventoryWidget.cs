@@ -36,9 +36,8 @@ namespace PixelCrew.UI.Windows.Inventory
             var itemValue = _session.Data.Inventory.GetItem(_data.Id).Value;
             _value.text = itemValue > 1 ? itemValue.ToString() : string.Empty;
             _selector.SetActive(_session.InventoryModel.InterfaceSelection.Value == _data.Id);
-
-            _quickInventorySelected.SetActive(_session.InventoryModel.QuickInventorySelection.Any(item => item.Value == _data.Id));
             
+            _quickInventorySelected.SetActive(_session.InventoryModel.QuickInventorySelection.Any(item => item.Value == _data.Id));
         }
 
         public void OnSelect()

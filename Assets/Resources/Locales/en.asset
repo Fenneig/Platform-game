@@ -90,4 +90,22 @@ MonoBehaviour:
   - Key: Melee Damage
     Value: "Melee damage\r"
   - Key: Discription-Teleport
-    Value: Allow you to teleport into your projectile
+    Value: "Allow you to teleport into your projectile\r"
+  - Key: Discription-Coin
+    Value: "Simple coin, you can buy stuff with them\r"
+  - Key: Discription-BigHealthPotion
+    Value: "Restores 20 health\r"
+  - Key: Discription-SmallHealthPotion
+    Value: "Restores 2 health\r"
+  - Key: Discription-PearlProjectile
+    Value: "A little pearl, you can throw it at the enemy\r"
+  - Key: Discription-Sword
+    Value: "Good old sword! You can be stab an enemy with it or throw for necessary.\r"
+  - Key: Discription-Key
+    Value: "Golden key, unlocks all closed doors!\r"
+  - Key: Discription-HealthPotion
+    Value: "Restores 5 health\r"
+  - Key: Discription-HastePotion
+    Value: "Haste potion. Strangely enough - speed up you\r"
+  - Key: button_select
+    Value: Select

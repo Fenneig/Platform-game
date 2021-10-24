@@ -13,7 +13,7 @@ namespace PixelCrew.Model.Models
         private readonly PlayerData _data;
 
         public readonly StringProperty InterfaceSelection = new StringProperty();
-        public readonly Queue<StringProperty> QuickInventorySelection = new Queue<StringProperty>();
+        public readonly List<StringProperty> QuickInventorySelection = new List<StringProperty>();
         private readonly CompositeDisposable _trash = new CompositeDisposable();
 
         public event Action OnChanged;
@@ -45,7 +45,8 @@ namespace PixelCrew.Model.Models
 
         public void Dispose()
         {
-            _data.Inventory.OnChanged -= OnChangedInventory;
+            _data.Inventory.OnChanged -= OnChangedInventory;       
+
             _trash.Dispose();
         }
     }

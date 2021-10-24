@@ -54,9 +54,5 @@ namespace PixelCrew.UI.HUD
             _trash.Dispose();
         }
 
-        public void OnDebug()
-        {
-            WindowUtils.CreateWindow("UI/Windows/InGame/PlayerStatsWindow");
-        }
     }
 }

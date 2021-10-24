@@ -12,23 +12,17 @@ namespace PixelCrew.UI.Widgets
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         private GameSession _session;
-        
+
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-            SetCoins();
-            _trash.Retain(_session.QuickInventory.Subscribe(OnChange));
-
+            _trash.Retain(_session.InventoryModel.Subscribe(OnChange));
+            OnChange();
         }
 
         private void OnChange()
         {
-            SetCoins();
-        }
-
-        private void SetCoins()
-        {
-            _value.text =$"X{_session.Data.Inventory.Count("Coin")}";
+            _value.text = $"X{_session.Data.Inventory.Count("Coin")}";
         }
 
         private void OnDestroy()

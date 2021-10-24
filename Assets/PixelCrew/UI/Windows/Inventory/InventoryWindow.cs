@@ -3,6 +3,7 @@ using PixelCrew.Model.Data;
 using PixelCrew.Model.Data.Properties;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Model.Definitions.Localization;
+using PixelCrew.Model.Definitions.Repository.Items;
 using PixelCrew.UI.Widgets;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
@@ -31,20 +32,32 @@ namespace PixelCrew.UI.Windows.Inventory
             _dataGroup = new PredefinedDataGroup<ItemData, InventoryWidget>(_itemsContainer);
 
             _trash.Retain(Session.InventoryModel.Subscribe(OnInventoryChanged));
-            _trash.Retain(_selectButton.onClick.Subscribe(OnAddInQuickInventory));
+            _trash.Retain(_selectButton.onClick.Subscribe(OnSelect));
             OnInventoryChanged();
         }
 
-        private void OnAddInQuickInventory()
+        private void OnSelect()
         {
             var selected = Session.InventoryModel.InterfaceSelection;
-            var quickInventory = Session.InventoryModel.QuickInventorySelection;
             var itemId = new StringProperty {Value = selected.Value};
-
+            var itemDef = DefsFacade.I.Items.Get(itemId.Value);
+            if (!itemDef.HasTag(ItemTag.Usable)) return;
+            
+            var quickInventory = Session.InventoryModel.QuickInventorySelection;
             if (quickInventory.Any(item => item.Value == itemId.Value)) return;
-
-            if (quickInventory.Count == 3) quickInventory.Dequeue();
-            quickInventory.Enqueue(itemId);
+        
+            int amount;
+            if (quickInventory.Count == 3)
+            {
+                 amount = Session.Data.QuickInventory.Count(quickInventory[0].Value);
+                Session.Data.QuickInventory.Remove(quickInventory[0].Value, amount);
+                quickInventory.Remove(quickInventory[0]);
+            }
+            
+            amount = Session.Data.Inventory.Count(itemId.Value);
+            Session.Data.QuickInventory.Add(itemId.Value, amount);
+            quickInventory.Add(itemId);
+        
             OnInventoryChanged();
         }
 
