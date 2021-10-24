@@ -3,7 +3,7 @@ using PixelCrew.Model.Definitions.Repository;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PixelCrew.UI.Windows.Perks
+namespace PixelCrew.UI.Widgets
 {
     public class ActivePerkWidget : MonoBehaviour
     {

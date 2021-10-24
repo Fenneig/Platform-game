@@ -12,6 +12,7 @@ namespace PixelCrew.UI.Windows
         protected virtual void Start()
         {
             _animator = GetComponent<Animator>();
+            
             if (_animator != null) _animator.SetTrigger(ShowKey);
         }
 
@@ -20,9 +21,11 @@ namespace PixelCrew.UI.Windows
             _animator.SetTrigger(HideKey);
         }
 
-        protected virtual void OnCloseAnimationComplete() 
+        protected virtual void OnCloseAnimationComplete()
         {
             Destroy(gameObject);
         }
+        
+              
     }
 }

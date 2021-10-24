@@ -11,7 +11,7 @@ namespace PixelCrew.Model.Data
     [Serializable]
     public class InventoryData
     {
-        [SerializeField] private List<InventoryItemData> _inventory = new List<InventoryItemData>();
+        [SerializeField] private List<ItemData> _inventory = new List<ItemData>();
 
         public int Size => _inventory.Count;
 
@@ -31,7 +31,7 @@ namespace PixelCrew.Model.Data
                 var item = GetItem(id);
                 if (item == null)
                 {
-                    item = new InventoryItemData(id);
+                    item = new ItemData(id);
                     _inventory.Add(item);
                 }
 
@@ -39,9 +39,9 @@ namespace PixelCrew.Model.Data
             }
             else
             {
-                for (int i = 0; i < value; i++)
+                for (var i = 0; i < value; i++)
                 {
-                    var item = new InventoryItemData(id) {Value = 1};
+                    var item = new ItemData(id) {Value = 1};
                     _inventory.Add(item);
                 }
             }
@@ -67,7 +67,7 @@ namespace PixelCrew.Model.Data
             }
             else
             {
-                for (int i = 0; i < value; i++)
+                for (var i = 0; i < value; i++)
                 {
                     _inventory.Remove(item);
                 }
@@ -76,54 +76,31 @@ namespace PixelCrew.Model.Data
             OnChanged?.Invoke(id, Count(id));
         }
 
-        public bool IsContainStackableItem(InventoryItemData item)
+        public bool IsContainStackableItem(ItemData item)
         {
-            if (DefsFacade.I.Items.Get(item.Id).HasTag(ItemTag.Stackable))
-            {
-                foreach (var itemData in _inventory)
-                {
-                    if (itemData.Id == item.Id) return true;
-                }
-            }
-
-            return false;
+            return DefsFacade.I.Items.Get(item.Id).HasTag(ItemTag.Stackable) && _inventory.Any(itemData => itemData.Id == item.Id);
         }
 
-        private InventoryItemData GetItem(string id)
+        public ItemData GetItem(string id)
         {
-            foreach (var itemData in _inventory)
-            {
-                if (itemData.Id == id) return itemData;
-            }
-
-            return null;
+            return _inventory.FirstOrDefault(itemData => itemData.Id == id);
         }
 
-        public InventoryItemData[] GetAll(params ItemTag[] tags)
+        public ItemData[] GetAll(params ItemTag[] tags)
         {
-            var retValue = new List<InventoryItemData>();
+            return (from item in _inventory let itemDef = DefsFacade.I.Items.Get(item.Id)
+                let isAllRequirementsMet = tags.All(itemDef.HasTag)
+                where isAllRequirementsMet select item).ToArray();
+        }
 
-            foreach (var item in _inventory)
-            {
-                var itemDef = DefsFacade.I.Items.Get(item.Id);
-                var isAllRequirementsMet = tags.All(x => itemDef.HasTag(x));
-                if (isAllRequirementsMet) retValue.Add(item);
-            }
-
-            return retValue.ToArray();
+        public ItemData[] GetAll()
+        {
+            return _inventory.ToArray();
         }
 
         public int Count(string id)
         {
-            var count = 0;
-
-            foreach (var item in _inventory)
-            {
-                if (item.Id == id)
-                    count += item.Value;
-            }
-
-            return count;
+            return _inventory.Where(item => item.Id == id).Sum(item => item.Value);
         }
 
         public bool IsEnough(params ItemWithCount[] items)
@@ -135,14 +112,8 @@ namespace PixelCrew.Model.Data
                 if (joined.ContainsKey(item.ItemId)) joined[item.ItemId] += item.Count;
                 else joined.Add(item.ItemId, item.Count);
             }
-            
-            foreach (var kvp in joined)
-            {
-                var count = Count(kvp.Key);
-                if (count < kvp.Value) return false;
-            }
 
-            return true; 
+            return !(from kvp in joined let count = Count(kvp.Key) where count < kvp.Value select kvp).Any();
         }
     }
 }

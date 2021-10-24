@@ -55,13 +55,13 @@ namespace PixelCrew.Model.Models
             var def = DefsFacade.I.Perks.Get(id);
             var isEnoughResources = _data.Inventory.IsEnough(def.Price);
 
-            if (isEnoughResources)
-            {
-                _data.Inventory.Remove(def.Price.ItemId, def.Price.Count);
-                _data.Perks.AddPerk(id);
+            if (!isEnoughResources) return;
+            
+            _data.Inventory.Remove(def.Price.ItemId, def.Price.Count);
+            _data.Perks.AddPerk(id);
 
-                OnChanged?.Invoke();
-            }
+            OnChanged?.Invoke();
+            
         }
 
         public void SelectPerk(string selected)

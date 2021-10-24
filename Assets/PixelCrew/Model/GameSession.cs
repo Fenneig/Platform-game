@@ -17,7 +17,8 @@ namespace PixelCrew.Model
         public PerksModel PerksModel { get; private set; }
         public QuickInventoryModel QuickInventory { get; private set; }
         public StatsModel StatsModel { get; private set; }
-        
+        public InventoryModel InventoryModel { get; private set; }
+
         public PlayerData Data => _data;
         private PlayerData _save;
         private readonly CompositeDisposable _trash = new CompositeDisposable();
@@ -25,7 +26,6 @@ namespace PixelCrew.Model
         private readonly List<string> _checkpoints = new List<string>();
         private readonly List<string> _destroyedObjects = new List<string>();
         private readonly List<string> _savedDestroyedObjects = new List<string>();
-
 
         private void Awake()
         {
@@ -39,7 +39,7 @@ namespace PixelCrew.Model
             {
                 Save();
                 DontDestroyOnLoad(this);
-                StartSession(_defaultCheckpoint);          
+                StartSession(_defaultCheckpoint);
                 InitModels();
             }
         }
@@ -71,12 +71,14 @@ namespace PixelCrew.Model
 
             PerksModel = new PerksModel(_data);
             _trash.Retain(PerksModel);
-            
+
             StatsModel = new StatsModel(_data);
             _trash.Retain(StatsModel);
 
-            _data.Hp.Value = (int) StatsModel.GetValue(StatId.Hp);
+            InventoryModel = new InventoryModel(_data);
+            _trash.Retain(InventoryModel);
 
+            _data.Hp.Value = (int) StatsModel.GetValue(StatId.Hp);
         }
 
         private static void LoadHud()
@@ -112,7 +114,7 @@ namespace PixelCrew.Model
         {
             _trash.Dispose();
         }
-        
+
         public bool IsChecked(string id)
         {
             return _checkpoints.Contains(id);
@@ -121,7 +123,7 @@ namespace PixelCrew.Model
         public void SetChecked(string id)
         {
             if (_checkpoints.Contains(id)) return;
-            
+
             Save();
             _checkpoints.Add(id);
         }
@@ -132,5 +134,7 @@ namespace PixelCrew.Model
         }
 
         public bool IsItemDestroyed(string id) => _savedDestroyedObjects.Contains(id);
+
+        
     }
 }

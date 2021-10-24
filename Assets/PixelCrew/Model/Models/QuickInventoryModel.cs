@@ -4,7 +4,6 @@ using PixelCrew.Utils.Disposables;
 using System;
 using PixelCrew.Model.Data;
 using PixelCrew.Model.Definitions.Repository;
-using PixelCrew.Model.Definitions.Repository.Items;
 using UnityEngine;
 
 namespace PixelCrew.Model.Models
@@ -12,13 +11,13 @@ namespace PixelCrew.Model.Models
     public class QuickInventoryModel : IDisposable
     {
         private readonly PlayerData _data;
-        public InventoryItemData[] Inventory { get; private set; }
+        public ItemData[] Inventory { get; private set; }
 
         public readonly IntProperty SelectedIndex = new IntProperty();
 
-        public Action OnChanged;
+        public event Action OnChanged;
 
-        public InventoryItemData SelectedItem
+        public ItemData SelectedItem
         {
             get
             {
@@ -30,7 +29,6 @@ namespace PixelCrew.Model.Models
         }
 
         public ItemDef SelectedDef => DefsFacade.I.Items.Get(SelectedItem?.Id);
-        
 
         public IDisposable Subscribe(Action call)
         {
@@ -41,14 +39,13 @@ namespace PixelCrew.Model.Models
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
-
-            Inventory = _data.Inventory.GetAll(ItemTag.Usable);
-            _data.Inventory.OnChanged += OnChangedInventory;
+            Inventory = _data.QuickInventory.GetAll();
+            _data.QuickInventory.OnChanged += OnChangedInventory;
         }
 
         private void OnChangedInventory(string id, int value)
         {
-            Inventory = _data.Inventory.GetAll(ItemTag.Usable);
+            Inventory = _data.QuickInventory.GetAll();
             SelectedIndex.Value = Mathf.Clamp(SelectedIndex.Value, 0, Inventory.Length - 1);
             OnChanged?.Invoke();
         }
@@ -60,7 +57,7 @@ namespace PixelCrew.Model.Models
 
         public void Dispose()
         {
-            _data.Inventory.OnChanged -= OnChangedInventory;
+            _data.QuickInventory.OnChanged -= OnChangedInventory;
         }
     }
 }

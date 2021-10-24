@@ -68,6 +68,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "393e7843-0778-4941-80ee-82456b2b70ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PerkMenu",
+                    "type": "Button",
+                    "id": "d0bb3252-d315-4673-82a9-0b4bea62de14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -235,6 +251,28 @@
                     "action": "ItemSelection",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "01ad4ba0-7d54-4704-92db-618aadd84512",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "678c3b1e-fe37-4015-bfde-65f909d6884d",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PerkMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

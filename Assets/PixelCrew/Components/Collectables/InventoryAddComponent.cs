@@ -6,9 +6,9 @@ namespace PixelCrew.Components.Collectables
 {
     public class InventoryAddComponent : MonoBehaviour
     {
-        [SerializeField] private InventoryItemData _item;
+        [SerializeField] private ItemData _item;
 
-        public InventoryItemData Item => _item;
+        public ItemData Item => _item;
 
         public void Add(GameObject go) 
         {

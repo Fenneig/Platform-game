@@ -120,8 +120,9 @@ namespace PixelCrew.Creatures
             //  /   |
             // /____|
             //   x
+            // Mathf.Sqrt(2) ~= 1.41
             return Mathf.Abs(_direction.y) > 0
-                ? _direction.x * CalculateSpeed() * Mathf.Sqrt(2)
+                ? _direction.x * CalculateSpeed() * 1.41f
                 : _direction.x * CalculateSpeed();
         }
 
