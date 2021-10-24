@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890992d205c445718fd497ab71c044bb, type: 3}
+  m_Name: Chunks
+  m_EditorClassIdentifier: 
+  _collection:
+  - _id: EnterChunk_Right
+    _prefab: {fileID: 5376825746902439515, guid: 25ef50c30eb90bd4f8751b319b787400,
+      type: 3}
+    _connections: 0200000001000000
+    _chunkType: 1
+  - _id: middleChuknLeft
+    _prefab: {fileID: 5071329814464504109, guid: aa42e0ce5e3b1de42bb16ff15f15072a,
+      type: 3}
+    _connections: 000000000100000002000000
+    _chunkType: 0
+  - _id: middleChunk1
+    _prefab: {fileID: 9108459581402967178, guid: 685b74987687e4f4095a06d72355fa03,
+      type: 3}
+    _connections: 00000000010000000200000003000000
+    _chunkType: 0
+  - _id: middleChuknRight
+    _prefab: {fileID: 1057364149215480645, guid: 95cef61a315b26846b932c2bc5eb544d,
+      type: 3}
+    _connections: 000000000100000002000000
+    _chunkType: 0
+  - _id: rd_chunk1
+    _prefab: {fileID: 9025584052104267992, guid: 949f47d07c90bb0469ab36fb3fd3f9e5,
+      type: 3}
+    _connections: 0000000001000000
+    _chunkType: 0

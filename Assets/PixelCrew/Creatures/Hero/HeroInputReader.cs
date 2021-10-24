@@ -1,5 +1,4 @@
-﻿using PixelCrew.UI.Windows.Pause;
-using PixelCrew.Utils;
+﻿using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

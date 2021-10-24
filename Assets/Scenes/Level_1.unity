@@ -8587,6 +8587,10 @@ MonoBehaviour:
         Value: 5000
       - Id: Sword
         Value: 200
+      - Id: Big health potion
+        Value: 200
+    _quickInventory:
+      _inventory: []
     Hp:
       _value: 5
     Perks:
