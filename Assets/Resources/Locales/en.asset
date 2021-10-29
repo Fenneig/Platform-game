@@ -108,4 +108,8 @@ MonoBehaviour:
   - Key: Discription-HastePotion
     Value: "Haste potion. Strangely enough - speed up you\r"
   - Key: button_select
-    Value: Select
+    Value: "Select\r"
+  - Key: Discription-CandleOil
+    Value: "Candle oil\r"
+  - Key: Oil Amount
+    Value: Oil amount

@@ -34,8 +34,10 @@ namespace PixelCrew.Model.Definitions.Localization
         }
 
         public string Localize(string key)
-        {
-            return _localization.TryGetValue(key, out var value) ? value : $"%%%{key}%%%";
+        { 
+            var returnValue = _localization.TryGetValue(key, out var value) ? value : $"%%%{key}%%%";
+            if (returnValue.Contains("%")) Debug.Log(returnValue);
+            return returnValue;
         }
 
         public Font SetFont()

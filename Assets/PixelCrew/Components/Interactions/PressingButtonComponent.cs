@@ -22,18 +22,16 @@ namespace PixelCrew.Components.Interactions
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (string.IsNullOrEmpty(_tagOnButton))
+            if (!string.IsNullOrEmpty(_tagOnButton)) return;
+            
+            foreach (var tag in _tags)
             {
-                foreach (var tag in _tags)
-                {
-                    if (collision.CompareTag(tag))
-                    {
-                        _tagOnButton = tag;
-                        _animator.SetBool(IsPressingKey, true);
-                        _pressedEvent.Invoke();
-                        break;
-                    }
-                }
+                if (!collision.CompareTag(tag)) continue;
+                
+                _tagOnButton = tag;
+                _animator.SetBool(IsPressingKey, true);
+                _pressedEvent.Invoke();
+                break;
             }
         }
 
