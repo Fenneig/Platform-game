@@ -36,6 +36,11 @@ namespace PixelCrew.Animations
         private int _currentFrame;
         private int _currentClip;
 
+        private void OnEnable()
+        {
+            _nextFrameTime = Time.time;
+        }
+
         private void Start()
         {
             _renderer = GetComponent<SpriteRenderer>();

@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "LightSwitch",
+                    "type": "Button",
+                    "id": "65e142fc-9e19-4b09-b514-e48c4ebba611",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -271,6 +279,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PerkMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32d70cb1-a3c7-45c2-9669-067fb412eeb1",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

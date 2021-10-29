@@ -52,5 +52,10 @@ namespace PixelCrew.Creatures.Hero
         {
             if (context.started) _hero.SelectItemByDirection(context.ReadValue<float>());
         }
+
+        public void OnLightSwitch(InputAction.CallbackContext context)
+        {
+            if (context.started) _hero.SwitchLight();
+        }
     }
 }

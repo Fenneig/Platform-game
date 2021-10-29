@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using PixelCrew.Components.Health;
 using PixelCrew.Components.ColliderBased;
@@ -10,6 +11,7 @@ using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace PixelCrew.Creatures.Hero
 {
@@ -37,6 +39,7 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private SpawnComponent _throwSpawner;
         [SerializeField] private SpriteRenderer _shieldParticle;
         [SerializeField] private ParticleSystem _criticalHitParticle;
+        [SerializeField] private GameObject _lighter;
 
         [Space] [Header("Throw Stats")] [Min(2)] [SerializeField]
         private int _numChargedThrows;
@@ -64,9 +67,12 @@ namespace PixelCrew.Creatures.Hero
 
         private GameSession _session;
 
-        private Timer _hasteTimer = new Timer();
+        private readonly Timer _hasteTimer = new Timer();
         private float _speedBonus;
         private float _dashTrigger;
+
+        private float _defaultLighterIntensity;
+        private Light2D _lightSource;
 
         public bool IsJumpButtonPressed { get; set; }
 
@@ -74,6 +80,8 @@ namespace PixelCrew.Creatures.Hero
         private const string DashId = "dash";
         private const string ShieldId = "shield";
         private const string TeleportId = "teleport";
+        private const string OilId = "CandleOil";
+
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         private int SwordCount => _session.Data.Inventory.Count("Sword");
         private int CoinCount => _session.Data.Inventory.Count("Coin");
@@ -91,7 +99,6 @@ namespace PixelCrew.Creatures.Hero
                 return def.HasTag(ItemTag.Throwable);
             }
         }
-
 
         protected override void Awake()
         {
@@ -113,6 +120,10 @@ namespace PixelCrew.Creatures.Hero
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
 
             _healthComponent.Health = _session.Data.Hp;
+
+            _lightSource = _lighter.GetComponentInChildren<Light2D>();
+            _defaultLighterIntensity = _lightSource.intensity;
+
             UpdateHeroWeapon();
         }
 
@@ -489,6 +500,40 @@ namespace PixelCrew.Creatures.Hero
             var damage = -(baseDamage + statDamage);
             if (isCritical) _criticalHitParticle.Play();
             attackerMHComponent.Delta = isCritical ? (int) (damage * criticalDamage) : damage;
+        }
+
+
+        public void SwitchLight()
+        {
+            _lighter.SetActive(!_lighter.activeSelf);
+            StartCoroutine(OilConsume());
+        }
+
+        private IEnumerator OilConsume()
+        {
+            while (_lighter.activeSelf)
+            {
+                _session.Data.Inventory.Remove(OilId, 1);
+                var oilItem = _session.Data.Inventory.GetItem(OilId);
+
+                if (oilItem == null)
+                {
+                    SwitchLight();
+                    continue;
+                }
+
+                const float minOilAmount = 10f;
+                if (oilItem.Value > minOilAmount)
+                {
+                    _lightSource.intensity = _defaultLighterIntensity;
+                }
+                else
+                {
+                    _lightSource.intensity -= 0.1f;
+                }
+
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 

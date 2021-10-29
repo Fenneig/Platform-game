@@ -2766,6 +2766,8 @@ MonoBehaviour:
   _data:
     _inventory:
       _inventory: []
+    _quickInventory:
+      _inventory: []
     Hp:
       _value: 10
     Perks:

@@ -39,6 +39,7 @@ namespace PixelCrew.Model.Definitions.Player
         RangeDamage,
         CriticalChance,
         CriticalDamage,
-        MeleeDamage
+        MeleeDamage,
+        OilAmount
     }
 }

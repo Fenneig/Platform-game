@@ -1,13 +1,20 @@
-﻿using UnityEngine;
+﻿using PixelCrew.Creatures;
+using UnityEngine;
 
 namespace PixelCrew.Utils
 {
     public class Debugger : MonoBehaviour
     {
-        public void OnDebug()
+        private Creature _creature;
+
+        private void Start()
         {
-            Debug.Log("Debugged");
+            _creature = GetComponent<Creature>();
         }
 
+        private void Update()
+        {
+            Debug.Log(_creature.Speed);
+        }
     }
 }

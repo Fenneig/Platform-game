@@ -5,8 +5,8 @@ namespace PixelCrew.Creatures.Mobs.Patrol
 {
     public class PointPatrol : Patrol
     {
-        [SerializeField] Transform[] _points;
-        [SerializeField] float _threshold = 0.5f;
+        [SerializeField] private Transform[] _points;
+        [SerializeField] private float _threshold = 0.5f;
 
         private Creature _creature;
         private int _destinationPointIndex;

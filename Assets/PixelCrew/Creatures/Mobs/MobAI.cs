@@ -37,7 +37,6 @@ namespace PixelCrew.Creatures.Mobs
             Mob = GetComponent<Creature>();
             MobAnimator = GetComponent<Animator>();
             Patrol = GetComponent<Patrol.Patrol>();
-            IsDead = false;
         }
 
         private void Start()
@@ -69,8 +68,7 @@ namespace PixelCrew.Creatures.Mobs
         protected void StartState(IEnumerator coroutine)
         {
             StopMoving();
-            if (_current != null)
-                StopCoroutine(_current);
+            if (_current != null) StopCoroutine(_current);
 
             _current = StartCoroutine(coroutine);
         }

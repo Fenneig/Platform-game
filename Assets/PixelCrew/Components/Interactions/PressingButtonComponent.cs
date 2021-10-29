@@ -12,7 +12,7 @@ namespace PixelCrew.Components.Interactions
         [SerializeField] private UnityEvent _unpressedEvent;
 
         private Animator _animator;
-        private string _tagOnButton = null;
+        private string _tagOnButton;
         private static readonly int IsPressingKey = Animator.StringToHash("is-pressing");
 
         private void Awake()

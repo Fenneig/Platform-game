@@ -1,10 +1,7 @@
-﻿using Packages.Rider.Editor.Util;
-using PixelCrew.Model;
+﻿using PixelCrew.Model;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.UI.Widgets;
-using PixelCrew.UI.Windows.Perks;
-using PixelCrew.Utils;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
@@ -27,6 +24,7 @@ namespace PixelCrew.UI.HUD
             _trash.Retain(_session.PerksModel.SubscribeAndInvoke(OnPerkChange));
         }
 
+
         private void OnPerkChange()
         {
             var usedPerk = _session.PerksModel.Used;
@@ -45,7 +43,7 @@ namespace PixelCrew.UI.HUD
         private void OnHealthChange(int newValue, int oldValue)
         {
             var maxHealth = _session.StatsModel.GetValue(StatId.Hp);
-            var value = (float) newValue / maxHealth;
+            var value = newValue / maxHealth;
             _healthBar.SetProgress(value);
         }
 
@@ -53,6 +51,5 @@ namespace PixelCrew.UI.HUD
         {
             _trash.Dispose();
         }
-
     }
 }

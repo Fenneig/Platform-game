@@ -146,3 +146,19 @@ MonoBehaviour:
       _price:
         _itemId: Coin
         _count: 150
+  - _name: Oil Amount
+    _id: 6
+    _icon: {fileID: 21300000, guid: 841754fec805e1a4cbca3e78bc989713, type: 3}
+    _levels:
+    - _value: 100
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 150
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 200
+      _price:
+        _itemId: Coin
+        _count: 200
