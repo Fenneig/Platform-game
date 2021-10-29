@@ -1963,7 +1963,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: Sword
+        Value: 5
     _quickInventory:
       _inventory: []
     Hp:
@@ -2622,6 +2624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758024218160889587, guid: 8f39b09af08b15c45b92373280e72ff4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4758024218160889588, guid: 8f39b09af08b15c45b92373280e72ff4,
         type: 3}
@@ -4636,7 +4643,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1231070753}
   - component: {fileID: 1231070755}
-  - component: {fileID: 1231070754}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -4658,49 +4664,6 @@ Transform:
   m_Father: {fileID: 1054574368}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1231070754
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231070752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0.4
-  m_LookaheadSmoothing: 10
-  m_LookaheadIgnoreY: 1
-  m_XDamping: 0.5
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_TargetMovementOnly: 0
-  m_ScreenX: 0.5075001
-  m_ScreenY: 0.5
-  m_CameraDistance: 10
-  m_DeadZoneWidth: 0.2
-  m_DeadZoneHeight: 0
-  m_DeadZoneDepth: 0
-  m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
-  m_GroupFramingMode: 2
-  m_AdjustmentMode: 0
-  m_GroupFramingSize: 0.8
-  m_MaxDollyIn: 5000
-  m_MaxDollyOut: 5000
-  m_MinimumDistance: 1
-  m_MaximumDistance: 5000
-  m_MinimumFOV: 3
-  m_MaximumFOV: 60
-  m_MinimumOrthoSize: 1
-  m_MaximumOrthoSize: 5000
 --- !u!114 &1231070755
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5039,21 +5002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4758024218160889587, guid: 8f39b09af08b15c45b92373280e72ff4,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758024218160889587, guid: 8f39b09af08b15c45b92373280e72ff4,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1204968267
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758024218160889587, guid: 8f39b09af08b15c45b92373280e72ff4,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 4758024218160889588, guid: 8f39b09af08b15c45b92373280e72ff4,
         type: 3}
       propertyPath: m_RootOrder
