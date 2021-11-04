@@ -14,7 +14,6 @@ namespace PixelCrew.Utils
             Gizmos.DrawLine(new Vector3(bounds.max.x, bounds.min.y), bounds.min);
 
             Gizmos.color = prevColor;
-
         }
     }
 }

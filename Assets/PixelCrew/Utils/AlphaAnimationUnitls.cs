@@ -21,5 +21,5 @@ namespace PixelCrew.Utils
                 yield return null;
             }
         }
-    } 
+    }
 }

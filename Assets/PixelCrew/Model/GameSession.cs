@@ -30,6 +30,7 @@ namespace PixelCrew.Model
         private void Awake()
         {
             var existSession = GetExistSession();
+            
             if (existSession != null)
             {
                 existSession.StartSession(_defaultCheckpoint);
@@ -134,7 +135,5 @@ namespace PixelCrew.Model
         }
 
         public bool IsItemDestroyed(string id) => _savedDestroyedObjects.Contains(id);
-
-        
     }
 }

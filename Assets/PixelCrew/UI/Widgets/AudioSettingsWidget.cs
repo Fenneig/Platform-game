@@ -19,7 +19,7 @@ namespace PixelCrew.UI.Widgets
             _trash.Retain(_slider.onValueChanged.Subscribe(OnSliderValueChange));
         }
 
-        public void OnSliderValueChange(float value) 
+        private void OnSliderValueChange(float value) 
         {
             _model.Value = value;
         }

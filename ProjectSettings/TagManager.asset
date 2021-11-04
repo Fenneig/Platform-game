@@ -17,6 +17,7 @@ TagManager:
   - BigHp
   - Attached
   - SFXAudioSource
+  - MainUICanvas
   layers:
   - Default
   - TransparentFX
@@ -65,4 +66,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4081326515
+    locked: 0
+  - name: Overlay
+    uniqueID: 2844297181
     locked: 0

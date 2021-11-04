@@ -1,5 +1,4 @@
-﻿using System;
-using PixelCrew.Model;
+﻿using PixelCrew.Model;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.UI;

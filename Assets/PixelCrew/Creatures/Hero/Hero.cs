@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Linq;
-using System.Net.NetworkInformation;
 using UnityEngine;
 using PixelCrew.Components.Health;
 using PixelCrew.Components.ColliderBased;
@@ -9,6 +8,7 @@ using PixelCrew.Utils;
 using UnityEditor.Animations;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
+using PixelCrew.Effects.CameraRelated;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -60,19 +60,18 @@ namespace PixelCrew.Creatures.Hero
         private bool _allowDashInJump;
         private bool _isDashing;
         private bool _allowDoubleJump;
-
-        private HealthComponent _healthComponent;
-
-        private static readonly int ThrowKey = Animator.StringToHash("is-throw");
-
+        
         private GameSession _session;
+        private HealthComponent _healthComponent;
+        private Light2D _lightSource;
+        private CameraShakeEffect _cameraShake;
+
+
 
         private readonly Timer _hasteTimer = new Timer();
         private float _speedBonus;
         private float _dashTrigger;
-
         private float _defaultLighterIntensity;
-        private Light2D _lightSource;
 
         public bool IsJumpButtonPressed { get; set; }
 
@@ -81,6 +80,8 @@ namespace PixelCrew.Creatures.Hero
         private const string ShieldId = "shield";
         private const string TeleportId = "teleport";
         private const string OilId = "CandleOil";
+        private static readonly int ThrowKey = Animator.StringToHash("is-throw");
+
 
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         private int SwordCount => _session.Data.Inventory.Count("Sword");
@@ -114,6 +115,7 @@ namespace PixelCrew.Creatures.Hero
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
+            _cameraShake = FindObjectOfType<CameraShakeEffect>();
             _healthComponent = GetComponent<HealthComponent>();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
@@ -123,6 +125,7 @@ namespace PixelCrew.Creatures.Hero
 
             _lightSource = _lighter.GetComponentInChildren<Light2D>();
             _defaultLighterIntensity = _lightSource.intensity;
+
 
             UpdateHeroWeapon();
         }
@@ -142,6 +145,7 @@ namespace PixelCrew.Creatures.Hero
         private void OnDestroy()
         {
             _session.Data.Inventory.OnChanged -= OnInventoryChanged;
+            _session.StatsModel.OnUpgraded -= OnHeroUpgraded;
         }
 
         private void OnInventoryChanged(string id, int value)
@@ -285,7 +289,7 @@ namespace PixelCrew.Creatures.Hero
         public override void TakeDamage()
         {
             base.TakeDamage();
-
+              _cameraShake.Shake();
             if (CoinCount > 0)
                 SpawnCoins();
         }

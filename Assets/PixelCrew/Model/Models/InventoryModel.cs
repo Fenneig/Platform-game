@@ -15,7 +15,6 @@ namespace PixelCrew.Model.Models
         public readonly StringProperty InterfaceSelection = new StringProperty();
         public readonly List<StringProperty> QuickInventorySelection = new List<StringProperty>();
         private readonly CompositeDisposable _trash = new CompositeDisposable();
-
         public event Action OnChanged;
 
         public InventoryModel(PlayerData data)
