@@ -14,12 +14,10 @@ namespace PixelCrew.Components.LevelManagement
             var session = FindObjectOfType<GameSession>();
             session.ClearCheckpoints();
             session.Save();
-
-            SceneManager.LoadScene(_levelName);
-            /*
+            
             var loader = FindObjectOfType<LevelLoader>();
             loader.LoadLevel(_levelName);
-            */
+            
         }
     }
 }

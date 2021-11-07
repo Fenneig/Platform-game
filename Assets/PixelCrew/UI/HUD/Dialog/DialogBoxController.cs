@@ -1,4 +1,5 @@
-﻿using PixelCrew.Model.Data.Dialogue;
+﻿using System;
+using PixelCrew.Model.Data.Dialogue;
 using PixelCrew.Utils;
 using System.Collections;
 using UnityEngine;
@@ -30,6 +31,9 @@ namespace PixelCrew.UI.HUD.Dialog
         private RectTransform _portraitRectTransform;
         private float _defaultTimeScale;
         private PlayerInput _input;
+
+        public event Action OnComplete;
+
 
         private void Start()
         {
@@ -114,6 +118,7 @@ namespace PixelCrew.UI.HUD.Dialog
             _background.SetActive(false);
             Time.timeScale = _defaultTimeScale;
             _input.enabled = true;
+            OnComplete?.Invoke();
         }
 
         public void OnSkip()

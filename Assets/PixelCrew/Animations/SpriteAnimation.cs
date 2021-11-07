@@ -1,4 +1,5 @@
 ﻿using System;
+using PixelCrew.Model.Data.Properties;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,26 +8,6 @@ namespace PixelCrew.Animations
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimation : MonoBehaviour
     {
-        [Serializable]
-        public class AnimationClip
-        {
-            [SerializeField] private string _name;
-            [SerializeField] private bool _loop;
-            [SerializeField] private bool _allowNext;
-            [SerializeField] private Sprite[] _sprites;
-            [SerializeField] private UnityEvent _onComplete;
-
-            public bool IsEqualName(string name) => _name == name;
-
-            public bool Loop => _loop;
-
-            public bool AllowNextClip => _allowNext;
-
-            public Sprite[] Sprites => _sprites;
-
-            public UnityEvent OnComplete => _onComplete;
-        }
-
         [SerializeField] private int _frameRate;
         [SerializeField] private AnimationClip[] _clips;
 
@@ -35,10 +16,23 @@ namespace PixelCrew.Animations
         private SpriteRenderer _renderer;
         private int _currentFrame;
         private int _currentClip;
+        private bool _isPlaying = true;
+
 
         private void OnEnable()
         {
             _nextFrameTime = Time.time;
+            enabled = _isPlaying;
+        }
+
+        private void OnBecameInvisible()
+        {
+            enabled = false;
+        }
+
+        private void OnBecameVisible()
+        {
+            enabled = _isPlaying;
         }
 
         private void Start()
@@ -51,6 +45,7 @@ namespace PixelCrew.Animations
         private void StartAnimation()
         {
             _nextFrameTime = Time.time;
+            enabled = _isPlaying = true;
             _currentFrame = 0;
         }
 
@@ -68,14 +63,15 @@ namespace PixelCrew.Animations
                 }
                 else
                 {
+                    enabled = _isPlaying = clip.AllowNextClip;
                     clip.OnComplete?.Invoke();
 
-                    if (clip.AllowNextClip)
-                    {
-                        _currentFrame = 0;
-                        _currentClip = (int)Mathf.Repeat(_currentClip + 1, _clips.Length);
-                    }
+                    if (!clip.AllowNextClip) return;
+                    
+                    _currentFrame = 0;
+                    _currentClip = (int) Mathf.Repeat(_currentClip + 1, _clips.Length);
                 }
+
                 return;
             }
 
@@ -94,5 +90,25 @@ namespace PixelCrew.Animations
                 return;
             }
         }
+    }
+
+    [Serializable]
+    public class AnimationClip
+    {
+        [SerializeField] private string _name;
+        [SerializeField] private bool _loop;
+        [SerializeField] private bool _allowNext;
+        [SerializeField] private Sprite[] _sprites;
+        [SerializeField] private UnityEvent _onComplete;
+
+        public bool IsEqualName(string name) => _name == name;
+
+        public bool Loop => _loop;
+
+        public bool AllowNextClip => _allowNext;
+
+        public Sprite[] Sprites => _sprites;
+
+        public UnityEvent OnComplete => _onComplete;
     }
 }

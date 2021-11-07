@@ -32,7 +32,7 @@ namespace PixelCrew.Effects.CameraRelated
             var hpNormalize = newValue / maxHp;
             _animator.SetFloat(Health, hpNormalize);
 
-            var overlayModifier = Mathf.Max(hpNormalize - 0.3f, 0);
+            var overlayModifier = Mathf.Max(hpNormalize - 0.25f, 0);
             _overlay.localScale = Vector3.one + _overScale * overlayModifier;
         }
 

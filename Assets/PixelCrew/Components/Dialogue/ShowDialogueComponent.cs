@@ -2,6 +2,7 @@
 using PixelCrew.Model.Data.Dialogue;
 using PixelCrew.UI.HUD.Dialog;
 using System;
+using PixelCrew.Effects;
 using PixelCrew.UI.Localization;
 using UnityEngine;
 
@@ -14,12 +15,26 @@ namespace PixelCrew.Components.Dialogue
         [SerializeField] private DialogueDef _external;
 
         private DialogBoxController _dialogBox;
+        private VignetteEffect _vignette;
+
+        private void Start()
+        {
+            _vignette = FindObjectOfType<VignetteEffect>();
+        }
 
         public void Show()
         {
             if (_dialogBox == null) _dialogBox = FindObjectOfType<DialogBoxController>();
             GetComponent<LocalizeDialogue>()?.Localize();
             _dialogBox.ShowDialogue(Data);
+            _dialogBox.OnComplete += HideVignette;
+            _vignette.ShowVignette();
+        }
+
+        private void HideVignette()
+        {
+            _vignette.HideVignette();
+            _dialogBox.OnComplete -= HideVignette;
         }
 
         public void Show(DialogueDef def)

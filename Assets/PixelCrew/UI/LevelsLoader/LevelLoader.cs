@@ -34,9 +34,10 @@ namespace PixelCrew.UI.LevelsLoader
 
         private IEnumerator StartAnimation(string sceneName)
         {
-            _animator.SetBool(Enabled, true);
-            yield return new WaitForSeconds(_transitionTime);        
-            SceneManager.LoadScene(sceneName);
+            _animator.SetBool(Enabled, true);       
+            yield return new WaitForSeconds(_transitionTime / 2); 
+            SceneManager.LoadScene(sceneName);     
+            yield return new WaitForSeconds(_transitionTime / 2);
             _animator.SetBool(Enabled, false);
         }
     }

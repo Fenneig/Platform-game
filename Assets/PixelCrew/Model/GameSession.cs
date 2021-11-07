@@ -25,7 +25,7 @@ namespace PixelCrew.Model
 
         private readonly List<string> _checkpoints = new List<string>();
         private readonly List<string> _destroyedObjects = new List<string>();
-        private readonly List<string> _savedDestroyedObjects = new List<string>();
+        private readonly List<string> _removedItems = new List<string>();
 
         private void Awake()
         {
@@ -39,9 +39,9 @@ namespace PixelCrew.Model
             else
             {
                 Save();
+                InitModels();
                 DontDestroyOnLoad(this);
                 StartSession(_defaultCheckpoint);
-                InitModels();
             }
         }
 
@@ -82,7 +82,7 @@ namespace PixelCrew.Model
             _data.Hp.Value = (int) StatsModel.GetValue(StatId.Hp);
         }
 
-        private static void LoadHud()
+        private void LoadHud()
         {
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
@@ -90,7 +90,15 @@ namespace PixelCrew.Model
         private GameSession GetExistSession()
         {
             var sessions = FindObjectsOfType<GameSession>();
-            return sessions.FirstOrDefault(gameSession => gameSession != this);
+            //return sessions.FirstOrDefault(gameSession => gameSession != this);
+            
+            foreach (var gameSession in sessions)
+            {
+                if (gameSession != this)
+                    return gameSession;
+            }
+
+            return null;
         }
 
         public void ClearCheckpoints()
@@ -101,7 +109,7 @@ namespace PixelCrew.Model
         public void Save()
         {
             _save = _data.Clone();
-            _savedDestroyedObjects.AddRange(_destroyedObjects);
+            _removedItems.AddRange(_destroyedObjects);
             _destroyedObjects.Clear();
         }
 
@@ -134,6 +142,6 @@ namespace PixelCrew.Model
             if (!_destroyedObjects.Contains(id)) _destroyedObjects.Add(id);
         }
 
-        public bool IsItemDestroyed(string id) => _savedDestroyedObjects.Contains(id);
+        public bool IsItemDestroyed(string id) => _removedItems.Contains(id);
     }
 }
