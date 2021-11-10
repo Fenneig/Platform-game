@@ -17,7 +17,7 @@ namespace PixelCrew.Creatures.Weapons
         private void FixedUpdate()
         {
             var position = Rigidbody.position;
-            position.x += Direction * Speed;
+            position.x += Direction * _speed;
             position.y = _originalY + Mathf.Sin(_time * _frequency) * _amplitude;
 
             Rigidbody.MovePosition(position);

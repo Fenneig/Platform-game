@@ -22,8 +22,9 @@ namespace PixelCrew.Creatures.Hero
         private float _dashSpeed;
 
         [SerializeField] private float _dashDuration;
-
         [SerializeField] private int _baseMeleeDamage;
+        [SerializeField] private float _invulnerableTime;
+
 
         [Space] [Header("Checkers")] [SerializeField]
         private CheckCircleOverlap _interactionRadius;
@@ -60,13 +61,12 @@ namespace PixelCrew.Creatures.Hero
         private bool _allowDashInJump;
         private bool _isDashing;
         private bool _allowDoubleJump;
-        
+
         private GameSession _session;
         private HealthComponent _healthComponent;
         private Light2D _lightSource;
         private CameraShakeEffect _cameraShake;
-
-
+        private SpriteRenderer _sprite;
 
         private readonly Timer _hasteTimer = new Timer();
         private float _speedBonus;
@@ -117,6 +117,7 @@ namespace PixelCrew.Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             _cameraShake = FindObjectOfType<CameraShakeEffect>();
             _healthComponent = GetComponent<HealthComponent>();
+            _sprite = GetComponent<SpriteRenderer>();
 
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
@@ -205,7 +206,6 @@ namespace PixelCrew.Creatures.Hero
             return yVelocity;
         }
 
-
         public void DrinkHastePotion(float speedBonus, float hasteTime)
         {
             _hasteTimer.Value = _hasteTimer.RemainingTime + hasteTime;
@@ -289,11 +289,11 @@ namespace PixelCrew.Creatures.Hero
         public override void TakeDamage()
         {
             base.TakeDamage();
-              _cameraShake.Shake();
+            _cameraShake.Shake();
             if (CoinCount > 0)
                 SpawnCoins();
+            StartCoroutine(InvulnerableEffect(_invulnerableTime, _sprite));
         }
-
 
         private void RemoveItem(string itemId, int count)
         {
@@ -481,19 +481,29 @@ namespace PixelCrew.Creatures.Hero
         private IEnumerator ShieldEffect()
         {
             _shieldParticle.enabled = true;
+
             _healthComponent.IsInvulnerable = true;
             yield return new WaitForSeconds(_shieldDuration - _shieldEndIndicator);
+            yield return InvulnerableEffect(_shieldEndIndicator, _shieldParticle);
+            _shieldParticle.enabled = false;
+        }
+
+        private IEnumerator InvulnerableEffect(float invulnerableTime, SpriteRenderer blinkingSprite)
+        {
+            _healthComponent.IsInvulnerable = true;
+
+            var color = blinkingSprite.color;
+
             for (var i = 0; i < _blinksAmount; i++)
             {
-                yield return AlphaAnimationUtils.AlphaAnimation(_shieldParticle, i % 2,
-                    _shieldEndIndicator / _blinksAmount);
+                yield return this.LerpAnimation(i % 2, (i + 1) % 2, invulnerableTime / _blinksAmount,
+                    alpha => blinkingSprite.color = new Color(color.r, color.g, color.b, alpha));
             }
 
-            var color = _shieldParticle.color;
             color.a = 255;
-            _shieldParticle.color = color;
+            blinkingSprite.color = color;
+
             _healthComponent.IsInvulnerable = false;
-            _shieldParticle.enabled = false;
         }
 
         private void CalculateDamage(ModifyHealthComponent attackerMHComponent, int baseDamage, int statDamage)
@@ -505,7 +515,6 @@ namespace PixelCrew.Creatures.Hero
             if (isCritical) _criticalHitParticle.Play();
             attackerMHComponent.Delta = isCritical ? (int) (damage * criticalDamage) : damage;
         }
-
 
         public void SwitchLight()
         {

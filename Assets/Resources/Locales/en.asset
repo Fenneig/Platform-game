@@ -112,4 +112,8 @@ MonoBehaviour:
   - Key: Discription-CandleOil
     Value: "Candle oil\r"
   - Key: Oil Amount
-    Value: Oil amount
+    Value: "Oil amount\r"
+  - Key: L4_BossFight1_0
+    Value: "You won't pass this door\r"
+  - Key: L4_BossFight1_1
+    Value: You underestimate me

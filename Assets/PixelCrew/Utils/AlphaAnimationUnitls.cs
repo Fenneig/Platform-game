@@ -1,22 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace PixelCrew.Utils
 {
-    public static class AlphaAnimationUtils
+    public static class LerpAnimationUtils
     {
-        public static IEnumerator AlphaAnimation(SpriteRenderer sprite, float destAlpha, float destTime)
+        public static Coroutine LerpAnimation(this MonoBehaviour behaviour, float start, float end, float time,
+            Action<float> onFrame)
         {
-            var alphaTime = 0f;
-            var spriteAlpha = sprite.color.a;
-            while (alphaTime < destTime)
+            return behaviour.StartCoroutine(Animate(start, end, time, onFrame));
+        }
+
+        private static IEnumerator Animate(float start, float end, float animationTime, Action<float> onFrame)
+        {
+            var time = 0f;
+            onFrame(start);
+
+            while (time < animationTime)
             {
-                alphaTime += Time.deltaTime;
-                var progress = alphaTime / destTime;
-                var tempAlpha = Mathf.Lerp(spriteAlpha, destAlpha, progress);
-                var color = sprite.color;
-                color.a = tempAlpha;
-                sprite.color = color;
+                time += Time.deltaTime;
+                var progress = time / animationTime;
+                var value = Mathf.Lerp(start, end, progress);
+                onFrame(value);
 
                 yield return null;
             }

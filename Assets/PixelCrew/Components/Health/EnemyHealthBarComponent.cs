@@ -21,12 +21,11 @@ namespace PixelCrew.Components.Health
 
         private void UpdateScale()
         {
-            if (gameObject.transform.root.localScale.x != gameObject.transform.lossyScale.x)
-            {
-                var transform = gameObject.transform.localScale;
-                transform = new Vector3(-transform.x, transform.y, transform.z);
-                gameObject.transform.localScale = transform;
-            }
+            if (gameObject.transform.root.localScale.x == gameObject.transform.lossyScale.x) return;
+            
+            var transform = gameObject.transform.localScale;
+            transform = new Vector3(-transform.x, transform.y, transform.z);
+            gameObject.transform.localScale = transform;
         }
 
         private void OnHealthChange(int newValue, int oldValue)

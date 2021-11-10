@@ -2745,7 +2745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517205183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6680412, y: -1.5300004, z: -10}
+  m_LocalPosition: {x: -2.6694212, y: -1.5300004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 135444081}
@@ -8200,6 +8200,9 @@ MonoBehaviour:
       _isLeft: 0
       _key: L0_door_1
   _external: {fileID: 0}
+  _onComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1794663005745273329 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1143493014284966696, guid: 0d323f76d7efa9249ad9e9f9b1cad0be,

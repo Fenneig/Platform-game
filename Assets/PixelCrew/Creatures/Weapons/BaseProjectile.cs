@@ -4,7 +4,7 @@ namespace PixelCrew.Creatures.Weapons
 {
     public class BaseProjectile : MonoBehaviour
     {
-        [SerializeField] protected float Speed;
+        [SerializeField] protected float _speed;
 
         protected Rigidbody2D Rigidbody;
         protected int Direction;

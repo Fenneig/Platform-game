@@ -22,6 +22,7 @@ namespace PixelCrew.UI.Widgets
             _trash.Retain(_session.InventoryModel.Subscribe(OilAmountChanged));
             _trash.Retain(_session.StatsModel.Subscribe(MaxOilValueChanged));
             MaxOilValueChanged();
+            OilAmountChanged();
         }
 
         private void MaxOilValueChanged()

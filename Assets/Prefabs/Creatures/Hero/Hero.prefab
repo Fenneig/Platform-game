@@ -5001,6 +5001,7 @@ MonoBehaviour:
   _dashSpeed: 12.5
   _dashDuration: 0.1
   _baseMeleeDamage: 1
+  _invulnerableTime: 1
   _interactionRadius: {fileID: 4617069469202346616}
   _armed: {fileID: 9100000, guid: 3fdffb38cda65714ba48d72dec87d7bb, type: 2}
   _unarmed: {fileID: 9100000, guid: ebe60f4c6c0270141bf9a64b70a7e94b, type: 2}

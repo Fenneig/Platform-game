@@ -42,22 +42,22 @@ namespace PixelCrew.UI.Windows.Inventory
             var itemId = new StringProperty {Value = selected.Value};
             var itemDef = DefsFacade.I.Items.Get(itemId.Value);
             if (!itemDef.HasTag(ItemTag.Usable)) return;
-            
+
             var quickInventory = Session.InventoryModel.QuickInventorySelection;
             if (quickInventory.Any(item => item.Value == itemId.Value)) return;
-        
+
             int amount;
             if (quickInventory.Count == 3)
             {
-                 amount = Session.Data.QuickInventory.Count(quickInventory[0].Value);
+                amount = Session.Data.QuickInventory.Count(quickInventory[0].Value);
                 Session.Data.QuickInventory.Remove(quickInventory[0].Value, amount);
                 quickInventory.Remove(quickInventory[0]);
             }
-            
+
             amount = Session.Data.Inventory.Count(itemId.Value);
             Session.Data.QuickInventory.Add(itemId.Value, amount);
             quickInventory.Add(itemId);
-        
+
             OnInventoryChanged();
         }
 

@@ -9,7 +9,7 @@ namespace PixelCrew.Components.Health
     {
         [SerializeField] private IntProperty _health;
         [SerializeField] private UnityEvent _onDamage;
-        [SerializeField] private UnityEvent _onDie;
+        [SerializeField] public UnityEvent _onDie;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private ChangeHealthEvent _onChange;
 
@@ -17,7 +17,7 @@ namespace PixelCrew.Components.Health
 
         public bool IsInvulnerable { get; set; }
 
-        private void Start()
+        private void Awake()
         {
             MaxHealth = _health.Value;
             IsInvulnerable = false;

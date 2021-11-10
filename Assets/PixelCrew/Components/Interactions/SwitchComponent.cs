@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PixelCrew.Components.Interactions
 {
@@ -10,13 +11,22 @@ namespace PixelCrew.Components.Interactions
 
         private bool _isLocked;
 
+        private void Start()
+        {
+            Animate();
+        }
+
         public void Switch()
         {
-            if (!_isLocked)
-            {
-                _state = !_state;
-                _animator.SetBool(_animationKey, _state);
-            }
+            if (_isLocked) return;
+            
+            _state = !_state;
+            Animate();
+        }
+
+        private void Animate()
+        {
+            _animator.SetBool(_animationKey, _state);
         }
 
         public void LockSwitching() 

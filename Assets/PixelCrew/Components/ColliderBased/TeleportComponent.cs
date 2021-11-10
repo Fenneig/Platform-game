@@ -20,10 +20,13 @@ namespace PixelCrew.Components.ColliderBased
         private IEnumerator AnimateTeleport(GameObject target)
         {
             var sprite = target.GetComponent<SpriteRenderer>();
+            var color = sprite.color;
             var input = target.GetComponent<PlayerInput>();
             var collider = target.GetComponent<Collider2D>();
 
-            yield return AlphaAnimationUtils.AlphaAnimation(sprite, 0f, _alphaTime);
+            yield return this.LerpAnimation(_alphaTime, 0f, _moveTime,
+                alpha => sprite.color = new Color(color.r, color.g, color.b, alpha));
+
             SetLockInput(input, true);
             collider.enabled = false;
 
@@ -31,7 +34,9 @@ namespace PixelCrew.Components.ColliderBased
 
             SetLockInput(input, false);
             collider.enabled = true;
-            yield return AlphaAnimationUtils.AlphaAnimation(sprite, 1f, _alphaTime);
+
+            yield return this.LerpAnimation(0f, _alphaTime, _moveTime,
+                alpha => sprite.color = new Color(color.r, color.g, color.b, alpha));
         }
 
         private void SetLockInput(PlayerInput input, bool isLocked)

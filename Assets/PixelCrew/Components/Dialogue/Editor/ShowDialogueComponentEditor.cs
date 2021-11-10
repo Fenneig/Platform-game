@@ -7,17 +7,17 @@ namespace PixelCrew.Components.Dialogue.Editor
     public class ShowDialogueComponentEditor : UnityEditor.Editor
     {
         private SerializedProperty _modeProperty;
-
+        private SerializedProperty _onCompleteProperty;
         private void OnEnable()
         {
             _modeProperty = serializedObject.FindProperty("_mode");
+            _onCompleteProperty = serializedObject.FindProperty("_onComplete");
         }
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(_modeProperty);
 
-            ShowDialogueComponent.Mode mode;
-            if (_modeProperty.GetEnum(out mode))
+            if (_modeProperty.GetEnum(out ShowDialogueComponent.Mode mode))
             {
                 switch (mode)
                 {
@@ -30,7 +30,8 @@ namespace PixelCrew.Components.Dialogue.Editor
                 }
 
             }
-
+            
+            EditorGUILayout.PropertyField(_onCompleteProperty);
             serializedObject.ApplyModifiedProperties();
         }
 

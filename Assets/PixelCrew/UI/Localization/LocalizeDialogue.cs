@@ -10,6 +10,7 @@ namespace PixelCrew.UI.Localization
     {
         private Sentence[] _sentences;
         private ShowDialogueComponent _dialogueComponent;
+        
 
         private void Awake()
         {
