@@ -1,6 +1,7 @@
 ﻿using PixelCrew.Components.Dialogue;
 using PixelCrew.Model.Data.Dialogue;
 using PixelCrew.Model.Definitions.Localization;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
 namespace PixelCrew.UI.Localization
@@ -10,13 +11,15 @@ namespace PixelCrew.UI.Localization
     {
         private Sentence[] _sentences;
         private ShowDialogueComponent _dialogueComponent;
-        
+
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
 
         private void Awake()
         {
             _dialogueComponent = GetComponent<ShowDialogueComponent>();
 
-            LocalizationManager.I.OnLocaleChanged += Localize;
+            _trash.Retain(LocalizationManager.I.Subscribe(Localize));
             Localize();
         }
 
@@ -30,12 +33,11 @@ namespace PixelCrew.UI.Localization
             }
 
             _dialogueComponent.Data.Font = LocalizationManager.I.SetFont();
-
         }
 
         private void OnDestroy()
         {
-            LocalizationManager.I.OnLocaleChanged -= Localize;
+            _trash.Dispose();
         }
     }
 }

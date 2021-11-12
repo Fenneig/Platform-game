@@ -11,6 +11,7 @@ namespace PixelCrew.Components.GOBased
     {
         [SerializeField] private CircularProjectileSettings[] _settings;
         [SerializeField] private float _sectorAngle = 60;
+        [SerializeField] private int _itemPerBurst = 3;
 
         public int Stage { get; set; }
 
@@ -24,14 +25,21 @@ namespace PixelCrew.Components.GOBased
         {
             var settings = _settings[Stage];
             var sectorStep = _sectorAngle / settings.BurstCount;
-            for (var i = 0; i < settings.BurstCount; i++)
-            {
-                var angle = (180 - _sectorAngle) / 2 + sectorStep * i;
-                var direction = GetUnitOnCircle(angle);
 
-                var instance = SpawnUtils.Spawn(settings.Prefab, transform.position);
-                var projectile = instance.GetComponent<DirectionalProjectile>();
-                projectile.Launch(direction);
+            for (var i = 0; i < settings.BurstCount;)
+            {
+                var itemToBurst = Mathf.Min(_itemPerBurst, settings.BurstCount - i);
+                for (var j = 0; j < itemToBurst; j++)
+                {
+                    var angle = (180 - _sectorAngle) / 2 + sectorStep * (i + j);
+                    var direction = GetUnitOnCircle(angle);
+
+                    var instance = SpawnUtils.Spawn(settings.Prefab, transform.position);
+                    var projectile = instance.GetComponent<DirectionalProjectile>();
+                    projectile.Launch(direction);
+                }
+
+                i += itemToBurst;
                 yield return new WaitForSeconds(settings.Delay);
             }
         }

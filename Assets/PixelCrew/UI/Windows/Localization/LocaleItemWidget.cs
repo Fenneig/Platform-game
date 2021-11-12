@@ -1,6 +1,7 @@
 ﻿using System;
 using PixelCrew.Model.Definitions.Localization;
 using PixelCrew.UI.Widgets;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,11 +14,13 @@ namespace PixelCrew.UI.Windows.Localization
         [SerializeField] private GameObject _selector;
         [SerializeField] private SelectLocale _onSelected;
 
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
         private LocaleInfo _data;
 
         private void Awake()
         {
-            LocalizationManager.I.OnLocaleChanged += UpdateSelection;
+            _trash.Retain(LocalizationManager.I.Subscribe(UpdateSelection));
         }
 
         public void SetData(LocaleInfo localeInfo, int index)
@@ -26,18 +29,18 @@ namespace PixelCrew.UI.Windows.Localization
             UpdateSelection();
             _text.text = _data.LocaleId.ToUpper();
         }
-        
+
         private void UpdateSelection()
         {
-            var isSelected = LocalizationManager.I.LocalKey == _data.LocaleId; 
+            var isSelected = LocalizationManager.I.LocalKey == _data.LocaleId;
             _selector.SetActive(isSelected);
         }
-        
+
         public void OnSelected() => _onSelected?.Invoke(_data.LocaleId);
 
         private void OnDestroy()
         {
-            LocalizationManager.I.OnLocaleChanged -= UpdateSelection;
+            _trash.Dispose();
         }
     }
 

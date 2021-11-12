@@ -1,4 +1,6 @@
 ﻿using PixelCrew.Model.Definitions.Localization;
+using PixelCrew.Utils.Disposables;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
@@ -11,12 +13,14 @@ namespace PixelCrew.UI.Localization
         [SerializeField] private string _key;
         [SerializeField] private bool _capitalize;
         private Text _text;
+        
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
 
         private void Awake()
         {
             _text = GetComponent<Text>();
 
-            LocalizationManager.I.OnLocaleChanged += Localize;
+            _trash.Retain(LocalizationManager.I.Subscribe(Localize));
             Localize();
         }
 
@@ -29,7 +33,7 @@ namespace PixelCrew.UI.Localization
 
         private void OnDestroy()
         {
-            LocalizationManager.I.OnLocaleChanged -= Localize;
+            _trash.Dispose();
         }
     }
 }

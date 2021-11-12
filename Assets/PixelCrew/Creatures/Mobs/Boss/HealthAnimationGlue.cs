@@ -1,4 +1,5 @@
 ﻿using PixelCrew.Components.Health;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
 namespace PixelCrew.Creatures.Mobs.Boss
@@ -9,10 +10,12 @@ namespace PixelCrew.Creatures.Mobs.Boss
         [SerializeField] private Animator _animator;
         private static readonly int Health = Animator.StringToHash("Health");
 
+        private readonly CompositeDisposable _trash = new CompositeDisposable();
+
         private void Awake()
         {
             _animator.SetInteger(Health, _hp.Health.Value);
-            _hp.Health.OnChanged += OnHealthChanged;
+            _trash.Retain(_hp.Health.Subscribe(OnHealthChanged));
         }
 
         private void OnHealthChanged(int value, int _)
@@ -22,7 +25,7 @@ namespace PixelCrew.Creatures.Mobs.Boss
 
         private void OnDestroy()
         {
-            _hp.Health.OnChanged -= OnHealthChanged;
+            _trash.Dispose();
         }
     }
 }

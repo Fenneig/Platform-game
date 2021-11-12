@@ -4880,6 +4880,7 @@ GameObject:
   - component: {fileID: 8049762086197870630}
   - component: {fileID: 8111109843934264590}
   - component: {fileID: 921639252288293449}
+  - component: {fileID: 1062227835155188268}
   m_Layer: 11
   m_Name: Hero
   m_TagString: Player
@@ -5018,7 +5019,7 @@ MonoBehaviour:
   _timeBetweenThrows: 0.4
   _shieldDuration: 5
   _shieldEndIndicator: 2
-  _blinksAmount: 5
+  _invulnerable: {fileID: 1062227835155188268}
   _teleportDisableGravityDuration: 0.25
 --- !u!50 &236387369531184235
 Rigidbody2D:
@@ -5428,6 +5429,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236387369531184224}
   m_Enabled: 1
+--- !u!114 &1062227835155188268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236387369531184224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9177abeac7064dd793af6eb178177ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 236387369531184233}
+  _blinksAmount: 5
 --- !u!1 &236387369689283899
 GameObject:
   m_ObjectHideFlags: 0

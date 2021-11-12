@@ -25,7 +25,6 @@ namespace PixelCrew.Creatures.Hero
         [SerializeField] private int _baseMeleeDamage;
         [SerializeField] private float _invulnerableTime;
 
-
         [Space] [Header("Checkers")] [SerializeField]
         private CheckCircleOverlap _interactionRadius;
 
@@ -53,7 +52,8 @@ namespace PixelCrew.Creatures.Hero
         private float _shieldDuration;
 
         [SerializeField] private float _shieldEndIndicator;
-        [SerializeField] private int _blinksAmount;
+        [Space] [Header("Invulnerable Stats")]
+        [SerializeField] private InvulnerableEffectComponent _invulnerable;
 
         [Space] [Header("Teleport Stats")] [SerializeField]
         private float _teleportDisableGravityDuration;
@@ -292,7 +292,7 @@ namespace PixelCrew.Creatures.Hero
             _cameraShake.Shake();
             if (CoinCount > 0)
                 SpawnCoins();
-            StartCoroutine(InvulnerableEffect(_invulnerableTime, _sprite));
+            StartCoroutine(_invulnerable.InvulnerableEffect(_invulnerableTime, _sprite));
         }
 
         private void RemoveItem(string itemId, int count)
@@ -482,28 +482,12 @@ namespace PixelCrew.Creatures.Hero
         {
             _shieldParticle.enabled = true;
 
-            _healthComponent.IsInvulnerable = true;
+            _healthComponent.IsInvulnerable.Retain(this);
             yield return new WaitForSeconds(_shieldDuration - _shieldEndIndicator);
-            yield return InvulnerableEffect(_shieldEndIndicator, _shieldParticle);
+            _healthComponent.IsInvulnerable.Release(this);
+            yield return _invulnerable.InvulnerableEffect(_shieldEndIndicator, _shieldParticle);
             _shieldParticle.enabled = false;
-        }
-
-        private IEnumerator InvulnerableEffect(float invulnerableTime, SpriteRenderer blinkingSprite)
-        {
-            _healthComponent.IsInvulnerable = true;
-
-            var color = blinkingSprite.color;
-
-            for (var i = 0; i < _blinksAmount; i++)
-            {
-                yield return this.LerpAnimation(i % 2, (i + 1) % 2, invulnerableTime / _blinksAmount,
-                    alpha => blinkingSprite.color = new Color(color.r, color.g, color.b, alpha));
-            }
-
-            color.a = 255;
-            blinkingSprite.color = color;
-
-            _healthComponent.IsInvulnerable = false;
+            
         }
 
         private void CalculateDamage(ModifyHealthComponent attackerMHComponent, int baseDamage, int statDamage)

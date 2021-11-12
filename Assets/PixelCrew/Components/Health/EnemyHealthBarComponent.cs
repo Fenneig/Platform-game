@@ -1,4 +1,5 @@
 ﻿using PixelCrew.UI.Widgets;
+using PixelCrew.Utils.Disposables;
 using UnityEngine;
 
 namespace PixelCrew.Components.Health
@@ -8,9 +9,11 @@ namespace PixelCrew.Components.Health
         [SerializeField] private ProgressBarWidget _healthBar;
         [SerializeField] private HealthComponent _healthComponent;
 
+        private CompositeDisposable _trash = new CompositeDisposable();
+
         private void Start()
         {
-            _healthComponent.Health.OnChanged += OnHealthChange;
+            _trash.Retain(_healthComponent.Health.Subscribe(OnHealthChange));
             GetComponent<Canvas>().enabled = false;
         }
 
@@ -22,7 +25,7 @@ namespace PixelCrew.Components.Health
         private void UpdateScale()
         {
             if (gameObject.transform.root.localScale.x == gameObject.transform.lossyScale.x) return;
-            
+
             var transform = gameObject.transform.localScale;
             transform = new Vector3(-transform.x, transform.y, transform.z);
             gameObject.transform.localScale = transform;
@@ -40,7 +43,7 @@ namespace PixelCrew.Components.Health
 
         private void OnDestroy()
         {
-            _healthComponent.Health.OnChanged -= OnHealthChange;
+            _trash.Dispose();
         }
     }
 }

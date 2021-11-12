@@ -1,5 +1,6 @@
 ﻿using PixelCrew.Model.Data.Properties;
 using System;
+using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,15 +13,16 @@ namespace PixelCrew.Components.Health
         [SerializeField] public UnityEvent _onDie;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private ChangeHealthEvent _onChange;
+        private readonly Lock _isInvulnerable = new Lock();
 
         public int MaxHealth { get; set; }
 
-        public bool IsInvulnerable { get; set; }
+        public Lock IsInvulnerable => _isInvulnerable;
 
         private void Awake()
         {
             MaxHealth = _health.Value;
-            IsInvulnerable = false;
+            _isInvulnerable.Release(this);
         }
 
         public IntProperty Health
@@ -32,7 +34,7 @@ namespace PixelCrew.Components.Health
         public void ModifyHealthByDelta(int delta)
         {
             if (_health.Value <= 0) return;
-            if (delta < 0 && IsInvulnerable) return;
+            if (delta < 0 && IsInvulnerable.IsLocked) return;
             if (_health.Value + delta > MaxHealth) delta = MaxHealth - _health.Value;
 
             _health.Value += delta;
