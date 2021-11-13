@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 1389977833}
   - component: {fileID: 1389977835}
   - component: {fileID: 1389977834}
+  - component: {fileID: 949432925}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389977828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3133329, y: -0.93333334, z: 0}
+  m_LocalPosition: {x: -0.3, y: -1, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_Children:
   - {fileID: 1944446614}
@@ -326,6 +327,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delta: -1
+--- !u!114 &949432925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389977828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26348adbad5487c8c18a5afddce94c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1389977832}
 --- !u!1 &1517120638
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +512,6 @@ GameObject:
   - component: {fileID: 5721751927824800350}
   - component: {fileID: 4341952852682006}
   - component: {fileID: 7634984812736000825}
-  - component: {fileID: 2138726073}
   m_Layer: 16
   m_Name: Patric
   m_TagString: Untagged
@@ -644,13 +657,14 @@ MonoBehaviour:
   _settings:
   - _prefab: {fileID: 863797694114466228, guid: 843959ec75d169d44a320c516f8c6a2c,
       type: 3}
-    _burstCount: 10
-    _delay: 0.07
+    _burstCount: 12
+    _delay: 0.6
   - _prefab: {fileID: 863797694114466228, guid: 843959ec75d169d44a320c516f8c6a2c,
       type: 3}
-    _burstCount: 15
-    _delay: 0.02
+    _burstCount: 18
+    _delay: 0.4
   _sectorAngle: 250
+  _itemPerBurst: 3
 --- !u!114 &5721751927824800350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,17 +748,3 @@ PolygonCollider2D:
       - {x: -0.25, y: -0.46875}
       - {x: 0.47863898, y: -0.4749684}
       - {x: 0.47375742, y: -0.2647391}
---- !u!114 &2138726073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4952307316051319287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26348adbad5487c8c18a5afddce94c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 1389977832}
-  _floodTime: 1

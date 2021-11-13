@@ -6996,50 +6996,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1339557157}
     m_Modifications:
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _sectorAngle
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _itemPerBurst
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _settings.Array.data[0]._delay
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _settings.Array.data[1]._delay
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _settings.Array.data[0]._burstCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 562668556, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _settings.Array.data[1]._burstCount
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 1318378432, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
       propertyPath: _onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 255298256}
-    - target: {fileID: 1389977830, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1389977830, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1389977832, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2138726073, guid: a40a85c4ee9b0fc46b46e3d744130178, type: 3}
-      propertyPath: _floodTime
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4952307316051319283, guid: a40a85c4ee9b0fc46b46e3d744130178,
         type: 3}
       propertyPath: m_RootOrder
