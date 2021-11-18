@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6020187415022744645}
   - component: {fileID: 6020187415022744642}
   - component: {fileID: 6020187415022744643}
-  - component: {fileID: 6020187415022744640}
+  - component: {fileID: 2784196794118871688}
   m_Layer: 0
   m_Name: Exclamation
   m_TagString: Attached
@@ -109,7 +109,7 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6020187415022744640}
+        - m_Target: {fileID: 2784196794118871688}
           m_MethodName: DestroyObject
           m_Mode: 1
           m_Arguments:
@@ -120,7 +120,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &6020187415022744640
+--- !u!114 &2784196794118871688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

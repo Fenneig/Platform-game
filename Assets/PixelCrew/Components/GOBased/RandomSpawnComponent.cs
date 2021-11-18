@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using PixelCrew.Utils;
 using System;
+using Unity.Mathematics;
 
 
 namespace PixelCrew.Components.GOBased
@@ -21,7 +22,7 @@ namespace PixelCrew.Components.GOBased
                     
                     var position = component.Target.position;
                     var newPosition = position + new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value, 0);
-                    var instance = SpawnUtils.Spawn(component.Prefab, position);
+                    var instance = SpawnUtils.Spawn(component.Prefab, position, quaternion.identity);
 
                     var rigidbody = instance.GetComponent<Rigidbody2D>();
                     if (rigidbody != null) rigidbody.AddForce(Vector2.up);

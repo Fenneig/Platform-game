@@ -1,5 +1,4 @@
 ﻿using System;
-using PixelCrew.Model.Data.Properties;
 using UnityEngine;
 using UnityEngine.Events;
 

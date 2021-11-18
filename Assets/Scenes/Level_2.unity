@@ -1062,6 +1062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharkyPlatformWalk (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 236387369531184224, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 236387369531184230, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1740,6 +1745,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharkyPlatformWalk
       objectReference: {fileID: 0}
+    - target: {fileID: 236387369531184224, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 236387369531184230, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1794,6 +1804,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663974481697769841, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
+        type: 3}
+      propertyPath: _usePool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695034493258294611, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
+        type: 3}
+      propertyPath: _usePool
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183236855489636745, guid: cf0c651b5e5fd67408b8dc77cc8f03a4,
+        type: 3}
+      propertyPath: _usePool
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf0c651b5e5fd67408b8dc77cc8f03a4, type: 3}
@@ -27424,6 +27449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 302682402}
   _prefab: {fileID: 236387369531184224, guid: 1dafd801a0dcbd64787ecd9203153a0f, type: 3}
+  _usePool: 0
 --- !u!1001 &4270016078542698702
 PrefabInstance:
   m_ObjectHideFlags: 0

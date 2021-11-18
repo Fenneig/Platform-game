@@ -1933,7 +1933,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory: []
+      _inventory:
+      - Id: Sword
+        Value: 100
     _quickInventory:
       _inventory: []
     Hp:
@@ -2059,7 +2061,7 @@ PrefabInstance:
     - target: {fileID: 1467564330054609999, guid: d699e6fea7af66c49bc413af91c5d024,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d699e6fea7af66c49bc413af91c5d024, type: 3}
@@ -2745,7 +2747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517205183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6638298, y: -1.5300004, z: -10}
+  m_LocalPosition: {x: -2.665245, y: -1.5300004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 135444081}

@@ -11,6 +11,7 @@ using PixelCrew.Components.GOBased;
 using PixelCrew.Effects.CameraRelated;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
+using PixelCrew.Utils.Disposables;
 using UnityEngine.Experimental.Rendering.Universal;
 
 namespace PixelCrew.Creatures.Hero
@@ -118,7 +119,7 @@ namespace PixelCrew.Creatures.Hero
             _cameraShake = FindObjectOfType<CameraShakeEffect>();
             _healthComponent = GetComponent<HealthComponent>();
             _sprite = GetComponent<SpriteRenderer>();
-
+            
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using PixelCrew.Creatures.Weapons;
 using PixelCrew.Utils;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace PixelCrew.Components.GOBased
                     var angle = (180 - _sectorAngle) / 2 + sectorStep * (i + j);
                     var direction = GetUnitOnCircle(angle);
 
-                    var instance = SpawnUtils.Spawn(settings.Prefab, transform.position);
+                    var instance = SpawnUtils.Spawn(settings.Prefab, transform.position, quaternion.identity);
                     var projectile = instance.GetComponent<DirectionalProjectile>();
                     projectile.Launch(direction);
                 }

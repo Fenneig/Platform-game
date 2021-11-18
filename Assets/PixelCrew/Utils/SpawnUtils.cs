@@ -1,5 +1,4 @@
-﻿using Unity.Mathematics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelCrew.Utils
 {
@@ -7,18 +6,13 @@ namespace PixelCrew.Utils
     {
         private const string ContainerName = "###SPAWNED###";
 
-        public static GameObject Spawn(GameObject prefab, Vector3 position, Quaternion quaternion) 
+        public static GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation, string containerName = ContainerName)
         {
-            var container = GameObject.Find(ContainerName);
+            var container = GameObject.Find(containerName);
             if (container == null)
-                container = new GameObject(ContainerName);
+                container = new GameObject(containerName);
 
-            return Instantiate(prefab, position, quaternion, container.transform);
-        }
-
-        public static GameObject Spawn(GameObject prefab, Vector3 position)
-        {
-            return Spawn(prefab, position, quaternion.identity);
+            return Instantiate(prefab, position, rotation, container.transform);
         }
     }
 }

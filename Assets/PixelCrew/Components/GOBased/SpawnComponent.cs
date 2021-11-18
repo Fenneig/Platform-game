@@ -1,5 +1,6 @@
 ﻿using PixelCrew.Utils;
 using System;
+using PixelCrew.Utils.ObjectPool;
 using UnityEngine;
 
 namespace PixelCrew.Components.GOBased
@@ -9,6 +10,7 @@ namespace PixelCrew.Components.GOBased
     {
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
+        [SerializeField] private bool _usePool;
 
         public Transform InstanceTransform { get; set; }
 
@@ -28,7 +30,9 @@ namespace PixelCrew.Components.GOBased
                     quaternion.w);
                 var position = _target.transform.position + _prefab.transform.position;
 
-                var instance = SpawnUtils.Spawn(_prefab, position, rotation);
+                var instance = _usePool 
+                    ? Pool.Instance.Get(_prefab, position, rotation) 
+                    : SpawnUtils.Spawn(_prefab, position, rotation);
                 instance.transform.localScale = gameObject.transform.lossyScale;
                 InstanceTransform = instance.transform;
             }

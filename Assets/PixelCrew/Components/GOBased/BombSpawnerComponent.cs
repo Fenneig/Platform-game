@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using PixelCrew.Utils;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,7 +27,7 @@ namespace PixelCrew.Components.GOBased
             var areaTransform = _area.transform.position;
             var position = new Vector3(areaTransform.x + randomXPos, areaTransform.y, areaTransform.z);
             
-            Instantiate(_prefab, position, Quaternion.identity);
+           SpawnUtils.Spawn(_prefab, position, quaternion.identity);
         }
         
         public void StartSpawn()

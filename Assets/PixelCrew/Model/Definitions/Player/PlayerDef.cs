@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelCrew.Model.Definitions.Player
 {
@@ -12,7 +11,14 @@ namespace PixelCrew.Model.Definitions.Player
         public int MaxInventorySize => _maxInventorySize;
         public StatDef[] Stats => _stats;
 
-        public StatDef GetStat(StatId id) => _stats.FirstOrDefault(x => x.ID == id);
+        public StatDef GetStat(StatId id)
+        {
+            foreach (var stat in _stats)
+            {
+                if (stat.ID == id) return stat;
+            }
 
+            return default;
+        }
     }
 }

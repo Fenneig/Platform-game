@@ -15724,6 +15724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 3748689409735551334}
   _prefab: {fileID: 236387369531184224, guid: 1dafd801a0dcbd64787ecd9203153a0f, type: 3}
+  _usePool: 0
 --- !u!4 &5517832903956774989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2998947217433399646, guid: 9379d913502a76a42adcbca3fbb3ac4a,

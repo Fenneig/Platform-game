@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1078153097187886999}
   - component: {fileID: 1078153097187886996}
   - component: {fileID: 1078153097187886997}
-  - component: {fileID: 1078153097187886994}
+  - component: {fileID: 7163278652704743530}
   m_Layer: 0
   m_Name: DashDust
   m_TagString: Untagged
@@ -110,7 +110,7 @@ MonoBehaviour:
     _onComplete:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1078153097187886994}
+        - m_Target: {fileID: 7163278652704743530}
           m_MethodName: DestroyObject
           m_Mode: 1
           m_Arguments:
@@ -121,7 +121,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1078153097187886994
+--- !u!114 &7163278652704743530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
