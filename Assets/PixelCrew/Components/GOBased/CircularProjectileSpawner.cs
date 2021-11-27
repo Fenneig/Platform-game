@@ -3,8 +3,10 @@ using System.Collections;
 using PixelCrew.Creatures.Weapons;
 using PixelCrew.Utils;
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace PixelCrew.Components.GOBased
 {
@@ -44,7 +46,7 @@ namespace PixelCrew.Components.GOBased
                 yield return new WaitForSeconds(settings.Delay);
             }
         }
-
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             var position = transform.position;
@@ -62,7 +64,7 @@ namespace PixelCrew.Components.GOBased
             Handles.color = new Color(1f, 1f, 1f, 0.1f);
             Handles.DrawSolidArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
         }
-
+#endif
         private Vector2 GetUnitOnCircle(float angle)
         {
             var angleRadians = angle * Mathf.PI / 180.0f;

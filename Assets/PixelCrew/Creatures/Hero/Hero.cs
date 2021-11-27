@@ -5,13 +5,11 @@ using PixelCrew.Components.Health;
 using PixelCrew.Components.ColliderBased;
 using PixelCrew.Model;
 using PixelCrew.Utils;
-using UnityEditor.Animations;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
 using PixelCrew.Effects.CameraRelated;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
-using PixelCrew.Utils.Disposables;
 using UnityEngine.Experimental.Rendering.Universal;
 
 namespace PixelCrew.Creatures.Hero
@@ -30,9 +28,9 @@ namespace PixelCrew.Creatures.Hero
         private CheckCircleOverlap _interactionRadius;
 
         [Space] [Header("Controllers")] [SerializeField]
-        private AnimatorController _armed;
+        private RuntimeAnimatorController _armed;
 
-        [SerializeField] private AnimatorController _unarmed;
+        [SerializeField] private RuntimeAnimatorController _unarmed;
 
         [Space] [Header("Particle System")] [SerializeField]
         private ParticleSystem _dropCoinsOnHitParticle;
@@ -124,10 +122,10 @@ namespace PixelCrew.Creatures.Hero
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
 
             _healthComponent.Health = _session.Data.Hp;
+            _healthComponent.MaxHealth = (int) _session.StatsModel.GetValue(StatId.Hp);
 
             _lightSource = _lighter.GetComponentInChildren<Light2D>();
             _defaultLighterIntensity = _lightSource.intensity;
-
 
             UpdateHeroWeapon();
         }

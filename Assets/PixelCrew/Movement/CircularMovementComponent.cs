@@ -13,8 +13,10 @@ namespace PixelCrew.Movement
         private Rigidbody2D[] _childRigidBody;
         private float[] _startAngle;
         private int _childCount;
+
         private bool _isPlaying;
 
+        
         private void Awake()
         {
             _isPlaying = true;
@@ -57,12 +59,11 @@ namespace PixelCrew.Movement
                     var angle = 2 * Mathf.PI / transform.childCount * i;
 
                     transform.GetChild(i).position = new Vector3(Mathf.Cos(angle) * _radius + transform.position.x,
-                                                                 Mathf.Sin(angle) * _radius + transform.position.y,
-                                                                 0);
+                        Mathf.Sin(angle) * _radius + transform.position.y,
+                        0);
                 }
             }
         }
 #endif
-
     }
 }

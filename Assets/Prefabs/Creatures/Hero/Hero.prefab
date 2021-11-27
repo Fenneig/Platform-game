@@ -5299,7 +5299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health:
-    _value: 10
+    _value: 5
   _onDamage:
     m_PersistentCalls:
       m_Calls:

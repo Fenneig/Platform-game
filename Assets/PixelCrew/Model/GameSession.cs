@@ -90,8 +90,6 @@ namespace PixelCrew.Model
         private GameSession GetExistSession()
         {
             var sessions = FindObjectsOfType<GameSession>();
-            //return sessions.FirstOrDefault(gameSession => gameSession != this);
-            
             foreach (var gameSession in sessions)
             {
                 if (gameSession != this)
