@@ -30,14 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "6fd1e114-efde-4c89-bf0f-e86a588e52bf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "bfb350aa-4551-41a4-b2c8-21746f45b56f",
@@ -152,6 +144,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7ad5f3ce-21ff-48c5-9147-8c933619e59f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.4),NormalizeVector2",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "37d3d70f-ce29-4f2f-9cfe-4383fd98028f",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -174,6 +177,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f0f8e91e-43c8-4e12-b2a8-2d66c4c86330",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UsePerk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0174f121-8456-4ce3-90ff-9667498aedf6",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -185,12 +199,12 @@
                 },
                 {
                     "name": "",
-                    "id": "11bb074a-4811-4b20-8840-4a0b4729c7e8",
-                    "path": "<Keyboard>/w",
+                    "id": "07faa7fc-9dac-4eab-8e0f-96484e4cb1c6",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -207,8 +221,30 @@
                 },
                 {
                     "name": "",
+                    "id": "12e82aad-4984-41a8-932c-3aef031f9709",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cad765c6-cf34-45e8-9174-2b4ab0144717",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5bd3e54-87a5-47c0-ba46-d8c3dfd5f95d",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -273,8 +309,30 @@
                 },
                 {
                     "name": "",
+                    "id": "fd7790f7-3c3a-4011-bb80-8d05d0488540",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "678c3b1e-fe37-4015-bfde-65f909d6884d",
                     "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PerkMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66b00367-8af0-40b3-b52d-9bf49f849667",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

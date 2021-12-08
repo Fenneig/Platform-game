@@ -8,6 +8,7 @@ using PixelCrew.Utils;
 using PixelCrew.Model.Definitions;
 using PixelCrew.Components.GOBased;
 using PixelCrew.Effects.CameraRelated;
+using PixelCrew.Model.Data.Properties;
 using PixelCrew.Model.Definitions.Player;
 using PixelCrew.Model.Definitions.Repository.Items;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -78,6 +79,7 @@ namespace PixelCrew.Creatures.Hero
         private const string DashId = "dash";
         private const string ShieldId = "shield";
         private const string TeleportId = "teleport";
+        private const string DoubleJumpId = "doubleJump";
         private const string OilId = "CandleOil";
         private static readonly int ThrowKey = Animator.StringToHash("is-throw");
 
@@ -448,6 +450,12 @@ namespace PixelCrew.Creatures.Hero
                 case TeleportId:
                 {
                     Teleport();
+                    break;
+                }
+                case DoubleJumpId:
+                {
+                    _allowDoubleJump = true;
+                    IsJumpButtonPressed = false;
                     break;
                 }
             }

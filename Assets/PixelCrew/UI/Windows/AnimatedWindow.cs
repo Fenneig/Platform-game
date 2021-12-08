@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Analytics;
 
 namespace PixelCrew.UI.Windows
 {
@@ -12,11 +13,13 @@ namespace PixelCrew.UI.Windows
         protected virtual void Start()
         {
             _animator = GetComponent<Animator>();
-            
+
+            AnalyticsEvent.ScreenVisit(gameObject.name);
+
             if (_animator != null) _animator.SetTrigger(ShowKey);
         }
 
-        public void Close() 
+        public void Close()
         {
             _animator.SetTrigger(HideKey);
         }
@@ -25,7 +28,5 @@ namespace PixelCrew.UI.Windows
         {
             Destroy(gameObject);
         }
-        
-              
     }
 }

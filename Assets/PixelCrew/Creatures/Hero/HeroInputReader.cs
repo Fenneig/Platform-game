@@ -12,18 +12,18 @@ namespace PixelCrew.Creatures.Hero
         {
             if (context.started) _hero.Attack();
         }
-        public void OnMovement(InputAction.CallbackContext context) => _hero.Direction = context.ReadValue<Vector2>();
+
+        public void OnMovement(InputAction.CallbackContext context)
+        {
+            _hero.Direction = context.ReadValue<Vector2>();
+            if (_hero.Direction.y == 0) _hero.IsJumpButtonPressed = false;
+        }
 
         public void OnUsePerk(InputAction.CallbackContext context) => _hero.UsePerk(context.ReadValue<float>());
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.started) _hero.Interact();
-        }
-
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if (context.canceled) _hero.IsJumpButtonPressed = false;
         }
         
         public void OnUseItem(InputAction.CallbackContext context) 

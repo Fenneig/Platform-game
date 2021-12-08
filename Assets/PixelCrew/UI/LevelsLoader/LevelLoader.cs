@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 namespace PixelCrew.UI.LevelsLoader
@@ -8,12 +9,13 @@ namespace PixelCrew.UI.LevelsLoader
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private float _transitionTime;
-        
+
         private static readonly int Enabled = Animator.StringToHash("Enabled");
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void OnAfterSceneLoad()
         {
+            AnalyticsEvent.debugMode = true;
             InitLoader();
         }
 
@@ -34,9 +36,9 @@ namespace PixelCrew.UI.LevelsLoader
 
         private IEnumerator StartAnimation(string sceneName)
         {
-            _animator.SetBool(Enabled, true);       
-            yield return new WaitForSeconds(_transitionTime / 2); 
-            SceneManager.LoadScene(sceneName);     
+            _animator.SetBool(Enabled, true);
+            yield return new WaitForSeconds(_transitionTime / 2);
+            SceneManager.LoadScene(sceneName);
             yield return new WaitForSeconds(_transitionTime / 2);
             _animator.SetBool(Enabled, false);
         }
