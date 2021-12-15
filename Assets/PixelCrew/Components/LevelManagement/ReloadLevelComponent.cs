@@ -8,7 +8,7 @@ namespace PixelCrew.Components.LevelManagement
     {
         public void ReloadScene()
         {
-            var session = FindObjectOfType<GameSession>();
+            var session = GameSession.Instance;
             session.Load();
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

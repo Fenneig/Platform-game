@@ -664,7 +664,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: USE_ONSCREEN_CONTROLS
+    1: 
     4: UNITY_POST_PROCESSING_STACK_V2
     7: USE_ONSCREEN_CONTROLS
     13: UNITY_POST_PROCESSING_STACK_V2

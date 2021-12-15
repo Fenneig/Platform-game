@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -640,6 +640,7 @@ MonoBehaviour:
   _hp: {fileID: 4952307315488800253}
   _hpBar: {fileID: 255298252}
   _canvas: {fileID: 255298257}
+  _hideUiAfterDie: 1
 --- !u!225 &255298257
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1125,6 +1126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _clips.Array.data[1]._onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794663005813270400, guid: 0d323f76d7efa9249ad9e9f9b1cad0be,
+        type: 3}
+      propertyPath: _levelName
+      value: Level_5
       objectReference: {fileID: 0}
     - target: {fileID: 1794663005813270401, guid: 0d323f76d7efa9249ad9e9f9b1cad0be,
         type: 3}

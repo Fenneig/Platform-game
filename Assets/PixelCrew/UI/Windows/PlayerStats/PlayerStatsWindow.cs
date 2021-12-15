@@ -26,7 +26,7 @@ namespace PixelCrew.UI.Windows.PlayerStats
             
             _dataGroup = new DataGroup<StatDef, StatWidget>(_prefab, _container);
 
-            Session = FindObjectOfType<GameSession>();
+            Session = GameSession.Instance;
             Session.StatsModel.InterfaceSelectionStat.Value = DefsFacade.I.Player.Stats[0].ID;
 
             _trash.Retain(Session.StatsModel.Subscribe(OnStatsChange));

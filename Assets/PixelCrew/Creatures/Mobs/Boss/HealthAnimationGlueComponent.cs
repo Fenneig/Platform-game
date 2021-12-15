@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelCrew.Creatures.Mobs.Boss
 {
-    public class HealthAnimationGlue : MonoBehaviour
+    public class HealthAnimationGlueComponent : MonoBehaviour
     {
         [SerializeField] private HealthComponent _hp;
         [SerializeField] private Animator _animator;

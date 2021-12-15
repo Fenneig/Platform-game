@@ -17,6 +17,8 @@ namespace PixelCrew.Model
         [SerializeField] private int _levelIndex;
         [SerializeField] private PlayerData _data;
         [SerializeField] private string _defaultCheckpoint;
+
+        public static GameSession Instance;
         public PerksModel PerksModel { get; private set; }
         public QuickInventoryModel QuickInventory { get; private set; }
         public StatsModel StatsModel { get; private set; }
@@ -32,9 +34,6 @@ namespace PixelCrew.Model
 
         private void Awake()
         {
-            //level_start
-            //level_index
-            //level_complete
             var existSession = GetExistSession();
 
             if (existSession != null)
@@ -46,6 +45,7 @@ namespace PixelCrew.Model
             {
                 Save();
                 InitModels();
+                Instance = this;
                 DontDestroyOnLoad(this);
                 StartSession(_defaultCheckpoint, _levelIndex);
             }
@@ -142,6 +142,7 @@ namespace PixelCrew.Model
 
         private void OnDestroy()
         {
+            if (Instance == this) Instance = null;
             _trash.Dispose();
         }
 

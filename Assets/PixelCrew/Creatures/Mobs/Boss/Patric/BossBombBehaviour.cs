@@ -1,7 +1,7 @@
 ﻿using PixelCrew.Components.GOBased;
 using UnityEngine;
 
-namespace PixelCrew.Creatures.Mobs.Boss
+namespace PixelCrew.Creatures.Mobs.Boss.Patric
 {
     public class BossBombBehaviour : StateMachineBehaviour
     {

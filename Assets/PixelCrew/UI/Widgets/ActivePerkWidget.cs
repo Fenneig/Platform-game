@@ -14,7 +14,7 @@ namespace PixelCrew.UI.Widgets
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
         }
 
         private void Update()

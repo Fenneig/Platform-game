@@ -52,8 +52,9 @@ namespace PixelCrew.Creatures.Hero
         private float _shieldDuration;
 
         [SerializeField] private float _shieldEndIndicator;
-        [Space] [Header("Invulnerable Stats")]
-        [SerializeField] private InvulnerableEffectComponent _invulnerable;
+
+        [Space] [Header("Invulnerable Stats")] [SerializeField]
+        private InvulnerableEffectComponent _invulnerable;
 
         [Space] [Header("Teleport Stats")] [SerializeField]
         private float _teleportDisableGravityDuration;
@@ -115,11 +116,11 @@ namespace PixelCrew.Creatures.Hero
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             _cameraShake = FindObjectOfType<CameraShakeEffect>();
             _healthComponent = GetComponent<HealthComponent>();
             _sprite = GetComponent<SpriteRenderer>();
-            
+
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
 
@@ -181,7 +182,7 @@ namespace PixelCrew.Creatures.Hero
             {
                 StartCoroutine(Dash());
             }
-
+            
             _dashTrigger = 0f;
         }
 
@@ -494,7 +495,6 @@ namespace PixelCrew.Creatures.Hero
             _healthComponent.IsInvulnerable.Release(this);
             yield return _invulnerable.InvulnerableEffect(_shieldEndIndicator, _shieldParticle);
             _shieldParticle.enabled = false;
-            
         }
 
         private void CalculateDamage(ModifyHealthComponent attackerMHComponent, int baseDamage, int statDamage)

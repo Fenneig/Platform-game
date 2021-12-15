@@ -14,9 +14,9 @@ namespace PixelCrew.Components.Collectables
         private ItemData _itemData;
         private GameSession _session;
 
-        private void Awake()
+        private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             _itemData = GetComponent<InventoryAddComponent>().Item;
         }
 

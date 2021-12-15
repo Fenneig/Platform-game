@@ -15,7 +15,7 @@ namespace PixelCrew.UI.Windows
 
         protected override void Start()
         {
-            Session = FindObjectOfType<GameSession>();
+            Session = GameSession.Instance;
             _defaultTimeScale = Time.timeScale;
             _input = FindObjectOfType<PlayerInput>();
 

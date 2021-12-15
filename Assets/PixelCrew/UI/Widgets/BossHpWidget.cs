@@ -2,6 +2,7 @@
 using PixelCrew.Utils;
 using PixelCrew.Utils.Disposables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrew.UI.Widgets
 {
@@ -10,6 +11,7 @@ namespace PixelCrew.UI.Widgets
         [SerializeField] private HealthComponent _hp;
         [SerializeField] private ProgressBarWidget _hpBar;
         [SerializeField] private CanvasGroup _canvas;
+        [SerializeField] private bool _hideUiAfterDie;
 
         private readonly CompositeDisposable _trash = new CompositeDisposable();
         private float _health;
@@ -41,7 +43,11 @@ namespace PixelCrew.UI.Widgets
         [ContextMenu("hideUi")]
         public void HideUI()
         {
-            this.LerpAnimation(1, 0, 1, SetAlpha);
+            if (_hideUiAfterDie) this.LerpAnimation(1, 0, 1, SetAlpha);
+        }
+        public void HideUIManually()
+        {
+           this.LerpAnimation(1, 0, 1, SetAlpha);
         }
 
         private void OnDestroy()

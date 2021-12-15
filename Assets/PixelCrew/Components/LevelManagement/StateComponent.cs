@@ -19,7 +19,7 @@ namespace PixelCrew.Components.LevelManagement
         private void Start()
         {
             if (string.IsNullOrEmpty(_id)) _id = $"{SceneManager.GetActiveScene().name}-{gameObject.name}";
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
             if(_gameSession.IsItemDestroyed(_id)) GetComponent<DestroyObjectComponent>().DestroyObject();
         }
     }
