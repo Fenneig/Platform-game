@@ -300,8 +300,8 @@ namespace PixelCrew.Creatures.Hero
         private void RemoveItem(string itemId, int count)
         {
             _session.Data.Inventory.Remove(itemId, count);
-            var quickInventorySelection = _session.InventoryModel.QuickInventorySelection;
-            if (quickInventorySelection.All(selected => selected.Value != itemId)) return;
+            var quickInventorySelection = _session.QuickInventory.SelectedItem;
+            if (quickInventorySelection.Id != itemId) return;
 
             _session.Data.QuickInventory.Remove(itemId, count);
             if (_session.Data.QuickInventory.Count(itemId) > 0) return;
